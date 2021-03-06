@@ -46,7 +46,9 @@ function getInstructionsFromHTML(html: any) {
     parameterElems.each((i, parameterElem) => {
       parameters.push({
         name: $(parameterElem).find("> code").text(),
-        type: $(parameterElem).find("> ul > li > code").text(),
+        type: $(parameterElem).find("> ul > li").contents()
+        .filter((i, node) => node.type === "text" || (node.type === "tag" && node.tagName === "code"))
+        .text().trim(),
         description: toMarkdown($(parameterElem).find("> div").html()),
         isOptional: $(parameterElem)
           .contents()

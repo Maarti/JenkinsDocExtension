@@ -406,7 +406,7 @@
       },
       {
         "name": "unit",
-        "type": "NANOSECONDSMICROSECONDSMILLISECONDSSECONDSMINUTESHOURSDAYS",
+        "type": "NANOSECONDS, MICROSECONDS, MILLISECONDS, SECONDS, MINUTES, HOURS, DAYS",
         "description": "The unit for the time parameter. Defaults to 'SECONDS' if not specified.",
         "isOptional": true
       }
@@ -474,7 +474,7 @@
       },
       {
         "name": "unit",
-        "type": "NANOSECONDSMICROSECONDSMILLISECONDSSECONDSMINUTESHOURSDAYS",
+        "type": "NANOSECONDS, MICROSECONDS, MILLISECONDS, SECONDS, MINUTES, HOURS, DAYS",
         "description": "The unit of the time parameter. Defaults to 'MINUTES' if not specified.",
         "isOptional": true
       }
@@ -596,7 +596,7 @@
     "parameters": [
       {
         "name": "overrides",
-        "type": "String",
+        "type": "Array / List of  String",
         "description": "A list of environment variables to set, each in the form `VARIABLE=value` or `VARIABLE=` to unset variables otherwise defined. You may also use the syntax `PATH+WHATEVER=/something` to prepend `/something` to `$PATH`.",
         "isOptional": false
       }
