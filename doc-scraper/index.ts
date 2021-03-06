@@ -32,8 +32,9 @@ function getInstructionsFromHTML(html: any) {
   const instructions: Instruction[] = [];
 
   docs.each((i, docElem) => {
-    const command: string = $(docElem).find("h3 code").text();
-    const title: string = $(docElem).find("h3").text();
+    const command: string = $(docElem).find("> h3 > code").text();
+    const title: string = $(docElem).find("> h3").text();
+    const description: string = toMarkdown($(docElem).find("> div").html());
     const parameters: Parameter[] = [];
     const parameterElems = $(docElem).find("> ul > li");
 
@@ -54,6 +55,7 @@ function getInstructionsFromHTML(html: any) {
     instructions.push({
       command,
       title,
+      description,
       parameters,
     });
   });
@@ -66,12 +68,14 @@ function toMarkdown(html: string | null): string {
     return "";
   }
   return html
-    .replace(/`/g, "")            // remove all ` that would be present originally
-    .replace(/<\/?code>/gi, "`")  // replace <code></code> tags by `
-    .replace(/<\/?p>/gi, "\n")    // replace <p></p> tags by \n
-    .replace(/<\/?div>/gi, "\n")  // replace  <div></div> tags by \n
-    .replace(/^(\s)*/g, "")       // removes all \n and spaces at the start
-    .replace(/(\s)*$/g, "");      // removes all \n and spaces at the end
+    .replace(/`/g, "")                    // remove all ` that would be present originally
+    .replace(/<\/?code>/gi, "`")          // replace <code></code> tags by `
+    .replace(/<pre>/gi, "\n```groovy\n")  // replace <pre> tag by ```groovy
+    .replace(/<\/pre>/gi, "\n```\n")      // replace </pre> tag by ```
+    .replace(/<\/?p>/gi, "\n")            // replace <p></p> tags by \n
+    .replace(/<\/?div>/gi, "\n")          // replace  <div></div> tags by \n
+    .replace(/^(\s)*/g, "")               // removes all \n and spaces at the start
+    .replace(/(\s)*$/g, "");              // removes all \n and spaces at the end
 }
 
 function printScrapingResult(instructions: Instruction[]) {
@@ -82,6 +86,7 @@ function printScrapingResult(instructions: Instruction[]) {
 interface Instruction {
   command: string;
   title: string;
+  description: string;
   parameters: Parameter[];
 }
 

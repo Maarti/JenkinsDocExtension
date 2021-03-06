@@ -14,7 +14,7 @@ export class HoverProvider implements vscode.HoverProvider {
     const doc = new Map<string, vscode.MarkdownString[]>();
     jenkinsDoc.forEach((instruction) => {
       const markdowns: vscode.MarkdownString[] = [];
-      markdowns.push(new vscode.MarkdownString(`### ${instruction.title}`));
+      markdowns.push(new vscode.MarkdownString(`**${instruction.title}**\n\n${instruction.description}`));
       instruction.parameters.forEach(parameter => {
         const markdown = new vscode.MarkdownString();
         const optionalLabel = parameter.isOptional ? "*(Optional)*" : "";
