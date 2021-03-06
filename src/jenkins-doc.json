@@ -2,7 +2,7 @@
   {
     "command": "bat",
     "title": "bat: Windows Batch Script",
-    "args": [
+    "parameters": [
       {
         "name": "script",
         "type": "String",
@@ -38,7 +38,7 @@
   {
     "command": "node",
     "title": "node: Allocate nodeSupported operatorsNotesExamples",
-    "args": [
+    "parameters": [
       {
         "name": "label",
         "type": "String",
@@ -50,7 +50,7 @@
   {
     "command": "powershell",
     "title": "powershell: PowerShell Script",
-    "args": [
+    "parameters": [
       {
         "name": "script",
         "type": "String",
@@ -86,7 +86,7 @@
   {
     "command": "pwsh",
     "title": "pwsh: PowerShell Core Script",
-    "args": [
+    "parameters": [
       {
         "name": "script",
         "type": "String",
@@ -122,7 +122,7 @@
   {
     "command": "sh",
     "title": "sh: Shell Script",
-    "args": [
+    "parameters": [
       {
         "name": "script",
         "type": "String",
@@ -158,7 +158,7 @@
   {
     "command": "ws",
     "title": "ws: Allocate workspace",
-    "args": [
+    "parameters": [
       {
         "name": "dir",
         "type": "String",
@@ -170,7 +170,7 @@
   {
     "command": "catchError",
     "title": "catchError: Catch error and set build result to failure",
-    "args": [
+    "parameters": [
       {
         "name": "buildResult",
         "type": "String",
@@ -200,12 +200,12 @@
   {
     "command": "deleteDir",
     "title": "deleteDir: Recursively delete the current directory from the workspace",
-    "args": []
+    "parameters": []
   },
   {
     "command": "dir",
     "title": "dir: Change current directory",
-    "args": [
+    "parameters": [
       {
         "name": "path",
         "type": "String",
@@ -217,7 +217,7 @@
   {
     "command": "echo",
     "title": "echo: Print Message",
-    "args": [
+    "parameters": [
       {
         "name": "message",
         "type": "String",
@@ -229,7 +229,7 @@
   {
     "command": "error",
     "title": "error: Error signal",
-    "args": [
+    "parameters": [
       {
         "name": "message",
         "type": "String",
@@ -241,7 +241,7 @@
   {
     "command": "fileExists",
     "title": "fileExists: Verify if file exists in workspace",
-    "args": [
+    "parameters": [
       {
         "name": "file",
         "type": "String",
@@ -253,12 +253,12 @@
   {
     "command": "isUnix",
     "title": "isUnix: Checks if running on a Unix-like node",
-    "args": []
+    "parameters": []
   },
   {
     "command": "mail",
     "title": "mail: Mail",
-    "args": [
+    "parameters": [
       {
         "name": "subject",
         "type": "String",
@@ -318,7 +318,7 @@
   {
     "command": "pwd",
     "title": "pwd: Determine current directory",
-    "args": [
+    "parameters": [
       {
         "name": "tmp",
         "type": "boolean",
@@ -330,7 +330,7 @@
   {
     "command": "readFile",
     "title": "readFile: Read file from workspace",
-    "args": [
+    "parameters": [
       {
         "name": "file",
         "type": "String",
@@ -348,7 +348,7 @@
   {
     "command": "retry",
     "title": "retry: Retry the body up to N times",
-    "args": [
+    "parameters": [
       {
         "name": "count",
         "type": "int",
@@ -360,7 +360,7 @@
   {
     "command": "sleep",
     "title": "sleep: Sleep",
-    "args": [
+    "parameters": [
       {
         "name": "time",
         "type": "int",
@@ -378,7 +378,7 @@
   {
     "command": "stash",
     "title": "stash: Stash some files to be used later in the build",
-    "args": [
+    "parameters": [
       {
         "name": "name",
         "type": "String",
@@ -414,12 +414,12 @@
   {
     "command": "step",
     "title": "step: General Build Step",
-    "args": []
+    "parameters": []
   },
   {
     "command": "timeout",
     "title": "timeout: Enforce time limit",
-    "args": [
+    "parameters": [
       {
         "name": "time",
         "type": "int",
@@ -443,7 +443,7 @@
   {
     "command": "tool",
     "title": "tool: Use a tool from a predefined Tool Installation",
-    "args": [
+    "parameters": [
       {
         "name": "name",
         "type": "String",
@@ -461,7 +461,7 @@
   {
     "command": "unstable",
     "title": "unstable: Set stage result to unstable",
-    "args": [
+    "parameters": [
       {
         "name": "message",
         "type": "String",
@@ -473,7 +473,7 @@
   {
     "command": "unstash",
     "title": "unstash: Restore files previously stashed",
-    "args": [
+    "parameters": [
       {
         "name": "name",
         "type": "String",
@@ -485,7 +485,7 @@
   {
     "command": "waitUntil",
     "title": "waitUntil: Wait for condition",
-    "args": [
+    "parameters": [
       {
         "name": "initialRecurrencePeriod",
         "type": "long",
@@ -503,7 +503,7 @@
   {
     "command": "warnError",
     "title": "warnError: Catch error and set build and stage result to unstable",
-    "args": [
+    "parameters": [
       {
         "name": "message",
         "type": "String",
@@ -521,7 +521,7 @@
   {
     "command": "withEnv",
     "title": "withEnv: Set environment variables",
-    "args": [
+    "parameters": [
       {
         "name": "overrides",
         "type": "String",
@@ -533,12 +533,12 @@
   {
     "command": "wrap",
     "title": "wrap: General Build Wrapper",
-    "args": []
+    "parameters": []
   },
   {
     "command": "writeFile",
     "title": "writeFile: Write file to workspace",
-    "args": [
+    "parameters": [
       {
         "name": "file",
         "type": "String",
@@ -562,7 +562,7 @@
   {
     "command": "archive",
     "title": "archive: Archive artifacts",
-    "args": [
+    "parameters": [
       {
         "name": "includes",
         "type": "String",
@@ -580,7 +580,7 @@
   {
     "command": "getContext",
     "title": "getContext: Get contextual object from internal APIs",
-    "args": [
+    "parameters": [
       {
         "name": "type",
         "type": "java.lang.Class<?>",
@@ -592,7 +592,7 @@
   {
     "command": "unarchive",
     "title": "unarchive: Copy archived artifacts into the workspace",
-    "args": [
+    "parameters": [
       {
         "name": "mapping",
         "type": "java.util.Map<java.lang.String, java.lang.String>",
@@ -604,7 +604,7 @@
   {
     "command": "withContext",
     "title": "withContext: Use contextual object from internal APIs within a block",
-    "args": [
+    "parameters": [
       {
         "name": "context",
         "type": "Object",

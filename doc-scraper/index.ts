@@ -34,15 +34,15 @@ function getInstructionsFromHTML(html: any) {
   docs.each((i, docElem) => {
     const command: string = $(docElem).find("h3 code").text();
     const title: string = $(docElem).find("h3").text();
-    const args: Argument[] = [];
-    const argElems = $(docElem).find("> ul > li");
+    const parameters: Parameter[] = [];
+    const parameterElems = $(docElem).find("> ul > li");
 
-    argElems.each((i, argElem) => {
-      args.push({
-        name: $(argElem).find("> code").text(),
-        type: $(argElem).find("> ul > li > code").text(),
-        description: toMarkdown($(argElem).find("> div").html()),
-        isOptional: $(argElem)
+    parameterElems.each((i, parameterElem) => {
+      parameters.push({
+        name: $(parameterElem).find("> code").text(),
+        type: $(parameterElem).find("> ul > li > code").text(),
+        description: toMarkdown($(parameterElem).find("> div").html()),
+        isOptional: $(parameterElem)
           .contents()
           .filter((i, node) => node.type === "text")
           .text()
@@ -54,7 +54,7 @@ function getInstructionsFromHTML(html: any) {
     instructions.push({
       command,
       title,
-      args,
+      parameters,
     });
   });
   printScrapingResult(instructions);
@@ -82,10 +82,10 @@ function printScrapingResult(instructions: Instruction[]) {
 interface Instruction {
   command: string;
   title: string;
-  args: Argument[];
+  parameters: Parameter[];
 }
 
-interface Argument {
+interface Parameter {
   name: string;
   type: string;
   description: string;

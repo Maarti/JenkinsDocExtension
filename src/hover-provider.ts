@@ -15,13 +15,13 @@ export class HoverProvider implements vscode.HoverProvider {
     jenkinsDoc.forEach((instruction) => {
       const markdowns: vscode.MarkdownString[] = [];
       markdowns.push(new vscode.MarkdownString(`### ${instruction.title}`));
-      instruction.args.forEach((arg) => {
+      instruction.parameters.forEach(parameter => {
         const markdown = new vscode.MarkdownString();
-        const optionalLabel = arg.isOptional ? "*(Optional)*" : "";
+        const optionalLabel = parameter.isOptional ? "*(Optional)*" : "";
         markdown.appendMarkdown(
-          `\`${arg.name}\`: **${arg.type}** ${optionalLabel}\n\n`
+          `\`${parameter.name}\`: **${parameter.type}** ${optionalLabel}\n\n`
         );
-        markdown.appendMarkdown(`${arg.description}`);
+        markdown.appendMarkdown(`${parameter.description}`);
         markdowns.push(markdown);
       });
       doc.set(instruction.command, markdowns);
