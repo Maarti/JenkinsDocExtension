@@ -76,6 +76,7 @@ function toMarkdown(html: string | null): string {
     .replace(/`/g, "")                    // remove all ` that would be present originally
     .replace(/<pre><code>/gi, "\n```groovy\n")
     .replace(/<\/code><\/pre>/gi, "\n```\n")
+    .replace(/&amp;/gi, "&")              // replace all &amp; by &
     .replace(/<\/?code>/gi, "`")          // replace <code></code> tags by `
     .replace(/<pre>/gi, "\n```groovy\n")  // replace <pre> tag by ```groovy
     .replace(/<\/pre>/gi, "\n```\n")      // replace </pre> tag by ```
