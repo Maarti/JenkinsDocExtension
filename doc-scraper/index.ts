@@ -79,7 +79,7 @@ function toMarkdown(html: string | null): string {
     .replace(/<\/?code>/gi, "`")          // replace <code></code> tags by `
     .replace(/<pre>/gi, "\n```groovy\n")  // replace <pre> tag by ```groovy
     .replace(/<\/pre>/gi, "\n```\n")      // replace </pre> tag by ```
-    .replace(/<\/?strong>/gi, "**")       // replace <strong></strong> tags by **    
+    .replace(/<\/?(strong|b)>/gi, "**")   // replace <strong></strong><b></b> tags by **    
     .replace(/<h3>/gi, "\n### ")          // replace <h3> tag by \n### 
     .replace(/<\/h3>/gi, "\n")            // replace <h3> tag by \n
     .replace(/<\/?[u,o]l>/gi, "")         // remove <ul></ul><ol></ol>
