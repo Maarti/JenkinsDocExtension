@@ -78,6 +78,7 @@ function toMarkdown(html: string | null): string {
     .replace(/<\/pre>/gi, "\n```\n")      // replace </pre> tag by ```
     .replace(/<\/?p>/gi, "\n")            // replace <p></p> tags by \n
     .replace(/<\/?div>/gi, "\n")          // replace  <div></div> tags by \n
+    .replace(/ {4,}(?![\s\S]*`{3})/g, " ")// replace all "4 spaces in a row or more" by only one, if they are not followed by ``` in the rest of the string
     .replace(/^(\s)*/g, "")               // removes all \n and spaces at the start
     .replace(/(\s)*$/g, "");              // removes all \n and spaces at the end
 }
