@@ -166,5 +166,451 @@
         "isOptional": false
       }
     ]
+  },
+  {
+    "command": "catchError",
+    "title": "catchError: Catch error and set build result to failure",
+    "args": [
+      {
+        "name": "buildResult",
+        "type": "String",
+        "description": "If an error is caught, the overall build result will be set to this value. Note that the build result can only get worse, so you cannot change the result to `SUCCESS` if the current result is `UNSTABLE` or worse. Use `SUCCESS` or `null` to keep the build result from being set when an error is caught.",
+        "isOptional": true
+      },
+      {
+        "name": "catchInterruptions",
+        "type": "boolean",
+        "description": "If true, certain types of exceptions that are used to interrupt the flow of execution for Pipelines will be caught and handled by the step. If false, those types of exceptions will be caught and immediately rethrown. Examples of these types of exceptions include those thrown when a build is manually aborted through the UI and those thrown by the `timeout` step.",
+        "isOptional": true
+      },
+      {
+        "name": "message",
+        "type": "String",
+        "description": "A message that will be logged to the console if an error is caught. If the stage result is specified, the message will also be associated with that result and may be shown in visualizations.",
+        "isOptional": true
+      },
+      {
+        "name": "stageResult",
+        "type": "String",
+        "description": "If an error is caught, the stage result will be set to this value. If a message was specified, the message will be associated with this result. Use `SUCCESS` or `null` to keep the stage result from being set when an error is caught.",
+        "isOptional": true
+      }
+    ]
+  },
+  {
+    "command": "deleteDir",
+    "title": "deleteDir: Recursively delete the current directory from the workspace",
+    "args": []
+  },
+  {
+    "command": "dir",
+    "title": "dir: Change current directory",
+    "args": [
+      {
+        "name": "path",
+        "type": "String",
+        "description": "",
+        "isOptional": false
+      }
+    ]
+  },
+  {
+    "command": "echo",
+    "title": "echo: Print Message",
+    "args": [
+      {
+        "name": "message",
+        "type": "String",
+        "description": "",
+        "isOptional": false
+      }
+    ]
+  },
+  {
+    "command": "error",
+    "title": "error: Error signal",
+    "args": [
+      {
+        "name": "message",
+        "type": "String",
+        "description": "",
+        "isOptional": false
+      }
+    ]
+  },
+  {
+    "command": "fileExists",
+    "title": "fileExists: Verify if file exists in workspace",
+    "args": [
+      {
+        "name": "file",
+        "type": "String",
+        "description": "Relative (`/`-separated) path to file within a workspace to verify its existence.",
+        "isOptional": false
+      }
+    ]
+  },
+  {
+    "command": "isUnix",
+    "title": "isUnix: Checks if running on a Unix-like node",
+    "args": []
+  },
+  {
+    "command": "mail",
+    "title": "mail: Mail",
+    "args": [
+      {
+        "name": "subject",
+        "type": "String",
+        "description": "Email subject line.",
+        "isOptional": false
+      },
+      {
+        "name": "body",
+        "type": "String",
+        "description": "Email body.",
+        "isOptional": false
+      },
+      {
+        "name": "bcc",
+        "type": "String",
+        "description": "BCC email address list. Comma separated list of email addresses.",
+        "isOptional": true
+      },
+      {
+        "name": "cc",
+        "type": "String",
+        "description": "CC email address list. Comma separated list of email addresses.",
+        "isOptional": true
+      },
+      {
+        "name": "charset",
+        "type": "String",
+        "description": "Email body character encoding. Defaults to `UTF-8`",
+        "isOptional": true
+      },
+      {
+        "name": "from",
+        "type": "String",
+        "description": "From email address. Defaults to the admin address globally configured for the Jenkins instance.",
+        "isOptional": true
+      },
+      {
+        "name": "mimeType",
+        "type": "String",
+        "description": "Email body MIME type. Defaults to `text/plain`.",
+        "isOptional": true
+      },
+      {
+        "name": "replyTo",
+        "type": "String",
+        "description": "Reploy-To email address. Defaults to the admin address globally configured for the Jenkins instance.",
+        "isOptional": true
+      },
+      {
+        "name": "to",
+        "type": "String",
+        "description": "To email address list. Comma separated list of email addresses.",
+        "isOptional": true
+      }
+    ]
+  },
+  {
+    "command": "pwd",
+    "title": "pwd: Determine current directory",
+    "args": [
+      {
+        "name": "tmp",
+        "type": "boolean",
+        "description": "If selected, return a temporary directory associated with the workspace rather than the workspace itself. This is an appropriate place to put temporary files which should not clutter a source checkout; local repositories or caches; etc.",
+        "isOptional": true
+      }
+    ]
+  },
+  {
+    "command": "readFile",
+    "title": "readFile: Read file from workspace",
+    "args": [
+      {
+        "name": "file",
+        "type": "String",
+        "description": "Relative (`/`-separated) path to file within a workspace to read.",
+        "isOptional": false
+      },
+      {
+        "name": "encoding",
+        "type": "String",
+        "description": "The encoding to use when reading the file. If left blank, the platform default encoding will be used. Binary files can be read into a Base64-encoded string by specifying \"Base64\" as the encoding.",
+        "isOptional": true
+      }
+    ]
+  },
+  {
+    "command": "retry",
+    "title": "retry: Retry the body up to N times",
+    "args": [
+      {
+        "name": "count",
+        "type": "int",
+        "description": "",
+        "isOptional": false
+      }
+    ]
+  },
+  {
+    "command": "sleep",
+    "title": "sleep: Sleep",
+    "args": [
+      {
+        "name": "time",
+        "type": "int",
+        "description": "The length of time for which the step will sleep.",
+        "isOptional": false
+      },
+      {
+        "name": "unit",
+        "type": "NANOSECONDSMICROSECONDSMILLISECONDSSECONDSMINUTESHOURSDAYS",
+        "description": "The unit for the time parameter. Defaults to 'SECONDS' if not specified.",
+        "isOptional": true
+      }
+    ]
+  },
+  {
+    "command": "stash",
+    "title": "stash: Stash some files to be used later in the build",
+    "args": [
+      {
+        "name": "name",
+        "type": "String",
+        "description": "Name of a stash. Should be a simple identifier akin to a job name.",
+        "isOptional": false
+      },
+      {
+        "name": "allowEmpty",
+        "type": "boolean",
+        "description": "",
+        "isOptional": true
+      },
+      {
+        "name": "excludes",
+        "type": "String",
+        "description": "Optional set of <a href=\"https://ant.apache.org/manual/dirtasks.html#patterns\" rel=\"nofollow\">Ant-style exclude patterns</a>.\n <br> Use a comma separated list to add more than one expression.\n <br> If blank, no files will be excluded.",
+        "isOptional": true
+      },
+      {
+        "name": "includes",
+        "type": "String",
+        "description": "Optional set of <a href=\"https://ant.apache.org/manual/dirtasks.html#patterns\" rel=\"nofollow\">Ant-style include patterns</a>.\n <br> Use a comma separated list to add more than one expression.\n <br> If blank, treated like `**`: all files.\n <br> The current working directory is the base directory for the saved files, which will later be restored in the same relative locations, so if you want to use a subdirectory wrap this in <a href=\"https://jenkins.io/doc/pipeline/steps/workflow-basic-steps/#code-dir-code-change-current-directory\" rel=\"nofollow\">`dir`</a>.",
+        "isOptional": true
+      },
+      {
+        "name": "useDefaultExcludes",
+        "type": "boolean",
+        "description": "If selected, use the default excludes from Ant - see <a href=\"http://ant.apache.org/manual/dirtasks.html#defaultexcludes\" rel=\"nofollow\">here</a> for the list.",
+        "isOptional": true
+      }
+    ]
+  },
+  {
+    "command": "step",
+    "title": "step: General Build Step",
+    "args": []
+  },
+  {
+    "command": "timeout",
+    "title": "timeout: Enforce time limit",
+    "args": [
+      {
+        "name": "time",
+        "type": "int",
+        "description": "The length of time for which this step will wait before cancelling the nested block.",
+        "isOptional": false
+      },
+      {
+        "name": "activity",
+        "type": "boolean",
+        "description": "Timeout after no activity in logs for this block instead of absolute duration.",
+        "isOptional": true
+      },
+      {
+        "name": "unit",
+        "type": "NANOSECONDSMICROSECONDSMILLISECONDSSECONDSMINUTESHOURSDAYS",
+        "description": "The unit of the time parameter. Defaults to 'MINUTES' if not specified.",
+        "isOptional": true
+      }
+    ]
+  },
+  {
+    "command": "tool",
+    "title": "tool: Use a tool from a predefined Tool Installation",
+    "args": [
+      {
+        "name": "name",
+        "type": "String",
+        "description": "",
+        "isOptional": false
+      },
+      {
+        "name": "type",
+        "type": "String",
+        "description": "",
+        "isOptional": true
+      }
+    ]
+  },
+  {
+    "command": "unstable",
+    "title": "unstable: Set stage result to unstable",
+    "args": [
+      {
+        "name": "message",
+        "type": "String",
+        "description": "A message that will be logged to the console. The message will also be associated with the stage result and may be shown in visualizations.",
+        "isOptional": false
+      }
+    ]
+  },
+  {
+    "command": "unstash",
+    "title": "unstash: Restore files previously stashed",
+    "args": [
+      {
+        "name": "name",
+        "type": "String",
+        "description": "Name of a previously saved stash.",
+        "isOptional": false
+      }
+    ]
+  },
+  {
+    "command": "waitUntil",
+    "title": "waitUntil: Wait for condition",
+    "args": [
+      {
+        "name": "initialRecurrencePeriod",
+        "type": "long",
+        "description": "Sets the initial wait period, in milliseconds, between retries. Defaults to 250ms.\n <br> Each failure will slow down the delay between attempts up to a maximum of 15 seconds.",
+        "isOptional": true
+      },
+      {
+        "name": "quiet",
+        "type": "boolean",
+        "description": "If true, the step does not log a message each time the condition is checked. Defaults to false.",
+        "isOptional": true
+      }
+    ]
+  },
+  {
+    "command": "warnError",
+    "title": "warnError: Catch error and set build and stage result to unstable",
+    "args": [
+      {
+        "name": "message",
+        "type": "String",
+        "description": "A message that will be logged to the console if an error is caught. The message will also be associated with the stage result and may be shown in visualizations.",
+        "isOptional": false
+      },
+      {
+        "name": "catchInterruptions",
+        "type": "boolean",
+        "description": "If true, certain types of exceptions that are used to interrupt the flow of execution for Pipelines will be caught and handled by the step. If false, those types of exceptions will be caught and immediately rethrown. Examples of these types of exceptions include those thrown when a build is manually aborted through the UI and those thrown by the `timeout` step.",
+        "isOptional": true
+      }
+    ]
+  },
+  {
+    "command": "withEnv",
+    "title": "withEnv: Set environment variables",
+    "args": [
+      {
+        "name": "overrides",
+        "type": "String",
+        "description": "A list of environment variables to set, each in the form `VARIABLE=value` or `VARIABLE=` to unset variables otherwise defined. You may also use the syntax `PATH+WHATEVER=/something` to prepend `/something` to `$PATH`.",
+        "isOptional": false
+      }
+    ]
+  },
+  {
+    "command": "wrap",
+    "title": "wrap: General Build Wrapper",
+    "args": []
+  },
+  {
+    "command": "writeFile",
+    "title": "writeFile: Write file to workspace",
+    "args": [
+      {
+        "name": "file",
+        "type": "String",
+        "description": "",
+        "isOptional": false
+      },
+      {
+        "name": "text",
+        "type": "String",
+        "description": "",
+        "isOptional": false
+      },
+      {
+        "name": "encoding",
+        "type": "String",
+        "description": "The target encoding for the file. If left blank, the platform default encoding will be used. If the text is a Base64-encoded string, the decoded binary data can be written to the file by specifying \"Base64\" as the encoding.",
+        "isOptional": true
+      }
+    ]
+  },
+  {
+    "command": "archive",
+    "title": "archive: Archive artifacts",
+    "args": [
+      {
+        "name": "includes",
+        "type": "String",
+        "description": "Include artifacts matching this <a href=\"https://ant.apache.org/manual/dirtasks.html#patterns\" rel=\"nofollow\">Ant style pattern</a>. Use a comma separated list to add more than one expression.",
+        "isOptional": false
+      },
+      {
+        "name": "excludes",
+        "type": "String",
+        "description": "Exclude artifacts matching this <a href=\"https://ant.apache.org/manual/dirtasks.html#patterns\" rel=\"nofollow\">Ant-style pattern</a>.\n <br> Use a comma-separated list to add more than one expression.",
+        "isOptional": true
+      }
+    ]
+  },
+  {
+    "command": "getContext",
+    "title": "getContext: Get contextual object from internal APIs",
+    "args": [
+      {
+        "name": "type",
+        "type": "java.lang.Class<?>",
+        "description": "",
+        "isOptional": false
+      }
+    ]
+  },
+  {
+    "command": "unarchive",
+    "title": "unarchive: Copy archived artifacts into the workspace",
+    "args": [
+      {
+        "name": "mapping",
+        "type": "java.util.Map<java.lang.String, java.lang.String>",
+        "description": "",
+        "isOptional": true
+      }
+    ]
+  },
+  {
+    "command": "withContext",
+    "title": "withContext: Use contextual object from internal APIs within a block",
+    "args": [
+      {
+        "name": "context",
+        "type": "Object",
+        "description": "",
+        "isOptional": false
+      }
+    ]
   }
 ]

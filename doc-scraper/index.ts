@@ -4,54 +4,59 @@ import fs from "fs";
 
 console.log("Scraper starting...");
 
-const url =
-  "https://www.jenkins.io/doc/pipeline/steps/workflow-durable-task-step/";
+const jenkinsUrls = [
+  "https://www.jenkins.io/doc/pipeline/steps/workflow-durable-task-step/",
+  "https://www.jenkins.io/doc/pipeline/steps/workflow-basic-steps/"
+];
+const outputFile = "src/jenkins-doc.json";
 const axiosInstance = axios.create();
+const axiosResponses = jenkinsUrls.map(url => axiosInstance.get(url));
 
+Promise.all(axiosResponses).then(responses => {
+  const instructions: any[] = [];
+  responses.forEach(response => {
+    instructions.push(...getInstructionsFromHTML(response.data));
+  });
+  console.log(`${instructions.length} instruction documentations found:`);
+  console.log(instructions.map(instruction => instruction.command).join(', '));
+  const prettyOutput = JSON.stringify(instructions, null, 2);;
+  fs.writeFileSync(outputFile, prettyOutput);
+  console.log(`Extracted in: ${outputFile}`);
+});
 
-axiosInstance.get(url)
-  .then(
+function getInstructionsFromHTML(html: any) {
+  const $ = cheerio.load(html);
+  const docs: cheerio.Cheerio = $(".sect2");
+  const instructions: any[] = [];
 
-    (response) => {
-      const html = response.data;
-      const $ = cheerio.load(html);
-      const docs: cheerio.Cheerio = $(".sect2");
-      const instructions: any[] = [];
+  docs.each((i, docElem) => {
+    const command: string = $(docElem).find("h3 code").text();
+    const title: string = $(docElem).find("h3").text();
+    const args: any[] = [];
+    const argElems = $(docElem).find("> ul > li");
 
-      docs.each((i, docElem) => {
-
-        const command: string = $(docElem).find("h3 code").text();
-        const title: string = $(docElem).find("h3").text();
-        const args: any[] = [];
-        const argElems = $(docElem).find("> ul > li");
-
-        argElems.each((i, argElem) => {
-          args.push({
-            name: $(argElem).find("> code").text(),
-            type: $(argElem).find("> ul > li > code").text(),
-            description: toMarkdown($(argElem).find("> div").html()),
-            isOptional: $(argElem)
-              .contents()
-              .filter((i, node) => node.type === "text")
-              .text()
-              .toLowerCase()
-              .includes("optional"),
-          });
-        });
-
-        instructions.push({
-          command,
-          title,
-          args,
-        });
+    argElems.each((i, argElem) => {
+      args.push({
+        name: $(argElem).find("> code").text(),
+        type: $(argElem).find("> ul > li > code").text(),
+        description: toMarkdown($(argElem).find("> div").html()),
+        isOptional: $(argElem)
+          .contents()
+          .filter((i, node) => node.type === "text")
+          .text()
+          .toLowerCase()
+          .includes("optional"),
       });
+    });
 
-      const prettyOutput = JSON.stringify(instructions, null, 2);
-      console.log(prettyOutput);
-      fs.writeFileSync("src/jenkins-doc.json", prettyOutput);
-    }
-  )
-  .catch(console.error);
+    instructions.push({
+      command,
+      title,
+      args,
+    });
+  });
+  return instructions;
+}
 
 function toMarkdown(html: string | null): string {
   if (!html) {
