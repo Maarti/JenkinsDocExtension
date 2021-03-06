@@ -19,6 +19,7 @@ Promise.all(axiosResponses).then(responses => {
     console.log(`Getting url: ${response.config.url}`);
     instructions.push(...getInstructionsFromHTML(response.data));
   });
+  instructions.sort(((a, b) => a.command < b.command ? -1 : 1));
   console.log('Total:');
   printScrapingResult(instructions);
   const prettyOutput = JSON.stringify(instructions, null, 2);;
