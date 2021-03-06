@@ -433,7 +433,7 @@
   {
     "command": "step",
     "title": "step: General Build Step",
-    "description": "This is a special step that allows to call builders or post-build actions (as in freestyle or similar projects), in general \"build steps\".\n    Just select the build step to call from the dropdown list and configure it as needed.\n    \n\n    \n\n    Note that only Pipeline-compatible steps will be shown in the list.",
+    "description": "This is a special step that allows to call builders or post-build actions (as in freestyle or similar projects), in general \"build steps\".\n    Just select the build step to call from the dropdown list and configure it as needed.\n    \n\n    \n\n    Note that only Pipeline-compatible steps will be shown in the list.\n    \n\n\n\n\nTo use this step you need to specify a delegate class, e.g step([$class: 'A3Builder']).",
     "parameters": []
   },
   {
@@ -560,7 +560,7 @@
   {
     "command": "wrap",
     "title": "wrap: General Build Wrapper",
-    "description": "This is a special step that allows to call build wrappers (also called \"Environment Configuration\" in freestyle or similar projects).\n    Just select the wrapper to use from the dropdown list and configure it as needed. Everything inside the wrapper block is under its effect.\n    \n\n    \n\n    Note that only Pipeline-compatible wrappers will be shown in the list.",
+    "description": "This is a special step that allows to call build wrappers (also called \"Environment Configuration\" in freestyle or similar projects).\n    Just select the wrapper to use from the dropdown list and configure it as needed. Everything inside the wrapper block is under its effect.\n    \n\n    \n\n    Note that only Pipeline-compatible wrappers will be shown in the list.\n    \n\n\n\n\nTo use this step you need to specify a delegate class, e.g wrap([$class: 'AnsiColorBuildWrapper']).",
     "parameters": []
   },
   {

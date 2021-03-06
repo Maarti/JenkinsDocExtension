@@ -34,7 +34,11 @@ function getInstructionsFromHTML(html: any) {
   docs.each((i, docElem) => {
     const command: string = $(docElem).find("> h3 > code").text();
     const title: string = $(docElem).find("> h3").text();
-    const description: string = toMarkdown($(docElem).find("> div").html());
+    let description: string = $(docElem).find("> div").html() || '';
+    description += $(docElem).contents()
+      .filter((i, node) => node.type === "text" || (node.type === "tag" && node.tagName === "code"))
+      .text();
+    description = toMarkdown(description);
     const parameters: Parameter[] = [];
     const parameterElems = $(docElem).find("> ul > li");
 
