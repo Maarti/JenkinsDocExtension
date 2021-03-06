@@ -74,6 +74,8 @@ function toMarkdown(html: string | null): string {
   }
   return html
     .replace(/`/g, "")                    // remove all ` that would be present originally
+    .replace(/<pre><code>/gi, "\n```groovy\n")
+    .replace(/<\/code><\/pre>/gi, "\n```\n")
     .replace(/<\/?code>/gi, "`")          // replace <code></code> tags by `
     .replace(/<pre>/gi, "\n```groovy\n")  // replace <pre> tag by ```groovy
     .replace(/<\/pre>/gi, "\n```\n")      // replace </pre> tag by ```
@@ -81,8 +83,8 @@ function toMarkdown(html: string | null): string {
     .replace(/<\/?div>/gi, "\n")          // replace <div></div> tags by \n
     .replace(/<br\/?>/gi, "\n\n")         // replace <br> tag by \n\n
     .replace(/ {4,}(?![\s\S]*`{3})/g, " ")// replace all "4 spaces in a row or more" by only one, if they are not followed by ``` in the rest of the string
-    .replace(/^(\s)*/g, "")               // removes all \n and spaces at the start
-    .replace(/(\s)*$/g, "");              // removes all \n and spaces at the end
+    .replace(/^(\s)*/g, "")               // remove all \n and spaces at the start
+    .replace(/(\s)*$/g, "");              // remove all \n and spaces at the end
 }
 
 function printScrapingResult(instructions: Instruction[]) {
