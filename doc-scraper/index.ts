@@ -82,8 +82,11 @@ function toMarkdown(html: string | null): string {
     .replace(/<\/?(strong|b)>/gi, "**")   // replace <strong></strong><b></b> tags by **    
     .replace(/<h3>/gi, "\n### ")          // replace <h3> tag by \n### 
     .replace(/<\/h3>/gi, "\n")            // replace <h3> tag by \n
-    .replace(/<\/?[u,o]l>/gi, "")         // remove <ul></ul><ol></ol>
+    .replace(/<\/?[u,o,d]l>/gi, "")       // remove <ul></ul><ol></ol><dl></dl>
     .replace(/<li>/gi, "\n* ")            // replace <li> tag by \n*
+    .replace(/<dt>[\s]*/gi, "\n* **")     // replace <dt> and all following line feeds by \n* **
+    .replace(/[\s]*<\/dt>/gi, "**\n")     // replace </dt> and all preceding line feeds by **\n
+    .replace(/<\/?dd>/gi, "")             // remove <dd></dd>
     .replace(/<\/li>/gi, "\n")            // replace </li> tag by \n
     .replace(/<\/?p>/gi, "\n")            // replace <p></p> tags by \n
     .replace(/<\/?div>/gi, "\n")          // replace <div></div> tags by \n
