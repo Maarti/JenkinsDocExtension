@@ -13,12 +13,14 @@ const axiosInstance = axios.create();
 const axiosResponses = jenkinsUrls.map(url => axiosInstance.get(url));
 
 Promise.all(axiosResponses).then(responses => {
-  const instructions: any[] = [];
+
+  const instructions: Instruction[] = [];
   responses.forEach(response => {
+    console.log(`Getting url: ${response.config.url}`);
     instructions.push(...getInstructionsFromHTML(response.data));
   });
-  console.log(`${instructions.length} instruction documentations found:`);
-  console.log(instructions.map(instruction => instruction.command).join(', '));
+  console.log('Total:');
+  printScrapingResult(instructions);
   const prettyOutput = JSON.stringify(instructions, null, 2);;
   fs.writeFileSync(outputFile, prettyOutput);
   console.log(`Extracted in: ${outputFile}`);
@@ -27,12 +29,12 @@ Promise.all(axiosResponses).then(responses => {
 function getInstructionsFromHTML(html: any) {
   const $ = cheerio.load(html);
   const docs: cheerio.Cheerio = $(".sect2");
-  const instructions: any[] = [];
+  const instructions: Instruction[] = [];
 
   docs.each((i, docElem) => {
     const command: string = $(docElem).find("h3 code").text();
     const title: string = $(docElem).find("h3").text();
-    const args: any[] = [];
+    const args: Argument[] = [];
     const argElems = $(docElem).find("> ul > li");
 
     argElems.each((i, argElem) => {
@@ -55,6 +57,7 @@ function getInstructionsFromHTML(html: any) {
       args,
     });
   });
+  printScrapingResult(instructions);
   return instructions;
 }
 
@@ -69,4 +72,22 @@ function toMarkdown(html: string | null): string {
     .replace(/<\/?div>/gi, "\n")  // replace  <div></div> tags by \n
     .replace(/^(\s)*/g, "")       // removes all \n and spaces at the start
     .replace(/(\s)*$/g, "");      // removes all \n and spaces at the end
+}
+
+function printScrapingResult(instructions: Instruction[]) {
+  console.log(`   ${instructions.length} instruction documentations found:`);
+  console.log(`   ${instructions.map(instruction => instruction.command).join(', ')}`);
+}
+
+interface Instruction {
+  command: string;
+  title: string;
+  args: Argument[];
+}
+
+interface Argument {
+  name: string;
+  type: string;
+  description: string;
+  isOptional: boolean;
 }
