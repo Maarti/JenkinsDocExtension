@@ -7,13 +7,13 @@
       {
         "name": "includes",
         "type": "String",
-        "description": "Include artifacts matching this <a href=\"https://ant.apache.org/manual/dirtasks.html#patterns\" rel=\"nofollow\">Ant style pattern</a>. Use a comma separated list to add more than one expression.",
+        "description": "Include artifacts matching this [Ant style pattern](https://ant.apache.org/manual/dirtasks.html#patterns). Use a comma separated list to add more than one expression.",
         "isOptional": false
       },
       {
         "name": "excludes",
         "type": "String",
-        "description": "Exclude artifacts matching this <a href=\"https://ant.apache.org/manual/dirtasks.html#patterns\" rel=\"nofollow\">Ant-style pattern</a>.\n \n\n Use a comma-separated list to add more than one expression.",
+        "description": "Exclude artifacts matching this [Ant-style pattern](https://ant.apache.org/manual/dirtasks.html#patterns).\n \n\n Use a comma-separated list to add more than one expression.",
         "isOptional": true
       }
     ]
@@ -58,7 +58,7 @@
   {
     "command": "catchError",
     "title": "catchError: Catch error and set build result to failure",
-    "description": "If the body throws an exception, mark the build as a failure, but nonetheless continue to execute the Pipeline from the statement following the `catchError` step. The behavior of the step when an exception is thrown can be configured to print a message, set a build result other than failure, change the stage result, or ignore certain kinds of exceptions that are used to interrupt the build.\n \nThis step is most useful when used in Declarative Pipeline or with the options to set the stage result or ignore build interruptions. Otherwise, consider using plain `try`-`catch`(-`finally`) blocks. It is also useful when using certain post-build actions (notifiers) originally defined for freestyle projects which pay attention to the result of the ongoing build. \n\n \n\n\n \n```groovy\nnode {\n    catchError {\n        sh 'might fail'\n    }\n    step([$class: 'Mailer', recipients: 'admin@somewhere'])\n}\n\n```\n\n \nIf the shell step fails, the Pipeline build’s status will be set to failed, so that the subsequent mail step will see that this build is failed. In the case of the mail sender, this means that it will send mail. (It may also send mail if this build <em>succeeded</em> but previous ones failed, and so on.) Even in that case, this step can be replaced by the following idiom: \n\n \n\n\n \n```groovy\nnode {\n    try {\n        sh 'might fail'\n    } catch (err) {\n        echo \"Caught: ${err}\"\n        currentBuild.result = 'FAILURE'\n    }\n    step([$class: 'Mailer', recipients: 'admin@somewhere'])\n}\n\n```\n\n \nFor other cases, plain `try`-`catch`(-`finally`) blocks may be used: \n\n \n\n\n \n```groovy\nnode {\n    sh './set-up.sh'\n    try {\n        sh 'might fail'\n        echo 'Succeeded!'\n    } catch (err) {\n        echo \"Failed: ${err}\"\n    } finally {\n        sh './tear-down.sh'\n    }\n    echo 'Printed whether above succeeded or failed.'\n}\n// …and the pipeline as a whole succeeds\n\n```\n\n \nSee <a href=\"https://github.com/jenkinsci/workflow-basic-steps-plugin/blob/master/CORE-STEPS.md#interacting-with-build-status\" rel=\"nofollow\">this document</a> for background.",
+    "description": "If the body throws an exception, mark the build as a failure, but nonetheless continue to execute the Pipeline from the statement following the `catchError` step. The behavior of the step when an exception is thrown can be configured to print a message, set a build result other than failure, change the stage result, or ignore certain kinds of exceptions that are used to interrupt the build.\n \nThis step is most useful when used in Declarative Pipeline or with the options to set the stage result or ignore build interruptions. Otherwise, consider using plain `try`-`catch`(-`finally`) blocks. It is also useful when using certain post-build actions (notifiers) originally defined for freestyle projects which pay attention to the result of the ongoing build. \n\n \n\n\n \n```groovy\nnode {\n    catchError {\n        sh 'might fail'\n    }\n    step([$class: 'Mailer', recipients: 'admin@somewhere'])\n}\n\n```\n\n \nIf the shell step fails, the Pipeline build’s status will be set to failed, so that the subsequent mail step will see that this build is failed. In the case of the mail sender, this means that it will send mail. (It may also send mail if this build <em>succeeded</em> but previous ones failed, and so on.) Even in that case, this step can be replaced by the following idiom: \n\n \n\n\n \n```groovy\nnode {\n    try {\n        sh 'might fail'\n    } catch (err) {\n        echo \"Caught: ${err}\"\n        currentBuild.result = 'FAILURE'\n    }\n    step([$class: 'Mailer', recipients: 'admin@somewhere'])\n}\n\n```\n\n \nFor other cases, plain `try`-`catch`(-`finally`) blocks may be used: \n\n \n\n\n \n```groovy\nnode {\n    sh './set-up.sh'\n    try {\n        sh 'might fail'\n        echo 'Succeeded!'\n    } catch (err) {\n        echo \"Failed: ${err}\"\n    } finally {\n        sh './tear-down.sh'\n    }\n    echo 'Printed whether above succeeded or failed.'\n}\n// …and the pipeline as a whole succeeds\n\n```\n\n \nSee [this document](https://github.com/jenkinsci/workflow-basic-steps-plugin/blob/master/CORE-STEPS.md#interacting-with-build-status) for background.",
     "parameters": [
       {
         "name": "buildResult",
@@ -415,7 +415,7 @@
   {
     "command": "stash",
     "title": "stash: Stash some files to be used later in the build",
-    "description": "Saves a set of files for later use on any node/workspace in the same Pipeline run. By default, stashed files are discarded at the end of a pipeline run. Other plugins may change this behavior to preserve stashes for longer. For example, Declarative Pipeline includes a `preserveStashes()` option to allow stashes from a run to be retained and used if that run is restarted.\n \n\n Stashes from one Pipeline run are not available in other runs, other Pipelines, or other jobs. If you want to persist artifacts for use outside of a single run, consider using <a href=\"https://jenkins.io/doc/pipeline/steps/core/#archiveartifacts-archive-the-artifacts\" rel=\"nofollow\"> `archiveArtifacts`</a> instead. **Note** that the `stash` and `unstash` steps are designed for use with small files. For large data transfers, use the External Workspace Manager plugin, or use an external repository manager such as Nexus or Artifactory. This is because stashed files are archived in a compressed TAR, and with large files this demands considerable on-master resources, particularly CPU time. There's not a hard stash size limit, but between 5-100 MB you should probably consider alternatives.",
+    "description": "Saves a set of files for later use on any node/workspace in the same Pipeline run. By default, stashed files are discarded at the end of a pipeline run. Other plugins may change this behavior to preserve stashes for longer. For example, Declarative Pipeline includes a `preserveStashes()` option to allow stashes from a run to be retained and used if that run is restarted.\n \n\n Stashes from one Pipeline run are not available in other runs, other Pipelines, or other jobs. If you want to persist artifacts for use outside of a single run, consider using [ `archiveArtifacts`](https://jenkins.io/doc/pipeline/steps/core/#archiveartifacts-archive-the-artifacts) instead. **Note** that the `stash` and `unstash` steps are designed for use with small files. For large data transfers, use the External Workspace Manager plugin, or use an external repository manager such as Nexus or Artifactory. This is because stashed files are archived in a compressed TAR, and with large files this demands considerable on-master resources, particularly CPU time. There's not a hard stash size limit, but between 5-100 MB you should probably consider alternatives.",
     "parameters": [
       {
         "name": "name",
@@ -432,19 +432,19 @@
       {
         "name": "excludes",
         "type": "String",
-        "description": "Optional set of <a href=\"https://ant.apache.org/manual/dirtasks.html#patterns\" rel=\"nofollow\">Ant-style exclude patterns</a>.\n \n\n Use a comma separated list to add more than one expression.\n \n\n If blank, no files will be excluded.",
+        "description": "Optional set of [Ant-style exclude patterns](https://ant.apache.org/manual/dirtasks.html#patterns).\n \n\n Use a comma separated list to add more than one expression.\n \n\n If blank, no files will be excluded.",
         "isOptional": true
       },
       {
         "name": "includes",
         "type": "String",
-        "description": "Optional set of <a href=\"https://ant.apache.org/manual/dirtasks.html#patterns\" rel=\"nofollow\">Ant-style include patterns</a>.\n \n\n Use a comma separated list to add more than one expression.\n \n\n If blank, treated like `**`: all files.\n \n\n The current working directory is the base directory for the saved files, which will later be restored in the same relative locations, so if you want to use a subdirectory wrap this in <a href=\"https://jenkins.io/doc/pipeline/steps/workflow-basic-steps/#code-dir-code-change-current-directory\" rel=\"nofollow\">`dir`</a>.",
+        "description": "Optional set of [Ant-style include patterns](https://ant.apache.org/manual/dirtasks.html#patterns).\n \n\n Use a comma separated list to add more than one expression.\n \n\n If blank, treated like `**`: all files.\n \n\n The current working directory is the base directory for the saved files, which will later be restored in the same relative locations, so if you want to use a subdirectory wrap this in [`dir`](https://jenkins.io/doc/pipeline/steps/workflow-basic-steps/#code-dir-code-change-current-directory).",
         "isOptional": true
       },
       {
         "name": "useDefaultExcludes",
         "type": "boolean",
-        "description": "If selected, use the default excludes from Ant - see <a href=\"http://ant.apache.org/manual/dirtasks.html#defaultexcludes\" rel=\"nofollow\">here</a> for the list.",
+        "description": "If selected, use the default excludes from Ant - see [here](http://ant.apache.org/manual/dirtasks.html#defaultexcludes) for the list.",
         "isOptional": true
       }
     ]

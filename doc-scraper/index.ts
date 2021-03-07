@@ -47,8 +47,8 @@ function getInstructionsFromHTML(html: any) {
       parameters.push({
         name: $(parameterElem).find("> code").text(),
         type: $(parameterElem).find("> ul > li").contents()
-        .filter((i, node) => node.type === "text" || (node.type === "tag" && node.tagName === "code"))
-        .text().trim(),
+          .filter((i, node) => node.type === "text" || (node.type === "tag" && node.tagName === "code"))
+          .text().trim(),
         description: toMarkdown($(parameterElem).find("> div").html()),
         isOptional: $(parameterElem)
           .contents()
@@ -74,7 +74,7 @@ function toMarkdown(html: string | null): string {
   if (!html) {
     return "";
   }
-  return html
+  let markdown = html
     .replace(/`/g, "")                    // remove all ` that would be present originally
     .replace(/<pre><code>/gi, "\n```groovy\n")
     .replace(/<\/code><\/pre>/gi, "\n```\n")
@@ -97,10 +97,30 @@ function toMarkdown(html: string | null): string {
     .replace(/ {4,}(?![\s\S]*`{3})/g, " ")// replace all "4 spaces in a row or more" by only one, if they are not followed by ``` in the rest of the string
     .replace(/^(\s)*/g, "")               // remove all \n and spaces at the start
     .replace(/(\s)*$/g, "");              // remove all \n and spaces at the end
+
+  markdown = parseHtmlLinkToMarkdown(markdown);
+  return markdown;
+}
+
+function parseHtmlLinkToMarkdown(text: string): string {
+  const regex = /<a href="(.*?)".*?>(.*?)<\/a>/gi;
+  const urls: Url[] = [];
+  let urlMatch;
+  while (urlMatch = regex.exec(text)) {
+    urls.push({
+      html: urlMatch[0],
+      url: urlMatch[1],
+      label: urlMatch[2],
+    });
+  }
+  urls.forEach(url => {
+    text = text.replace(url.html, `[${url.label}](${url.url})`);
+  });
+  return text;
 }
 
 function printScrapingResult(instructions: Instruction[]) {
-  console.log(`   ${instructions.length} instruction documentations found:`);
+  console.log(`   ${instructions.length} documentations found:`);
   console.log(`   ${instructions.map(instruction => instruction.command).join(', ')}`);
 }
 
@@ -116,4 +136,10 @@ interface Parameter {
   type: string;
   description: string;
   isOptional: boolean;
+}
+
+interface Url {
+  label: string;
+  url: string;
+  html: string
 }
