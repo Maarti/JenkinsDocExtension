@@ -19,6 +19,61 @@
     ]
   },
   {
+    "command": "archiveArtifacts",
+    "title": "archiveArtifacts: Archive the artifacts",
+    "description": "Archives the build artifacts (for example, distribution zip files or jar files) so that they can be downloaded later. Archived files will be accessible from the Jenkins webpage.\n \n\n Normally, Jenkins keeps artifacts for a build as long as a build log itself is kept, but if you don't need old artifacts and would rather save disk space, you can do so.\n\n\n\n\n\n\n\n  Note that the Maven job type automatically archives any produced Maven artifacts. Any artifacts configured here will be archived on top of that. Automatic artifact archiving can be disabled under the advanced Maven options.",
+    "parameters": [
+      {
+        "name": "artifacts",
+        "type": "String",
+        "description": "You can use wildcards like 'module/dist/**/*.zip'. See [ the includes attribute of Ant fileset](http://ant.apache.org/manual/Types/fileset.html) for the exact format -- except that \",\" (<em>comma</em>) is the only supported separator. The base directory is <a rel=\"nofollow\">the workspace</a>. You can only archive files that are located in your workspace.",
+        "isOptional": false
+      },
+      {
+        "name": "allowEmptyArchive",
+        "type": "boolean",
+        "description": "Normally, a build fails if archiving returns zero artifacts. This option allows the archiving process to return nothing without failing the build. Instead, the build will simply throw a warning.",
+        "isOptional": true
+      },
+      {
+        "name": "caseSensitive",
+        "type": "boolean",
+        "description": "Artifact archiver uses Ant `org.apache.tools.ant.DirectoryScanner` which by default is case sensitive. For instance, if the job produces *.hpi files, pattern \"**/*.HPI\" will fail to find them.\n \n\n\n \n\n This option can be used to disable case sensitivity. When it's unchecked, pattern \"**/*.HPI\" will match any *.hpi files, or pattern \"**/cAsEsEnSiTiVe.jar\" will match a file called caseSensitive.jar.",
+        "isOptional": true
+      },
+      {
+        "name": "defaultExcludes",
+        "type": "boolean",
+        "description": "",
+        "isOptional": true
+      },
+      {
+        "name": "excludes",
+        "type": "String",
+        "description": "Optionally specify the 'excludes' pattern, such as \"foo/bar/**/*\". Use \",\" to set a list of patterns. A file that matches this mask will not be archived even if it matches the mask specified in 'files to archive' section.",
+        "isOptional": true
+      },
+      {
+        "name": "fingerprint",
+        "type": "boolean",
+        "description": "",
+        "isOptional": true
+      },
+      {
+        "name": "followSymlinks",
+        "type": "boolean",
+        "description": "By disabling this option all symbolic links found in the workspace will be ignored.",
+        "isOptional": true
+      },
+      {
+        "name": "onlyIfSuccessful",
+        "type": "boolean",
+        "description": "",
+        "isOptional": true
+      }
+    ]
+  },
+  {
     "command": "bat",
     "title": "bat: Windows Batch Script",
     "description": "",
@@ -141,6 +196,37 @@
         "type": "String",
         "description": "Relative (`/`-separated) path to file within a workspace to verify its existence.",
         "isOptional": false
+      }
+    ]
+  },
+  {
+    "command": "fingerprint",
+    "title": "fingerprint: Record fingerprints of files to track usage",
+    "description": "Jenkins can record the 'fingerprint' of files (most often jar files) to keep track of where/when those files are produced and used. When you have inter-dependent projects on Jenkins, this allows you to quickly find out answers to questions like:\n \n  \n*  I have foo.jar on my HDD but which build number of FOO did it come from? \n\n  \n*  My BAR project depends on foo.jar from the FOO project. \n\n  \n* \n   \n \n*  Which build of foo.jar is used in BAR #51? \n\n \n*  Which build of BAR contains my bug fix to foo.jar #32? \n\n   \n\n \n \n To use this feature, all of the involved projects (not just the project in which a file is produced, but also the projects in which the file is used) need to use this and record fingerprints. \n\n \n See [this document](https://jenkins.io/redirect/fingerprint) for more details.",
+    "parameters": [
+      {
+        "name": "targets",
+        "type": "String",
+        "description": "Can use wildcards like `module/dist/**/*.zip` (see the [@includes of Ant fileset](http://ant.apache.org/manual/Types/fileset.html) for the exact format). The base directory is <a rel=\"nofollow\">the workspace</a>.",
+        "isOptional": false
+      },
+      {
+        "name": "caseSensitive",
+        "type": "boolean",
+        "description": "Fingerprinter uses Ant `org.apache.tools.ant.DirectoryScanner` which by default is case sensitive. For instance, if the job produces *.hpi files, pattern \"**/*.HPI\" will fail to find them.\n \n\n\n \n\n This option can be used to disable case sensitivity. When it's unchecked, pattern \"**/*.HPI\" will match any *.hpi files, or pattern \"**/cAsEsEnSiTiVe.jar\" will match a file called caseSensitive.jar.",
+        "isOptional": true
+      },
+      {
+        "name": "defaultExcludes",
+        "type": "boolean",
+        "description": "",
+        "isOptional": true
+      },
+      {
+        "name": "excludes",
+        "type": "String",
+        "description": "Optionally specify the 'excludes' pattern, such as \"foo/bar/**/*\". Use \",\" to set a list of patterns. A file that matches this mask will not be fingerprinted even if it matches the mask specified in 'files to fingerprint' section.",
+        "isOptional": true
       }
     ]
   },

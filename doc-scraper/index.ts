@@ -6,7 +6,8 @@ console.log("Scraper starting...");
 
 const jenkinsUrls = [
   "https://www.jenkins.io/doc/pipeline/steps/workflow-durable-task-step/",
-  "https://www.jenkins.io/doc/pipeline/steps/workflow-basic-steps/"
+  "https://www.jenkins.io/doc/pipeline/steps/workflow-basic-steps/",
+  "https://www.jenkins.io/doc/pipeline/steps/core/"
 ];
 const outputFile = "src/jenkins-doc.json";
 const axiosInstance = axios.create();
@@ -17,7 +18,7 @@ Promise.all(axiosResponses).then(responses => {
   const instructions: Instruction[] = [];
   responses.forEach(response => {
     console.log(`Getting url: ${response.config.url}`);
-    instructions.push(...getInstructionsFromHTML(response.data));
+    instructions.push(...parseInstructionsFromHTML(response.data));
   });
   instructions.sort(((a, b) => a.command < b.command ? -1 : 1));
   console.log('Total:');
@@ -27,7 +28,7 @@ Promise.all(axiosResponses).then(responses => {
   console.log(`Extracted in: ${outputFile}`);
 });
 
-function getInstructionsFromHTML(html: any) {
+function parseInstructionsFromHTML(html: any) {
   const $ = cheerio.load(html);
   const docs: cheerio.Cheerio = $(".sect2");
   const instructions: Instruction[] = [];
@@ -120,8 +121,8 @@ function parseHtmlLinkToMarkdown(text: string): string {
 }
 
 function printScrapingResult(instructions: Instruction[]) {
-  console.log(`   ${instructions.length} documentations found:`);
-  console.log(`   ${instructions.map(instruction => instruction.command).join(', ')}`);
+  console.log(`   => ${instructions.length} documentations found:`);
+  console.log(`   => ${instructions.map(instruction => instruction.command).join(', ')}`);
 }
 
 interface Instruction {
