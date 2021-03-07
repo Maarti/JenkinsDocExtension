@@ -1,35 +1,64 @@
-import axios from "axios";
+import axios, { AxiosInstance, AxiosResponse } from "axios";
 import cheerio from "cheerio";
 import fs from "fs";
 
 console.log("Scraper starting...");
 
-const jenkinsUrls = [
-  "https://www.jenkins.io/doc/pipeline/steps/workflow-durable-task-step/",
-  "https://www.jenkins.io/doc/pipeline/steps/workflow-basic-steps/",
-  "https://www.jenkins.io/doc/pipeline/steps/core/"
-];
-const outputFile = "src/jenkins-doc.json";
-const axiosInstance = axios.create();
-const axiosResponses = jenkinsUrls.map(url => axiosInstance.get(url));
+main();
 
-Promise.all(axiosResponses).then(responses => {
+async function main() {
+  // Config
+  const jenkinsReferenceUrl = "https://www.jenkins.io/doc/pipeline/steps/";
+  const documentationOutputFile = "src/jenkins-doc.json";
+  const pluginsOutputFile = "src/jenkins-plugins.json";
 
-  const instructions: Instruction[] = [];
-  responses.forEach(response => {
-    console.log(`Getting url: ${response.config.url}`);
-    instructions.push(...parseInstructionsFromHTML(response.data));
+  const axiosInstance = axios.create();
+  const jenkinsPlugins = await parsePluginsUrl(axiosInstance, jenkinsReferenceUrl);
+  console.log(`${jenkinsPlugins.length} plugins found`);
+  fs.writeFileSync(pluginsOutputFile, JSON.stringify(jenkinsPlugins, null, 2));
+  console.log(`Extracted in: ${documentationOutputFile}`);
+
+  const pluginQueries = jenkinsPlugins.map(plugin => axiosInstance.get(plugin.url).then(response => ({ ...plugin, response })));
+
+  Promise.all(pluginQueries).then(queries => {
+
+    const instructions: Instruction[] = [];
+    queries.forEach(query => {
+      console.log(`Getting url: ${query.response.config.url}`);
+      instructions.push(...parseInstructionsFromHTML(query));
+    });
+    instructions.sort(((a, b) => a.command < b.command ? -1 : 1));
+    console.log('Total:');
+    printScrapingResult(instructions);
+    const prettyOutput = JSON.stringify(instructions, null, 2);
+    fs.writeFileSync(documentationOutputFile, prettyOutput);
+    console.log(`Extracted in: ${documentationOutputFile}`);
+  }).catch(error => console.error(`Error while parsing instructions: ${error}`));
+}
+
+async function parsePluginsUrl(axiosInstance: AxiosInstance, refUrl: string) {
+  return axiosInstance.get(refUrl).then(response => {
+    console.log(`Parsing ${response.config.url}`);
+    const $ = cheerio.load(response.data);
+    const pluginElems: cheerio.Cheerio = $("div.container div.col-lg-9 div > ul > li");
+    const plugins: Plugin[] = [];
+    pluginElems.each((i, pluginElem) => {
+      const name = $(pluginElem).find("> a").text().replace(/\n/g, '');
+      const url = `https://www.jenkins.io${$(pluginElem).find("> a").attr("href")}` || '';
+      const id = url.replace(/\/$/, '').split('/').pop()?.toLowerCase() || 'unknown';
+      plugins.push({
+        name, url, id
+      });
+    });
+    return plugins;
+  }).catch(error => {
+    console.error(`Error while loading plugins: ${error}`);
+    return [] as Plugin[];
   });
-  instructions.sort(((a, b) => a.command < b.command ? -1 : 1));
-  console.log('Total:');
-  printScrapingResult(instructions);
-  const prettyOutput = JSON.stringify(instructions, null, 2);;
-  fs.writeFileSync(outputFile, prettyOutput);
-  console.log(`Extracted in: ${outputFile}`);
-});
+}
 
-function parseInstructionsFromHTML(html: any) {
-  const $ = cheerio.load(html);
+function parseInstructionsFromHTML({ response, id }: { response: AxiosResponse<any>, id: string }): Instruction[] {
+  const $ = cheerio.load(response.data);
   const docs: cheerio.Cheerio = $(".sect2");
   const instructions: Instruction[] = [];
 
@@ -65,6 +94,7 @@ function parseInstructionsFromHTML(html: any) {
       title,
       description,
       parameters,
+      plugin: id,
     });
   });
   printScrapingResult(instructions);
@@ -121,13 +151,20 @@ function parseHtmlLinkToMarkdown(text: string): string {
 }
 
 function printScrapingResult(instructions: Instruction[]) {
-  console.log(`   => ${instructions.length} documentations found:`);
-  console.log(`   => ${instructions.map(instruction => instruction.command).join(', ')}`);
+  console.log(`   => ${instructions.length} instructions found`);
+  // console.log(`   => ${instructions.map(instruction => instruction.command).join(', ')}`);
+}
+
+interface Plugin {
+  id: string
+  name: string;
+  url: string;
 }
 
 interface Instruction {
   command: string;
   title: string;
+  plugin: string;
   description: string;
   parameters: Parameter[];
 }
