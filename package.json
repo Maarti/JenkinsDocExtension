@@ -2,6 +2,10 @@
   "name": "jenkins-doc",
   "displayName": "Jenkins Doc",
   "description": "Provides Jenkins documentation",
+  "publisher": "Maarti",
+  "repository": {
+    "url": "https://github.com/Maarti/JenkinsDocExtension"
+  },
   "version": "0.0.1",
   "engines": {
     "vscode": "^1.54.0"
