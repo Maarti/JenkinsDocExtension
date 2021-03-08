@@ -4733,12 +4733,6 @@
         "name": "tarFilePath",
         "type": "String",
         "description": "",
-        "isOptional": false
-      },
-      {
-        "name": "tatFilePath",
-        "type": "String",
-        "description": "",
         "isOptional": true
       }
     ],
@@ -22379,7 +22373,7 @@
       },
       {
         "name": "connection",
-        "type": "gitLabConnection",
+        "type": "gitLabConnection\njobCredentialId (optional)\nuseAlternativeCredential (optional)",
         "description": "",
         "isOptional": true
       }
@@ -23305,7 +23299,7 @@
       },
       {
         "name": "parameters",
-        "type": "agentParameter$class: 'AppDetectorParamaterDefinition'$class: 'ArtifactRepoParamDefinition'$class: 'AutoCompleteStringParameterDefinition'base64FilebooleanParambuildMasterReleasecheckboxParameterchoice$class: 'ClearCaseUcmBaselineParameterDefinition'$class: 'CloudSelectorParameter'credentials$class: 'CvsTagsParamDefinition'$class: 'DateParameterDefinition'$class: 'DeployMetaDataParameterDefinition'$class: 'DropdownAutocompleteParameterDefinition'$class: 'ExtensibleChoiceParameterDefinition'file$class: 'FileSystemListParameterDefinition'$class: 'GeneratorChoiceParameterDefinition'$class: 'GeneratorKeyValueParameterDefinition'gitParameter$class: 'GithubBranchParameterDefinition'$class: 'GlobalVariableStringParameterDefinition'imageTag$class: 'InheritableStringParameterDefinition'$class: 'InheritableStringParameterReferenceDefinition'$class: 'JFrogPipelinesParameter'$class: 'JavaParameterDefinition'$class: 'JiraIssueParameterDefinition'$class: 'JiraVersionParameterDefinition'$class: 'LabelParameterDefinition'listGitBranches$class: 'ListSubversionTagsParameterDefinition'$class: 'MatrixCombinationsParameterDefinition'$class: 'MavenMetadataParameterDefinition'multiselect$class: 'NodeParameterDefinition'$class: 'PackageChoiceParameterDefinition'$class: 'PackageParameterDefinition'separator$class: 'PatchParameterDefinition'$class: 'PersistentBooleanParameterDefinition'$class: 'PersistentChoiceParameterDefinition'$class: 'PersistentPackageParameterDefinition'$class: 'PersistentStringParameterDefinition'$class: 'PersistentTextParameterDefinition'$class: 'PersistentYumParameterDefinition'$class: 'PromotedBuildParameterDefinition'$class: 'PromotionLevelParameter'$class: 'RandomStringParameterDefinition'RESTList$class: 'ReviewboardParameterDefinition'$class: 'RunFilterParameter'run$class: 'RunSelectorParameter'$class: 'SauceParameterDefinition'$class: 'ScriptSelectionTaskDefinition'snParam$class: 'SpringBootLibrariesListParameterDefinition'$class: 'StashBranchParameterDefinition'stashedFilestring$class: 'TestExecuter'textuploadPgyerTimeoutParameter$class: 'ToolVersionParameterDefinition'uploadPgyerUploadParameter$class: 'VBoxParameterDefinition'emailvalidatingString$class: 'VersionParameterDefinition'$class: 'WHideParameterDefinition'$class: 'WReadonlyStringParameterDefinition'$class: 'WReadonlyTextParameterDefinition'extendedChoice$class: 'com.michelin.cio.hudson.plugins.passwordparam.PasswordParameterDefinition'$class: 'com.moded.extendedchoiceparameter.ExtendedChoiceParameterDefinition'$class: 'com.perfectomobile.jenkins.copyartifact.BuildSelectorParameter'passwordbuildSelector",
+        "type": "agentParameter$class: 'AppDetectorParamaterDefinition'$class: 'ArtifactRepoParamDefinition'$class: 'AutoCompleteStringParameterDefinition'base64FilebooleanParambuildMasterReleasecheckboxParameterchoice$class: 'ClearCaseUcmBaselineParameterDefinition'$class: 'CloudSelectorParameter'credentials$class: 'CvsTagsParamDefinition'$class: 'DateParameterDefinition'$class: 'DeployMetaDataParameterDefinition'$class: 'DropdownAutocompleteParameterDefinition'$class: 'ExtensibleChoiceParameterDefinition'file$class: 'FileSystemListParameterDefinition'$class: 'GeneratorChoiceParameterDefinition'$class: 'GeneratorKeyValueParameterDefinition'gitParameter$class: 'GithubBranchParameterDefinition'$class: 'GlobalVariableStringParameterDefinition'imageTag$class: 'InheritableStringParameterDefinition'$class: 'InheritableStringParameterReferenceDefinition'$class: 'JFrogPipelinesParameter'$class: 'JavaParameterDefinition'$class: 'JiraIssueParameterDefinition'$class: 'JiraVersionParameterDefinition'$class: 'LabelParameterDefinition'listGitBranches$class: 'ListSubversionTagsParameterDefinition'$class: 'MatrixCombinationsParameterDefinition'$class: 'MavenMetadataParameterDefinition'multiselect$class: 'NetstormTestParameterDefinition'$class: 'NodeParameterDefinition'$class: 'PackageChoiceParameterDefinition'$class: 'PackageParameterDefinition'separator$class: 'PatchParameterDefinition'$class: 'PersistentBooleanParameterDefinition'$class: 'PersistentChoiceParameterDefinition'$class: 'PersistentPackageParameterDefinition'$class: 'PersistentStringParameterDefinition'$class: 'PersistentTextParameterDefinition'$class: 'PersistentYumParameterDefinition'$class: 'PromotedBuildParameterDefinition'$class: 'PromotionLevelParameter'$class: 'RandomStringParameterDefinition'RESTList$class: 'ReviewboardParameterDefinition'$class: 'RunFilterParameter'run$class: 'RunSelectorParameter'$class: 'SauceParameterDefinition'$class: 'ScriptSelectionTaskDefinition'snParam$class: 'SpringBootLibrariesListParameterDefinition'$class: 'StashBranchParameterDefinition'stashedFilestring$class: 'TestExecuter'textuploadPgyerTimeoutParameter$class: 'ToolVersionParameterDefinition'uploadPgyerUploadParameter$class: 'VBoxParameterDefinition'emailvalidatingString$class: 'VersionParameterDefinition'$class: 'WHideParameterDefinition'$class: 'WReadonlyStringParameterDefinition'$class: 'WReadonlyTextParameterDefinition'extendedChoice$class: 'com.michelin.cio.hudson.plugins.passwordparam.PasswordParameterDefinition'$class: 'com.moded.extendedchoiceparameter.ExtendedChoiceParameterDefinition'$class: 'com.perfectomobile.jenkins.copyartifact.BuildSelectorParameter'passwordbuildSelector",
         "description": "Request that the submitter specify one or more parameter values when approving. If just one parameter is listed, its value will become the value of the `input` step. If multiple parameters are listed, the return value will be a map keyed by the parameter names. If parameters are not requested, the step returns nothing if approved. \n\n\n On the parameter entry screen you are able to enter values for parameters that are defined in this field.",
         "isOptional": true
       },
@@ -24065,7 +24059,7 @@
       },
       {
         "name": "parameters",
-        "type": "agentParameter$class: 'AppDetectorParamaterDefinition'$class: 'ArtifactRepoParamDefinition'$class: 'AutoCompleteStringParameterDefinition'base64FilebooleanParambuildMasterReleasecheckboxParameterchoice$class: 'ClearCaseUcmBaselineParameterDefinition'$class: 'CloudSelectorParameter'credentials$class: 'CvsTagsParamDefinition'$class: 'DateParameterDefinition'$class: 'DeployMetaDataParameterDefinition'$class: 'DropdownAutocompleteParameterDefinition'$class: 'ExtensibleChoiceParameterDefinition'file$class: 'FileSystemListParameterDefinition'$class: 'GeneratorChoiceParameterDefinition'$class: 'GeneratorKeyValueParameterDefinition'gitParameter$class: 'GithubBranchParameterDefinition'$class: 'GlobalVariableStringParameterDefinition'imageTag$class: 'InheritableStringParameterDefinition'$class: 'InheritableStringParameterReferenceDefinition'$class: 'JFrogPipelinesParameter'$class: 'JavaParameterDefinition'$class: 'JiraIssueParameterDefinition'$class: 'JiraVersionParameterDefinition'$class: 'LabelParameterDefinition'listGitBranches$class: 'ListSubversionTagsParameterDefinition'$class: 'MatrixCombinationsParameterDefinition'$class: 'MavenMetadataParameterDefinition'multiselect$class: 'NodeParameterDefinition'$class: 'PackageChoiceParameterDefinition'$class: 'PackageParameterDefinition'separator$class: 'PatchParameterDefinition'$class: 'PersistentBooleanParameterDefinition'$class: 'PersistentChoiceParameterDefinition'$class: 'PersistentPackageParameterDefinition'$class: 'PersistentStringParameterDefinition'$class: 'PersistentTextParameterDefinition'$class: 'PersistentYumParameterDefinition'$class: 'PromotedBuildParameterDefinition'$class: 'PromotionLevelParameter'$class: 'RandomStringParameterDefinition'RESTList$class: 'ReviewboardParameterDefinition'$class: 'RunFilterParameter'run$class: 'RunSelectorParameter'$class: 'SauceParameterDefinition'$class: 'ScriptSelectionTaskDefinition'snParam$class: 'SpringBootLibrariesListParameterDefinition'$class: 'StashBranchParameterDefinition'stashedFilestring$class: 'TestExecuter'textuploadPgyerTimeoutParameter$class: 'ToolVersionParameterDefinition'uploadPgyerUploadParameter$class: 'VBoxParameterDefinition'emailvalidatingString$class: 'VersionParameterDefinition'$class: 'WHideParameterDefinition'$class: 'WReadonlyStringParameterDefinition'$class: 'WReadonlyTextParameterDefinition'extendedChoice$class: 'com.michelin.cio.hudson.plugins.passwordparam.PasswordParameterDefinition'$class: 'com.moded.extendedchoiceparameter.ExtendedChoiceParameterDefinition'$class: 'com.perfectomobile.jenkins.copyartifact.BuildSelectorParameter'passwordbuildSelector",
+        "type": "agentParameter$class: 'AppDetectorParamaterDefinition'$class: 'ArtifactRepoParamDefinition'$class: 'AutoCompleteStringParameterDefinition'base64FilebooleanParambuildMasterReleasecheckboxParameterchoice$class: 'ClearCaseUcmBaselineParameterDefinition'$class: 'CloudSelectorParameter'credentials$class: 'CvsTagsParamDefinition'$class: 'DateParameterDefinition'$class: 'DeployMetaDataParameterDefinition'$class: 'DropdownAutocompleteParameterDefinition'$class: 'ExtensibleChoiceParameterDefinition'file$class: 'FileSystemListParameterDefinition'$class: 'GeneratorChoiceParameterDefinition'$class: 'GeneratorKeyValueParameterDefinition'gitParameter$class: 'GithubBranchParameterDefinition'$class: 'GlobalVariableStringParameterDefinition'imageTag$class: 'InheritableStringParameterDefinition'$class: 'InheritableStringParameterReferenceDefinition'$class: 'JFrogPipelinesParameter'$class: 'JavaParameterDefinition'$class: 'JiraIssueParameterDefinition'$class: 'JiraVersionParameterDefinition'$class: 'LabelParameterDefinition'listGitBranches$class: 'ListSubversionTagsParameterDefinition'$class: 'MatrixCombinationsParameterDefinition'$class: 'MavenMetadataParameterDefinition'multiselect$class: 'NetstormTestParameterDefinition'$class: 'NodeParameterDefinition'$class: 'PackageChoiceParameterDefinition'$class: 'PackageParameterDefinition'separator$class: 'PatchParameterDefinition'$class: 'PersistentBooleanParameterDefinition'$class: 'PersistentChoiceParameterDefinition'$class: 'PersistentPackageParameterDefinition'$class: 'PersistentStringParameterDefinition'$class: 'PersistentTextParameterDefinition'$class: 'PersistentYumParameterDefinition'$class: 'PromotedBuildParameterDefinition'$class: 'PromotionLevelParameter'$class: 'RandomStringParameterDefinition'RESTList$class: 'ReviewboardParameterDefinition'$class: 'RunFilterParameter'run$class: 'RunSelectorParameter'$class: 'SauceParameterDefinition'$class: 'ScriptSelectionTaskDefinition'snParam$class: 'SpringBootLibrariesListParameterDefinition'$class: 'StashBranchParameterDefinition'stashedFilestring$class: 'TestExecuter'textuploadPgyerTimeoutParameter$class: 'ToolVersionParameterDefinition'uploadPgyerUploadParameter$class: 'VBoxParameterDefinition'emailvalidatingString$class: 'VersionParameterDefinition'$class: 'WHideParameterDefinition'$class: 'WReadonlyStringParameterDefinition'$class: 'WReadonlyTextParameterDefinition'extendedChoice$class: 'com.michelin.cio.hudson.plugins.passwordparam.PasswordParameterDefinition'$class: 'com.moded.extendedchoiceparameter.ExtendedChoiceParameterDefinition'$class: 'com.perfectomobile.jenkins.copyartifact.BuildSelectorParameter'passwordbuildSelector",
         "description": "Request that the submitter specify one or more parameter values when approving. If just one parameter is listed, its value will become the value of the `input` step. If multiple parameters are listed, the return value will be a map keyed by the parameter names. If parameters are not requested, the step returns nothing if approved. \n\n\n On the parameter entry screen you are able to enter values for parameters that are defined in this field.",
         "isOptional": true
       },
@@ -29541,7 +29535,7 @@
   {
     "command": "node",
     "title": "node: Allocate node",
-    "description": "Allocates an executor on a node (typically a slave) and runs further code in the context of a workspace on that slave.",
+    "description": "Allocates an executor on a node (typically a build agent) and runs further code in the context of a workspace on that agent.",
     "parameters": [
       {
         "name": "label",
@@ -34321,7 +34315,7 @@
     "parameters": [
       {
         "name": "properties",
-        "type": "allowBrokenBuildClaiming$class: 'AssemblaProjectProperty'authorizationMatrix$class: 'AuthorizeProjectProperty'$class: 'BacklogProjectProperty'$class: 'BalanceProjectProperty'$class: 'BeforeJobSnapshotJobProperty'$class: 'BlockBuildJobProperty'$class: 'BlockItemJobProperty'$class: 'BuildBlockerProperty'$class: 'BuildConfigProjectProperty'buildDiscardercompressBuildLog$class: 'BuildNowTextProperty'$class: 'BuildPreferenceJobProperty'$class: 'CNAuthProjectProperty'$class: 'CachetJobProperty'$class: 'ChaosButlerOptOutJobProperty'$class: 'CheckBuildJobProperty'$class: 'ConfigurationPermissionEnforcer'$class: 'ConjurJITJobProperty'$class: 'ContrastPluginConfig'$class: 'CustomIconProperty'$class: 'CustomMsgJobProperty'$class: 'DatadogJobProperty'$class: 'DeployNowJobProperty'$class: 'DingTalkJobProperty'disableConcurrentBuildsdisableResume$class: 'DockerJobProperty'$class: 'DockerJobTemplateProperty'$class: 'DryRunJobProperty'durabilityHint$class: 'EasyQAPluginProperties'enforceBuildSchedule$class: 'EnvInjectJobProperty'$class: 'FailedJobDeactivator'$class: 'FeatureBranchProperty'$class: 'GitBucketProjectProperty'gitLabConnectiongiteeConnection$class: 'GithubProjectProperty'$class: 'GitlabLogoProperty'$class: 'GogsProjectProperty'$class: 'GraphsByBuildDates'$class: 'GroovyLabelAssignmentProperty'$class: 'HeavyJobProperty'$class: 'HipChatJobProperty'$class: 'HubotJobProperty'$class: 'IceScrumProjectProperty'$class: 'JiraProjectProperty'$class: 'JobBuildsContainersDefinition'$class: 'JobInclusionJobProperty'$class: 'JobOwnerJobProperty'$class: 'JobPrerequisites'$class: 'JobRestrictionProperty'branchTearDownExecutor$class: 'LeastLoadDisabledProperty'$class: 'LoggingJobProperty'$class: 'LogstashJobProperty'$class: 'MantisProjectProperty'$class: 'MavenInfoJobConfig'$class: 'MavenRepoCleanerProperty'$class: 'MetadataJobProperty'$class: 'NaginatorOptOutProperty'parametersrealTimeJUnitReports$class: 'PermalinkStorage'$class: 'PipelineConfigProjectProperty'$class: 'PipelineProperty'pipelineTriggerspreserveStashes$class: 'PriorityJobProperty'$class: 'ProjectIdentity'sidebarLinks$class: 'RebuildSettings'$class: 'RedmineProjectProperty'$class: 'RequeueJobProperty'$class: 'RequiredResourcesProperty'requireResources$class: 'ScannerJobProperty'$class: 'SharedWorkspace'$class: 'SquashTAWrapperProperty'$class: 'Tagger'$class: 'TemplateImplementationProperty'$class: 'TemplateProperty'$class: 'TemplateWorkflowInstances'$class: 'TemplateWorkflowProperty'throttleJobProperty$class: 'TracProjectProperty'$class: 'TrackingGitProperty'$class: 'TrackingSVNProperty'$class: 'TransifexProjectProperty'$class: 'UpdateTransientProperty'$class: 'UrlProperty'$class: 'WallDisplayJobProperty'$class: 'WatcherJobProperty'$class: 'WavefrontJobProperty'$class: 'WorkflowJobProperty'$class: 'ZanataWebhookProjectProperty'$class: 'ZenTimestampJobProperty'$class: 'com.perfectomobile.jenkins.copyartifact.CopyArtifactPermissionProperty'$class: 'com.tikal.hudson.plugins.notification.HudsonNotificationProperty'copyArtifactPermission$class: 'hudson.plugins.jobConfigHistory.JobLocalConfiguration'$class: 'hudson.plugins.svn_partial_release_mgr.ui.JobPropertyImpl'$class: 'it.dockins.dockerslaves.spec.ContainerSetDefinition'$class: 'jenkins.plugins.elanceodesk.workplace.notifier.WebhookJobProperty'$class: 'jenkins.plugins.mdtdeploy.JobPropertyImpl'office365ConnectorWebhooks$class: 'org.jenkins.ci.plugins.html5_notifier.JobPropertyImpl'$class: 'org.jenkinsci.plugins.ZMQEventPublisher.HudsonNotificationProperty'$class: 'org.jenkinsci.plugins.periodicreincarnation.JobLocalConfiguration'$class: 'sh.hyper.hyperslaves.spec.ContainerSetDefinition'",
+        "type": "allowBrokenBuildClaiming$class: 'AssemblaProjectProperty'authorizationMatrix$class: 'AuthorizeProjectProperty'$class: 'BacklogProjectProperty'$class: 'BalanceProjectProperty'$class: 'BeforeJobSnapshotJobProperty'$class: 'BlockBuildJobProperty'$class: 'BlockItemJobProperty'$class: 'BuildBlockerProperty'$class: 'BuildConfigProjectProperty'buildDiscardercompressBuildLog$class: 'BuildNowTextProperty'$class: 'BuildPreferenceJobProperty'$class: 'CNAuthProjectProperty'$class: 'CachetJobProperty'$class: 'ChaosButlerOptOutJobProperty'$class: 'CheckBuildJobProperty'$class: 'ConfigurationPermissionEnforcer'$class: 'ConjurJITJobProperty'$class: 'ContrastPluginConfig'$class: 'CustomIconProperty'$class: 'CustomMsgJobProperty'$class: 'DatadogJobProperty'$class: 'DeployNowJobProperty'$class: 'DingTalkJobProperty'disableConcurrentBuildsdisableResume$class: 'DockerJobProperty'$class: 'DockerJobTemplateProperty'$class: 'DryRunJobProperty'durabilityHint$class: 'EasyQAPluginProperties'enforceBuildSchedule$class: 'EnvInjectJobProperty'$class: 'FailedJobDeactivator'$class: 'FeatureBranchProperty'$class: 'GitBucketProjectProperty'gitLabConnectiongiteeConnection$class: 'GithubProjectProperty'$class: 'GitlabLogoProperty'$class: 'GogsProjectProperty'$class: 'GraphsByBuildDates'$class: 'GroovyLabelAssignmentProperty'$class: 'HeavyJobProperty'$class: 'HipChatJobProperty'$class: 'HubotJobProperty'$class: 'IceScrumProjectProperty'$class: 'JiraProjectProperty'$class: 'JobBuildsContainersDefinition'$class: 'JobInclusionJobProperty'$class: 'JobOwnerJobProperty'$class: 'JobPrerequisites'$class: 'JobRestrictionProperty'branchTearDownExecutor$class: 'LeastLoadDisabledProperty'$class: 'LoggingJobProperty'$class: 'LogstashJobProperty'$class: 'MantisProjectProperty'$class: 'MavenInfoJobConfig'$class: 'MavenRepoCleanerProperty'$class: 'MetadataJobProperty'$class: 'NaginatorOptOutProperty'overrideIndexTriggersparametersrealTimeJUnitReports$class: 'PermalinkStorage'$class: 'PipelineConfigProjectProperty'$class: 'PipelineProperty'pipelineTriggerspreserveStashes$class: 'PriorityJobProperty'$class: 'ProjectIdentity'sidebarLinks$class: 'RebuildSettings'$class: 'RedmineProjectProperty'$class: 'RequeueJobProperty'$class: 'RequiredResourcesProperty'requireResources$class: 'ScannerJobProperty'$class: 'SharedWorkspace'$class: 'SquashTAWrapperProperty'$class: 'Tagger'$class: 'TemplateImplementationProperty'$class: 'TemplateProperty'$class: 'TemplateWorkflowInstances'$class: 'TemplateWorkflowProperty'throttleJobProperty$class: 'TracProjectProperty'$class: 'TrackingGitProperty'$class: 'TrackingSVNProperty'$class: 'TransifexProjectProperty'$class: 'UpdateTransientProperty'$class: 'UrlProperty'$class: 'WallDisplayJobProperty'$class: 'WatcherJobProperty'$class: 'WavefrontJobProperty'$class: 'WorkflowJobProperty'$class: 'ZanataWebhookProjectProperty'$class: 'ZenTimestampJobProperty'$class: 'com.perfectomobile.jenkins.copyartifact.CopyArtifactPermissionProperty'$class: 'com.tikal.hudson.plugins.notification.HudsonNotificationProperty'copyArtifactPermission$class: 'hudson.plugins.jobConfigHistory.JobLocalConfiguration'$class: 'hudson.plugins.svn_partial_release_mgr.ui.JobPropertyImpl'$class: 'it.dockins.dockerslaves.spec.ContainerSetDefinition'$class: 'jenkins.branch.RateLimitBranchProperty$JobPropertyImpl'$class: 'jenkins.plugins.elanceodesk.workplace.notifier.WebhookJobProperty'$class: 'jenkins.plugins.mdtdeploy.JobPropertyImpl'office365ConnectorWebhooks$class: 'org.jenkins.ci.plugins.html5_notifier.JobPropertyImpl'$class: 'org.jenkinsci.plugins.ZMQEventPublisher.HudsonNotificationProperty'$class: 'org.jenkinsci.plugins.periodicreincarnation.JobLocalConfiguration'$class: 'sh.hyper.hyperslaves.spec.ContainerSetDefinition'",
         "description": "",
         "isOptional": false
       }
@@ -36314,7 +36308,7 @@
       {
         "name": "script",
         "type": "String",
-        "description": "",
+        "description": "Executes a PowerShell script. Multiple lines allowed. This plugin supports PowerShell Core 6+.",
         "isOptional": false
       },
       {
@@ -46639,6 +46633,56 @@
     "plugin": "absint-astree"
   },
   {
+    "command": "step([$class: 'Autogen'])",
+    "title": "step([$class: 'Autogen']): Autogen",
+    "description": "",
+    "parameters": [
+      {
+        "name": "element",
+        "type": "String",
+        "description": "Specify the name of the element in your CA Endevor® sandbox that you want to include in the autogeneration process, for example, <i>RUNCOB01</i>. The maximum length is 8 characters.\n\n \nYou can specify several specific comma-separated elements within the sandbox, for example, <i>RUNCOB01, RUNCOB02</i>.\n\n \nYou can use wildcards % and * to define the name patterns for the element names.\n\n Examples:\n\n Specify <i>*</i> to include all elements from the sandbox in the autonegeration process.\n\n Specify <i>RUNCOB*</i> to include all element names that start with \"RUNCOB\".\n\n Specify <i>%%%COB*</i> to include elements that contain the substring COB starting after position three.",
+        "isOptional": false
+      },
+      {
+        "name": "environment",
+        "type": "String",
+        "description": "Provide the environment for the CA Endevor® sandbox that you want to include in the autogeneration process, for example, <i>DEV</i>.",
+        "isOptional": false
+      },
+      {
+        "name": "system",
+        "type": "String",
+        "description": "Provide the system name for the environment in your CA Endevor® sandbox that you want to include in the autogeneration process, for example, <i>APCTTC0</i>.",
+        "isOptional": false
+      },
+      {
+        "name": "subsystem",
+        "type": "String",
+        "description": "Provide the subsystem name for the environment in your CA Endevor® sandbox that you want to include in the autogeneration process, for example, <i>TESTCICD</i>.",
+        "isOptional": false
+      },
+      {
+        "name": "stage",
+        "type": "String",
+        "description": "Specify the environment stage in your CA Endevor® that you want to include in the autogeneration process, for example, <i>1</i>.",
+        "isOptional": false
+      },
+      {
+        "name": "instance",
+        "type": "String",
+        "description": "Specify the instance name of the environment that is associated with CA Endevor® Web services, for example, <i>WEBSMFNE</i>.",
+        "isOptional": false
+      },
+      {
+        "name": "signout",
+        "type": "boolean",
+        "description": "Select this option to work with elements in CA Endevor® that might be currently worked on by another user.\n\n \nSelect the **Override signout** option only if you have the permission to override the signout of another user.",
+        "isOptional": false
+      }
+    ],
+    "plugin": "ca-mat-performance-benchmarking-by-broadcom"
+  },
+  {
     "command": "step([$class: 'BapFtpPromotionPublisherPlugin'])",
     "title": "step([$class: 'BapFtpPromotionPublisherPlugin']): Send build artifacts over FTP",
     "description": "Send build artifacts over FTP as a build step during a promotion process",
@@ -47092,7 +47136,7 @@
     "parameters": [
       {
         "name": "buildStep",
-        "type": "$class: 'A3Builder'$class: 'ACSDeploymentBuilder'qualysAPIStaticAssessmentcfyAzureArm$class: 'AWSEBBuilder'$class: 'AWSEBDeploymentBuilder'awsebReleaserabapCi$class: 'ActionHubPlugin'snActivatePlugin$class: 'AddComment'$class: 'AddTestToSetStep'$class: 'AmxEclipseAntBuilder'anchore$class: 'AnsibleAdHocCommandBuilder'cfyAnsible$class: 'AnsiblePlaybookBuilder'$class: 'AnsibleTower'$class: 'AnsibleTowerProjectRevisionFreestyle'$class: 'AnsibleTowerProjectSyncFreestyle'$class: 'AnsibleVaultBuilder'ant$class: 'AntExec'antws$class: 'ApiFortressBuilder'$class: 'AppClone'apprayappscanappscanenterprise$class: 'AppScanSourceBuilder'$class: 'AppScanStandardBuilder'xooa$class: 'AppUploaderBuilder'applatixsnApplyChanges$class: 'ApprendaBuilder'aquaaquaMicroscanneraquaServerlessScannerarachniScanner$class: 'ArtifactPromotionBuilder'artifactResolver$class: 'ArtifactsUploadBuilder'assertthatBddFeatures$class: 'AssetBuilder'$class: 'AssociateItemToRelease'associateTag$class: 'AstreeBuilder'audit$class: 'AutEnvironmentBuilder'$class: 'AutoConfigBuilder'$class: 'AwsBatchBuilder'azureCLIazureDownload$class: 'BDSBuilder'$class: 'BapFtpBuilder'$class: 'BapSshBuilderPlugin'batchFile$class: 'BeaglePlugin'$class: 'BeakerBuilder'$class: 'BeginAnalysis'benchmark$class: 'BitbucketPublisher'$class: 'BlueprintLaunch'$class: 'BootPluginBuilder'$class: 'BranchDestructionStep'$class: 'BranchGenerationStep'dotnetBuildbuildAddUrl$class: 'BuildBuilder'buildDescriptionbuildName$class: 'BuildNameUpdater'crxBuild$class: 'BuildScanner'$class: 'BuildStepBuilder'$class: 'BuildStepWithTimeout'$class: 'BuildStepsFromJsonBuilder'$class: 'BuildoutBuilder'byteguardGreet$class: 'CFLaunchBuilder'$class: 'CFLintBuilder'$class: 'CIMessageBuilder'$class: 'CIMessageSubscriberBuilder'$class: 'CToolBuilder'generateCache$class: 'CallFunction'$class: 'CallOtherJenkinsBuilder'$class: 'CaptureIOSDeviceScreenshot'carbonetescarlcastechovenafiVcertRequestCertificatechangeAsmVerchatterPost$class: 'CheckGate'$class: 'CheckGateBuilder'$class: 'ChefBuilderConfiguration'chlAtuoAction$class: 'ChrootBuilder'$class: 'CifsBuilderPlugin'$class: 'ClangScanBuildBuilder'googleStorageUploaddotnetCleanexamCleanTargetvalidNetwork$class: 'ClifBuilder'$class: 'CloudBuildBuilder'pushToCloudFoundrycloudhubDeployer$class: 'CloudManagerBuilder'$class: 'CloudShellConfig'$class: 'CmakeBuilder'$class: 'CocoaPodsBuilder'$class: 'CodeAnalysisBuilder'$class: 'CodeBuilder'$class: 'CodeCoverageBuilder'$class: 'CodeScanBuilder'codescene$class: 'CodeStreamBuilder'$class: 'CodefreshPipelineBuilder'$class: 'CommentsRemoverBuilder'$class: 'CompareBuilder'$class: 'CompareWithBaselineBuilder'$class: 'CompoundBuilder'\n\ndaticalDBCmdProject\n\n\ndaticalDBExportSQL\n\n\ndaticalDBExportRollbackSQL\n\n\ndaticalDBScriptDir",
+        "type": "$class: 'A3Builder'$class: 'ACSDeploymentBuilder'qualysAPIStaticAssessmentcfyAzureArm$class: 'AWSEBBuilder'$class: 'AWSEBDeploymentBuilder'awsebReleaserabapCi$class: 'ActionHubPlugin'snActivatePlugin$class: 'AddComment'$class: 'AddTestToSetStep'$class: 'AmxEclipseAntBuilder'anchore$class: 'AnsibleAdHocCommandBuilder'cfyAnsible$class: 'AnsiblePlaybookBuilder'$class: 'AnsibleTower'$class: 'AnsibleTowerProjectRevisionFreestyle'$class: 'AnsibleTowerProjectSyncFreestyle'$class: 'AnsibleVaultBuilder'ant$class: 'AntExec'antws$class: 'ApiFortressBuilder'$class: 'AppClone'apprayappscanappscanenterprise$class: 'AppScanSourceBuilder'$class: 'AppScanStandardBuilder'xooa$class: 'AppUploaderBuilder'applatixsnApplyChanges$class: 'ApprendaBuilder'aquaaquaMicroscanneraquaServerlessScannerarachniScanner$class: 'ArtifactPromotionBuilder'artifactResolver$class: 'ArtifactsUploadBuilder'assertthatBddFeatures$class: 'AssetBuilder'$class: 'AssociateItemToRelease'associateTag$class: 'AstreeBuilder'audit$class: 'AutEnvironmentBuilder'$class: 'AutoConfigBuilder'$class: 'Autogen'$class: 'AwsBatchBuilder'azureCLIazureDownload$class: 'BDSBuilder'$class: 'BapFtpBuilder'$class: 'BapSshBuilderPlugin'batchFile$class: 'BeaglePlugin'$class: 'BeakerBuilder'$class: 'BeginAnalysis'benchmark$class: 'BitbucketPublisher'$class: 'BlueprintLaunch'$class: 'BootPluginBuilder'$class: 'BranchDestructionStep'$class: 'BranchGenerationStep'dotnetBuildbuildAddUrl$class: 'BuildBuilder'buildDescriptionbuildName$class: 'BuildNameUpdater'crxBuild$class: 'BuildScanner'$class: 'BuildStepBuilder'$class: 'BuildStepWithTimeout'$class: 'BuildStepsFromJsonBuilder'$class: 'BuildoutBuilder'byteguardGreet$class: 'CFLaunchBuilder'$class: 'CFLintBuilder'$class: 'CIMessageBuilder'$class: 'CIMessageSubscriberBuilder'$class: 'CToolBuilder'generateCache$class: 'CallFunction'$class: 'CallOtherJenkinsBuilder'$class: 'CaptureIOSDeviceScreenshot'carbonetescarlcastechovenafiVcertRequestCertificatechangeAsmVerchatterPost$class: 'CheckGate'$class: 'CheckGateBuilder'$class: 'ChefBuilderConfiguration'chlAtuoAction$class: 'ChrootBuilder'$class: 'CifsBuilderPlugin'$class: 'ClangScanBuildBuilder'googleStorageUploaddotnetCleanexamCleanTargetvalidNetwork$class: 'ClifBuilder'$class: 'CloudBuildBuilder'pushToCloudFoundrycloudhubDeployer$class: 'CloudManagerBuilder'$class: 'CloudShellConfig'$class: 'CmakeBuilder'$class: 'CocoaPodsBuilder'$class: 'CodeAnalysisBuilder'$class: 'CodeBuilder'$class: 'CodeCoverageBuilder'$class: 'CodeScanBuilder'codescene$class: 'CodeStreamBuilder'$class: 'CodefreshPipelineBuilder'$class: 'CommentsRemoverBuilder'$class: 'CompareBuilder'$class: 'CompareWithBaselineBuilder'$class: 'CompoundBuilder'\n\ndaticalDBCmdProject\n\n\ndaticalDBExportSQL\n\n\ndaticalDBExportRollbackSQL\n\n\ndaticalDBScriptDir",
         "description": "",
         "isOptional": false
       }
@@ -48624,7 +48668,7 @@
   },
   {
     "command": "step([$class: 'ContinuousReleaseProperties'])",
-    "title": "step([$class: 'ContinuousReleaseProperties']): Pass Properties to Continuous Release Version",
+    "title": "step([$class: 'ContinuousReleaseProperties']): Pass Properties to UrbanCode Velocity Version",
     "description": "",
     "parameters": [
       {
@@ -48634,7 +48678,7 @@
         "isOptional": false
       }
     ],
-    "plugin": "ibm-continuous-release"
+    "plugin": "urbancode-velocity"
   },
   {
     "command": "step([$class: 'CordellWalkerRecorder'])",
@@ -50036,6 +50080,20 @@
       }
     ],
     "plugin": "electricflow"
+  },
+  {
+    "command": "step([$class: 'EmailPostBuildAction'])",
+    "title": "step([$class: 'EmailPostBuildAction']): Performance Benchmarking Report",
+    "description": "Specify the list of recipients who will obtain email with performance benchmarking results after each pipeline execution. The performance benchmarking reports contain comprehensive data about the current performance of the Test Job, and provide analytical comparison with the previous and average performance metrics of this job. If the plugin detects any significant deviations from the statistically normal performance of the job, the recipients get an alert notification.",
+    "parameters": [
+      {
+        "name": "recipients",
+        "type": "String",
+        "description": "Provide a comma-separated list of email addresses of intended recipients of the performance benchmarking reports, for example, <i>user1@example.com,user2@example.com</i>.",
+        "isOptional": false
+      }
+    ],
+    "plugin": "ca-mat-performance-benchmarking-by-broadcom"
   },
   {
     "command": "step([$class: 'EvaluateGate'])",
@@ -51966,6 +52024,164 @@
     "plugin": "mock-load-builder"
   },
   {
+    "command": "step([$class: 'NSNDIntegrationResultsPublisher'])",
+    "title": "step([$class: 'NSNDIntegrationResultsPublisher']): NS/NC-ND Integration Performance Publisher",
+    "description": "",
+    "parameters": [
+      {
+        "name": "nsIntegrationUri",
+        "type": "String",
+        "description": "",
+        "isOptional": false
+      },
+      {
+        "name": "nsUsername",
+        "type": "String",
+        "description": "",
+        "isOptional": false
+      },
+      {
+        "name": "nsPassword",
+        "type": "String",
+        "description": "",
+        "isOptional": false
+      },
+      {
+        "name": "ndIntegrationUri",
+        "type": "String",
+        "description": "",
+        "isOptional": false
+      },
+      {
+        "name": "ndUsername",
+        "type": "String",
+        "description": "",
+        "isOptional": false
+      },
+      {
+        "name": "ndPassword",
+        "type": "String",
+        "description": "",
+        "isOptional": false
+      },
+      {
+        "name": "base1StartTime",
+        "type": "String",
+        "description": "",
+        "isOptional": false
+      },
+      {
+        "name": "base1EndTime",
+        "type": "String",
+        "description": "",
+        "isOptional": false
+      },
+      {
+        "name": "base2StartTime",
+        "type": "String",
+        "description": "",
+        "isOptional": false
+      },
+      {
+        "name": "base2EndTime",
+        "type": "String",
+        "description": "",
+        "isOptional": false
+      },
+      {
+        "name": "base3StartTime",
+        "type": "String",
+        "description": "",
+        "isOptional": false
+      },
+      {
+        "name": "base3EndTime",
+        "type": "String",
+        "description": "",
+        "isOptional": false
+      },
+      {
+        "name": "checkProfilePath",
+        "type": "String",
+        "description": "",
+        "isOptional": false
+      },
+      {
+        "name": "criThreshold",
+        "type": "String",
+        "description": "",
+        "isOptional": false
+      },
+      {
+        "name": "warThreshold",
+        "type": "String",
+        "description": "",
+        "isOptional": false
+      },
+      {
+        "name": "failThreshold",
+        "type": "String",
+        "description": "",
+        "isOptional": false
+      },
+      {
+        "name": "timePeriod",
+        "type": "String",
+        "description": "",
+        "isOptional": false
+      },
+      {
+        "name": "curStartTimeAbsolute",
+        "type": "String",
+        "description": "",
+        "isOptional": false
+      },
+      {
+        "name": "curEndTimeAbsolute",
+        "type": "String",
+        "description": "",
+        "isOptional": false
+      },
+      {
+        "name": "curStartTimeElapsed",
+        "type": "String",
+        "description": "",
+        "isOptional": false
+      },
+      {
+        "name": "curEndTimeElapsed",
+        "type": "String",
+        "description": "",
+        "isOptional": false
+      },
+      {
+        "name": "phase",
+        "type": "String",
+        "description": "",
+        "isOptional": false
+      },
+      {
+        "name": "base1MSRName",
+        "type": "String",
+        "description": "",
+        "isOptional": false
+      },
+      {
+        "name": "base2MSRName",
+        "type": "String",
+        "description": "",
+        "isOptional": false
+      },
+      {
+        "name": "base3MSRName",
+        "type": "String",
+        "description": "",
+        "isOptional": false
+      }
+    ],
+    "plugin": "cavisson-ns-nd-integration"
+  },
+  {
     "command": "step([$class: 'NeoBuildAction'])",
     "title": "step([$class: 'NeoBuildAction']): Execute a NeoLoad Scenario",
     "description": "This build step executes a NeoLoad scenario and adds trend result graphs to the job page.",
@@ -52128,6 +52344,282 @@
       }
     ],
     "plugin": "neoload-jenkins-plugin"
+  },
+  {
+    "command": "step([$class: 'NetDiagnosticsResultsPublisher'])",
+    "title": "step([$class: 'NetDiagnosticsResultsPublisher']): NetDiagnostics Performance Publisher",
+    "description": "",
+    "parameters": [
+      {
+        "name": "netdiagnosticsUri",
+        "type": "String",
+        "description": "",
+        "isOptional": false
+      },
+      {
+        "name": "username",
+        "type": "String",
+        "description": "",
+        "isOptional": false
+      },
+      {
+        "name": "password",
+        "type": "String",
+        "description": "",
+        "isOptional": false
+      },
+      {
+        "name": "base1StartTime",
+        "type": "String",
+        "description": "",
+        "isOptional": false
+      },
+      {
+        "name": "base1EndTime",
+        "type": "String",
+        "description": "",
+        "isOptional": false
+      },
+      {
+        "name": "base2EndTime",
+        "type": "String",
+        "description": "",
+        "isOptional": false
+      },
+      {
+        "name": "base2StartTime",
+        "type": "String",
+        "description": "",
+        "isOptional": false
+      },
+      {
+        "name": "base3StartTime",
+        "type": "String",
+        "description": "",
+        "isOptional": false
+      },
+      {
+        "name": "base3EndTime",
+        "type": "String",
+        "description": "",
+        "isOptional": false
+      },
+      {
+        "name": "checkProfilePath",
+        "type": "String",
+        "description": "",
+        "isOptional": false
+      },
+      {
+        "name": "criThreshold",
+        "type": "String",
+        "description": "",
+        "isOptional": false
+      },
+      {
+        "name": "warThreshold",
+        "type": "String",
+        "description": "",
+        "isOptional": false
+      },
+      {
+        "name": "failThreshold",
+        "type": "String",
+        "description": "",
+        "isOptional": false
+      },
+      {
+        "name": "curStartTime",
+        "type": "String",
+        "description": "",
+        "isOptional": false
+      },
+      {
+        "name": "curEndTime",
+        "type": "String",
+        "description": "",
+        "isOptional": false
+      },
+      {
+        "name": "base1MSRName",
+        "type": "String",
+        "description": "",
+        "isOptional": false
+      },
+      {
+        "name": "base2MSRName",
+        "type": "String",
+        "description": "",
+        "isOptional": false
+      },
+      {
+        "name": "base3MSRName",
+        "type": "String",
+        "description": "",
+        "isOptional": false
+      }
+    ],
+    "plugin": "cavisson-ns-nd-integration"
+  },
+  {
+    "command": "step([$class: 'NetStormBuilder'])",
+    "title": "step([$class: 'NetStormBuilder']): Execute NetStorm/NetCloud Test",
+    "description": "This build step can be used to invoke Netstorm tasks",
+    "parameters": [
+      {
+        "name": "URLConnectionString",
+        "type": "String",
+        "description": "",
+        "isOptional": false
+      },
+      {
+        "name": "username",
+        "type": "String",
+        "description": "",
+        "isOptional": false
+      },
+      {
+        "name": "password",
+        "type": "String",
+        "description": "",
+        "isOptional": false
+      },
+      {
+        "name": "project",
+        "type": "String",
+        "description": "",
+        "isOptional": false
+      },
+      {
+        "name": "subProject",
+        "type": "String",
+        "description": "",
+        "isOptional": false
+      },
+      {
+        "name": "scenario",
+        "type": "String",
+        "description": "",
+        "isOptional": false
+      },
+      {
+        "name": "testMode",
+        "type": "String",
+        "description": "",
+        "isOptional": false
+      },
+      {
+        "name": "baselineType",
+        "type": "String",
+        "description": "",
+        "isOptional": false
+      },
+      {
+        "name": "pollInterval",
+        "type": "String",
+        "description": "",
+        "isOptional": false
+      },
+      {
+        "name": "protocol",
+        "type": "String",
+        "description": "",
+        "isOptional": false
+      },
+      {
+        "name": "repoIp",
+        "type": "String",
+        "description": "",
+        "isOptional": false
+      },
+      {
+        "name": "repoPort",
+        "type": "String",
+        "description": "",
+        "isOptional": false
+      },
+      {
+        "name": "repoPath",
+        "type": "String",
+        "description": "",
+        "isOptional": false
+      },
+      {
+        "name": "repoUsername",
+        "type": "String",
+        "description": "",
+        "isOptional": false
+      },
+      {
+        "name": "repoPassword",
+        "type": "String",
+        "description": "",
+        "isOptional": false
+      },
+      {
+        "name": "gitPull",
+        "type": "String",
+        "description": "",
+        "isOptional": false
+      }
+    ],
+    "plugin": "cavisson-ns-nd-integration"
+  },
+  {
+    "command": "step([$class: 'NetStormResultsPublisher'])",
+    "title": "step([$class: 'NetStormResultsPublisher']): NetStorm/NetCloud Performance Publisher",
+    "description": "",
+    "parameters": [
+      {
+        "name": "netstormUri",
+        "type": "String",
+        "description": "",
+        "isOptional": false
+      },
+      {
+        "name": "username",
+        "type": "String",
+        "description": "",
+        "isOptional": false
+      },
+      {
+        "name": "password",
+        "type": "String",
+        "description": "",
+        "isOptional": false
+      },
+      {
+        "name": "htmlTable",
+        "type": "class net.sf.json.JSONObject",
+        "description": "",
+        "isOptional": false
+      },
+      {
+        "name": "project",
+        "type": "String",
+        "description": "",
+        "isOptional": false
+      },
+      {
+        "name": "subProject",
+        "type": "String",
+        "description": "",
+        "isOptional": false
+      },
+      {
+        "name": "scenario",
+        "type": "String",
+        "description": "",
+        "isOptional": false
+      },
+      {
+        "name": "durationReport",
+        "type": "boolean",
+        "description": "",
+        "isOptional": false
+      }
+    ],
+    "plugin": "cavisson-ns-nd-integration"
   },
   {
     "command": "step([$class: 'NexusArtifactUploader'])",
@@ -53161,6 +53653,20 @@
     "description": "",
     "parameters": [],
     "plugin": "svn-partial-release-mgr"
+  },
+  {
+    "command": "step([$class: 'PerformanceAnalysisBuilder'])",
+    "title": "step([$class: 'PerformanceAnalysisBuilder']): Performance Benchmarking",
+    "description": "",
+    "parameters": [
+      {
+        "name": "testjob",
+        "type": "String",
+        "description": "Specify the data set name that contains the mainframe job that you want to run the performance benchmarking for, for example, <i>TEST.POC.JCLLIB(TESTJOB)</i>.\n\n \nThe maximum length is 44 characters.\n\n \nEnsure that the job is included in the monitoring scope of the CA MAT Performance Benchmarking plugin by Broadcom.",
+        "isOptional": false
+      }
+    ],
+    "plugin": "ca-mat-performance-benchmarking-by-broadcom"
   },
   {
     "command": "step([$class: 'PhabricatorNotifier'])",
@@ -60785,6 +61291,12 @@
         "isOptional": true
       },
       {
+        "name": "forceScan",
+        "type": "boolean",
+        "description": "",
+        "isOptional": true
+      },
+      {
         "name": "inlineScanning",
         "type": "boolean",
         "description": "",
@@ -62973,7 +63485,7 @@
       },
       {
         "name": "state",
-        "type": "pending, running, canceled, success, failed",
+        "type": "pending, running, canceled, success, failed, skipped",
         "description": "",
         "isOptional": true
       }
@@ -66847,8 +67359,8 @@
   },
   {
     "command": "wrap([$class: 'JCloudsOneOffSlave'])",
-    "title": "wrap([$class: 'JCloudsOneOffSlave']): JClouds Single-use slave",
-    "description": "If enabled **and** the build slave has beed provisioned by jclouds, then take this slave offline after the build has finished and subsequently delete it when it becomes idle.",
+    "title": "wrap([$class: 'JCloudsOneOffSlave']): JClouds Single-use agent",
+    "description": "If enabled **and** the build agent has beed provisioned by jclouds, then take this agent offline after the build has finished and subsequently delete it when it becomes idle.",
     "parameters": [],
     "plugin": "jclouds-jenkins"
   },
@@ -67321,7 +67833,7 @@
       {
         "name": "dir",
         "type": "String",
-        "description": "A workspace is automatically allocated for you with the `node` step, or you can get an alternate workspace with this `ws` step, but by default the location is chosen automatically. (Something like `SLAVE_ROOT/workspace/JOB_NAME@2`.) \n\n\n You can instead specify a path here and that workspace will be locked instead. (The path may be relative to the slave root, or absolute.) \n\n\n If concurrent builds ask for the same workspace, a directory with a suffix such as `@2` may be locked instead. Currently there is no option to wait to lock the exact directory requested; if you need to enforce that behavior, you can either fail (`error`) when `pwd` indicates that you got a different directory, or you may enforce serial execution of this part of the build by some other means such as `stage name: '…', concurrency: 1`. \n\n\n If you do not care about locking, just use the `dir` step to change current directory.",
+        "description": "A workspace is automatically allocated for you with the `node` step, or you can get an alternate workspace with this `ws` step, but by default the location is chosen automatically. (Something like `AGENT_ROOT/workspace/JOB_NAME@2`.) \n\n\n You can instead specify a path here and that workspace will be locked instead. (The path may be relative to the build agent root, or absolute.) \n\n\n If concurrent builds ask for the same workspace, a directory with a suffix such as `@2` may be locked instead. Currently there is no option to wait to lock the exact directory requested; if you need to enforce that behavior, you can either fail (`error`) when `pwd` indicates that you got a different directory, or you may enforce serial execution of this part of the build by some other means such as `stage name: '…', concurrency: 1`. \n\n\n If you do not care about locking, just use the `dir` step to change current directory.",
         "isOptional": false
       }
     ],

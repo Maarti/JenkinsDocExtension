@@ -435,6 +435,11 @@
     "id": "byteguard-build-actions"
   },
   {
+    "name": "CA MAT Performance Benchmarking by Broadcom",
+    "url": "https://www.jenkins.io/doc/pipeline/steps/ca-mat-performance-benchmarking-by-broadcom/",
+    "id": "ca-mat-performance-benchmarking-by-broadcom"
+  },
+  {
     "name": "CA Service Virtualization Plugin",
     "url": "https://www.jenkins.io/doc/pipeline/steps/ca-service-virtualization/",
     "id": "ca-service-virtualization"
@@ -1310,11 +1315,6 @@
     "id": "ibm-cloud-devops"
   },
   {
-    "name": "IBM Continuous Release",
-    "url": "https://www.jenkins.io/doc/pipeline/steps/ibm-continuous-release/",
-    "id": "ibm-continuous-release"
-  },
-  {
     "name": "IBM Security AppScan Source Scanner",
     "url": "https://www.jenkins.io/doc/pipeline/steps/ibm-security-appscansource-scanner/",
     "id": "ibm-security-appscansource-scanner"
@@ -1763,6 +1763,11 @@
     "name": "NowSecure Auto Plugin",
     "url": "https://www.jenkins.io/doc/pipeline/steps/nowsecure-auto-security-test/",
     "id": "nowsecure-auto-security-test"
+  },
+  {
+    "name": "NS-ND Integration Performance Publisher Plugin",
+    "url": "https://www.jenkins.io/doc/pipeline/steps/cavisson-ns-nd-integration/",
+    "id": "cavisson-ns-nd-integration"
   },
   {
     "name": "NUnit plugin",
