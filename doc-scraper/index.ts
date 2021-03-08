@@ -9,16 +9,21 @@ main();
 async function main() {
   // Config
   const jenkinsReferenceUrl = "https://www.jenkins.io/doc/pipeline/steps/";
-  const documentationOutputFile = "src/jenkins-doc.json";
-  const pluginsOutputFile = "src/jenkins-plugins.json";
+  const outputFile = "src/jenkins-data.json";
 
+  const jenkinsData: JenkinsData = {
+    date: new Date().toISOString(),
+    plugins: [],
+    instructions: []
+  };
   const axiosInstance = axios.create();
-  const jenkinsPlugins = await parsePluginsUrl(axiosInstance, jenkinsReferenceUrl);
-  console.log(`${jenkinsPlugins.length} plugins found`);
-  fs.writeFileSync(pluginsOutputFile, JSON.stringify(jenkinsPlugins, null, 2));
-  console.log(`Extracted in: ${documentationOutputFile}`);
+  jenkinsData.plugins = await parsePluginsUrl(axiosInstance, jenkinsReferenceUrl);
+  console.log(`${jenkinsData.plugins.length} plugins found`);
 
-  const pluginQueries = jenkinsPlugins.map(plugin => axiosInstance.get(plugin.url).then(response => ({ ...plugin, response })));
+  const pluginQueries = jenkinsData.plugins.map(plugin => axiosInstance.get(plugin.url).then(response => ({
+    ...plugin,
+    response
+  })));
 
   Promise.all(pluginQueries).then(queries => {
 
@@ -30,9 +35,10 @@ async function main() {
     instructions.sort(((a, b) => a.command < b.command ? -1 : 1));
     console.log('Total:');
     printScrapingResult(instructions);
-    const prettyOutput = JSON.stringify(instructions, null, 2);
-    fs.writeFileSync(documentationOutputFile, prettyOutput);
-    console.log(`Extracted in: ${documentationOutputFile}`);
+    jenkinsData.instructions = instructions;
+    const prettyOutput = JSON.stringify(jenkinsData, null, 2);
+    fs.writeFileSync(outputFile, prettyOutput);
+    console.log(`Extracted in: ${outputFile}`);
   }).catch(error => console.error(`Error while parsing instructions: ${error}`));
 }
 
@@ -47,7 +53,9 @@ async function parsePluginsUrl(axiosInstance: AxiosInstance, refUrl: string) {
       const url = `https://www.jenkins.io${$(pluginElem).find("> a").attr("href")}` || '';
       const id = url.replace(/\/$/, '').split('/').pop()?.toLowerCase() || 'unknown';
       plugins.push({
-        name, url, id
+        name,
+        url,
+        id
       });
     });
     return plugins;
@@ -57,7 +65,9 @@ async function parsePluginsUrl(axiosInstance: AxiosInstance, refUrl: string) {
   });
 }
 
-function parseInstructionsFromHTML({ response, id }: { response: AxiosResponse<any>, id: string }): Instruction[] {
+function parseInstructionsFromHTML({
+  response, id
+}: { response: AxiosResponse<any>, id: string }): Instruction[] {
   const $ = cheerio.load(response.data);
   const docs: cheerio.Cheerio = $(".sect2");
   const instructions: Instruction[] = [];
@@ -180,4 +190,10 @@ interface Url {
   label: string;
   url: string;
   html: string
+}
+
+interface JenkinsData {
+  date: string;
+  plugins: Plugin[];
+  instructions: Instruction[];
 }

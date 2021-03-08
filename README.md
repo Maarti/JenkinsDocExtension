@@ -30,4 +30,10 @@ See [Changelog](./CHANGELOG.md)
 
 
 ## TODO:
+* "Go To Definition" for functions in a file
+* Autocompletion for Jenkins commands
+* Get Jenkins env vars
+* Support Jenkinsfile
+* Support Jenkins parameters (booleanParam, string, extendedChoice,...)
+* Support symbols (breadcrumbs)
 * Check pipeline linter: https://www.jenkins.io/doc/book/pipeline/development/

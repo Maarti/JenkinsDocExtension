@@ -1,5 +1,5 @@
 import * as vscode from "vscode";
-import jenkinsDoc from "./jenkins-doc.json";
+import jenkinsData from "./jenkins-data.json";
 
 export class HoverProvider implements vscode.HoverProvider {
   public provideHover(
@@ -12,7 +12,7 @@ export class HoverProvider implements vscode.HoverProvider {
     console.log(`Hovered word: ${hoveredWord}`);
 
     const doc = new Map<string, vscode.MarkdownString[]>();
-    jenkinsDoc.forEach((instruction) => {
+    jenkinsData.instructions.forEach((instruction) => {
       const markdowns: vscode.MarkdownString[] = [];
       markdowns.push(new vscode.MarkdownString(`**${instruction.title}**\n\n${instruction.description}`));
       instruction.parameters.forEach(parameter => {
