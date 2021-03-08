@@ -11,35 +11,18 @@ export function activate(context: vscode.ExtensionContext) {
   // This line of code will only be executed once when your extension is activated
   console.log('Extension "jenkins-doc" is now active');
 
-  // The command has been defined in the package.json file
-  // Now provide the implementation of the command with registerCommand
-  // The commandId parameter must match the command field in package.json
-  let disposable = vscode.commands.registerCommand(
-    "jenkins-doc.helloWorld",
-    () => {
-      // The code you place here will be executed every time your command is executed
-
-      // Display a message box to the user
-      vscode.window.showInformationMessage(
-        "Hello Team from jenkins-doc plugin! 🦙🦙🦙"
-      );
-    }
-  );
-
-  vscode.languages.registerHoverProvider("groovy", new HoverProvider());
-
-  let groovyFileSelector: vscode.DocumentSelector = {
+  const groovyFileSelector: vscode.DocumentSelector = {
     // pattern: "**/*.groovy",
     scheme: "file",
     language: "groovy",
   };
-
+  const hoverRegistration = vscode.languages.registerHoverProvider(groovyFileSelector, new HoverProvider());
   const goToDefinitionRegistration = vscode.languages.registerDefinitionProvider(
     groovyFileSelector,
     new GoDefinitionProvider()
   );
-  console.log(`registered ${goToDefinitionRegistration}`);
-  context.subscriptions.push(disposable, goToDefinitionRegistration);
+
+  context.subscriptions.push(hoverRegistration, goToDefinitionRegistration);
 }
 
 // this method is called when your extension is deactivated

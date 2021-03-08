@@ -10,17 +10,11 @@
     "Other"
   ],
   "activationEvents": [
-    "onCommand:jenkins-doc.helloWorld",
     "onLanguage:groovy"
   ],
   "main": "./out/extension.js",
   "contributes": {
-    "commands": [
-      {
-        "command": "jenkins-doc.helloWorld",
-        "title": "Hello Team"
-      }
-    ]
+    "commands": []
   },
   "scripts": {
     "vscode:prepublish": "npm run compile",
