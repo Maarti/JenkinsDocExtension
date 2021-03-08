@@ -3,6 +3,10 @@
   "displayName": "Jenkins Doc",
   "description": "Provides Jenkins documentation",
   "publisher": "Maarti",
+  "icon": "./assets/logo_128.png",
+  "galleryBanner": {
+    "color": "#ffffff"
+  },
   "repository": {
     "url": "https://github.com/Maarti/JenkinsDocExtension"
   },
@@ -11,6 +15,7 @@
     "vscode": "^1.54.0"
   },
   "categories": [
+    "Programming Languages",
     "Other"
   ],
   "activationEvents": [

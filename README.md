@@ -1,5 +1,7 @@
 # Jenkins Doc VSCode extension
 
+![Logo](./assets/logo_128.png)
+
 Provides documentation for Jenkins instructions as well as over 600 Jenkins plugins!
 
 ## Features
