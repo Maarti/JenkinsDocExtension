@@ -1,39 +1,30 @@
 # Jenkins Doc VSCode extension
 
+Provides documentation for Jenkins instructions as well as over 600 Jenkins plugins!
 Providing Jenkins documentation when hovering instructions, and "Go To Definition" for groovy files names.
 
 ## Features
 
-- Jenkins documentation when hovering instructions from more than 600 plugins:
+- Display Jenkins documentation when hovering over recognized instructions:
 
-(TODO: image)
+![Documentation on hover](./assets/demo_doc_hover.gif)
  
-- "Go To Definition" for functions that take you to the groovy file with the same name:
+- "Go To Definition" (or `Ctrl`+Click) for functions that take you to the Groovy file with the same name:
 
-(TODO: image)
-
-## Extension Settings
-
-Include if your extension adds any VS Code settings through the `contributes.configuration` extension point.
-
-For example:
-
-This extension contributes the following settings:
-
-* `myExtension.enable`: enable/disable this extension
-* `myExtension.thing`: set to `blah` to do something
+!["Go To Definition" feature](./assets/demo_go_to_definition.gif)
 
 
 ## Release Notes
 
-See [Changelog](./CHANGELOG.md)
+See the [Changelog](./CHANGELOG.md)
 
 
-## TODO:
-* "Go To Definition" for functions in a file
-* Autocompletion for Jenkins commands
-* Get Jenkins env vars
-* Support Jenkinsfile
-* Support Jenkins parameters (booleanParam, string, extendedChoice,...)
-* Support symbols (breadcrumbs)
-* Check pipeline linter: https://www.jenkins.io/doc/book/pipeline/development/
+## Features considered for the future (brainstorming):
+* "Go To Definition" for functions in a file (not just the file itself)
+* Autocompletion for Jenkins instructions
+* Autocompletion for Jenkins env vars
+* Documentation for Jenkins env vars
+* Support Jenkinsfile in the same way as Groovy files
+* Support Jenkins parameters (`booleanParam`, `string`, `extendedChoice`,...)
+* Support symbols (breadcrumbs and outline in VSCode)
+* Check if we can call the [pipeline linter](https://www.jenkins.io/doc/book/pipeline/development/)
