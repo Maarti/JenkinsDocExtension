@@ -1,7 +1,6 @@
 # Jenkins Doc VSCode extension
 
 Provides documentation for Jenkins instructions as well as over 600 Jenkins plugins!
-Providing Jenkins documentation when hovering instructions, and "Go To Definition" for groovy files names.
 
 ## Features
 
