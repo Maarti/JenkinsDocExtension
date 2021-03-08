@@ -1,5 +1,6 @@
 import * as vscode from "vscode";
-import jenkinsData from "./jenkins-data.json";
+import { docs } from "./extension";
+
 
 export class HoverProvider implements vscode.HoverProvider {
   public provideHover(
@@ -10,26 +11,9 @@ export class HoverProvider implements vscode.HoverProvider {
     const wordRange = document.getWordRangeAtPosition(position);
     const hoveredWord = document.getText(wordRange);
     console.log(`Hovered word: ${hoveredWord}`);
-
-    const doc = new Map<string, vscode.MarkdownString[]>();
-    jenkinsData.instructions.forEach((instruction) => {
-      const markdowns: vscode.MarkdownString[] = [];
-      markdowns.push(new vscode.MarkdownString(`**${instruction.title}**\n\n${instruction.description}`));
-      instruction.parameters.forEach(parameter => {
-        const markdown = new vscode.MarkdownString();
-        const optionalLabel = parameter.isOptional ? "*(Optional)*" : "";
-        markdown.appendMarkdown(
-          `\`${parameter.name}\`: **${parameter.type}** ${optionalLabel}\n\n`
-        );
-        markdown.appendMarkdown(`${parameter.description}`);
-        markdowns.push(markdown);
-      });
-      doc.set(instruction.command, markdowns);
-    });
-
-    if (doc.has(hoveredWord)) {
+    if (docs.has(hoveredWord)) {
       return {
-        contents: doc.get(hoveredWord) || [],
+        contents: docs.get(hoveredWord) || [],
       };
     }
     return null;

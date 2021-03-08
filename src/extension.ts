@@ -1,15 +1,14 @@
-// The module 'vscode' contains the VS Code extensibility API
-// Import the module and reference it with the alias vscode in your code below
 import * as vscode from "vscode";
 import { GoDefinitionProvider } from "./go-definition-provider";
 import { HoverProvider } from "./hover-provider";
+import jenkinsData from "./jenkins-data.json";
 
-// this method is called when your extension is activated
-// your extension is activated the very first time the command is executed
+/** Map containing all Jenkins documentation data indexed by their instruction name */
+export const docs = new Map<string, vscode.MarkdownString[]>();
+
 export function activate(context: vscode.ExtensionContext) {
-  // Use the console to output diagnostic information (console.log) and errors (console.error)
-  // This line of code will only be executed once when your extension is activated
   console.log('Extension "jenkins-doc" is now active');
+  initDocMap();
 
   const groovyFileSelector: vscode.DocumentSelector = {
     // pattern: "**/*.groovy",
@@ -25,7 +24,25 @@ export function activate(context: vscode.ExtensionContext) {
   context.subscriptions.push(hoverRegistration, goToDefinitionRegistration);
 }
 
-// this method is called when your extension is deactivated
 export function deactivate() {
   console.log("jenkins-doc deactivated");
+}
+
+function initDocMap() {
+  console.log('Docs map initialization...');
+  jenkinsData.instructions.forEach((instruction) => {
+    const markdowns: vscode.MarkdownString[] = [];
+    markdowns.push(new vscode.MarkdownString(`**${instruction.title}**\n\n${instruction.description}`));
+    instruction.parameters.forEach(parameter => {
+      const markdown = new vscode.MarkdownString();
+      const optionalLabel = parameter.isOptional ? "*(Optional)*" : "";
+      markdown.appendMarkdown(
+        `\`${parameter.name}\`: **${parameter.type}** ${optionalLabel}\n\n`
+      );
+      markdown.appendMarkdown(`${parameter.description}`);
+      markdowns.push(markdown);
+    });
+    docs.set(instruction.command, markdowns);
+  });
+  console.log(`Docs map initialized with ${docs.size} entries`);
 }
