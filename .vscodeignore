@@ -9,3 +9,6 @@ vsc-extension-quickstart.md
 **/.eslintrc.json
 **/*.map
 **/*.ts
+doc-scraper/**
+assets/**
+!assets/logo_128.png
