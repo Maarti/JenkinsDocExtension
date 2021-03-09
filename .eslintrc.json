@@ -1,4 +1,5 @@
 {
+  "extends": ["prettier"],
   "root": true,
   "parser": "@typescript-eslint/parser",
   "parserOptions": {
@@ -12,17 +13,6 @@
     "curly": "warn",
     "eqeqeq": "warn",
     "no-throw-literal": "warn",
-    "semi": "error",
-    "object-property-newline": "warn",
-    "max-len": "warn",
-    "operator-linebreak": "warn",
-    "quotes": [
-      "error",
-      "single",
-      {
-        "avoidEscape": true
-      }
-    ]
-  },
-  "extends": ["prettier"]
+    "semi": "error"
+  }
 }
