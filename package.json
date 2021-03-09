@@ -3,14 +3,14 @@
   "displayName": "Jenkins Doc",
   "description": "Provides Jenkins documentation",
   "publisher": "Maarti",
-  "icon": "./assets/logo_128.png",
+  "icon": "assets/logo_128.png",
   "galleryBanner": {
     "color": "#ffffff"
   },
   "repository": {
     "url": "https://github.com/Maarti/JenkinsDocExtension"
   },
-  "version": "0.0.1",
+  "version": "1.0.0",
   "engines": {
     "vscode": "^1.54.0"
   },
