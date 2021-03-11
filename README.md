@@ -24,13 +24,22 @@ Provides documentation and autocompletion for Jenkins instructions as well as ov
 
 ## Release Notes
 
+What's new?
+
+### [1.1.0](https://github.com/Maarti/JenkinsDocExtension/releases/tag/1.1.0) - 2021-03-10
+
+- Autocompletion for more than 1400 instructions
+- Autocompletion for instructions parameters
+- Autocompletion for boolean and enum parameters
+- Improved documentation for nested objects and enum type parameters
+
 See the [Changelog](./CHANGELOG.md)
 
 ## Features considered for the future (brainstorming):
 
 - [ ] "Go To Definition" for functions in a file (not just the file itself)
 - [x] Autocompletion for Jenkins instructions
-- [ ] Autocompletion for instructions parameters
+- [x] Autocompletion for instructions parameters
 - [ ] Autocompletion for Jenkins env vars
 - [ ] Documentation for Jenkins env vars
 - [ ] Support Jenkinsfile in the same way as Groovy files
