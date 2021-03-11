@@ -163,7 +163,7 @@ function parseTypeAndValues(
     case 'nested choice of objects':
     case 'array / list of nested object':
     case 'array / list of nested choice of objects':
-      type = 'Nested';
+      type = categoryExpected.trim();
       values = $(parameterElem)
         .find('> ul > li > code')
         .map((i, v) => $(v).text())

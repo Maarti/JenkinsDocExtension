@@ -1,5 +1,5 @@
 {
-  "date": "2021-03-11T01:47:57.454Z",
+  "date": "2021-03-11T02:53:13.190Z",
   "plugins": [
     {
       "name": ".NET SDK Support",
@@ -3148,7 +3148,7 @@
         },
         {
           "name": "operationList",
-          "type": "Nested",
+          "type": "Array / List of Nested Choice of Objects",
           "values": [
             "$class: 'ConsulGetKV'",
             "$class: 'ConsulServiceDiscoveryOperation'",
@@ -3537,7 +3537,7 @@
       "parameters": [
         {
           "name": "suitefield",
-          "type": "Nested",
+          "type": "Array / List of Nested Object",
           "values": [
             "suitename",
             "customParam"
@@ -4114,7 +4114,7 @@
         },
         {
           "name": "metrics",
-          "type": "Nested",
+          "type": "Array / List of Nested Object",
           "values": [
             "metricName",
             "metricCategory"
@@ -4344,7 +4344,7 @@
       "parameters": [
         {
           "name": "assetsAction",
-          "type": "Nested",
+          "type": "Nested Choice of Objects",
           "values": [
             "AutoVersion",
             "CurrentVersion",
@@ -4384,7 +4384,7 @@
         },
         {
           "name": "credentials",
-          "type": "Nested",
+          "type": "Nested Choice of Objects",
           "values": [
             "AutoVersion",
             "CurrentVersion",
@@ -4453,7 +4453,7 @@
         },
         {
           "name": "credentials",
-          "type": "Nested",
+          "type": "Nested Choice of Objects",
           "values": [
             "AutoVersion",
             "CurrentVersion",
@@ -4480,7 +4480,7 @@
       "parameters": [
         {
           "name": "version",
-          "type": "Nested",
+          "type": "Nested Choice of Objects",
           "values": [
             "AutoVersion",
             "CurrentVersion",
@@ -4513,7 +4513,7 @@
         },
         {
           "name": "credentials",
-          "type": "Nested",
+          "type": "Nested Choice of Objects",
           "values": [
             "AutoVersion",
             "CurrentVersion",
@@ -4589,7 +4589,7 @@
         },
         {
           "name": "credentials",
-          "type": "Nested",
+          "type": "Nested Choice of Objects",
           "values": [
             "AutoVersion",
             "CurrentVersion",
@@ -4633,7 +4633,7 @@
         },
         {
           "name": "strategy",
-          "type": "Nested",
+          "type": "Nested Choice of Objects",
           "values": [
             "AutoVersion",
             "CurrentVersion",
@@ -4709,7 +4709,7 @@
         },
         {
           "name": "testTarget",
-          "type": "Nested",
+          "type": "Nested Choice of Objects",
           "values": [
             "AutoVersion",
             "CurrentVersion",
@@ -4728,7 +4728,7 @@
         },
         {
           "name": "credentials",
-          "type": "Nested",
+          "type": "Nested Choice of Objects",
           "values": [
             "AutoVersion",
             "CurrentVersion",
@@ -4847,7 +4847,7 @@
       "parameters": [
         {
           "name": "config",
-          "type": "Nested",
+          "type": "Nested Object",
           "values": [
             "projectKey",
             "repoSlug",
@@ -4880,7 +4880,7 @@
       "parameters": [
         {
           "name": "config",
-          "type": "Nested",
+          "type": "Nested Object",
           "values": [
             "repositoryName",
             "repositoryOwner",
@@ -4911,7 +4911,7 @@
       "parameters": [
         {
           "name": "config",
-          "type": "Nested",
+          "type": "Nested Object",
           "values": [
             "gitLabUrl",
             "projectId",
@@ -5004,28 +5004,28 @@
         },
         {
           "name": "advArgs",
-          "type": "Nested",
+          "type": "Nested Choice of Objects",
           "values": [],
           "description": "",
           "isOptional": false
         },
         {
           "name": "verbArgs",
-          "type": "Nested",
+          "type": "Nested Choice of Objects",
           "values": [],
           "description": "",
           "isOptional": false
         },
         {
           "name": "userArgs",
-          "type": "Nested",
+          "type": "Nested Choice of Objects",
           "values": [],
           "description": "",
           "isOptional": false
         },
         {
           "name": "options",
-          "type": "Nested",
+          "type": "Nested Choice of Objects",
           "values": [],
           "description": "",
           "isOptional": false
@@ -5110,28 +5110,28 @@
         },
         {
           "name": "advArgs",
-          "type": "Nested",
+          "type": "Nested Choice of Objects",
           "values": [],
           "description": "",
           "isOptional": false
         },
         {
           "name": "verbArgs",
-          "type": "Nested",
+          "type": "Nested Choice of Objects",
           "values": [],
           "description": "",
           "isOptional": false
         },
         {
           "name": "userArgs",
-          "type": "Nested",
+          "type": "Nested Choice of Objects",
           "values": [],
           "description": "",
           "isOptional": false
         },
         {
           "name": "options",
-          "type": "Nested",
+          "type": "Nested Choice of Objects",
           "values": [],
           "description": "",
           "isOptional": false
@@ -5216,28 +5216,28 @@
         },
         {
           "name": "advArgs",
-          "type": "Nested",
+          "type": "Nested Choice of Objects",
           "values": [],
           "description": "",
           "isOptional": false
         },
         {
           "name": "verbArgs",
-          "type": "Nested",
+          "type": "Nested Choice of Objects",
           "values": [],
           "description": "",
           "isOptional": false
         },
         {
           "name": "userArgs",
-          "type": "Nested",
+          "type": "Nested Choice of Objects",
           "values": [],
           "description": "",
           "isOptional": false
         },
         {
           "name": "options",
-          "type": "Nested",
+          "type": "Nested Choice of Objects",
           "values": [],
           "description": "",
           "isOptional": false
@@ -5432,7 +5432,7 @@
         },
         {
           "name": "buildArgs",
-          "type": "Nested",
+          "type": "Array / List of Nested Object",
           "values": [
             "key",
             "value",
@@ -5471,7 +5471,7 @@
         },
         {
           "name": "imageNames",
-          "type": "Nested",
+          "type": "Array / List of Nested Object",
           "values": [
             "image"
           ],
@@ -5572,7 +5572,7 @@
         },
         {
           "name": "containerRegistryCredentials",
-          "type": "Nested",
+          "type": "Array / List of Nested Object",
           "values": [
             "url",
             "credentialsId"
@@ -6080,7 +6080,7 @@
         },
         {
           "name": "entry",
-          "type": "Nested",
+          "type": "Nested Choice of Objects",
           "values": [
             "$class: 'ExistingCycle'",
             "$class: 'NewCycle'"
@@ -6753,7 +6753,7 @@
       "parameters": [
         {
           "name": "results",
-          "type": "Nested",
+          "type": "Array / List of Nested Object",
           "values": [
             "path"
           ],
@@ -6769,7 +6769,7 @@
         },
         {
           "name": "config",
-          "type": "Nested",
+          "type": "Nested Object",
           "values": [
             "results",
             "commandline",
@@ -6812,7 +6812,7 @@
         },
         {
           "name": "properties",
-          "type": "Nested",
+          "type": "Array / List of Nested Object",
           "values": [
             "key",
             "value"
@@ -6855,7 +6855,7 @@
         },
         {
           "name": "annotations",
-          "type": "Nested",
+          "type": "Array / List of Nested Object",
           "values": [
             "key",
             "value"
@@ -7070,7 +7070,7 @@
         },
         {
           "name": "recentChangeList",
-          "type": "Nested",
+          "type": "Array / List of Nested Object",
           "values": [
             "language",
             "text"
@@ -7413,7 +7413,7 @@
         },
         {
           "name": "extraVars",
-          "type": "Nested",
+          "type": "Nested Choice of Objects",
           "values": [],
           "description": "",
           "isOptional": true
@@ -8221,7 +8221,7 @@
         },
         {
           "name": "axServiceTemplateParameters",
-          "type": "Nested",
+          "type": "Array / List of Nested Object",
           "values": [
             "key",
             "value"
@@ -8326,7 +8326,7 @@
       "parameters": [
         {
           "name": "scanner",
-          "type": "Nested",
+          "type": "Nested Choice of Objects",
           "values": [
             "dynamic_analyzer",
             "mobile_analyzer",
@@ -8386,7 +8386,7 @@
         },
         {
           "name": "failureConditions",
-          "type": "Nested",
+          "type": "Array / List of Nested Object",
           "values": [
             "failureType",
             "threshold"
@@ -8495,7 +8495,7 @@
         },
         {
           "name": "failureConditions",
-          "type": "Nested",
+          "type": "Array / List of Nested Object",
           "values": [
             "failureType",
             "threshold"
@@ -8740,7 +8740,7 @@
         },
         {
           "name": "scope",
-          "type": "Nested",
+          "type": "Nested Object",
           "values": [
             "pageLimit",
             "excludePathPattern"
@@ -8750,7 +8750,7 @@
         },
         {
           "name": "userConfig",
-          "type": "Nested",
+          "type": "Nested Object",
           "values": [
             "filename"
           ],
@@ -8982,7 +8982,7 @@
       "parameters": [
         {
           "name": "artifacts",
-          "type": "Nested",
+          "type": "Array / List of Nested Object",
           "values": [
             "groupId",
             "artifactId",
@@ -9135,7 +9135,7 @@
       "parameters": [
         {
           "name": "artifacts",
-          "type": "Nested",
+          "type": "Array / List of Nested Object",
           "values": [
             "groupId",
             "artifactId",
@@ -9943,7 +9943,7 @@
         },
         {
           "name": "nameRules",
-          "type": "Nested",
+          "type": "Array / List of Nested Choice of Objects",
           "values": [
             "packageName",
             "vulnerabilityCategory",
@@ -9955,7 +9955,7 @@
         },
         {
           "name": "thresholdRules",
-          "type": "Nested",
+          "type": "Array / List of Nested Choice of Objects",
           "values": [
             "criticalVulnerabilities",
             "cvssV2Score",
@@ -10008,7 +10008,7 @@
         },
         {
           "name": "search",
-          "type": "Nested",
+          "type": "Array / List of Nested Object",
           "values": [
             "key",
             "value"
@@ -10675,7 +10675,7 @@
         },
         {
           "name": "commands",
-          "type": "Nested",
+          "type": "Array / List of Nested Object",
           "values": [
             "script",
             "exportVariablesString"
@@ -10707,7 +10707,7 @@
         },
         {
           "name": "buildSelector",
-          "type": "Nested",
+          "type": "Nested Choice of Objects",
           "values": [
             "downstream",
             "lastWithArtifacts",
@@ -11068,7 +11068,7 @@
         },
         {
           "name": "dockerRegistryEndpoint",
-          "type": "Nested",
+          "type": "Nested Object",
           "values": [
             "url",
             "credentialsId"
@@ -11100,7 +11100,7 @@
       "parameters": [
         {
           "name": "secrets",
-          "type": "Nested",
+          "type": "Array / List of Nested Object",
           "values": [
             "secretType",
             "name",
@@ -11240,7 +11240,7 @@
         },
         {
           "name": "blobProperties",
-          "type": "Nested",
+          "type": "Nested Object",
           "values": [
             "cacheControl",
             "contentEncoding",
@@ -11309,7 +11309,7 @@
         },
         {
           "name": "metadata",
-          "type": "Nested",
+          "type": "Array / List of Nested Object",
           "values": [
             "key",
             "value"
@@ -11383,7 +11383,7 @@
         },
         {
           "name": "imageReference",
-          "type": "Nested",
+          "type": "Nested Object",
           "values": [
             "id",
             "offer",
@@ -11496,7 +11496,7 @@
         },
         {
           "name": "dockerRegistryEndpoint",
-          "type": "Nested",
+          "type": "Nested Object",
           "values": [
             "url",
             "credentialsId"
@@ -11685,7 +11685,7 @@
         },
         {
           "name": "branches",
-          "type": "Nested",
+          "type": "Array / List of Nested Object",
           "values": [
             "name"
           ],
@@ -12072,7 +12072,7 @@
         },
         {
           "name": "localConfig",
-          "type": "Nested",
+          "type": "Nested Object",
           "values": [
             "localPath",
             "localOptions"
@@ -12112,7 +12112,7 @@
         },
         {
           "name": "parameters",
-          "type": "Nested",
+          "type": "Array / List of Nested Choice of Objects",
           "values": [
             "agentParameter",
             "base64File",
@@ -12412,7 +12412,7 @@
         },
         {
           "name": "deployToFirstStage",
-          "type": "Nested",
+          "type": "Nested Object",
           "values": [
             "waitUntilCompleted",
             "printLogOnFailure"
@@ -12738,7 +12738,7 @@
         },
         {
           "name": "caches",
-          "type": "Nested",
+          "type": "Array / List of Nested Choice of Objects",
           "values": [
             "$class: 'ArbitraryFileCache'"
           ],
@@ -13546,7 +13546,7 @@
         },
         {
           "name": "batchingOptions",
-          "type": "Nested",
+          "type": "Nested Object",
           "values": [
             "regions"
           ],
@@ -13597,7 +13597,7 @@
         },
         {
           "name": "operationPreferences",
-          "type": "Nested",
+          "type": "Nested Object",
           "values": [
             "failureToleranceCount",
             "failureTolerancePercentage",
@@ -14635,7 +14635,7 @@
         },
         {
           "name": "installation",
-          "type": "Nested",
+          "type": "Nested Object",
           "values": [
             "name",
             "home",
@@ -14683,7 +14683,7 @@
       "parameters": [
         {
           "name": "scm",
-          "type": "Nested",
+          "type": "Nested Choice of Objects",
           "values": [
             "$class: 'AWSCodePipelineSCM'",
             "accurev",
@@ -15177,7 +15177,7 @@
         },
         {
           "name": "paramPublish",
-          "type": "Nested",
+          "type": "Nested Choice of Objects",
           "values": [
             "$class: 'BapFtpParamPublish'",
             "$class: 'BapSshParamPublish'"
@@ -15194,7 +15194,7 @@
         },
         {
           "name": "publishers",
-          "type": "Nested",
+          "type": "Array / List of Nested Object",
           "values": [
             "configName",
             "verbose",
@@ -15287,7 +15287,7 @@
         },
         {
           "name": "patterns",
-          "type": "Nested",
+          "type": "Array / List of Nested Object",
           "values": [
             "pattern",
             "type"
@@ -15341,7 +15341,7 @@
         },
         {
           "name": "overrideCredential",
-          "type": "Nested",
+          "type": "Nested Object",
           "values": [
             "credentialId"
           ],
@@ -15372,7 +15372,7 @@
       "parameters": [
         {
           "name": "parameters",
-          "type": "Nested",
+          "type": "Array / List of Nested Object",
           "values": [
             "key",
             "value"
@@ -15410,7 +15410,7 @@
         },
         {
           "name": "overrideCredential",
-          "type": "Nested",
+          "type": "Nested Object",
           "values": [
             "credentialId"
           ],
@@ -15448,7 +15448,7 @@
         },
         {
           "name": "overrideCredential",
-          "type": "Nested",
+          "type": "Nested Object",
           "values": [
             "credentialId"
           ],
@@ -15457,7 +15457,7 @@
         },
         {
           "name": "runAndWaitOption",
-          "type": "Nested",
+          "type": "Nested Object",
           "values": [
             "checkInterval",
             "dependOnCdJobOutcome",
@@ -15518,7 +15518,7 @@
         },
         {
           "name": "overrideCredential",
-          "type": "Nested",
+          "type": "Nested Object",
           "values": [
             "credentialId"
           ],
@@ -15534,7 +15534,7 @@
         },
         {
           "name": "runAndWaitOption",
-          "type": "Nested",
+          "type": "Nested Object",
           "values": [
             "checkInterval",
             "dependOnCdJobOutcome",
@@ -15595,7 +15595,7 @@
         },
         {
           "name": "overrideCredential",
-          "type": "Nested",
+          "type": "Nested Object",
           "values": [
             "credentialId"
           ],
@@ -15640,7 +15640,7 @@
         },
         {
           "name": "overrideCredential",
-          "type": "Nested",
+          "type": "Nested Object",
           "values": [
             "credentialId"
           ],
@@ -15663,7 +15663,7 @@
         },
         {
           "name": "runAndWaitOption",
-          "type": "Nested",
+          "type": "Nested Object",
           "values": [
             "checkInterval",
             "dependOnCdJobOutcome",
@@ -15689,7 +15689,7 @@
         },
         {
           "name": "overrideCredential",
-          "type": "Nested",
+          "type": "Nested Object",
           "values": [
             "credentialId"
           ],
@@ -15719,7 +15719,7 @@
         },
         {
           "name": "runAndWaitOption",
-          "type": "Nested",
+          "type": "Nested Object",
           "values": [
             "checkInterval",
             "dependOnCdJobOutcome",
@@ -15745,7 +15745,7 @@
         },
         {
           "name": "overrideCredential",
-          "type": "Nested",
+          "type": "Nested Object",
           "values": [
             "credentialId"
           ],
@@ -15775,7 +15775,7 @@
         },
         {
           "name": "runAndWaitOption",
-          "type": "Nested",
+          "type": "Nested Object",
           "values": [
             "checkInterval",
             "dependOnCdJobOutcome",
@@ -15871,7 +15871,7 @@
         },
         {
           "name": "autoScalePolicy",
-          "type": "Nested",
+          "type": "Array / List of Nested Object",
           "values": [
             "autoScalePolicyName",
             "enableAutoScalePolicy",
@@ -15918,7 +15918,7 @@
         },
         {
           "name": "envVars",
-          "type": "Nested",
+          "type": "Array / List of Nested Object",
           "values": [
             "key",
             "value"
@@ -15935,7 +15935,7 @@
         },
         {
           "name": "logLevels",
-          "type": "Nested",
+          "type": "Array / List of Nested Object",
           "values": [
             "levelCategory",
             "packageName"
@@ -16241,7 +16241,7 @@
         },
         {
           "name": "steps",
-          "type": "Nested",
+          "type": "Array / List of Nested Object",
           "values": [
             "args",
             "envVars",
@@ -16542,7 +16542,7 @@
         },
         {
           "name": "cfVars",
-          "type": "Nested",
+          "type": "Array / List of Nested Object",
           "values": [
             "Variable",
             "Value"
@@ -16574,7 +16574,7 @@
         },
         {
           "name": "cfVars",
-          "type": "Nested",
+          "type": "Array / List of Nested Object",
           "values": [
             "Variable",
             "Value"
@@ -16698,7 +16698,7 @@
       "parameters": [
         {
           "name": "conditions",
-          "type": "Nested",
+          "type": "Array / List of Nested Choice of Objects",
           "values": [
             "warningCountIncreaseNewOnly",
             "cyclomaticComplexity",
@@ -17086,7 +17086,7 @@
       "parameters": [
         {
           "name": "managedFiles",
-          "type": "Nested",
+          "type": "Array / List of Nested Object",
           "values": [
             "fileId",
             "replaceTokens",
@@ -17171,7 +17171,7 @@
       "parameters": [
         {
           "name": "configs",
-          "type": "Nested",
+          "type": "Array / List of Nested Object",
           "values": [
             "filePath",
             "fileEncoding",
@@ -17190,7 +17190,7 @@
       "parameters": [
         {
           "name": "configs",
-          "type": "Nested",
+          "type": "Array / List of Nested Object",
           "values": [
             "filePath",
             "fileEncoding",
@@ -17426,7 +17426,7 @@
         },
         {
           "name": "selector",
-          "type": "Nested",
+          "type": "Nested Choice of Objects",
           "values": [
             "downstream",
             "lastWithArtifacts",
@@ -17868,7 +17868,7 @@
         },
         {
           "name": "environments",
-          "type": "Nested",
+          "type": "Array / List of Nested Object",
           "values": [
             "name",
             "value"
@@ -17986,7 +17986,7 @@
         },
         {
           "name": "retentionStrategy",
-          "type": "Nested",
+          "type": "Nested Choice of Objects",
           "values": [
             "$class: 'AlmostAlways'",
             "always",
@@ -18069,7 +18069,7 @@
         },
         {
           "name": "customProperties",
-          "type": "Nested",
+          "type": "Array / List of Nested Object",
           "values": [
             "key",
             "value"
@@ -18079,7 +18079,7 @@
         },
         {
           "name": "entityIds",
-          "type": "Nested",
+          "type": "Array / List of Nested Choice of Objects",
           "values": [
             "$class: 'Application'",
             "$class: 'Host'",
@@ -18092,7 +18092,7 @@
         },
         {
           "name": "tagMatchRules",
-          "type": "Nested",
+          "type": "Array / List of Nested Object",
           "values": [
             "meTypes",
             "tags"
@@ -19109,7 +19109,7 @@
         },
         {
           "name": "classifications",
-          "type": "Nested",
+          "type": "Array / List of Nested Object",
           "values": [
             "key",
             "value"
@@ -19992,7 +19992,7 @@
       "parameters": [
         {
           "name": "adapters",
-          "type": "Nested",
+          "type": "Array / List of Nested Choice of Objects",
           "values": [
             "glassfish2",
             "glassfish3",
@@ -20079,7 +20079,7 @@
       "parameters": [
         {
           "name": "deployer",
-          "type": "Nested",
+          "type": "Nested Choice of Objects",
           "values": [],
           "description": "",
           "isOptional": false
@@ -20101,7 +20101,7 @@
       "parameters": [
         {
           "name": "lambdaUploadBuildStepVariables",
-          "type": "Nested",
+          "type": "Nested Object",
           "values": [
             "awsRegion",
             "functionName",
@@ -20729,7 +20729,7 @@
         },
         {
           "name": "folders",
-          "type": "Nested",
+          "type": "Array / List of Nested Object",
           "values": [
             "value"
           ],
@@ -20773,7 +20773,7 @@
         },
         {
           "name": "pathsToExclude",
-          "type": "Nested",
+          "type": "Array / List of Nested Object",
           "values": [
             "value"
           ],
@@ -20920,7 +20920,7 @@
         },
         {
           "name": "btns",
-          "type": "Nested",
+          "type": "Array / List of Nested Object",
           "values": [
             "title",
             "actionUrl"
@@ -21251,7 +21251,7 @@
         },
         {
           "name": "connector",
-          "type": "Nested",
+          "type": "Nested Choice of Objects",
           "values": [
             "attach",
             "jnlp",
@@ -21398,7 +21398,7 @@
       "parameters": [
         {
           "name": "connector",
-          "type": "Nested",
+          "type": "Nested Choice of Objects",
           "values": [
             "$class: 'CloudNameDockerConnector'",
             "$class: 'DockerConnector'"
@@ -21408,7 +21408,7 @@
         },
         {
           "name": "containerLifecycle",
-          "type": "Nested",
+          "type": "Nested Object",
           "values": [
             "createContainer",
             "image",
@@ -21428,7 +21428,7 @@
         },
         {
           "name": "longConnector",
-          "type": "Nested",
+          "type": "Nested Choice of Objects",
           "values": [
             "$class: 'CloudNameDockerConnector'",
             "$class: 'DockerConnector'"
@@ -23367,7 +23367,7 @@
         },
         {
           "name": "publishers",
-          "type": "Nested",
+          "type": "Array / List of Nested Choice of Objects",
           "values": [
             "publishATX",
             "publishETLogs",
@@ -24025,7 +24025,7 @@
       "parameters": [
         {
           "name": "imageIds",
-          "type": "Nested",
+          "type": "Array / List of Nested Object",
           "values": [
             "imageDigest",
             "imageTag"
@@ -24057,7 +24057,7 @@
       "parameters": [
         {
           "name": "filter",
-          "type": "Nested",
+          "type": "Nested Object",
           "values": [
             "tagStatus"
           ],
@@ -24181,7 +24181,7 @@
         },
         {
           "name": "environments",
-          "type": "Nested",
+          "type": "Array / List of Nested Object",
           "values": [
             "name",
             "value"
@@ -24198,7 +24198,7 @@
         },
         {
           "name": "extraHosts",
-          "type": "Nested",
+          "type": "Array / List of Nested Object",
           "values": [
             "ipAddress",
             "hostname"
@@ -24236,7 +24236,7 @@
         },
         {
           "name": "logDriverOptions",
-          "type": "Nested",
+          "type": "Array / List of Nested Object",
           "values": [
             "name",
             "value"
@@ -24260,7 +24260,7 @@
         },
         {
           "name": "mountPoints",
-          "type": "Nested",
+          "type": "Array / List of Nested Object",
           "values": [
             "name",
             "sourcePath",
@@ -24286,7 +24286,7 @@
         },
         {
           "name": "placementStrategies",
-          "type": "Nested",
+          "type": "Array / List of Nested Object",
           "values": [
             "type",
             "field"
@@ -24303,7 +24303,7 @@
         },
         {
           "name": "portMappings",
-          "type": "Nested",
+          "type": "Array / List of Nested Object",
           "values": [
             "containerPort",
             "hostPort",
@@ -24385,7 +24385,7 @@
       "parameters": [
         {
           "name": "extensions",
-          "type": "Nested",
+          "type": "Array / List of Nested Choice of Objects",
           "values": [
             "deployEDASApplication",
             "InsertEDASApplication",
@@ -24641,7 +24641,7 @@
         },
         {
           "name": "recipientProviders",
-          "type": "Nested",
+          "type": "Array / List of Nested Choice of Objects",
           "values": [
             "buildUser",
             "culprits",
@@ -24686,7 +24686,7 @@
       "parameters": [
         {
           "name": "recipientProviders",
-          "type": "Nested",
+          "type": "Array / List of Nested Choice of Objects",
           "values": [
             "buildUser",
             "culprits",
@@ -24774,7 +24774,7 @@
         },
         {
           "name": "data",
-          "type": "Nested",
+          "type": "Array / List of Nested Object",
           "values": [
             "columnName",
             "contents"
@@ -24871,7 +24871,7 @@
       "parameters": [
         {
           "name": "lambdaEventSourceBuildStepVariables",
-          "type": "Nested",
+          "type": "Nested Object",
           "values": [
             "awsRegion",
             "functionName",
@@ -25084,7 +25084,7 @@
         },
         {
           "name": "testrunFilter",
-          "type": "Nested",
+          "type": "Array / List of Nested Object",
           "values": [
             "name",
             "value",
@@ -25237,7 +25237,7 @@
         },
         {
           "name": "testrunFilter",
-          "type": "Nested",
+          "type": "Array / List of Nested Object",
           "values": [
             "name",
             "value",
@@ -25271,7 +25271,7 @@
         },
         {
           "name": "altEMConfig",
-          "type": "Nested",
+          "type": "Nested Object",
           "values": [
             "url",
             "credentials"
@@ -25281,7 +25281,7 @@
         },
         {
           "name": "bookmark",
-          "type": "Nested",
+          "type": "Nested Object",
           "values": [
             "name",
             "folder"
@@ -25291,7 +25291,7 @@
         },
         {
           "name": "execParams",
-          "type": "Nested",
+          "type": "Nested Object",
           "values": [
             "list"
           ],
@@ -25300,7 +25300,7 @@
         },
         {
           "name": "postExecute",
-          "type": "Nested",
+          "type": "Nested Object",
           "values": [
             "action",
             "params"
@@ -25310,7 +25310,7 @@
         },
         {
           "name": "processList",
-          "type": "Nested",
+          "type": "Nested Object",
           "values": [
             "database",
             "project",
@@ -25323,7 +25323,7 @@
         },
         {
           "name": "request",
-          "type": "Nested",
+          "type": "Nested Object",
           "values": [
             "name"
           ],
@@ -25332,7 +25332,7 @@
         },
         {
           "name": "waitConfig",
-          "type": "Nested",
+          "type": "Nested Object",
           "values": [
             "pollInterval",
             "maxRunTime"
@@ -25774,7 +25774,7 @@
         },
         {
           "name": "provisioningProfiles",
-          "type": "Nested",
+          "type": "Array / List of Nested Object",
           "values": [
             "provisioningProfileAppId",
             "provisioningProfileUUID"
@@ -25876,7 +25876,7 @@
       "parameters": [
         {
           "name": "exportConfigs",
-          "type": "Nested",
+          "type": "Array / List of Nested Choice of Objects",
           "values": [
             "$class: 'ExportPackageAttributeConfig'",
             "$class: 'ExportPackageConfig'",
@@ -25903,7 +25903,7 @@
       "parameters": [
         {
           "name": "exportConfigs",
-          "type": "Nested",
+          "type": "Array / List of Nested Choice of Objects",
           "values": [
             "$class: 'ExportPackageAttributeConfig'",
             "$class: 'ExportPackageConfig'",
@@ -25966,7 +25966,7 @@
         },
         {
           "name": "strategy",
-          "type": "Nested",
+          "type": "Nested Choice of Objects",
           "values": [
             "fastestReadSpeed",
             "fastestWriteSpeed",
@@ -26100,7 +26100,7 @@
       "parameters": [
         {
           "name": "fileOperations",
-          "type": "Nested",
+          "type": "Array / List of Nested Choice of Objects",
           "values": [
             "fileCopyOperation",
             "fileCreateOperation",
@@ -26202,7 +26202,7 @@
         },
         {
           "name": "textFinders",
-          "type": "Nested",
+          "type": "Array / List of Nested Object",
           "values": [
             "regexp",
             "alsoCheckConsoleOutput",
@@ -27158,7 +27158,7 @@
       "parameters": [
         {
           "name": "remoteAnalysisProjectType",
-          "type": "Nested",
+          "type": "Nested Choice of Objects",
           "values": [
             "fortifyGradle",
             "fortifyMaven",
@@ -27171,7 +27171,7 @@
         },
         {
           "name": "remoteOptionalConfig",
-          "type": "Nested",
+          "type": "Nested Object",
           "values": [
             "customRulepacks",
             "filterFile",
@@ -27191,7 +27191,7 @@
         },
         {
           "name": "uploadSSC",
-          "type": "Nested",
+          "type": "Nested Object",
           "values": [
             "appName",
             "appVersion",
@@ -27213,7 +27213,7 @@
       "parameters": [
         {
           "name": "remoteAnalysisProjectType",
-          "type": "Nested",
+          "type": "Nested Choice of Objects",
           "values": [
             "fortifyGradle",
             "fortifyMaven",
@@ -27226,7 +27226,7 @@
         },
         {
           "name": "remoteOptionalConfig",
-          "type": "Nested",
+          "type": "Nested Object",
           "values": [
             "customRulepacks",
             "filterFile",
@@ -27246,7 +27246,7 @@
         },
         {
           "name": "uploadSSC",
-          "type": "Nested",
+          "type": "Nested Object",
           "values": [
             "appName",
             "appVersion",
@@ -27319,7 +27319,7 @@
         },
         {
           "name": "remoteOptionalConfig",
-          "type": "Nested",
+          "type": "Nested Object",
           "values": [
             "customRulepacks",
             "filterFile",
@@ -27339,7 +27339,7 @@
         },
         {
           "name": "uploadSSC",
-          "type": "Nested",
+          "type": "Nested Object",
           "values": [
             "appName",
             "appVersion",
@@ -27368,7 +27368,7 @@
         },
         {
           "name": "remoteOptionalConfig",
-          "type": "Nested",
+          "type": "Nested Object",
           "values": [
             "customRulepacks",
             "filterFile",
@@ -27388,7 +27388,7 @@
         },
         {
           "name": "uploadSSC",
-          "type": "Nested",
+          "type": "Nested Object",
           "values": [
             "appName",
             "appVersion",
@@ -27559,7 +27559,7 @@
         },
         {
           "name": "projectScanType",
-          "type": "Nested",
+          "type": "Nested Choice of Objects",
           "values": [
             "fortifyAdvanced",
             "fortifyDevenv",
@@ -27632,7 +27632,7 @@
         },
         {
           "name": "projectScanType",
-          "type": "Nested",
+          "type": "Nested Choice of Objects",
           "values": [
             "fortifyAdvanced",
             "fortifyDevenv",
@@ -27998,7 +27998,7 @@
       "parameters": [
         {
           "name": "publishers",
-          "type": "Nested",
+          "type": "Array / List of Nested Object",
           "values": [
             "configName",
             "verbose",
@@ -28042,7 +28042,7 @@
         },
         {
           "name": "paramPublish",
-          "type": "Nested",
+          "type": "Nested Object",
           "values": [
             "parameterName"
           ],
@@ -28096,7 +28096,7 @@
       "parameters": [
         {
           "name": "caches",
-          "type": "Nested",
+          "type": "Array / List of Nested Object",
           "values": [
             "type",
             "filePath",
@@ -28951,7 +28951,7 @@
         },
         {
           "name": "mergeRules",
-          "type": "Nested",
+          "type": "Array / List of Nested Object",
           "values": [
             "path",
             "resolution"
@@ -28983,7 +28983,7 @@
       "parameters": [
         {
           "name": "customIssues",
-          "type": "Nested",
+          "type": "Array / List of Nested Object",
           "values": [
             "name",
             "issuePattern",
@@ -29002,7 +29002,7 @@
         },
         {
           "name": "extendedVariables",
-          "type": "Nested",
+          "type": "Array / List of Nested Object",
           "values": [
             "name",
             "value"
@@ -29012,7 +29012,7 @@
         },
         {
           "name": "from",
-          "type": "Nested",
+          "type": "Nested Object",
           "values": [
             "type",
             "value"
@@ -29022,7 +29022,7 @@
         },
         {
           "name": "gitHub",
-          "type": "Nested",
+          "type": "Nested Object",
           "values": [
             "api",
             "token",
@@ -29033,7 +29033,7 @@
         },
         {
           "name": "gitLab",
-          "type": "Nested",
+          "type": "Nested Object",
           "values": [
             "server",
             "token",
@@ -29073,7 +29073,7 @@
         },
         {
           "name": "jira",
-          "type": "Nested",
+          "type": "Nested Object",
           "values": [
             "server",
             "issuePattern",
@@ -29138,7 +29138,7 @@
         },
         {
           "name": "to",
-          "type": "Nested",
+          "type": "Nested Object",
           "values": [
             "type",
             "value"
@@ -29163,7 +29163,7 @@
       "parameters": [
         {
           "name": "statusMessage",
-          "type": "Nested",
+          "type": "Nested Object",
           "values": [
             "content"
           ],
@@ -29512,7 +29512,7 @@
       "parameters": [
         {
           "name": "labelProperty",
-          "type": "Nested",
+          "type": "Nested Object",
           "values": [
             "labels"
           ],
@@ -29521,7 +29521,7 @@
         },
         {
           "name": "statusVerifier",
-          "type": "Nested",
+          "type": "Nested Object",
           "values": [
             "buildStatus"
           ],
@@ -29530,7 +29530,7 @@
         },
         {
           "name": "errorHandler",
-          "type": "Nested",
+          "type": "Nested Object",
           "values": [
             "buildStatus"
           ],
@@ -29547,7 +29547,7 @@
       "parameters": [
         {
           "name": "statusVerifier",
-          "type": "Nested",
+          "type": "Nested Object",
           "values": [
             "buildStatus"
           ],
@@ -29556,7 +29556,7 @@
         },
         {
           "name": "errorHandler",
-          "type": "Nested",
+          "type": "Nested Object",
           "values": [
             "buildStatus"
           ],
@@ -29573,7 +29573,7 @@
       "parameters": [
         {
           "name": "comment",
-          "type": "Nested",
+          "type": "Nested Object",
           "values": [
             "content"
           ],
@@ -29582,7 +29582,7 @@
         },
         {
           "name": "statusVerifier",
-          "type": "Nested",
+          "type": "Nested Object",
           "values": [
             "buildStatus"
           ],
@@ -29591,7 +29591,7 @@
         },
         {
           "name": "errorHandler",
-          "type": "Nested",
+          "type": "Nested Object",
           "values": [
             "buildStatus"
           ],
@@ -29608,7 +29608,7 @@
       "parameters": [
         {
           "name": "labelProperty",
-          "type": "Nested",
+          "type": "Nested Object",
           "values": [
             "labels"
           ],
@@ -29617,7 +29617,7 @@
         },
         {
           "name": "statusVerifier",
-          "type": "Nested",
+          "type": "Nested Object",
           "values": [
             "buildStatus"
           ],
@@ -29626,7 +29626,7 @@
         },
         {
           "name": "errorHandler",
-          "type": "Nested",
+          "type": "Nested Object",
           "values": [
             "buildStatus"
           ],
@@ -29643,7 +29643,7 @@
       "parameters": [
         {
           "name": "statusMsg",
-          "type": "Nested",
+          "type": "Nested Object",
           "values": [
             "content"
           ],
@@ -29664,7 +29664,7 @@
         },
         {
           "name": "buildMessage",
-          "type": "Nested",
+          "type": "Nested Object",
           "values": [
             "successMsg",
             "failureMsg"
@@ -29674,7 +29674,7 @@
         },
         {
           "name": "statusVerifier",
-          "type": "Nested",
+          "type": "Nested Object",
           "values": [
             "buildStatus"
           ],
@@ -29683,7 +29683,7 @@
         },
         {
           "name": "errorHandler",
-          "type": "Nested",
+          "type": "Nested Object",
           "values": [
             "buildStatus"
           ],
@@ -29722,7 +29722,7 @@
         },
         {
           "name": "builds",
-          "type": "Nested",
+          "type": "Array / List of Nested Object",
           "values": [
             "connection",
             "name",
@@ -29734,7 +29734,7 @@
         },
         {
           "name": "connection",
-          "type": "Nested",
+          "type": "Nested Object",
           "values": [
             "gitLabConnection",
             "jobCredentialId",
@@ -29753,7 +29753,7 @@
       "parameters": [
         {
           "name": "input",
-          "type": "Nested",
+          "type": "Nested Object",
           "values": [
             "credentialsId",
             "request",
@@ -30294,7 +30294,7 @@
         },
         {
           "name": "devices",
-          "type": "Nested",
+          "type": "Array / List of Nested Object",
           "values": [
             "location",
             "device",
@@ -30315,7 +30315,7 @@
       "parameters": [
         {
           "name": "products",
-          "type": "Nested",
+          "type": "Array / List of Nested Choice of Objects",
           "values": [
             "$class: 'HealthAnalyzerLrStep'"
           ],
@@ -30431,7 +30431,7 @@
       "parameters": [
         {
           "name": "applications",
-          "type": "Nested",
+          "type": "Array / List of Nested Object",
           "values": [
             "apiToken",
             "appId",
@@ -30565,7 +30565,7 @@
         },
         {
           "name": "customHeaders",
-          "type": "Nested",
+          "type": "Array / List of Nested Object",
           "values": [
             "name",
             "value",
@@ -30694,7 +30694,7 @@
       "parameters": [
         {
           "name": "scans",
-          "type": "Nested",
+          "type": "Array / List of Nested Object",
           "values": [
             "scanTarget"
           ],
@@ -30773,7 +30773,7 @@
         },
         {
           "name": "excludePatterns",
-          "type": "Nested",
+          "type": "Array / List of Nested Object",
           "values": [
             "exclusionPattern"
           ],
@@ -30840,7 +30840,7 @@
         },
         {
           "name": "extraData",
-          "type": "Nested",
+          "type": "Nested Choice of Objects",
           "values": [],
           "description": "Map - Any map serializable, extra data that can be used to make more meaningful messages, for example slack attachments.",
           "isOptional": true
@@ -30868,7 +30868,7 @@
         },
         {
           "name": "parameters",
-          "type": "Nested",
+          "type": "Array / List of Nested Choice of Objects",
           "values": [
             "agentParameter",
             "$class: 'AppDetectorParamaterDefinition'",
@@ -31022,7 +31022,7 @@
         },
         {
           "name": "extraData",
-          "type": "Nested",
+          "type": "Nested Choice of Objects",
           "values": [],
           "description": "Map - Any map serializable, extra data that can be used to make more meaningful messages, for example slack attachments.",
           "isOptional": true
@@ -31278,7 +31278,7 @@
         },
         {
           "name": "recipients",
-          "type": "Nested",
+          "type": "Array / List of Nested Object",
           "values": [
             "id"
           ],
@@ -31373,7 +31373,7 @@
       "parameters": [
         {
           "name": "importConfigs",
-          "type": "Nested",
+          "type": "Array / List of Nested Choice of Objects",
           "values": [
             "$class: 'ExportPackageAttributeConfig'",
             "$class: 'ExportPackageConfig'",
@@ -31400,7 +31400,7 @@
       "parameters": [
         {
           "name": "importConfigs",
-          "type": "Nested",
+          "type": "Array / List of Nested Choice of Objects",
           "values": [
             "$class: 'ExportPackageAttributeConfig'",
             "$class: 'ExportPackageConfig'",
@@ -31841,7 +31841,7 @@
         },
         {
           "name": "parameters",
-          "type": "Nested",
+          "type": "Array / List of Nested Choice of Objects",
           "values": [
             "agentParameter",
             "$class: 'AppDetectorParamaterDefinition'",
@@ -32060,7 +32060,7 @@
       "parameters": [
         {
           "name": "lambdaInvokeBuildStepVariables",
-          "type": "Nested",
+          "type": "Nested Object",
           "values": [
             "awsRegion",
             "functionName",
@@ -32163,7 +32163,7 @@
       "parameters": [
         {
           "name": "buildToChatNotifier",
-          "type": "Nested",
+          "type": "Nested Choice of Objects",
           "values": [
             "$class: 'BuildParametersBuildToChatNotifier'",
             "$class: 'DefaultBuildToChatNotifier'",
@@ -32359,7 +32359,7 @@
         },
         {
           "name": "buildToChatNotifier",
-          "type": "Nested",
+          "type": "Nested Choice of Objects",
           "values": [
             "$class: 'BuildParametersBuildToChatNotifier'",
             "$class: 'DefaultBuildToChatNotifier'",
@@ -34298,7 +34298,7 @@
       "parameters": [
         {
           "name": "issueSelector",
-          "type": "Nested",
+          "type": "Nested Choice of Objects",
           "values": [
             "$class: 'DefaultIssueSelector'",
             "$class: 'ExplicitIssueSelector'",
@@ -34489,7 +34489,7 @@
       "parameters": [
         {
           "name": "issue",
-          "type": "Nested",
+          "type": "Nested Object",
           "values": [
             "update",
             "fields"
@@ -34585,7 +34585,7 @@
       "parameters": [
         {
           "name": "issues",
-          "type": "Nested",
+          "type": "Nested Object",
           "values": [
             "issueUpdates",
             "issues"
@@ -35165,7 +35165,7 @@
         },
         {
           "name": "testDataPublishers",
-          "type": "Nested",
+          "type": "Array / List of Nested Choice of Objects",
           "values": [
             "$class: 'AttachmentPublisher'",
             "$class: 'AutomateTestDataPublisher'",
@@ -35489,7 +35489,7 @@
       "parameters": [
         {
           "name": "buildSpecConfig",
-          "type": "Nested",
+          "type": "Nested Object",
           "values": [
             "buildCommand",
             "tool",
@@ -35510,7 +35510,7 @@
       "parameters": [
         {
           "name": "failureConditionConfig",
-          "type": "Nested",
+          "type": "Nested Object",
           "values": [
             "enableServerFailureCondition",
             "failureConditionServerConfigs",
@@ -35533,7 +35533,7 @@
       "parameters": [
         {
           "name": "ciConfig",
-          "type": "Nested",
+          "type": "Nested Object",
           "values": [
             "buildSpec",
             "projectDir",
@@ -35556,7 +35556,7 @@
       "parameters": [
         {
           "name": "serverConfig",
-          "type": "Nested",
+          "type": "Nested Object",
           "values": [
             "buildSpec",
             "tablesDir",
@@ -35581,7 +35581,7 @@
       "parameters": [
         {
           "name": "serverConfig",
-          "type": "Nested",
+          "type": "Nested Object",
           "values": [
             "tablesDir",
             "buildName",
@@ -35592,7 +35592,7 @@
         },
         {
           "name": "reportConfig",
-          "type": "Nested",
+          "type": "Nested Object",
           "values": [
             "displayChart",
             "chartHeight",
@@ -35612,7 +35612,7 @@
       "parameters": [
         {
           "name": "syncConfig",
-          "type": "Nested",
+          "type": "Nested Object",
           "values": [
             "dryRun",
             "lastSync",
@@ -35825,7 +35825,7 @@
         },
         {
           "name": "dockerCredentials",
-          "type": "Nested",
+          "type": "Array / List of Nested Object",
           "values": [
             "url",
             "credentialsId"
@@ -35842,7 +35842,7 @@
         },
         {
           "name": "kubeConfig",
-          "type": "Nested",
+          "type": "Nested Object",
           "values": [
             "path"
           ],
@@ -35872,7 +35872,7 @@
         },
         {
           "name": "ssh",
-          "type": "Nested",
+          "type": "Nested Object",
           "values": [
             "sshCredentialsId",
             "sshServer"
@@ -35882,7 +35882,7 @@
         },
         {
           "name": "textCredentials",
-          "type": "Nested",
+          "type": "Nested Object",
           "values": [
             "certificateAuthorityData",
             "clientCertificateData",
@@ -36248,7 +36248,7 @@
         },
         {
           "name": "retriever",
-          "type": "Nested",
+          "type": "Nested Choice of Objects",
           "values": [
             "http",
             "nexus",
@@ -36491,7 +36491,7 @@
         },
         {
           "name": "scriptRTSSetModel",
-          "type": "Nested",
+          "type": "Nested Object",
           "values": [
             "scripts"
           ],
@@ -36500,7 +36500,7 @@
         },
         {
           "name": "summaryDataLogModel",
-          "type": "Nested",
+          "type": "Nested Object",
           "values": [
             "logVusersStates",
             "logErrorCount",
@@ -36598,7 +36598,7 @@
         },
         {
           "name": "extra",
-          "type": "Nested",
+          "type": "Array / List of Nested Object",
           "values": [
             "resource",
             "label",
@@ -36922,7 +36922,7 @@
         },
         {
           "name": "env",
-          "type": "Nested",
+          "type": "Array / List of Nested Object",
           "values": [
             "name",
             "value"
@@ -36953,7 +36953,7 @@
         },
         {
           "name": "labels",
-          "type": "Nested",
+          "type": "Array / List of Nested Object",
           "values": [
             "name",
             "value"
@@ -36963,7 +36963,7 @@
         },
         {
           "name": "uris",
-          "type": "Nested",
+          "type": "Array / List of Nested Object",
           "values": [
             "uri"
           ],
@@ -36980,7 +36980,7 @@
       "parameters": [
         {
           "name": "varPasswordPairs",
-          "type": "Nested",
+          "type": "Array / List of Nested Object",
           "values": [
             "var",
             "password"
@@ -36990,7 +36990,7 @@
         },
         {
           "name": "varMaskRegexes",
-          "type": "Nested",
+          "type": "Array / List of Nested Object",
           "values": [
             "regex"
           ],
@@ -37115,7 +37115,7 @@
         },
         {
           "name": "rulesetSettings",
-          "type": "Nested",
+          "type": "Nested Object",
           "values": [
             "testRunTitle",
             "milestone",
@@ -37149,7 +37149,7 @@
         },
         {
           "name": "publishRobot",
-          "type": "Nested",
+          "type": "Nested Object",
           "values": [
             "robotCatenateParentKeywords",
             "robotOutput"
@@ -37159,7 +37159,7 @@
         },
         {
           "name": "publishTap",
-          "type": "Nested",
+          "type": "Nested Object",
           "values": [
             "tapFileNameInIdentifier",
             "tapTestNumberInIdentifier",
@@ -37171,7 +37171,7 @@
         },
         {
           "name": "advancedSettings",
-          "type": "Nested",
+          "type": "Nested Object",
           "values": [
             "testCaseMappingField",
             "companyId",
@@ -37198,7 +37198,7 @@
       "parameters": [
         {
           "name": "chosenParsers",
-          "type": "Nested",
+          "type": "Array / List of Nested Choice of Objects",
           "values": [
             "gccParser",
             "tiParser"
@@ -37683,7 +37683,7 @@
       "parameters": [
         {
           "name": "graphOptionsInfo",
-          "type": "Nested",
+          "type": "Array / List of Nested Object",
           "values": [
             "name",
             "curve",
@@ -37758,7 +37758,7 @@
         },
         {
           "name": "graphOptionsInfo",
-          "type": "Nested",
+          "type": "Array / List of Nested Object",
           "values": [
             "name",
             "curve",
@@ -37790,7 +37790,7 @@
         },
         {
           "name": "licenseServer",
-          "type": "Nested",
+          "type": "Nested Object",
           "values": [
             "uniqueID",
             "url",
@@ -37875,7 +37875,7 @@
         },
         {
           "name": "sharedProjectServer",
-          "type": "Nested",
+          "type": "Nested Object",
           "values": [
             "uniqueID",
             "url",
@@ -38058,7 +38058,7 @@
         },
         {
           "name": "config",
-          "type": "Nested",
+          "type": "Nested Object",
           "values": [
             "settings",
             "customSettings"
@@ -38133,7 +38133,7 @@
         },
         {
           "name": "property",
-          "type": "Nested",
+          "type": "Nested Object",
           "values": [
             "progId",
             "timeout",
@@ -38243,7 +38243,7 @@
         },
         {
           "name": "artifacts",
-          "type": "Nested",
+          "type": "Array / List of Nested Object",
           "values": [
             "artifactId",
             "type",
@@ -38298,7 +38298,7 @@
         },
         {
           "name": "iqModuleExcludes",
-          "type": "Nested",
+          "type": "Array / List of Nested Object",
           "values": [
             "moduleExclude"
           ],
@@ -38307,7 +38307,7 @@
         },
         {
           "name": "iqScanPatterns",
-          "type": "Nested",
+          "type": "Array / List of Nested Object",
           "values": [
             "scanPattern"
           ],
@@ -38345,7 +38345,7 @@
         },
         {
           "name": "packages",
-          "type": "Nested",
+          "type": "Array / List of Nested Choice of Objects",
           "values": [
             "$class: 'MavenPackage'"
           ],
@@ -38369,7 +38369,7 @@
       "parameters": [
         {
           "name": "builder",
-          "type": "Nested",
+          "type": "Nested Choice of Objects",
           "values": [
             "deleteAppInEnvironment",
             "deployAppInEnvironment",
@@ -38411,7 +38411,7 @@
         },
         {
           "name": "cacheLocationStrategy",
-          "type": "Nested",
+          "type": "Nested Choice of Objects",
           "values": [
             "default",
             "executor",
@@ -38936,7 +38936,7 @@
         },
         {
           "name": "packageConfigs",
-          "type": "Nested",
+          "type": "Array / List of Nested Object",
           "values": [
             "packageName",
             "packageReferenceName",
@@ -39366,7 +39366,7 @@
         },
         {
           "name": "factDefinitions",
-          "type": "Nested",
+          "type": "Array / List of Nested Object",
           "values": [
             "name",
             "template"
@@ -39686,7 +39686,7 @@
         },
         {
           "name": "env",
-          "type": "Nested",
+          "type": "Array / List of Nested Object",
           "values": [
             "name",
             "value"
@@ -39781,7 +39781,7 @@
         },
         {
           "name": "env",
-          "type": "Nested",
+          "type": "Array / List of Nested Object",
           "values": [
             "name",
             "value"
@@ -40348,7 +40348,7 @@
         },
         {
           "name": "arguments",
-          "type": "Nested",
+          "type": "Array / List of Nested Object",
           "values": [
             "value"
           ],
@@ -40428,7 +40428,7 @@
         },
         {
           "name": "arguments",
-          "type": "Nested",
+          "type": "Array / List of Nested Object",
           "values": [
             "value"
           ],
@@ -41375,7 +41375,7 @@
         },
         {
           "name": "includePatterns",
-          "type": "Nested",
+          "type": "Array / List of Nested Object",
           "values": [
             "includePattern"
           ],
@@ -41384,7 +41384,7 @@
         },
         {
           "name": "excludePatterns",
-          "type": "Nested",
+          "type": "Array / List of Nested Object",
           "values": [
             "excludePattern"
           ],
@@ -41464,7 +41464,7 @@
         },
         {
           "name": "sourcePaths",
-          "type": "Nested",
+          "type": "Array / List of Nested Object",
           "values": [
             "sourcePath",
             "excludePatterns"
@@ -41517,7 +41517,7 @@
         },
         {
           "name": "jobArguments",
-          "type": "Nested",
+          "type": "Array / List of Nested Object",
           "values": [
             "name",
             "value"
@@ -41535,7 +41535,7 @@
       "parameters": [
         {
           "name": "sourcePatterns",
-          "type": "Nested",
+          "type": "Array / List of Nested Object",
           "values": [
             "sourcePattern",
             "excludePatterns"
@@ -41708,7 +41708,7 @@
         },
         {
           "name": "workspace",
-          "type": "Nested",
+          "type": "Nested Choice of Objects",
           "values": [
             "manualSpec",
             "specFileSpec",
@@ -41772,7 +41772,7 @@
         },
         {
           "name": "workspace",
-          "type": "Nested",
+          "type": "Nested Choice of Objects",
           "values": [
             "manualSpec",
             "specFileSpec",
@@ -41785,7 +41785,7 @@
         },
         {
           "name": "publish",
-          "type": "Nested",
+          "type": "Nested Choice of Objects",
           "values": [
             "shelve",
             "submit"
@@ -41845,7 +41845,7 @@
         },
         {
           "name": "populate",
-          "type": "Nested",
+          "type": "Nested Choice of Objects",
           "values": [
             "autoClean",
             "previewOnly",
@@ -41859,7 +41859,7 @@
         },
         {
           "name": "source",
-          "type": "Nested",
+          "type": "Nested Choice of Objects",
           "values": [
             "depotSource",
             "graphSource",
@@ -41885,7 +41885,7 @@
         },
         {
           "name": "workspace",
-          "type": "Nested",
+          "type": "Nested Choice of Objects",
           "values": [
             "manualSpec",
             "specFileSpec",
@@ -41935,7 +41935,7 @@
         },
         {
           "name": "workspace",
-          "type": "Nested",
+          "type": "Nested Choice of Objects",
           "values": [
             "manualSpec",
             "specFileSpec",
@@ -42106,7 +42106,7 @@
       "parameters": [
         {
           "name": "configs",
-          "type": "Nested",
+          "type": "Array / List of Nested Object",
           "values": [
             "testPath",
             "format",
@@ -42842,7 +42842,7 @@
         },
         {
           "name": "parsers",
-          "type": "Nested",
+          "type": "Array / List of Nested Choice of Objects",
           "values": [
             "$class: 'IagoParser'",
             "$class: 'JMeterCsvParser'",
@@ -42915,7 +42915,7 @@
         },
         {
           "name": "metrics",
-          "type": "Nested",
+          "type": "Array / List of Nested Object",
           "values": [
             "metricId"
           ],
@@ -42953,7 +42953,7 @@
         },
         {
           "name": "configurationTestCases",
-          "type": "Nested",
+          "type": "Array / List of Nested Choice of Objects",
           "values": [
             "$class: 'GenericTestCase'",
             "$class: 'UnitTestCase'"
@@ -43199,7 +43199,7 @@
         },
         {
           "name": "csvSeries",
-          "type": "Nested",
+          "type": "Array / List of Nested Object",
           "values": [
             "file",
             "url",
@@ -43247,7 +43247,7 @@
         },
         {
           "name": "propertiesSeries",
-          "type": "Nested",
+          "type": "Array / List of Nested Object",
           "values": [
             "file",
             "label"
@@ -43271,7 +43271,7 @@
         },
         {
           "name": "xmlSeries",
-          "type": "Nested",
+          "type": "Array / List of Nested Object",
           "values": [
             "file",
             "xpath",
@@ -43523,7 +43523,7 @@
         },
         {
           "name": "annotations",
-          "type": "Nested",
+          "type": "Array / List of Nested Object",
           "values": [
             "key",
             "value"
@@ -43540,7 +43540,7 @@
         },
         {
           "name": "containers",
-          "type": "Nested",
+          "type": "Array / List of Nested Object",
           "values": [
             "name",
             "image",
@@ -43568,7 +43568,7 @@
         },
         {
           "name": "envVars",
-          "type": "Nested",
+          "type": "Array / List of Nested Choice of Objects",
           "values": [
             "containerEnvVar",
             "envVar",
@@ -43650,7 +43650,7 @@
         },
         {
           "name": "podRetention",
-          "type": "Nested",
+          "type": "Nested Choice of Objects",
           "values": [
             "always",
             "default",
@@ -43704,7 +43704,7 @@
         },
         {
           "name": "volumes",
-          "type": "Nested",
+          "type": "Array / List of Nested Choice of Objects",
           "values": [
             "configMapVolume",
             "emptyDirVolume",
@@ -43725,7 +43725,7 @@
         },
         {
           "name": "workspaceVolume",
-          "type": "Nested",
+          "type": "Nested Choice of Objects",
           "values": [
             "dynamicPVC",
             "emptyDirWorkspaceVolume",
@@ -43745,7 +43745,7 @@
         },
         {
           "name": "yamlMergeStrategy",
-          "type": "Nested",
+          "type": "Nested Choice of Objects",
           "values": [
             "merge",
             "override"
@@ -43770,7 +43770,7 @@
         },
         {
           "name": "createChangeSetFile",
-          "type": "Nested",
+          "type": "Nested Object",
           "values": [
             "excluding",
             "including",
@@ -44054,7 +44054,7 @@
       "parameters": [
         {
           "name": "properties",
-          "type": "Nested",
+          "type": "Array / List of Nested Choice of Objects",
           "values": [
             "allowBrokenBuildClaiming",
             "$class: 'AssemblaProjectProperty'",
@@ -44306,7 +44306,7 @@
         },
         {
           "name": "atxInstallation",
-          "type": "Nested",
+          "type": "Nested Object",
           "values": [
             "name",
             "toolName",
@@ -44596,7 +44596,7 @@
         },
         {
           "name": "editorList",
-          "type": "Nested",
+          "type": "Array / List of Nested Choice of Objects",
           "values": [
             "confluenceAfterToken",
             "confluenceAppendPage",
@@ -44646,7 +44646,7 @@
       "parameters": [
         {
           "name": "adapters",
-          "type": "Nested",
+          "type": "Array / List of Nested Choice of Objects",
           "values": [
             "antPath",
             "coberturaAdapter",
@@ -44704,7 +44704,7 @@
         },
         {
           "name": "globalThresholds",
-          "type": "Nested",
+          "type": "Array / List of Nested Object",
           "values": [
             "thresholdTarget",
             "failUnhealthy",
@@ -44723,7 +44723,7 @@
         },
         {
           "name": "sourceFileResolver",
-          "type": "Nested",
+          "type": "Nested Object",
           "values": [
             "level"
           ],
@@ -44768,7 +44768,7 @@
         },
         {
           "name": "comparisonOption",
-          "type": "Nested",
+          "type": "Nested Object",
           "values": [
             "value",
             "sonarProject",
@@ -45169,7 +45169,7 @@
         },
         {
           "name": "customGenerators",
-          "type": "Nested",
+          "type": "Array / List of Nested Object",
           "values": [
             "name",
             "settings",
@@ -45180,7 +45180,7 @@
         },
         {
           "name": "generators",
-          "type": "Nested",
+          "type": "Array / List of Nested Object",
           "values": [
             "name",
             "settings",
@@ -45191,7 +45191,7 @@
         },
         {
           "name": "installation",
-          "type": "Nested",
+          "type": "Nested Object",
           "values": [
             "name",
             "home",
@@ -45239,7 +45239,7 @@
       "parameters": [
         {
           "name": "target",
-          "type": "Nested",
+          "type": "Nested Object",
           "values": [
             "reportName",
             "reportDir",
@@ -45383,7 +45383,7 @@
         },
         {
           "name": "qualityGates",
-          "type": "Nested",
+          "type": "Array / List of Nested Object",
           "values": [
             "threshold",
             "type",
@@ -45506,7 +45506,7 @@
       "parameters": [
         {
           "name": "lambdaPublishBuildStepVariables",
-          "type": "Nested",
+          "type": "Nested Object",
           "values": [
             "awsRegion",
             "functionARN",
@@ -45694,7 +45694,7 @@
         },
         {
           "name": "installation",
-          "type": "Nested",
+          "type": "Nested Object",
           "values": [
             "name",
             "home",
@@ -46012,7 +46012,7 @@
         },
         {
           "name": "installation",
-          "type": "Nested",
+          "type": "Nested Object",
           "values": [
             "name",
             "home",
@@ -46087,7 +46087,7 @@
         },
         {
           "name": "installation",
-          "type": "Nested",
+          "type": "Nested Object",
           "values": [
             "name",
             "home",
@@ -46484,7 +46484,7 @@
         },
         {
           "name": "manifestChoice",
-          "type": "Nested",
+          "type": "Nested Object",
           "values": [
             "appName",
             "appPath",
@@ -46521,7 +46521,7 @@
         },
         {
           "name": "servicesToCreate",
-          "type": "Nested",
+          "type": "Array / List of Nested Object",
           "values": [
             "name",
             "type",
@@ -46692,7 +46692,7 @@
         },
         {
           "name": "sourceQAFramework",
-          "type": "Nested",
+          "type": "Nested Object",
           "values": [
             "qaInstallation",
             "qaProject",
@@ -46733,7 +46733,7 @@
         },
         {
           "name": "thresholdsDesc",
-          "type": "Nested",
+          "type": "Array / List of Nested Choice of Objects",
           "values": [
             "$class: 'FileComplianceThreshold'",
             "$class: 'MessageComplianceThreshold'",
@@ -47922,7 +47922,7 @@
         },
         {
           "name": "enableVcoverExec",
-          "type": "Nested",
+          "type": "Nested Object",
           "values": [
             "vcoverExec"
           ],
@@ -48503,7 +48503,7 @@
       "parameters": [
         {
           "name": "defaults",
-          "type": "Nested",
+          "type": "Nested Choice of Objects",
           "values": [],
           "description": "",
           "isOptional": true
@@ -48626,7 +48626,7 @@
         },
         {
           "name": "testDataPublishers",
-          "type": "Nested",
+          "type": "Array / List of Nested Choice of Objects",
           "values": [
             "$class: 'AttachmentPublisher'",
             "$class: 'AutomateTestDataPublisher'",
@@ -48668,7 +48668,7 @@
         },
         {
           "name": "entityIds",
-          "type": "Nested",
+          "type": "Array / List of Nested Choice of Objects",
           "values": [
             "$class: 'Application'",
             "$class: 'Host'",
@@ -48681,7 +48681,7 @@
         },
         {
           "name": "tagMatchRules",
-          "type": "Nested",
+          "type": "Array / List of Nested Object",
           "values": [
             "meTypes",
             "tags"
@@ -48727,7 +48727,7 @@
         },
         {
           "name": "entityIds",
-          "type": "Nested",
+          "type": "Array / List of Nested Choice of Objects",
           "values": [
             "$class: 'Application'",
             "$class: 'Host'",
@@ -48740,7 +48740,7 @@
         },
         {
           "name": "tagMatchRules",
-          "type": "Nested",
+          "type": "Array / List of Nested Object",
           "values": [
             "meTypes",
             "tags"
@@ -48842,7 +48842,7 @@
         },
         {
           "name": "filters",
-          "type": "Nested",
+          "type": "Array / List of Nested Choice of Objects",
           "values": [
             "excludeCategory",
             "excludeFile",
@@ -48918,7 +48918,7 @@
         },
         {
           "name": "qualityGates",
-          "type": "Nested",
+          "type": "Array / List of Nested Object",
           "values": [
             "threshold",
             "type",
@@ -48978,7 +48978,7 @@
         },
         {
           "name": "tool",
-          "type": "Nested",
+          "type": "Nested Choice of Objects",
           "values": [
             "acuCobol",
             "ajc",
@@ -49103,7 +49103,7 @@
         },
         {
           "name": "toolProxies",
-          "type": "Nested",
+          "type": "Array / List of Nested Object",
           "values": [
             "tool"
           ],
@@ -49112,7 +49112,7 @@
         },
         {
           "name": "tools",
-          "type": "Nested",
+          "type": "Array / List of Nested Choice of Objects",
           "values": [
             "acuCobol",
             "ajc",
@@ -49321,7 +49321,7 @@
       "parameters": [
         {
           "name": "settings",
-          "type": "Nested",
+          "type": "Array / List of Nested Object",
           "values": [
             "url",
             "apiKey",
@@ -49364,7 +49364,7 @@
         },
         {
           "name": "parameters",
-          "type": "Nested",
+          "type": "Array / List of Nested Choice of Objects",
           "values": [
             "agentParameter",
             "base64File",
@@ -49435,7 +49435,7 @@
         },
         {
           "name": "applications",
-          "type": "Nested",
+          "type": "Array / List of Nested Object",
           "values": [
             "name"
           ],
@@ -49458,7 +49458,7 @@
         },
         {
           "name": "services",
-          "type": "Nested",
+          "type": "Array / List of Nested Object",
           "values": [
             "name",
             "scopedTo"
@@ -49616,7 +49616,7 @@
       "parameters": [
         {
           "name": "source",
-          "type": "Nested",
+          "type": "Nested Choice of Objects",
           "values": [
             "$class: 'BacklogPullRequestSCMSource'",
             "multiBranch",
@@ -49781,7 +49781,7 @@
         },
         {
           "name": "attachments",
-          "type": "Nested",
+          "type": "Array / List of Nested Object",
           "values": [
             "title",
             "audioUrl",
@@ -52077,7 +52077,7 @@
         },
         {
           "name": "filterTestsModel",
-          "type": "Nested",
+          "type": "Nested Object",
           "values": [
             "blockedCheckbox",
             "failedCheckbox",
@@ -52091,7 +52091,7 @@
         },
         {
           "name": "almServerSettingsModel",
-          "type": "Nested",
+          "type": "Nested Object",
           "values": [
             "almServerName",
             "almServerUrl",
@@ -52103,7 +52103,7 @@
         },
         {
           "name": "runFromAlmModel",
-          "type": "Nested",
+          "type": "Nested Object",
           "values": [
             "almServerName",
             "almUserName",
@@ -52284,7 +52284,7 @@
         },
         {
           "name": "waitForResultsBlock",
-          "type": "Nested",
+          "type": "Nested Object",
           "values": [
             "testRunStateCheckMethod",
             "downloadScreenshots",
@@ -52548,7 +52548,7 @@
         },
         {
           "name": "tool",
-          "type": "Nested",
+          "type": "Nested Choice of Objects",
           "values": [
             "$class: 'ValgrindToolHelgrind'",
             "$class: 'ValgrindToolMemcheck'"
@@ -52767,7 +52767,7 @@
         },
         {
           "name": "buildSelector",
-          "type": "Nested",
+          "type": "Nested Choice of Objects",
           "values": [
             "downstream",
             "lastWithArtifacts",
@@ -53216,7 +53216,7 @@
         },
         {
           "name": "entries",
-          "type": "Nested",
+          "type": "Array / List of Nested Object",
           "values": [
             "bucket",
             "sourceFile",
@@ -53238,7 +53238,7 @@
         },
         {
           "name": "userMetadata",
-          "type": "Nested",
+          "type": "Array / List of Nested Object",
           "values": [
             "key",
             "value"
@@ -53298,7 +53298,7 @@
         },
         {
           "name": "clientInterface",
-          "type": "Nested",
+          "type": "Nested Choice of Objects",
           "values": [
             "hook",
             "batch",
@@ -53347,7 +53347,7 @@
       "parameters": [
         {
           "name": "settings",
-          "type": "Nested",
+          "type": "Nested Object",
           "values": [
             "credentialsId",
             "region",
@@ -53389,7 +53389,7 @@
       "parameters": [
         {
           "name": "testDataPublishers",
-          "type": "Nested",
+          "type": "Array / List of Nested Choice of Objects",
           "values": [
             "$class: 'AttachmentPublisher'",
             "$class: 'AutomateTestDataPublisher'",
@@ -53467,7 +53467,7 @@
         },
         {
           "name": "filters",
-          "type": "Nested",
+          "type": "Array / List of Nested Choice of Objects",
           "values": [
             "excludeCategory",
             "excludeFile",
@@ -53515,7 +53515,7 @@
         },
         {
           "name": "tool",
-          "type": "Nested",
+          "type": "Nested Choice of Objects",
           "values": [
             "acuCobol",
             "ajc",
@@ -53823,7 +53823,7 @@
         },
         {
           "name": "filter",
-          "type": "Nested",
+          "type": "Nested Choice of Objects",
           "values": [
             "and",
             "displayName",
@@ -53839,7 +53839,7 @@
         },
         {
           "name": "selector",
-          "type": "Nested",
+          "type": "Nested Choice of Objects",
           "values": [
             "buildNumber",
             "fallback",
@@ -53974,7 +53974,7 @@
         },
         {
           "name": "overrides",
-          "type": "Nested",
+          "type": "Nested Object",
           "values": [
             "topic",
             "queue"
@@ -54149,7 +54149,7 @@
       "parameters": [
         {
           "name": "serviceNowConfiguration",
-          "type": "Nested",
+          "type": "Nested Object",
           "values": [
             "instance",
             "credentialId",
@@ -54167,7 +54167,7 @@
         },
         {
           "name": "serviceNowItem",
-          "type": "Nested",
+          "type": "Nested Object",
           "values": [
             "table",
             "sysId",
@@ -54181,7 +54181,7 @@
         },
         {
           "name": "vaultConfiguration",
-          "type": "Nested",
+          "type": "Nested Object",
           "values": [
             "url",
             "path"
@@ -54199,7 +54199,7 @@
       "parameters": [
         {
           "name": "serviceNowConfiguration",
-          "type": "Nested",
+          "type": "Nested Object",
           "values": [
             "instance",
             "credentialId",
@@ -54217,7 +54217,7 @@
         },
         {
           "name": "serviceNowItem",
-          "type": "Nested",
+          "type": "Nested Object",
           "values": [
             "table",
             "sysId",
@@ -54231,7 +54231,7 @@
         },
         {
           "name": "vaultConfiguration",
-          "type": "Nested",
+          "type": "Nested Object",
           "values": [
             "url",
             "path"
@@ -54249,7 +54249,7 @@
       "parameters": [
         {
           "name": "serviceNowConfiguration",
-          "type": "Nested",
+          "type": "Nested Object",
           "values": [
             "instance",
             "credentialId",
@@ -54267,7 +54267,7 @@
         },
         {
           "name": "vaultConfiguration",
-          "type": "Nested",
+          "type": "Nested Object",
           "values": [
             "url",
             "path"
@@ -54285,7 +54285,7 @@
       "parameters": [
         {
           "name": "serviceNowConfiguration",
-          "type": "Nested",
+          "type": "Nested Object",
           "values": [
             "instance",
             "credentialId",
@@ -54303,7 +54303,7 @@
         },
         {
           "name": "serviceNowItem",
-          "type": "Nested",
+          "type": "Nested Object",
           "values": [
             "table",
             "sysId",
@@ -54317,7 +54317,7 @@
         },
         {
           "name": "vaultConfiguration",
-          "type": "Nested",
+          "type": "Nested Object",
           "values": [
             "url",
             "path"
@@ -54335,7 +54335,7 @@
       "parameters": [
         {
           "name": "serviceNowConfiguration",
-          "type": "Nested",
+          "type": "Nested Object",
           "values": [
             "instance",
             "credentialId",
@@ -54353,7 +54353,7 @@
         },
         {
           "name": "serviceNowItem",
-          "type": "Nested",
+          "type": "Nested Object",
           "values": [
             "table",
             "sysId",
@@ -54367,7 +54367,7 @@
         },
         {
           "name": "vaultConfiguration",
-          "type": "Nested",
+          "type": "Nested Object",
           "values": [
             "url",
             "path"
@@ -54385,7 +54385,7 @@
       "parameters": [
         {
           "name": "serviceNowConfiguration",
-          "type": "Nested",
+          "type": "Nested Object",
           "values": [
             "instance",
             "credentialId",
@@ -54403,7 +54403,7 @@
         },
         {
           "name": "serviceNowItem",
-          "type": "Nested",
+          "type": "Nested Object",
           "values": [
             "table",
             "sysId",
@@ -54417,7 +54417,7 @@
         },
         {
           "name": "vaultConfiguration",
-          "type": "Nested",
+          "type": "Nested Object",
           "values": [
             "url",
             "path"
@@ -54435,7 +54435,7 @@
       "parameters": [
         {
           "name": "serviceNowConfiguration",
-          "type": "Nested",
+          "type": "Nested Object",
           "values": [
             "instance",
             "credentialId",
@@ -54453,7 +54453,7 @@
         },
         {
           "name": "serviceNowItem",
-          "type": "Nested",
+          "type": "Nested Object",
           "values": [
             "table",
             "sysId",
@@ -54467,7 +54467,7 @@
         },
         {
           "name": "vaultConfiguration",
-          "type": "Nested",
+          "type": "Nested Object",
           "values": [
             "url",
             "path"
@@ -54721,7 +54721,7 @@
         },
         {
           "name": "signedApkMapping",
-          "type": "Nested",
+          "type": "Nested Choice of Objects",
           "values": [
             "unsignedApkNameDir",
             "unsignedApkSibling"
@@ -54795,7 +54795,7 @@
         },
         {
           "name": "signedApkMapping",
-          "type": "Nested",
+          "type": "Nested Choice of Objects",
           "values": [
             "unsignedApkNameDir",
             "unsignedApkSibling"
@@ -55384,7 +55384,7 @@
         },
         {
           "name": "attachments",
-          "type": "Nested",
+          "type": "Array / List of Nested Object",
           "values": [
             "title",
             "audioUrl",
@@ -56094,7 +56094,7 @@
       "parameters": [
         {
           "name": "authConfig",
-          "type": "Nested",
+          "type": "Nested Object",
           "values": [
             "password",
             "username"
@@ -56132,7 +56132,7 @@
         },
         {
           "name": "inspectionConfig",
-          "type": "Nested",
+          "type": "Nested Object",
           "values": [
             "autoMatch",
             "baseConfig",
@@ -56194,7 +56194,7 @@
         },
         {
           "name": "notificationConfig",
-          "type": "Nested",
+          "type": "Nested Object",
           "values": [
             "commentedIssuesNotificationRecipient",
             "negativeScoreNotificationRecipient",
@@ -56233,7 +56233,7 @@
         },
         {
           "name": "reviewConfig",
-          "type": "Nested",
+          "type": "Nested Object",
           "values": [
             "issueCommentTemplate",
             "issueFilterConfig",
@@ -56245,7 +56245,7 @@
         },
         {
           "name": "scoreConfig",
-          "type": "Nested",
+          "type": "Nested Object",
           "values": [
             "category",
             "issueFilterConfig",
@@ -56278,7 +56278,7 @@
         },
         {
           "name": "subJobConfigs",
-          "type": "Nested",
+          "type": "Array / List of Nested Object",
           "values": [
             "autoMatch",
             "projectPath",
@@ -56304,7 +56304,7 @@
         },
         {
           "name": "spaceList",
-          "type": "Nested",
+          "type": "Array / List of Nested Object",
           "values": [
             "spaceName",
             "spaceId"
@@ -56421,7 +56421,7 @@
       "parameters": [
         {
           "name": "parallelism",
-          "type": "Nested",
+          "type": "Nested Choice of Objects",
           "values": [
             "count",
             "time"
@@ -56855,7 +56855,7 @@
         },
         {
           "name": "rsaKey",
-          "type": "Nested",
+          "type": "Nested Object",
           "values": [
             "rsaKeyFileId",
             "rsaKeyFilePath",
@@ -56945,7 +56945,7 @@
         },
         {
           "name": "cdaDetails",
-          "type": "Nested",
+          "type": "Nested Object",
           "values": [
             "deploymentAction",
             "deployedEnvironmentName",
@@ -57048,7 +57048,7 @@
         },
         {
           "name": "cdaDetails",
-          "type": "Nested",
+          "type": "Nested Object",
           "values": [
             "deploymentAction",
             "deployedEnvironmentName",
@@ -57109,7 +57109,7 @@
         },
         {
           "name": "remote",
-          "type": "Nested",
+          "type": "Nested Choice of Objects",
           "values": [],
           "description": "",
           "isOptional": true
@@ -57180,7 +57180,7 @@
         },
         {
           "name": "remote",
-          "type": "Nested",
+          "type": "Nested Choice of Objects",
           "values": [],
           "description": "",
           "isOptional": true
@@ -57223,7 +57223,7 @@
         },
         {
           "name": "paramPublish",
-          "type": "Nested",
+          "type": "Nested Object",
           "values": [
             "parameterName"
           ],
@@ -57232,7 +57232,7 @@
         },
         {
           "name": "publishers",
-          "type": "Nested",
+          "type": "Array / List of Nested Object",
           "values": [
             "configName",
             "verbose",
@@ -57298,7 +57298,7 @@
         },
         {
           "name": "remote",
-          "type": "Nested",
+          "type": "Nested Choice of Objects",
           "values": [],
           "description": "",
           "isOptional": true
@@ -57334,7 +57334,7 @@
         },
         {
           "name": "remote",
-          "type": "Nested",
+          "type": "Nested Choice of Objects",
           "values": [],
           "description": "",
           "isOptional": true
@@ -57370,7 +57370,7 @@
         },
         {
           "name": "remote",
-          "type": "Nested",
+          "type": "Nested Choice of Objects",
           "values": [],
           "description": "",
           "isOptional": true
@@ -57493,7 +57493,7 @@
         },
         {
           "name": "installation",
-          "type": "Nested",
+          "type": "Nested Object",
           "values": [
             "name",
             "home",
@@ -57647,7 +57647,7 @@
         },
         {
           "name": "installation",
-          "type": "Nested",
+          "type": "Nested Object",
           "values": [
             "name",
             "home",
@@ -57873,7 +57873,7 @@
       "parameters": [
         {
           "name": "context",
-          "type": "Nested",
+          "type": "Nested Object",
           "values": [
             "azureCredentialsId",
             "resourceGroupName",
@@ -58479,7 +58479,7 @@
         },
         {
           "name": "inventory",
-          "type": "Nested",
+          "type": "Nested Choice of Objects",
           "values": [
             "$class: 'InventoryContent'",
             "$class: 'InventoryDoNotSpecify'",
@@ -58546,7 +58546,7 @@
         },
         {
           "name": "extraVars",
-          "type": "Nested",
+          "type": "Array / List of Nested Object",
           "values": [
             "hidden",
             "key",
@@ -58614,7 +58614,7 @@
         },
         {
           "name": "inventory",
-          "type": "Nested",
+          "type": "Nested Choice of Objects",
           "values": [
             "$class: 'InventoryContent'",
             "$class: 'InventoryDoNotSpecify'",
@@ -58667,7 +58667,7 @@
         },
         {
           "name": "extraVars",
-          "type": "Nested",
+          "type": "Array / List of Nested Object",
           "values": [
             "hidden",
             "key",
@@ -58969,7 +58969,7 @@
       "parameters": [
         {
           "name": "uploads",
-          "type": "Nested",
+          "type": "Array / List of Nested Object",
           "values": [
             "prodEnv",
             "customApperianUrl",
@@ -59289,7 +59289,7 @@
         },
         {
           "name": "failonswitch",
-          "type": "Nested",
+          "type": "Nested Object",
           "values": [
             "failon"
           ],
@@ -59363,7 +59363,7 @@
       "parameters": [
         {
           "name": "publishers",
-          "type": "Nested",
+          "type": "Array / List of Nested Object",
           "values": [
             "configName",
             "verbose",
@@ -59407,7 +59407,7 @@
         },
         {
           "name": "paramPublish",
-          "type": "Nested",
+          "type": "Nested Object",
           "values": [
             "parameterName"
           ],
@@ -59424,7 +59424,7 @@
       "parameters": [
         {
           "name": "publishers",
-          "type": "Nested",
+          "type": "Array / List of Nested Object",
           "values": [
             "configName",
             "verbose",
@@ -59468,7 +59468,7 @@
         },
         {
           "name": "paramPublish",
-          "type": "Nested",
+          "type": "Nested Object",
           "values": [
             "parameterName"
           ],
@@ -59528,7 +59528,7 @@
         },
         {
           "name": "createProject",
-          "type": "Nested",
+          "type": "Nested Object",
           "values": [
             "projectName",
             "projectUsers",
@@ -59539,7 +59539,7 @@
         },
         {
           "name": "createJenkinsJobs",
-          "type": "Nested",
+          "type": "Nested Object",
           "values": [
             "ciServer"
           ],
@@ -59902,7 +59902,7 @@
       "parameters": [
         {
           "name": "buildStep",
-          "type": "Nested",
+          "type": "Nested Choice of Objects",
           "values": [
             "$class: 'A3Builder'",
             "$class: 'ACSDeploymentBuilder'",
@@ -60048,7 +60048,7 @@
       "parameters": [
         {
           "name": "configs",
-          "type": "Nested",
+          "type": "Array / List of Nested Object",
           "values": [
             "domain",
             "projectName",
@@ -60473,7 +60473,7 @@
       "parameters": [
         {
           "name": "publishers",
-          "type": "Nested",
+          "type": "Array / List of Nested Object",
           "values": [
             "configName",
             "verbose",
@@ -60516,7 +60516,7 @@
         },
         {
           "name": "paramPublish",
-          "type": "Nested",
+          "type": "Nested Object",
           "values": [
             "parameterName"
           ],
@@ -60605,7 +60605,7 @@
         },
         {
           "name": "healthyTarget",
-          "type": "Nested",
+          "type": "Nested Object",
           "values": [
             "methodCoverage",
             "conditionalCoverage",
@@ -60616,7 +60616,7 @@
         },
         {
           "name": "unhealthyTarget",
-          "type": "Nested",
+          "type": "Nested Object",
           "values": [
             "methodCoverage",
             "conditionalCoverage",
@@ -60627,7 +60627,7 @@
         },
         {
           "name": "failingTarget",
-          "type": "Nested",
+          "type": "Nested Object",
           "values": [
             "methodCoverage",
             "conditionalCoverage",
@@ -60653,7 +60653,7 @@
         },
         {
           "name": "objects",
-          "type": "Nested",
+          "type": "Array / List of Nested Object",
           "values": [
             "name",
             "owner",
@@ -60664,7 +60664,7 @@
         },
         {
           "name": "objectFolders",
-          "type": "Nested",
+          "type": "Array / List of Nested Object",
           "values": [
             "path",
             "filter",
@@ -60675,7 +60675,7 @@
         },
         {
           "name": "report",
-          "type": "Nested",
+          "type": "Nested Object",
           "values": [
             "name",
             "html",
@@ -60695,7 +60695,7 @@
         },
         {
           "name": "failConditions",
-          "type": "Nested",
+          "type": "Nested Object",
           "values": [
             "halstead",
             "maintainability",
@@ -61365,7 +61365,7 @@
         },
         {
           "name": "analysisResultConfiguration",
-          "type": "Nested",
+          "type": "Nested Object",
           "values": [
             "failureSeverity",
             "unstableSeverity",
@@ -62121,7 +62121,7 @@
         },
         {
           "name": "deployToFirstStage",
-          "type": "Nested",
+          "type": "Nested Object",
           "values": [
             "waitUntilCompleted",
             "printLogOnFailure"
@@ -62167,7 +62167,7 @@
         },
         {
           "name": "params",
-          "type": "Nested",
+          "type": "Array / List of Nested Object",
           "values": [
             "name",
             "description",
@@ -62178,7 +62178,7 @@
         },
         {
           "name": "workspaces",
-          "type": "Nested",
+          "type": "Array / List of Nested Object",
           "values": [
             "name",
             "description",
@@ -62189,7 +62189,7 @@
         },
         {
           "name": "steps",
-          "type": "Nested",
+          "type": "Array / List of Nested Object",
           "values": [
             "name",
             "image",
@@ -62205,7 +62205,7 @@
         },
         {
           "name": "envs",
-          "type": "Nested",
+          "type": "Array / List of Nested Object",
           "values": [
             "name",
             "value"
@@ -62244,7 +62244,7 @@
         },
         {
           "name": "workspaces",
-          "type": "Nested",
+          "type": "Array / List of Nested Object",
           "values": [
             "name",
             "claimName"
@@ -62254,7 +62254,7 @@
         },
         {
           "name": "params",
-          "type": "Nested",
+          "type": "Array / List of Nested Object",
           "values": [
             "name",
             "value"
@@ -62663,7 +62663,7 @@
         },
         {
           "name": "dependencyScanConfig",
-          "type": "Nested",
+          "type": "Nested Object",
           "values": [
             "dependencyScanExcludeFolders",
             "dependencyScanPatterns",
@@ -62826,7 +62826,7 @@
       "parameters": [
         {
           "name": "deleteAllStatus",
-          "type": "Nested",
+          "type": "Nested Object",
           "values": [
             "resourceName"
           ],
@@ -63136,7 +63136,7 @@
       "parameters": [
         {
           "name": "option",
-          "type": "Nested",
+          "type": "Nested Choice of Objects",
           "values": [
             "$class: 'DockerBuilderControlOptionProvisionAndStart'",
             "$class: 'DockerBuilderControlOptionRun'",
@@ -63164,7 +63164,7 @@
         },
         {
           "name": "fromRegistry",
-          "type": "Nested",
+          "type": "Nested Object",
           "values": [
             "url",
             "credentialsId"
@@ -63252,7 +63252,7 @@
         },
         {
           "name": "option",
-          "type": "Nested",
+          "type": "Nested Choice of Objects",
           "values": [
             "$class: 'ExecuteCommandInsideContainer'",
             "$class: 'StartAllServices'",
@@ -63358,7 +63358,7 @@
       "parameters": [
         {
           "name": "publishers",
-          "type": "Nested",
+          "type": "Array / List of Nested Object",
           "values": [
             "configName",
             "verbose",
@@ -63502,7 +63502,7 @@
       "parameters": [
         {
           "name": "parameters",
-          "type": "Nested",
+          "type": "Array / List of Nested Object",
           "values": [
             "key",
             "value"
@@ -63540,7 +63540,7 @@
         },
         {
           "name": "overrideCredential",
-          "type": "Nested",
+          "type": "Nested Object",
           "values": [
             "credentialId"
           ],
@@ -63614,7 +63614,7 @@
         },
         {
           "name": "scope",
-          "type": "Nested",
+          "type": "Nested Object",
           "values": [
             "value",
             "branchName",
@@ -63625,7 +63625,7 @@
         },
         {
           "name": "additionalBuildInfo",
-          "type": "Nested",
+          "type": "Nested Object",
           "values": [
             "buildNumber",
             "buildUrl"
@@ -63729,7 +63729,7 @@
       "parameters": [
         {
           "name": "fireLineTarget",
-          "type": "Nested",
+          "type": "Nested Object",
           "values": [
             "csp",
             "blockBuild",
@@ -64026,7 +64026,7 @@
       "parameters": [
         {
           "name": "metrics",
-          "type": "Nested",
+          "type": "Array / List of Nested Choice of Objects",
           "values": [
             "$class: 'GlobalOKRateMetric'",
             "$class: 'GlobalQpsMetric'",
@@ -64088,7 +64088,7 @@
         },
         {
           "name": "configurations",
-          "type": "Nested",
+          "type": "Array / List of Nested Object",
           "values": [
             "testSetPath"
           ],
@@ -64198,7 +64198,7 @@
       "parameters": [
         {
           "name": "config",
-          "type": "Nested",
+          "type": "Nested Object",
           "values": [
             "configFile",
             "createFileTemplateContent",
@@ -64269,7 +64269,7 @@
         },
         {
           "name": "statusMessage",
-          "type": "Nested",
+          "type": "Nested Object",
           "values": [
             "content"
           ],
@@ -64286,7 +64286,7 @@
       "parameters": [
         {
           "name": "commitShaSource",
-          "type": "Nested",
+          "type": "Nested Choice of Objects",
           "values": [
             "$class: 'BuildDataRevisionShaSource'",
             "$class: 'ManuallyEnteredShaSource'"
@@ -64296,7 +64296,7 @@
         },
         {
           "name": "contextSource",
-          "type": "Nested",
+          "type": "Nested Choice of Objects",
           "values": [
             "$class: 'DefaultCommitContextSource'",
             "$class: 'ManuallyEnteredCommitContextSource'"
@@ -64306,7 +64306,7 @@
         },
         {
           "name": "errorHandlers",
-          "type": "Nested",
+          "type": "Array / List of Nested Choice of Objects",
           "values": [
             "$class: 'ChangingBuildStatusErrorHandler'",
             "$class: 'ShallowAnyErrorHandler'"
@@ -64316,7 +64316,7 @@
         },
         {
           "name": "reposSource",
-          "type": "Nested",
+          "type": "Nested Choice of Objects",
           "values": [
             "$class: 'AnyDefinedRepositorySource'",
             "$class: 'ManuallyEnteredRepositorySource'"
@@ -64326,7 +64326,7 @@
         },
         {
           "name": "statusBackrefSource",
-          "type": "Nested",
+          "type": "Nested Choice of Objects",
           "values": [
             "$class: 'BuildRefBackrefSource'",
             "$class: 'ManuallyEnteredBackrefSource'"
@@ -64336,7 +64336,7 @@
         },
         {
           "name": "statusResultSource",
-          "type": "Nested",
+          "type": "Nested Choice of Objects",
           "values": [
             "$class: 'ConditionalStatusResultSource'",
             "$class: 'DefaultStatusResultSource'"
@@ -64404,7 +64404,7 @@
       "parameters": [
         {
           "name": "contextSource",
-          "type": "Nested",
+          "type": "Nested Choice of Objects",
           "values": [
             "$class: 'DefaultCommitContextSource'",
             "$class: 'ManuallyEnteredCommitContextSource'"
@@ -64414,7 +64414,7 @@
         },
         {
           "name": "statusMessage",
-          "type": "Nested",
+          "type": "Nested Object",
           "values": [
             "content"
           ],
@@ -64602,7 +64602,7 @@
       "parameters": [
         {
           "name": "issueSelector",
-          "type": "Nested",
+          "type": "Nested Choice of Objects",
           "values": [
             "$class: 'DefaultIssueSelector'",
             "$class: 'ExplicitIssueSelector'",
@@ -64798,7 +64798,7 @@
         },
         {
           "name": "testDataPublishers",
-          "type": "Nested",
+          "type": "Array / List of Nested Choice of Objects",
           "values": [
             "$class: 'AttachmentPublisher'",
             "$class: 'AutomateTestDataPublisher'",
@@ -64869,7 +64869,7 @@
       "parameters": [
         {
           "name": "reportConfigs",
-          "type": "Nested",
+          "type": "Array / List of Nested Choice of Objects",
           "values": [
             "$class: 'AsciiDocReportConfig'",
             "$class: 'HtmlReportConfig'",
@@ -64931,7 +64931,7 @@
       "parameters": [
         {
           "name": "issueSelector",
-          "type": "Nested",
+          "type": "Nested Choice of Objects",
           "values": [
             "$class: 'DefaultIssueSelector'",
             "$class: 'ExplicitIssueSelector'",
@@ -64943,7 +64943,7 @@
         },
         {
           "name": "scm",
-          "type": "Nested",
+          "type": "Nested Choice of Objects",
           "values": [
             "$class: 'AWSCodePipelineSCM'",
             "accurev",
@@ -65096,7 +65096,7 @@
         },
         {
           "name": "option",
-          "type": "Nested",
+          "type": "Nested Choice of Objects",
           "values": [
             "$class: 'KarafCommandFileOption'",
             "$class: 'KarafCommandScriptOption'"
@@ -65114,7 +65114,7 @@
       "parameters": [
         {
           "name": "buildSpecConfig",
-          "type": "Nested",
+          "type": "Nested Object",
           "values": [
             "buildCommand",
             "tool",
@@ -65135,7 +65135,7 @@
       "parameters": [
         {
           "name": "ciConfig",
-          "type": "Nested",
+          "type": "Nested Object",
           "values": [
             "buildSpec",
             "projectDir",
@@ -65158,7 +65158,7 @@
       "parameters": [
         {
           "name": "failureConditionConfig",
-          "type": "Nested",
+          "type": "Nested Object",
           "values": [
             "enableServerFailureCondition",
             "failureConditionServerConfigs",
@@ -65181,7 +65181,7 @@
       "parameters": [
         {
           "name": "serverConfig",
-          "type": "Nested",
+          "type": "Nested Object",
           "values": [
             "buildSpec",
             "tablesDir",
@@ -65206,7 +65206,7 @@
       "parameters": [
         {
           "name": "serverConfig",
-          "type": "Nested",
+          "type": "Nested Object",
           "values": [
             "tablesDir",
             "buildName",
@@ -65217,7 +65217,7 @@
         },
         {
           "name": "reportConfig",
-          "type": "Nested",
+          "type": "Nested Object",
           "values": [
             "displayChart",
             "chartHeight",
@@ -65237,7 +65237,7 @@
       "parameters": [
         {
           "name": "syncConfig",
-          "type": "Nested",
+          "type": "Nested Object",
           "values": [
             "dryRun",
             "lastSync",
@@ -65265,7 +65265,7 @@
       "parameters": [
         {
           "name": "context",
-          "type": "Nested",
+          "type": "Nested Object",
           "values": [
             "configs",
             "credentialsType",
@@ -65292,7 +65292,7 @@
       "parameters": [
         {
           "name": "configs",
-          "type": "Nested",
+          "type": "Array / List of Nested Object",
           "values": [
             "parserClassName",
             "testResultFileMask",
@@ -65354,7 +65354,7 @@
       "parameters": [
         {
           "name": "notifyInProgress",
-          "type": "Nested",
+          "type": "Nested Object",
           "values": [
             "colorInProgress"
           ],
@@ -65631,7 +65631,7 @@
         },
         {
           "name": "oeb",
-          "type": "Nested",
+          "type": "Nested Object",
           "values": [
             "errorPassCriteria"
           ],
@@ -65640,7 +65640,7 @@
         },
         {
           "name": "odb",
-          "type": "Nested",
+          "type": "Nested Object",
           "values": [
             "durationPassCriteria"
           ],
@@ -66334,7 +66334,7 @@
         },
         {
           "name": "sharedProjectServer",
-          "type": "Nested",
+          "type": "Nested Object",
           "values": [
             "uniqueID",
             "url",
@@ -66347,7 +66347,7 @@
         },
         {
           "name": "licenseServer",
-          "type": "Nested",
+          "type": "Nested Object",
           "values": [
             "uniqueID",
             "url",
@@ -66376,7 +66376,7 @@
         },
         {
           "name": "graphOptionsInfo",
-          "type": "Nested",
+          "type": "Array / List of Nested Object",
           "values": [
             "name",
             "curve",
@@ -66769,7 +66769,7 @@
         },
         {
           "name": "artifacts",
-          "type": "Nested",
+          "type": "Array / List of Nested Object",
           "values": [
             "artifactId",
             "type",
@@ -66803,7 +66803,7 @@
         },
         {
           "name": "packages",
-          "type": "Nested",
+          "type": "Array / List of Nested Choice of Objects",
           "values": [
             "$class: 'MavenPackage'"
           ],
@@ -67048,7 +67048,7 @@
         },
         {
           "name": "env",
-          "type": "Nested",
+          "type": "Array / List of Nested Object",
           "values": [
             "name",
             "value"
@@ -67535,7 +67535,7 @@
         },
         {
           "name": "arguments",
-          "type": "Nested",
+          "type": "Array / List of Nested Object",
           "values": [
             "value"
           ],
@@ -68050,7 +68050,7 @@
         },
         {
           "name": "playVersion",
-          "type": "Nested",
+          "type": "Nested Choice of Objects",
           "values": [
             "$class: 'Play1x'",
             "$class: 'Play2x'"
@@ -68360,7 +68360,7 @@
       "parameters": [
         {
           "name": "additionalBuildInfo",
-          "type": "Nested",
+          "type": "Nested Object",
           "values": [
             "buildNumber",
             "buildUrl"
@@ -68441,7 +68441,7 @@
         },
         {
           "name": "additionalBuildInfo",
-          "type": "Nested",
+          "type": "Nested Object",
           "values": [
             "buildNumber"
           ],
@@ -68507,7 +68507,7 @@
         },
         {
           "name": "additionalBuildInfo",
-          "type": "Nested",
+          "type": "Nested Object",
           "values": [
             "buildNumber"
           ],
@@ -68566,7 +68566,7 @@
         },
         {
           "name": "additionalUpload",
-          "type": "Nested",
+          "type": "Nested Object",
           "values": [
             "additionalLifecycleStage",
             "additionalContents"
@@ -68576,7 +68576,7 @@
         },
         {
           "name": "additionalBuildInfo",
-          "type": "Nested",
+          "type": "Nested Object",
           "values": [
             "buildNumber"
           ],
@@ -68585,7 +68585,7 @@
         },
         {
           "name": "additionalGate",
-          "type": "Nested",
+          "type": "Nested Object",
           "values": [
             "policyName",
             "willDisrupt"
@@ -68595,7 +68595,7 @@
         },
         {
           "name": "testEnv",
-          "type": "Nested",
+          "type": "Nested Object",
           "values": [
             "value",
             "branchName",
@@ -69349,7 +69349,7 @@
         },
         {
           "name": "targets",
-          "type": "Nested",
+          "type": "Array / List of Nested Object",
           "values": [
             "metric",
             "healthy",
@@ -69376,7 +69376,7 @@
         },
         {
           "name": "reconfigureSteps",
-          "type": "Nested",
+          "type": "Array / List of Nested Choice of Objects",
           "values": [
             "$class: 'ReconfigureAnnotation'",
             "$class: 'ReconfigureCpu'",
@@ -69404,7 +69404,7 @@
         },
         {
           "name": "auth2",
-          "type": "Nested",
+          "type": "Nested Choice of Objects",
           "values": [
             "BearerTokenAuth",
             "CredentialsAuth",
@@ -70000,7 +70000,7 @@
         },
         {
           "name": "fileSystemTestSetModel",
-          "type": "Nested",
+          "type": "Nested Object",
           "values": [
             "fileSystemTestSet"
           ],
@@ -70009,7 +70009,7 @@
         },
         {
           "name": "summaryDataLogModel",
-          "type": "Nested",
+          "type": "Nested Object",
           "values": [
             "logVusersStates",
             "logErrorCount",
@@ -70021,7 +70021,7 @@
         },
         {
           "name": "scriptRTSSetModel",
-          "type": "Nested",
+          "type": "Nested Object",
           "values": [
             "scripts"
           ],
@@ -70037,7 +70037,7 @@
         },
         {
           "name": "uftSettingsModel",
-          "type": "Nested",
+          "type": "Nested Object",
           "values": [
             "selectedNode",
             "numberOfReruns",
@@ -70205,7 +70205,7 @@
         },
         {
           "name": "proxySettings",
-          "type": "Nested",
+          "type": "Nested Object",
           "values": [
             "fsUseAuthentication",
             "fsProxyAddress",
@@ -70269,7 +70269,7 @@
       "parameters": [
         {
           "name": "coberturaArtifact",
-          "type": "Nested",
+          "type": "Nested Object",
           "values": [
             "coberturaReportFilePath"
           ],
@@ -70278,7 +70278,7 @@
         },
         {
           "name": "junitArtifact",
-          "type": "Nested",
+          "type": "Nested Object",
           "values": [
             "junitReportFilePath"
           ],
@@ -70287,7 +70287,7 @@
         },
         {
           "name": "modelCoverageArtifact",
-          "type": "Nested",
+          "type": "Nested Object",
           "values": [
             "modelCoverageFilePath"
           ],
@@ -70296,7 +70296,7 @@
         },
         {
           "name": "pdfReportArtifact",
-          "type": "Nested",
+          "type": "Nested Object",
           "values": [
             "pdfReportFilePath"
           ],
@@ -70305,7 +70305,7 @@
         },
         {
           "name": "selectByFolder",
-          "type": "Nested",
+          "type": "Nested Object",
           "values": [
             "testFolderPaths"
           ],
@@ -70314,7 +70314,7 @@
         },
         {
           "name": "selectByTag",
-          "type": "Nested",
+          "type": "Nested Object",
           "values": [
             "testTag"
           ],
@@ -70323,7 +70323,7 @@
         },
         {
           "name": "sourceFolder",
-          "type": "Nested",
+          "type": "Nested Object",
           "values": [
             "sourceFolderPaths"
           ],
@@ -70332,7 +70332,7 @@
         },
         {
           "name": "stmResultsArtifact",
-          "type": "Nested",
+          "type": "Nested Object",
           "values": [
             "stmResultsFilePath"
           ],
@@ -70341,7 +70341,7 @@
         },
         {
           "name": "tapArtifact",
-          "type": "Nested",
+          "type": "Nested Object",
           "values": [
             "tapReportFilePath"
           ],
@@ -70777,7 +70777,7 @@
         },
         {
           "name": "clientInterface",
-          "type": "Nested",
+          "type": "Nested Choice of Objects",
           "values": [
             "hook",
             "batch",
@@ -71048,7 +71048,7 @@
         },
         {
           "name": "recipients",
-          "type": "Nested",
+          "type": "Array / List of Nested Object",
           "values": [
             "id"
           ],
@@ -71065,7 +71065,7 @@
       "parameters": [
         {
           "name": "publishStep",
-          "type": "Nested",
+          "type": "Nested Object",
           "values": [
             "applicationName",
             "applicationType",
@@ -71091,7 +71091,7 @@
       "parameters": [
         {
           "name": "protocolMenu",
-          "type": "Nested",
+          "type": "Nested Choice of Objects",
           "values": [
             "$class: 'HTTPItem'",
             "$class: 'HTTPSDisableItem'",
@@ -71274,7 +71274,7 @@
       "parameters": [
         {
           "name": "selectedServers",
-          "type": "Nested",
+          "type": "Array / List of Nested Object",
           "values": [
             "identifier",
             "selected"
@@ -71454,7 +71454,7 @@
         },
         {
           "name": "dataModel",
-          "type": "Nested",
+          "type": "Nested Object",
           "values": [
             "selectionType",
             "dataModel"
@@ -71464,7 +71464,7 @@
         },
         {
           "name": "performanceModel",
-          "type": "Nested",
+          "type": "Nested Object",
           "values": [
             "selectionType",
             "performanceModel"
@@ -71474,7 +71474,7 @@
         },
         {
           "name": "serviceSelection",
-          "type": "Nested",
+          "type": "Nested Object",
           "values": [
             "selectionType",
             "service",
@@ -71572,7 +71572,7 @@
         },
         {
           "name": "serviceSelection",
-          "type": "Nested",
+          "type": "Nested Object",
           "values": [
             "selectionType",
             "service",
@@ -71627,7 +71627,7 @@
         },
         {
           "name": "serviceSelection",
-          "type": "Nested",
+          "type": "Nested Object",
           "values": [
             "selectionType",
             "service",
@@ -71654,7 +71654,7 @@
         },
         {
           "name": "assessmentInfo",
-          "type": "Nested",
+          "type": "Array / List of Nested Object",
           "values": [
             "toolUUID",
             "platformUUID"
@@ -72364,7 +72364,7 @@
       "parameters": [
         {
           "name": "requestedResults",
-          "type": "Nested",
+          "type": "Array / List of Nested Object",
           "values": [
             "teamResultType",
             "includes"
@@ -73304,7 +73304,7 @@
       "parameters": [
         {
           "name": "enableJs",
-          "type": "Nested",
+          "type": "Nested Object",
           "values": [
             "jsFilePath",
             "jsonFilePath"
@@ -73314,7 +73314,7 @@
         },
         {
           "name": "enableJar",
-          "type": "Nested",
+          "type": "Nested Object",
           "values": [
             "jarFilePath"
           ],
@@ -73402,7 +73402,7 @@
         },
         {
           "name": "scanFiles",
-          "type": "Nested",
+          "type": "Array / List of Nested Object",
           "values": [
             "path"
           ],
@@ -73482,7 +73482,7 @@
         },
         {
           "name": "calc",
-          "type": "Nested",
+          "type": "Nested Object",
           "values": [
             "ABSTRACTINTERPRETATION",
             "ACCUCHANGERATE",
@@ -73522,7 +73522,7 @@
         },
         {
           "name": "recalc",
-          "type": "Nested",
+          "type": "Nested Object",
           "values": [
             "ABSTRACTINTERPRETATION",
             "ACCUCHANGERATE",
@@ -73620,7 +73620,7 @@
         },
         {
           "name": "objects",
-          "type": "Nested",
+          "type": "Array / List of Nested Object",
           "values": [
             "name",
             "owner"
@@ -74140,7 +74140,7 @@
       "parameters": [
         {
           "name": "buildStep",
-          "type": "Nested",
+          "type": "Nested Choice of Objects",
           "values": [
             "$class: 'Clone'",
             "$class: 'ConvertToTemplate'",
@@ -74227,7 +74227,7 @@
         },
         {
           "name": "tool",
-          "type": "Nested",
+          "type": "Nested Choice of Objects",
           "values": [
             "$class: 'ValgrindToolHelgrind'",
             "$class: 'ValgrindToolMemcheck'"
@@ -74422,7 +74422,7 @@
         },
         {
           "name": "healthyTarget",
-          "type": "Nested",
+          "type": "Nested Object",
           "values": [
             "minStatement",
             "maxStatement",
@@ -74442,7 +74442,7 @@
         },
         {
           "name": "unhealthyTarget",
-          "type": "Nested",
+          "type": "Nested Object",
           "values": [
             "minStatement",
             "maxStatement",
@@ -75233,7 +75233,7 @@
         },
         {
           "name": "runFiles",
-          "type": "Nested",
+          "type": "Array / List of Nested Object",
           "values": [
             "runFile"
           ],
@@ -75485,7 +75485,7 @@
       "parameters": [
         {
           "name": "tools",
-          "type": "Nested",
+          "type": "Array / List of Nested Choice of Objects",
           "values": [
             "AUnit",
             "BoostTest",
@@ -75523,7 +75523,7 @@
         },
         {
           "name": "thresholds",
-          "type": "Nested",
+          "type": "Array / List of Nested Choice of Objects",
           "values": [
             "failed",
             "passed",
@@ -75569,7 +75569,7 @@
         },
         {
           "name": "testDataPublishers",
-          "type": "Nested",
+          "type": "Array / List of Nested Choice of Objects",
           "values": [
             "$class: 'AttachmentPublisher'",
             "$class: 'AutomateTestDataPublisher'",
@@ -75639,7 +75639,7 @@
         },
         {
           "name": "xrayInstance",
-          "type": "Nested",
+          "type": "Nested Object",
           "values": [
             "configID",
             "alias",
@@ -75804,7 +75804,7 @@
         },
         {
           "name": "xrayInstance",
-          "type": "Nested",
+          "type": "Nested Object",
           "values": [
             "configID",
             "alias",
@@ -76081,7 +76081,7 @@
         },
         {
           "name": "settings",
-          "type": "Nested",
+          "type": "Array / List of Nested Object",
           "values": [
             "encoding",
             "filePattern",
@@ -76108,7 +76108,7 @@
         },
         {
           "name": "installation",
-          "type": "Nested",
+          "type": "Nested Object",
           "values": [
             "name",
             "home",
@@ -76178,7 +76178,7 @@
         },
         {
           "name": "installation",
-          "type": "Nested",
+          "type": "Nested Object",
           "values": [
             "name",
             "home",
@@ -76331,7 +76331,7 @@
       "parameters": [
         {
           "name": "pipeConfiguration",
-          "type": "Nested",
+          "type": "Nested Object",
           "values": [
             "qtestURL",
             "apiKey",
@@ -76439,7 +76439,7 @@
         },
         {
           "name": "dataModel",
-          "type": "Nested",
+          "type": "Nested Object",
           "values": [
             "selectionType",
             "dataModel"
@@ -76449,7 +76449,7 @@
         },
         {
           "name": "performanceModel",
-          "type": "Nested",
+          "type": "Nested Object",
           "values": [
             "selectionType",
             "performanceModel"
@@ -76459,7 +76459,7 @@
         },
         {
           "name": "serviceSelection",
-          "type": "Nested",
+          "type": "Nested Object",
           "values": [
             "selectionType",
             "service",
@@ -76671,7 +76671,7 @@
         },
         {
           "name": "serviceSelection",
-          "type": "Nested",
+          "type": "Nested Object",
           "values": [
             "selectionType",
             "service",
@@ -76847,7 +76847,7 @@
         },
         {
           "name": "serviceSelection",
-          "type": "Nested",
+          "type": "Nested Object",
           "values": [
             "selectionType",
             "service",
@@ -76960,7 +76960,7 @@
         },
         {
           "name": "downloadStrategyOverride",
-          "type": "Nested",
+          "type": "Nested Choice of Objects",
           "values": [
             "$class: 'AirGapDownloadStrategy'",
             "$class: 'InheritFromGlobalDownloadStrategy'",
@@ -77193,7 +77193,7 @@
       "parameters": [
         {
           "name": "buildType",
-          "type": "Nested",
+          "type": "Nested Object",
           "values": [
             "value",
             "buildDefinition",
@@ -77229,7 +77229,7 @@
         },
         {
           "name": "overrideConfig",
-          "type": "Nested",
+          "type": "Nested Object",
           "values": [
             "serverURI",
             "credentialsId",
@@ -77366,7 +77366,7 @@
         },
         {
           "name": "executionConfig",
-          "type": "Nested",
+          "type": "Nested Object",
           "values": [
             "timeout",
             "stopOnError",
@@ -77385,7 +77385,7 @@
         },
         {
           "name": "packageConfig",
-          "type": "Nested",
+          "type": "Nested Object",
           "values": [
             "runTest",
             "runTraceAnalysis",
@@ -77397,7 +77397,7 @@
         },
         {
           "name": "projectConfig",
-          "type": "Nested",
+          "type": "Nested Object",
           "values": [
             "execInCurrentPkgDir",
             "filterExpression",
@@ -77426,7 +77426,7 @@
         },
         {
           "name": "testConfig",
-          "type": "Nested",
+          "type": "Nested Object",
           "values": [
             "tbcFile",
             "tcfFile",
@@ -77455,7 +77455,7 @@
         },
         {
           "name": "executionConfig",
-          "type": "Nested",
+          "type": "Nested Object",
           "values": [
             "timeout",
             "stopOnError",
@@ -77467,7 +77467,7 @@
         },
         {
           "name": "packageConfig",
-          "type": "Nested",
+          "type": "Nested Object",
           "values": [
             "runTest",
             "runTraceAnalysis",
@@ -77479,7 +77479,7 @@
         },
         {
           "name": "testConfig",
-          "type": "Nested",
+          "type": "Nested Object",
           "values": [
             "tbcFile",
             "tcfFile",
@@ -77508,7 +77508,7 @@
         },
         {
           "name": "executionConfig",
-          "type": "Nested",
+          "type": "Nested Object",
           "values": [
             "timeout",
             "stopOnError",
@@ -77520,7 +77520,7 @@
         },
         {
           "name": "projectConfig",
-          "type": "Nested",
+          "type": "Nested Object",
           "values": [
             "execInCurrentPkgDir",
             "filterExpression",
@@ -77531,7 +77531,7 @@
         },
         {
           "name": "testConfig",
-          "type": "Nested",
+          "type": "Nested Object",
           "values": [
             "tbcFile",
             "tcfFile",
@@ -77609,7 +77609,7 @@
         },
         {
           "name": "launchConfig",
-          "type": "Nested",
+          "type": "Nested Object",
           "values": [
             "project",
             "routine",
@@ -77744,7 +77744,7 @@
       "parameters": [
         {
           "name": "testDataPublishers",
-          "type": "Nested",
+          "type": "Array / List of Nested Choice of Objects",
           "values": [
             "$class: 'AttachmentPublisher'",
             "$class: 'AutomateTestDataPublisher'",
@@ -79008,7 +79008,7 @@
         },
         {
           "name": "auth",
-          "type": "Nested",
+          "type": "Nested Choice of Objects",
           "values": [
             "BearerTokenAuth",
             "CredentialsAuth",
@@ -79266,7 +79266,7 @@
         },
         {
           "name": "rulesList",
-          "type": "Nested",
+          "type": "Array / List of Nested Object",
           "values": [
             "rule"
           ],
@@ -79332,7 +79332,7 @@
         },
         {
           "name": "rulesList",
-          "type": "Nested",
+          "type": "Array / List of Nested Object",
           "values": [
             "rule"
           ],
@@ -79419,7 +79419,7 @@
         },
         {
           "name": "runFromFileBuilder",
-          "type": "Nested",
+          "type": "Nested Object",
           "values": [
             "fsTests",
             "fileSystemTestSetModel",
@@ -79458,7 +79458,7 @@
         },
         {
           "name": "runResultRecorder",
-          "type": "Nested",
+          "type": "Nested Object",
           "values": [
             "archiveTestResultsMode"
           ],
@@ -80107,7 +80107,7 @@
       "parameters": [
         {
           "name": "action",
-          "type": "Nested",
+          "type": "Nested Choice of Objects",
           "values": [
             "$class: 'VCommanderRequestNewServiceAction'",
             "$class: 'VCommanderRunWorkflowAction'",
@@ -80127,7 +80127,7 @@
       "parameters": [
         {
           "name": "buildStep",
-          "type": "Nested",
+          "type": "Nested Choice of Objects",
           "values": [
             "$class: 'Clone'",
             "$class: 'ConvertToTemplate'",
@@ -80380,7 +80380,7 @@
         },
         {
           "name": "extraArgs",
-          "type": "Nested",
+          "type": "Array / List of Nested Object",
           "values": [
             "argument"
           ],
@@ -80403,7 +80403,7 @@
         },
         {
           "name": "timestampingServers",
-          "type": "Nested",
+          "type": "Array / List of Nested Object",
           "values": [
             "address"
           ],
@@ -80448,7 +80448,7 @@
         },
         {
           "name": "extraArgs",
-          "type": "Nested",
+          "type": "Array / List of Nested Object",
           "values": [
             "argument"
           ],
@@ -80471,7 +80471,7 @@
         },
         {
           "name": "signatureDigestAlgos",
-          "type": "Nested",
+          "type": "Array / List of Nested Object",
           "values": [
             "algorithm"
           ],
@@ -80487,7 +80487,7 @@
         },
         {
           "name": "timestampingServers",
-          "type": "Nested",
+          "type": "Array / List of Nested Object",
           "values": [
             "address"
           ],
@@ -80567,7 +80567,7 @@
         },
         {
           "name": "dnsNames",
-          "type": "Nested",
+          "type": "Array / List of Nested Object",
           "values": [
             "hostName"
           ],
@@ -80576,7 +80576,7 @@
         },
         {
           "name": "emailAddresses",
-          "type": "Nested",
+          "type": "Array / List of Nested Object",
           "values": [
             "address"
           ],
@@ -80585,7 +80585,7 @@
         },
         {
           "name": "ipAddresses",
-          "type": "Nested",
+          "type": "Array / List of Nested Object",
           "values": [
             "address"
           ],
@@ -82036,7 +82036,7 @@
         },
         {
           "name": "overrides",
-          "type": "Nested",
+          "type": "Nested Object",
           "values": [
             "topic",
             "queue"
@@ -82060,7 +82060,7 @@
         },
         {
           "name": "checks",
-          "type": "Nested",
+          "type": "Array / List of Nested Object",
           "values": [
             "field",
             "expectedValue"
@@ -82296,7 +82296,7 @@
         },
         {
           "name": "consoleParsers",
-          "type": "Nested",
+          "type": "Array / List of Nested Object",
           "values": [
             "parserName"
           ],
@@ -82396,7 +82396,7 @@
         },
         {
           "name": "parserConfigurations",
-          "type": "Nested",
+          "type": "Array / List of Nested Object",
           "values": [
             "pattern",
             "parserName"
@@ -82670,7 +82670,7 @@
         },
         {
           "name": "winRMOperations",
-          "type": "Nested",
+          "type": "Array / List of Nested Choice of Objects",
           "values": [
             "invokeCommand",
             "sendFile"
@@ -82873,7 +82873,7 @@
       "parameters": [
         {
           "name": "azureKeyVaultSecrets",
-          "type": "Nested",
+          "type": "Array / List of Nested Object",
           "values": [
             "secretType",
             "name",
@@ -83015,7 +83015,7 @@
         },
         {
           "name": "configureChangeSetPatterns",
-          "type": "Nested",
+          "type": "Nested Object",
           "values": [
             "changeSetExclusionPatterns",
             "changeSetInclusionPatterns"
@@ -83061,7 +83061,7 @@
       "parameters": [
         {
           "name": "bindings",
-          "type": "Nested",
+          "type": "Array / List of Nested Choice of Objects",
           "values": [
             "$class: 'AmazonWebServicesCredentialsBinding'",
             "token",
@@ -83132,7 +83132,7 @@
       "parameters": [
         {
           "name": "registry",
-          "type": "Nested",
+          "type": "Nested Object",
           "values": [
             "url",
             "credentialsId"
@@ -83157,7 +83157,7 @@
       "parameters": [
         {
           "name": "server",
-          "type": "Nested",
+          "type": "Nested Object",
           "values": [
             "uri",
             "credentialsId"
@@ -83334,7 +83334,7 @@
       "parameters": [
         {
           "name": "kubectlCredentials",
-          "type": "Nested",
+          "type": "Array / List of Nested Object",
           "values": [
             "caCertificate",
             "clusterName",
@@ -83412,7 +83412,7 @@
         },
         {
           "name": "options",
-          "type": "Nested",
+          "type": "Array / List of Nested Choice of Objects",
           "values": [
             "concordionPublisher",
             "dependenciesFingerprintPublisher",
@@ -83515,7 +83515,7 @@
         },
         {
           "name": "containers",
-          "type": "Nested",
+          "type": "Array / List of Nested Object",
           "values": [
             "name",
             "image",
@@ -83550,7 +83550,7 @@
         },
         {
           "name": "volumes",
-          "type": "Nested",
+          "type": "Array / List of Nested Choice of Objects",
           "values": [
             "configMapVolume",
             "emptyDirVolume",
@@ -83644,7 +83644,7 @@
       "parameters": [
         {
           "name": "scm",
-          "type": "Nested",
+          "type": "Nested Choice of Objects",
           "values": [
             "$class: 'AWSCodePipelineSCM'",
             "accurev",
@@ -83840,7 +83840,7 @@
       "parameters": [
         {
           "name": "vaultSecrets",
-          "type": "Nested",
+          "type": "Array / List of Nested Object",
           "values": [
             "path",
             "secretValues",
@@ -83851,7 +83851,7 @@
         },
         {
           "name": "configuration",
-          "type": "Nested",
+          "type": "Nested Object",
           "values": [
             "engineVersion",
             "failIfNotFound",
@@ -84062,7 +84062,7 @@
         },
         {
           "name": "caches",
-          "type": "Nested",
+          "type": "Array / List of Nested Choice of Objects",
           "values": [
             "$class: 'ArbitraryFileCache'"
           ],
@@ -84229,7 +84229,7 @@
       "parameters": [
         {
           "name": "reads",
-          "type": "Nested",
+          "type": "Array / List of Nested Object",
           "values": [
             "aclToken",
             "hostUrl",
@@ -84435,7 +84435,7 @@
       "parameters": [
         {
           "name": "kubectlCredentials",
-          "type": "Nested",
+          "type": "Array / List of Nested Object",
           "values": [
             "caCertificate",
             "clusterName",
@@ -84508,7 +84508,7 @@
       "parameters": [
         {
           "name": "upstream",
-          "type": "Nested",
+          "type": "Nested Choice of Objects",
           "values": [
             "$class: 'SelectionTypeProject'",
             "$class: 'SelectionTypeSpecified'",
@@ -84527,7 +84527,7 @@
       "parameters": [
         {
           "name": "thycoticVaultSecrets",
-          "type": "Nested",
+          "type": "Array / List of Nested Object",
           "values": [
             "path",
             "secretValues"
@@ -84537,7 +84537,7 @@
         },
         {
           "name": "configuration",
-          "type": "Nested",
+          "type": "Nested Object",
           "values": [
             "thycoticCredentialId"
           ],
@@ -84561,7 +84561,7 @@
       "parameters": [
         {
           "name": "matlabBuildWrapperContent",
-          "type": "Nested",
+          "type": "Nested Object",
           "values": [
             "matlabInstallationName",
             "matlabRootFolder"
@@ -85325,7 +85325,7 @@
         },
         {
           "name": "provisioningProfiles",
-          "type": "Nested",
+          "type": "Array / List of Nested Object",
           "values": [
             "provisioningProfileAppId",
             "provisioningProfileUUID"
@@ -85584,7 +85584,7 @@
         },
         {
           "name": "variables",
-          "type": "Nested",
+          "type": "Array / List of Nested Object",
           "values": [
             "propertyName",
             "propertyValue"
@@ -85703,7 +85703,7 @@
       "parameters": [
         {
           "name": "tools",
-          "type": "Nested",
+          "type": "Array / List of Nested Choice of Objects",
           "values": [
             "AUnit",
             "BoostTest",
@@ -85762,7 +85762,7 @@
         },
         {
           "name": "testDataPublishers",
-          "type": "Nested",
+          "type": "Array / List of Nested Choice of Objects",
           "values": [
             "$class: 'AttachmentPublisher'",
             "$class: 'AutomateTestDataPublisher'",
@@ -85796,7 +85796,7 @@
         },
         {
           "name": "thresholds",
-          "type": "Nested",
+          "type": "Array / List of Nested Choice of Objects",
           "values": [
             "failed",
             "passed",
