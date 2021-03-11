@@ -47,6 +47,8 @@ function initDocMap() {
       const markdown = new vscode.MarkdownString();
       const optionalLabel = parameter.isOptional ? '*(Optional)*' : '';
       markdown.appendMarkdown(`\`${parameter.name}\`: **${parameter.type}** ${optionalLabel}\n\n`);
+      parameter.values.forEach(value => markdown.appendMarkdown(`* ${value}\n`));
+      markdown.appendMarkdown(`\n`);
       markdown.appendMarkdown(`${parameter.description}`);
       markdowns.push(markdown);
     });

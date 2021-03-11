@@ -10,3 +10,4 @@ Jenkins Doc VSCode extension change log
 
 - Autocompletion for more than 1400 instructions
 - Autocompletion for instructions parameters
+- Improved documentation for nested objects and enum type parameters
