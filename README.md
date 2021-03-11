@@ -10,9 +10,13 @@ Provides documentation and autocompletion for Jenkins instructions as well as ov
 
 ![Documentation on hover](./assets/demo_doc_hover.gif)
 
-- Autocompletion:
+- Autocompletion for instructions:
 
-![Autocompletion](./assets/demo_autocompletion.gif)
+![Instructions autocompletion](./assets/demo_autocompletion.gif)
+
+- Autocompletion for parameters:
+
+![Parameters autocompletion](./assets/demo_parameter_autocompletion.gif)
 
 - "Go To Definition" (or `Ctrl`+Click) for functions that take you to the Groovy file with the same name:
 
