@@ -109,18 +109,11 @@ function parseInstructionsFromHTML({
     const parameterElems = $(docElem).find('> ul > li');
 
     parameterElems.each((i, parameterElem) => {
+      const { type, values } = parseTypeAndValues(parameterElem, $);
       parameters.push({
         name: $(parameterElem).find('> code').text(),
-        type: $(parameterElem)
-          .find('> ul > li')
-          .contents()
-          .filter(
-            (i, node) =>
-              node.type === 'text' ||
-              (node.type === 'tag' && node.tagName === 'code'),
-          )
-          .text()
-          .trim(),
+        type,
+        values,
         description: toMarkdown($(parameterElem).find('> div').html()),
         isOptional: $(parameterElem)
           .contents()
@@ -141,6 +134,47 @@ function parseInstructionsFromHTML({
   });
   printScrapingResult(instructions);
   return instructions;
+}
+
+function parseTypeAndValues(
+  parameterElem: cheerio.Element,
+  $: cheerio.Root,
+): { type: ParameterType; values: string[] } {
+  let categoryExpected = $(parameterElem)
+    .find('> ul > li > b, > ul > b')
+    .text()
+    .trim();
+  let type: ParameterType = 'unknown';
+  let values: string[] = [];
+  switch (categoryExpected.toLowerCase().trim()) {
+    case 'type:':
+      type = $(parameterElem).find('> ul > li > code').text();
+      break;
+
+    case 'values:':
+      type = 'Enum';
+      values = $(parameterElem)
+        .find('> ul > li > code')
+        .map((i, v) => $(v).text())
+        .get();
+      break;
+
+    case 'nested object':
+    case 'nested choice of objects':
+    case 'array / list of nested object':
+    case 'array / list of nested choice of objects':
+      type = 'Nested';
+      values = $(parameterElem)
+        .find('> ul > li > code')
+        .map((i, v) => $(v).text())
+        .get();
+      break;
+
+    default:
+      type = 'unknown';
+      console.log('type not found for ', categoryExpected);
+  }
+  return { type, values };
 }
 
 function toMarkdown(html: string | null): string {
@@ -213,7 +247,8 @@ interface Instruction {
 
 interface Parameter {
   name: string;
-  type: string;
+  type: ParameterType;
+  values: string[];
   description: string;
   isOptional: boolean;
 }
@@ -229,3 +264,11 @@ interface JenkinsData {
   plugins: Plugin[];
   instructions: Instruction[];
 }
+
+type ParameterType =
+  | 'String'
+  | 'boolean'
+  | 'Enum'
+  | 'Nested'
+  | 'unknown'
+  | string;
