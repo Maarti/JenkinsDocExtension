@@ -55,6 +55,10 @@ function initDocMap() {
       markdown.appendMarkdown(
         `\`${parameter.name}\`: **${parameter.type}** ${optionalLabel}\n\n`,
       );
+      parameter.values.forEach(value =>
+        markdown.appendMarkdown(`* ${value}\n`),
+      );
+      markdown.appendMarkdown(`\n`);
       markdown.appendMarkdown(`${parameter.description}`);
       markdowns.push(markdown);
     });
