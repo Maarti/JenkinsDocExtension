@@ -18,7 +18,7 @@ Provides documentation and autocompletion for Jenkins instructions as well as ov
 
 ![Parameters autocompletion](./assets/demo_parameter_autocompletion.gif)
 
-- "Go To Definition" (or `Ctrl`+Click) for functions that take you to the Groovy file with the same name:
+- "Go To Definition" (or `Ctrl` + click) for functions that take you to the Groovy file with the same name:
 
 !["Go To Definition" feature](./assets/demo_go_to_definition.gif)
 
