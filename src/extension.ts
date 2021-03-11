@@ -29,11 +29,7 @@ export function activate(context: vscode.ExtensionContext) {
     new GoDefinitionProvider(),
   );
 
-  context.subscriptions.push(
-    hoverRegistration,
-    completionRegistration,
-    goToDefinitionRegistration,
-  );
+  context.subscriptions.push(hoverRegistration, completionRegistration, goToDefinitionRegistration);
 }
 
 export function deactivate() {
@@ -45,19 +41,13 @@ function initDocMap() {
   jenkinsData.instructions.forEach(instruction => {
     const markdowns: vscode.MarkdownString[] = [];
     markdowns.push(
-      new vscode.MarkdownString(
-        `**${instruction.title}**\n\n${instruction.description}`,
-      ),
+      new vscode.MarkdownString(`**${instruction.title}**\n\n${instruction.description}`),
     );
     instruction.parameters.forEach(parameter => {
       const markdown = new vscode.MarkdownString();
       const optionalLabel = parameter.isOptional ? '*(Optional)*' : '';
-      markdown.appendMarkdown(
-        `\`${parameter.name}\`: **${parameter.type}** ${optionalLabel}\n\n`,
-      );
-      parameter.values.forEach(value =>
-        markdown.appendMarkdown(`* ${value}\n`),
-      );
+      markdown.appendMarkdown(`\`${parameter.name}\`: **${parameter.type}** ${optionalLabel}\n\n`);
+      parameter.values.forEach(value => markdown.appendMarkdown(`* ${value}\n`));
       markdown.appendMarkdown(`\n`);
       markdown.appendMarkdown(`${parameter.description}`);
       markdowns.push(markdown);
@@ -70,11 +60,19 @@ function initDocMap() {
 function initCompletionArray() {
   console.log('Completion array initialization...');
   completions.push(
-    ...Array.from(docs.keys()).map(
-      instruction => new vscode.CompletionItem(instruction),
-    ),
+    ...jenkinsData.instructions.map(instruction => {
+      const completion = new vscode.CompletionItem(instruction.command);
+      if (instruction.parameters.length) {
+        completion.command = {
+          command: 'editor.action.triggerSuggest',
+          title: 'Trigger parameters autocompletion',
+        };
+        completion.insertText = new vscode.SnippetString(`${instruction.command}($0)`);
+      } else {
+        completion.insertText = new vscode.SnippetString(`${instruction.command}()`);
+      }
+      return completion;
+    }),
   );
-  console.log(
-    `Completion array initialized with ${completions.length} entries`,
-  );
+  console.log(`Completion array initialized with ${completions.length} entries`);
 }
