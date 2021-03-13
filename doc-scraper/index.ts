@@ -1,149 +1,129 @@
-import axios, { AxiosInstance, AxiosResponse } from 'axios';
+import axios from 'axios';
 import cheerio from 'cheerio';
 import fs from 'fs';
+import { from, of } from 'rxjs';
+import { map, tap, mergeMap, catchError, finalize, delay, concatMap } from 'rxjs/operators';
 
 console.log('Scraper starting...');
 
+// Config
+const jenkinsBaseUrl = 'https://www.jenkins.io';
+const jenkinsReferenceUrl = `${jenkinsBaseUrl}/doc/pipeline/steps/`;
+const outputFile = 'src/jenkins-data.json';
+
 main();
 
-async function main() {
-  // Config
-  const jenkinsReferenceUrl = 'https://www.jenkins.io/doc/pipeline/steps/';
-  const outputFile = 'src/jenkins-data.json';
-
+function main() {
   const jenkinsData: JenkinsData = {
     date: new Date().toISOString(),
     plugins: [],
     instructions: [],
   };
   const axiosInstance = axios.create();
-  jenkinsData.plugins = await parsePluginsUrl(
-    axiosInstance,
-    jenkinsReferenceUrl,
-  );
-  console.log(`${jenkinsData.plugins.length} plugins found`);
+  from(axiosInstance.get(jenkinsReferenceUrl))
+    .pipe(
+      tap(response => console.log(`Fetching plugins list: ${response.config.url}`)),
+      map(response => cheerio.load(response.data)),
+      map($ => ({ $, pluginElems: $('div.container div.col-lg-9 div > ul > li') })),
+      tap(({ $, pluginElems }) =>
+        pluginElems.each((i, pluginElem) => jenkinsData.plugins.push(parsePlugin($, pluginElem))),
+      ),
+      tap(() => console.log(`${jenkinsData.plugins.length} plugins found`)),
+      // tap(() => (jenkinsData.plugins = pluginStubs)),
+      mergeMap(() => jenkinsData.plugins),
+      mergeMap(plugin =>
+        from(axiosInstance.get(plugin.url)).pipe(
+          tap(response => console.log(`Fetching ${response.config.url}`)),
+          map(response => cheerio.load(response.data)),
+          map($ => ({ docs: $('.sect2'), $ })),
+          tap(({ docs, $ }) => {
+            let counter = 0;
+            docs.each((i, docElem) => {
+              jenkinsData.instructions.push(parseInstruction($, docElem, plugin));
+              counter++;
+            });
+            const msgColor = counter ? Color.green : Color.red;
+            console.log(`  => ${color(`${counter} instructions found`, msgColor)}`);
+          }),
+          catchError(error => {
+            console.log(
+              color(
+                `Error while fetching plugin ${plugin.name}:\n  ${error}\n  This plugin will be ignored`,
+                Color.red,
+              ),
+            );
 
-  const pluginQueries = jenkinsData.plugins.map(plugin =>
-    axiosInstance.get(plugin.url).then(response => ({
-      ...plugin,
-      response,
-    })),
-  );
-
-  Promise.all(pluginQueries)
-    .then(queries => {
-      const instructions: Instruction[] = [];
-      queries.forEach(query => {
-        console.log(`Getting url: ${query.response.config.url}`);
-        instructions.push(...parseInstructionsFromHTML(query));
-      });
-      instructions.sort((a, b) => (a.command < b.command ? -1 : 1));
-      console.log('Total:');
-      printScrapingResult(instructions);
-      jenkinsData.instructions = instructions;
-      const prettyOutput = JSON.stringify(jenkinsData, null, 2);
-      fs.writeFileSync(outputFile, prettyOutput);
-      console.log(`Extracted in: ${outputFile}`);
-    })
-    .catch(error =>
-      console.error(`Error while parsing instructions: ${error}`),
-    );
+            return of(null);
+          }),
+        ),
+      ),
+      finalize(() => {
+        jenkinsData.instructions.sort((a, b) => (a.command < b.command ? -1 : 1));
+        console.log(`Total: ${jenkinsData.instructions.length} instructions found`);
+        const prettyOutput = JSON.stringify(jenkinsData, null, 2);
+        fs.writeFileSync(outputFile, prettyOutput);
+        console.log(`Extracted in: ${outputFile}`);
+      }),
+      catchError(error => {
+        console.error(`Outer error:\n  ${error}`);
+        return of(null);
+      }),
+    )
+    .subscribe();
 }
 
-async function parsePluginsUrl(axiosInstance: AxiosInstance, refUrl: string) {
-  return axiosInstance
-    .get(refUrl)
-    .then(response => {
-      console.log(`Parsing ${response.config.url}`);
-      const $ = cheerio.load(response.data);
-      const pluginElems: cheerio.Cheerio = $(
-        'div.container div.col-lg-9 div > ul > li',
-      );
-      const plugins: Plugin[] = [];
-      pluginElems.each((i, pluginElem) => {
-        const name = $(pluginElem).find('> a').text().replace(/\n/g, '');
-        const url =
-          `https://www.jenkins.io${$(pluginElem).find('> a').attr('href')}` ||
-          '';
-        const id =
-          url.replace(/\/$/, '').split('/').pop()?.toLowerCase() || 'unknown';
-        plugins.push({
-          name,
-          url,
-          id,
-        });
-      });
-      return plugins;
-    })
-    .catch(error => {
-      console.error(`Error while loading plugins: ${error}`);
-      return [] as Plugin[];
-    });
+function parsePlugin($: cheerio.Root, pluginElem: cheerio.Element): Plugin {
+  const name = $(pluginElem).find('> a').text().replace(/\n/g, '');
+  const url = `${jenkinsBaseUrl}${$(pluginElem).find('> a').attr('href')}` || '';
+  const id = url.replace(/\/$/, '').split('/').pop()?.toLowerCase() || 'unknown';
+  return {
+    name,
+    url,
+    id,
+  };
 }
 
-function parseInstructionsFromHTML({
-  response,
-  id,
-}: {
-  response: AxiosResponse<any>;
-  id: string;
-}): Instruction[] {
-  const $ = cheerio.load(response.data);
-  const docs: cheerio.Cheerio = $('.sect2');
-  const instructions: Instruction[] = [];
+function parseInstruction($: cheerio.Root, docElem: cheerio.Element, plugin: Plugin): Instruction {
+  const command: string = $(docElem).find('> h3 > code').text();
+  const title: string = $(docElem).find('> h3').text();
+  let description: string = $(docElem).find('> div').html() || '';
+  description += $(docElem)
+    .contents()
+    .filter((i, node) => node.type === 'text' || (node.type === 'tag' && node.tagName === 'code'))
+    .text();
+  description = toMarkdown(description);
+  const parameters: Parameter[] = [];
+  const parameterElems = $(docElem).find('> ul > li');
 
-  docs.each((i, docElem) => {
-    const command: string = $(docElem).find('> h3 > code').text();
-    const title: string = $(docElem).find('> h3').text();
-    let description: string = $(docElem).find('> div').html() || '';
-    description += $(docElem)
-      .contents()
-      .filter(
-        (i, node) =>
-          node.type === 'text' ||
-          (node.type === 'tag' && node.tagName === 'code'),
-      )
-      .text();
-    description = toMarkdown(description);
-    const parameters: Parameter[] = [];
-    const parameterElems = $(docElem).find('> ul > li');
-
-    parameterElems.each((i, parameterElem) => {
-      const { type, values } = parseTypeAndValues(parameterElem, $);
-      parameters.push({
-        name: $(parameterElem).find('> code').text(),
-        type,
-        values,
-        description: toMarkdown($(parameterElem).find('> div').html()),
-        isOptional: $(parameterElem)
-          .contents()
-          .filter((i, node) => node.type === 'text')
-          .text()
-          .toLowerCase()
-          .includes('optional'),
-      });
-    });
-
-    instructions.push({
-      command,
-      title,
-      description,
-      parameters,
-      plugin: id,
+  parameterElems.each((i, parameterElem) => {
+    const { type, values } = parseTypeAndValues(parameterElem, $);
+    parameters.push({
+      name: $(parameterElem).find('> code').text(),
+      type,
+      values,
+      description: toMarkdown($(parameterElem).find('> div').html()),
+      isOptional: $(parameterElem)
+        .contents()
+        .filter((i, node) => node.type === 'text')
+        .text()
+        .toLowerCase()
+        .includes('optional'),
     });
   });
-  printScrapingResult(instructions);
-  return instructions;
+  return {
+    command,
+    title,
+    description,
+    parameters,
+    plugin: plugin.id,
+  };
 }
 
 function parseTypeAndValues(
   parameterElem: cheerio.Element,
   $: cheerio.Root,
 ): { type: ParameterType; values: string[] } {
-  let categoryExpected = $(parameterElem)
-    .find('> ul > li > b, > ul > b')
-    .text()
-    .trim();
+  let categoryExpected = $(parameterElem).find('> ul > li > b, > ul > b').text().trim();
   let type: ParameterType = 'unknown';
   let values: string[] = [];
   switch (categoryExpected.toLowerCase().trim()) {
@@ -226,11 +206,6 @@ function parseHtmlLinkToMarkdown(text: string): string {
   return text;
 }
 
-function printScrapingResult(instructions: Instruction[]) {
-  console.log(`   => ${instructions.length} instructions found`);
-  // console.log(`   => ${instructions.map(instruction => instruction.command).join(', ')}`);
-}
-
 interface Plugin {
   id: string;
   name: string;
@@ -265,10 +240,36 @@ interface JenkinsData {
   instructions: Instruction[];
 }
 
-type ParameterType =
-  | 'String'
-  | 'boolean'
-  | 'Enum'
-  | 'Nested'
-  | 'unknown'
-  | string;
+type ParameterType = 'String' | 'boolean' | 'Enum' | 'Nested' | 'unknown' | string;
+
+type Falsy = false | 0 | '' | null | undefined;
+
+function truthy<T>(input: T | Falsy): input is T {
+  return !!input;
+}
+
+enum Color {
+  red = '\x1b[31m',
+  green = '\x1b[32m',
+  yellow = '\x1b[33m',
+  blue = '\x1b[34m',
+  magenta = '\x1b[35m',
+  cyan = '\x1b[36m',
+}
+
+function color(message: string, color = Color.green): string {
+  return `${color}${message}\x1b[0m`;
+}
+
+const pluginStubs = [
+  { id: 'google', name: 'google', url: 'https://google.com' },
+  { id: 'google2', name: 'google2', url: 'https://google.com' },
+  { id: 'google3', name: 'google3', url: 'https://google.com' },
+  { id: 'github', name: 'github', url: 'https://github.com/Maarti/SecretProject' },
+  {
+    id: 'jenkins',
+    name: 'Jenkins',
+    url: 'https://www.jenkins.io/doc/pipeline/steps/workflow-basic-steps/',
+  },
+  { id: 'google5', name: 'google5', url: 'https://google.com' },
+];
