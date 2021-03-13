@@ -10,6 +10,7 @@ console.log('Scraper starting...');
 const jenkinsBaseUrl = 'https://www.jenkins.io';
 const jenkinsReferenceUrl = `${jenkinsBaseUrl}/doc/pipeline/steps/`;
 const outputFile = 'src/jenkins-data.json';
+const requestsInterval = 100; // Delay between each http request (in ms), to avoid DDOSing jenkins.io
 
 main();
 
@@ -31,6 +32,7 @@ function main() {
       tap(() => console.log(`${jenkinsData.plugins.length} plugins found`)),
       // tap(() => (jenkinsData.plugins = pluginStubs)),
       mergeMap(() => jenkinsData.plugins),
+      concatMap(plugin => of(plugin).pipe(delay(requestsInterval))),
       mergeMap(plugin =>
         from(axiosInstance.get(plugin.url)).pipe(
           tap(response => console.log(`Fetching ${response.config.url}`)),
