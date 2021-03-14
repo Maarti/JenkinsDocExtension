@@ -1,4 +1,4 @@
-# Jenkins Doc VSCode extension
+# [Jenkins Doc VSCode extension](https://marketplace.visualstudio.com/items?itemName=Maarti.jenkins-doc)
 
 ![Logo](./assets/logo_128.png)
 
@@ -42,12 +42,17 @@ See the [Changelog](./CHANGELOG.md)
 
 ## Features considered for the future (brainstorming):
 
+- ✅ Documentation for Jenkins instructions
+- ✅ "Go To Definition" for file with the same name
 - ✅ Autocompletion for Jenkins instructions
 - ✅ Autocompletion for instructions parameters
-- ✅ Autocompletion for Jenkins env vars
 - ✅ Documentation for Jenkins env vars
-- ⬛ "Go To Definition" for functions in a file (not just the file itself)
-- ⬛ Support Jenkinsfile in the same way as Groovy files
-- ⬛ Support Jenkins parameters (`booleanParam`, `string`, `extendedChoice`,...)
+- ✅ Autocompletion for Jenkins env vars
+- ✅ Support Jenkinsfile in the same way as Groovy files
+- ⬛ "Go To Definition" for functions in the same file
+- ⬛ "Go To Definition" for functions in a different file
+- ⬛ Support [Jenkins parameters](https://www.jenkins.io/doc/book/pipeline/syntax/#parameters) (`booleanParam`, `string`, `extendedChoice`,...)
 - ⬛ Support symbols (breadcrumbs and outline in VSCode)
 - ❌ Call the [pipeline linter](https://www.jenkins.io/doc/book/pipeline/development/)
+
+See the [Roadmap](https://github.com/Maarti/JenkinsDocExtension/projects/1)

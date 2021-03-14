@@ -19,3 +19,5 @@
 ## [1.0.0](https://github.com/Maarti/JenkinsDocExtension/releases/tag/1.0.0) - 2021-03-08
 
 - Initial release
+- "Go To Definition" for files Groovy with the same name as the hovered word
+- Documentation for Jenkins instructions
