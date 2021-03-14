@@ -3,6 +3,7 @@ import cheerio from 'cheerio';
 import fs from 'fs';
 import { from, of } from 'rxjs';
 import { map, tap, mergeMap, catchError, finalize, delay, concatMap } from 'rxjs/operators';
+import environmentVariables from './jenkins-env-vars.json';
 
 console.log('Scraper starting...');
 
@@ -19,6 +20,7 @@ function main() {
     date: new Date().toISOString(),
     plugins: [],
     instructions: [],
+    environmentVariables,
   };
   const axiosInstance = axios.create();
   from(axiosInstance.get(jenkinsReferenceUrl))
@@ -67,7 +69,7 @@ function main() {
         console.log(`Extracted in: ${outputFile}`);
       }),
       catchError(error => {
-        console.error(`Outer error:\n  ${error}`);
+        console.error(color(`Error while fetching information:\n  ${error}`, Color.red));
         return of(null);
       }),
     )
@@ -236,10 +238,16 @@ interface Url {
   html: string;
 }
 
+interface Variable {
+  name: string;
+  description: string;
+}
+
 interface JenkinsData {
   date: string;
   plugins: Plugin[];
   instructions: Instruction[];
+  environmentVariables: Variable[];
 }
 
 type ParameterType = 'String' | 'boolean' | 'Enum' | 'Nested' | 'unknown' | string;

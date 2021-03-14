@@ -2,6 +2,8 @@
 
 ## Next:
 
+- Documentation for Jenkins environment variables
+
 ## [1.1.0](https://github.com/Maarti/JenkinsDocExtension/releases/tag/1.1.0) - 2021-03-10
 
 - Autocompletion for more than 1400 instructions

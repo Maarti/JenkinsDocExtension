@@ -1,7 +1,7 @@
 {
   "name": "jenkins-doc",
   "displayName": "Jenkins Doc",
-  "description": "Provides Jenkins documentation and autocompletion",
+  "description": "Provides Jenkins documentation and autocompletion on Jenkinsfile and Groovy files",
   "publisher": "Maarti",
   "icon": "assets/logo_128.png",
   "galleryBanner": {

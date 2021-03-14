@@ -37,7 +37,8 @@ export function deactivate() {
 }
 
 function initDocMap() {
-  console.log('Docs map initialization...');
+  console.log('Hovering Documentation map initialization...');
+  // Jenkins instructions
   jenkinsData.instructions.forEach(instruction => {
     const markdowns: vscode.MarkdownString[] = [];
     markdowns.push(
@@ -54,7 +55,25 @@ function initDocMap() {
     });
     docs.set(instruction.command, markdowns);
   });
-  console.log(`Docs map initialized with ${docs.size} entries`);
+
+  // Jenkins env variables
+  jenkinsData.environmentVariables.forEach(envVar => {
+    const markdowns: vscode.MarkdownString[] = [];
+    markdowns.push(
+      new vscode.MarkdownString(`**${envVar.name}**\n\n${envVar.description}`),
+      new vscode.MarkdownString(
+        'Referencing or using environment variables can be accomplished like accessing any key in a Groovy Map, for example:',
+      ).appendCodeblock(
+        `step {\n    echo "${envVar.name} is: \${env.${envVar.name}}"\n}`,
+        'groovy',
+      ),
+      new vscode.MarkdownString(
+        'The full list of environment variables accessible from within Jenkins Pipeline is documented at ${YOUR_JENKINS_URL}/pipeline-syntax/globals#env',
+      ),
+    ),
+      docs.set(envVar.name, markdowns);
+  });
+  console.log(`Hovering Documentation map initialized with ${docs.size} entries`);
 }
 
 function initCompletionArray() {
