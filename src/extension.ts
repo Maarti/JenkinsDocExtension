@@ -7,10 +7,12 @@ import jenkinsData from './jenkins-data.json';
 /** Map containing all Jenkins documentation data indexed by their instruction name */
 export const docs = new Map<string, vscode.MarkdownString[]>();
 export const completions: vscode.CompletionItem[] = [];
+export const envVarCompletions: vscode.CompletionItem[] = [];
 
 export function activate(context: vscode.ExtensionContext) {
   console.log('Extension "jenkins-doc" is now active');
   initDocMap();
+  initEnvVarCompletionArray();
   initCompletionArray();
 
   const groovyFileSelector: vscode.DocumentSelector = {
@@ -76,9 +78,36 @@ function initDocMap() {
   console.log(`Hovering Documentation map initialized with ${docs.size} entries`);
 }
 
+function initEnvVarCompletionArray() {
+  console.log('Env Var Completion array initialization...');
+  envVarCompletions.push(
+    ...jenkinsData.environmentVariables.map(envVar => {
+      const completion = new vscode.CompletionItem(envVar.name);
+      completion.insertText = new vscode.SnippetString(`env.${envVar.name}`);
+      completion.detail = 'Jenkins Environment Variable';
+      completion.documentation = new vscode.MarkdownString(envVar.description);
+      completion.kind = vscode.CompletionItemKind.Variable;
+      return completion;
+    }),
+  );
+  const envCompletion = new vscode.CompletionItem('env', vscode.CompletionItemKind.Variable);
+  envCompletion.command = {
+    command: 'editor.action.triggerSuggest',
+    title: 'Trigger environment variables autocompletion',
+  };
+  envCompletion.insertText = 'env.';
+  envCompletion.detail = 'Jenkins Environment Variable';
+  envCompletion.documentation = new vscode.MarkdownString(
+    'The full list of environment variables accessible from within Jenkins Pipeline is documented at ${YOUR_JENKINS_URL}/pipeline-syntax/globals#env',
+  );
+  completions.push(envCompletion);
+  console.log(`Env Var Completion array initialized with ${envVarCompletions.length} entries`);
+}
+
 function initCompletionArray() {
   console.log('Completion array initialization...');
   completions.push(
+    ...envVarCompletions,
     ...jenkinsData.instructions.map(instruction => {
       const completion = new vscode.CompletionItem(instruction.command);
       if (instruction.parameters.length) {
@@ -90,6 +119,9 @@ function initCompletionArray() {
       } else {
         completion.insertText = new vscode.SnippetString(`${instruction.command}()`);
       }
+      completion.detail = `Jenkins (${instruction.plugin}) Instruction`;
+      completion.documentation = new vscode.MarkdownString(instruction.description);
+      completion.kind = vscode.CompletionItemKind.Function;
       return completion;
     }),
   );

@@ -1,5 +1,5 @@
 import * as vscode from 'vscode';
-import { completions } from './extension';
+import { completions, envVarCompletions } from './extension';
 import jenkinsData from './jenkins-data.json';
 
 export class CompletionProvider<T extends vscode.CompletionItem = vscode.CompletionItem>
@@ -11,9 +11,21 @@ export class CompletionProvider<T extends vscode.CompletionItem = vscode.Complet
     context: vscode.CompletionContext,
   ) {
     const linePrefix = document.lineAt(position).text.substr(0, position.character);
-    const commandMatch = linePrefix.match(/^.*?(\w+)\(/) || [];
-    if (commandMatch.length > 1) {
-      const command = commandMatch[1];
+
+    // "env." autocompletion
+    if (linePrefix.match(/(env)\.\w*$/)) {
+      return envVarCompletions.map(completion => ({
+        // removing the insertion of "env." in this case since it is already written
+        ...completion,
+        insertText: completion.label,
+      }));
+    }
+
+    // Parameters autocompletion
+    // Check if the user has opened a parenthesis and retrieves the instruction before the parenthesis
+    const instructionMatch = linePrefix.match(/^.*?(\w+)\(/) || [];
+    if (instructionMatch.length > 1) {
+      const command = instructionMatch[1];
       const instruction = jenkinsData.instructions.find(
         instruction => instruction.command === command,
       );

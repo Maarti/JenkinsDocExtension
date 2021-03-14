@@ -40,7 +40,7 @@ See the [Changelog](./CHANGELOG.md)
 - ⬛ "Go To Definition" for functions in a file (not just the file itself)
 - ✅ Autocompletion for Jenkins instructions
 - ✅ Autocompletion for instructions parameters
-- ⬛ Autocompletion for Jenkins env vars
+- ✅ Autocompletion for Jenkins env vars
 - ✅ Documentation for Jenkins env vars
 - ⬛ Support Jenkinsfile in the same way as Groovy files
 - ⬛ Support Jenkins parameters (`booleanParam`, `string`, `extendedChoice`,...)
