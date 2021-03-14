@@ -1,5 +1,9 @@
 # Change Log
 
+## Next
+
+- Documentation updated
+
 ## [1.2.0](https://github.com/Maarti/JenkinsDocExtension/releases/tag/1.2.0) - 2021-03-14
 
 - Documentation for Jenkins environment variables
