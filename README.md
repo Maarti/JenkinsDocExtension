@@ -4,6 +4,12 @@
 
 Provides documentation and autocompletion for Jenkins instructions as well as over 600 Jenkins plugins!
 
+[![Status](https://img.shields.io/github/checks-status/maarti/JenkinsDocExtension/master?color=green&label=master)](https://github.com/Maarti/JenkinsDocExtension)
+[![Installs](https://img.shields.io/visual-studio-marketplace/i/maarti.jenkins-doc)](https://marketplace.visualstudio.com/items?itemName=Maarti.jenkins-doc)
+[![Last commit](https://img.shields.io/github/last-commit/maarti/JenkinsDocExtension/develop)](https://github.com/Maarti/JenkinsDocExtension/commits/develop)
+[![Version](https://img.shields.io/github/package-json/v/maarti/JenkinsDocExtension)](https://github.com/Maarti/JenkinsDocExtension/releases)
+[![Rating](https://img.shields.io/visual-studio-marketplace/stars/maarti.jenkins-doc)](https://marketplace.visualstudio.com/items?itemName=Maarti.jenkins-doc)
+
 ## Features
 
 - Display Jenkins documentation when hovering over recognized instructions:
