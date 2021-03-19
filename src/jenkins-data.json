@@ -1,50 +1,5 @@
 {
-  "date": "2021-03-11T02:53:13.190Z",
-  "environmentVariables": [
-    {
-      "name": "BUILD_ID",
-      "description": "The current build ID, identical to `BUILD_NUMBER` for builds created in Jenkins versions 1.597+"
-    },
-
-    { "name": "BUILD_NUMBER", "description": "The current build number, such as `153`" },
-
-    {
-      "name": "BUILD_TAG",
-      "description": "String of `jenkins-${JOB_NAME}-${BUILD_NUMBER}`. Convenient to put into a resource file, a jar file, etc for easier identification"
-    },
-
-    {
-      "name": "BUILD_URL",
-      "description": "The URL where the results of this build can be found (for example `http://buildserver/jenkins/job/MyJobName/17/` )"
-    },
-
-    {
-      "name": "EXECUTOR_NUMBER",
-      "description": "The unique number that identifies the current executor (among executors of the same machine) performing this build. This is the number you see in the `build executor status`, except that the number starts from 0, not 1"
-    },
-
-    {
-      "name": "JAVA_HOME",
-      "description": "If your job is configured to use a specific JDK, this variable is set to the JAVA_HOME of the specified JDK. When this variable is set, PATH is also updated to include the bin subdirectory of JAVA_HOME"
-    },
-
-    {
-      "name": "JENKINS_URL",
-      "description": "Full URL of Jenkins, such as `https://example.com:port/jenkins/` (NOTE: only available if Jenkins URL set in `System Configuration`)"
-    },
-
-    {
-      "name": "JOB_NAME",
-      "description": "Name of the project of this build, such as `foo` or `foo/bar`."
-    },
-
-    {
-      "name": "NODE_NAME",
-      "description": "The name of the node the current build is running on. Set to 'master' for the Jenkins controller."
-    },
-
-    { "name": "WORKSPACE", "description": "The absolute path of the workspace" }
-  ],
+  "date": "2021-03-19T00:09:36.515Z",
   "plugins": [
     {
       "name": ".NET SDK Support",
@@ -785,6 +740,11 @@
       "name": "Copy Artifact Plugin",
       "url": "https://www.jenkins.io/doc/pipeline/steps/copyartifact/",
       "id": "copyartifact"
+    },
+    {
+      "name": "Cortex Metrics Plugin",
+      "url": "https://www.jenkins.io/doc/pipeline/steps/cortex-metrics/",
+      "id": "cortex-metrics"
     },
     {
       "name": "Coverity plugin",
@@ -4410,21 +4370,21 @@
           "name": "orchestratorAddress",
           "type": "String",
           "values": [],
-          "description": "Specify the address of the Orchestrator instance onto which the assets will be deployed or updated.",
+          "description": "",
           "isOptional": false
         },
         {
           "name": "orchestratorTenant",
           "type": "String",
           "values": [],
-          "description": "Specify the Orchestrator tenant onto which the assets will be deployed or updated.",
+          "description": "",
           "isOptional": false
         },
         {
           "name": "folderName",
           "type": "String",
           "values": [],
-          "description": "Specify the folder where assets will deploy or update.",
+          "description": "",
           "isOptional": false
         },
         {
@@ -4450,7 +4410,7 @@
           "name": "filePath",
           "type": "String",
           "values": [],
-          "description": "Specify the path for the csv files used to describe the assets that will be deployed or updated. Please use the following file format:\n \n```groovy\nname,type,value\nasset_1_name,text,asset_value   # we can have comments\nasset_2_name,integer,123\nasset_3_name,boolean,false\nasset_4_name,credential,\"username::password\"\n    \n```\n For the update, the type column isn't used, so it can be empty but still present.",
+          "description": "",
           "isOptional": false
         }
       ],
@@ -4465,35 +4425,35 @@
           "name": "packagePath",
           "type": "String",
           "values": [],
-          "description": "Specify the location of the package(s) to be deployed in Orchestrator. The paths are local to the workspace of the build.",
+          "description": "",
           "isOptional": false
         },
         {
           "name": "orchestratorAddress",
           "type": "String",
           "values": [],
-          "description": "Specify the address of the Orchestrator instance onto which the package(s) will be deployed.",
+          "description": "",
           "isOptional": false
         },
         {
           "name": "orchestratorTenant",
           "type": "String",
           "values": [],
-          "description": "Specify the Orchestrator tenant onto which the package(s) will be deployed.",
+          "description": "",
           "isOptional": false
         },
         {
           "name": "folderName",
           "type": "String",
           "values": [],
-          "description": "Specify the folder to deploy to. If the folder is a classic folder, you will also need to set the environments field. For modern folders, setting the environments is not required.",
+          "description": "",
           "isOptional": false
         },
         {
           "name": "environments",
           "type": "String",
           "values": [],
-          "description": "Specify the environment onto which the package will be deployed as a process. For the project and environment with existing processes, the processes will be updated to use the latest project version. Required when using a classic folder, otherwise not applicable.",
+          "description": "",
           "isOptional": false
         },
         {
@@ -4546,14 +4506,14 @@
           "name": "projectJsonPath",
           "type": "String",
           "values": [],
-          "description": "The location of the project(s) to be packaged. It can be a direct path to a project.json file or a directory with one or multiple projects. In the latter case, each level one project is packaged individually",
+          "description": "",
           "isOptional": false
         },
         {
           "name": "outputPath",
           "type": "String",
           "values": [],
-          "description": "Specify the location where you want to output the NuGet package(s). The paths are local to the workspace of the build.",
+          "description": "",
           "isOptional": false
         },
         {
@@ -4579,21 +4539,21 @@
           "name": "orchestratorAddress",
           "type": "String",
           "values": [],
-          "description": "Specify the address of the Orchestrator instance from which library dependencies should be restored.",
+          "description": "",
           "isOptional": true
         },
         {
           "name": "orchestratorTenant",
           "type": "String",
           "values": [],
-          "description": "Specify the tenant of the Orchestrator instance from which library dependencies should be restored.",
+          "description": "",
           "isOptional": true
         },
         {
           "name": "outputType",
           "type": "String",
           "values": [],
-          "description": "Force the output to a specific type.",
+          "description": "",
           "isOptional": true
         },
         {
@@ -4615,21 +4575,21 @@
           "name": "orchestratorAddress",
           "type": "String",
           "values": [],
-          "description": "Specify the address of the Orchestrator instance onto which the job(s) will be ran.",
+          "description": "",
           "isOptional": false
         },
         {
           "name": "orchestratorTenant",
           "type": "String",
           "values": [],
-          "description": "Specify the Orchestrator tenant onto which the job(s) will be ran.",
+          "description": "",
           "isOptional": false
         },
         {
           "name": "folderName",
           "type": "String",
           "values": [],
-          "description": "Specify the folder to run to. If the folder is a modern folder, you can also target a specific user and/or a specific machine.",
+          "description": "",
           "isOptional": false
         },
         {
@@ -4655,14 +4615,14 @@
           "name": "processName",
           "type": "String",
           "values": [],
-          "description": "Process name.",
+          "description": "",
           "isOptional": true
         },
         {
           "name": "parametersFilePath",
           "type": "String",
           "values": [],
-          "description": "The full path to a json input file.",
+          "description": "",
           "isOptional": true
         },
         {
@@ -4699,28 +4659,28 @@
           "name": "resultFilePath",
           "type": "String",
           "values": [],
-          "description": "The full path to a json file or a folder where the result json file will be created.",
+          "description": "",
           "isOptional": true
         },
         {
           "name": "timeout",
           "type": "int",
           "values": [],
-          "description": "The timeout for job(s) runs in seconds. (default 1800)",
+          "description": "",
           "isOptional": true
         },
         {
           "name": "failWhenJobFails",
           "type": "boolean",
           "values": [],
-          "description": "The command fails when at least one job fails. (default true)",
+          "description": "",
           "isOptional": true
         },
         {
           "name": "waitForJobCompletion",
           "type": "boolean",
           "values": [],
-          "description": "Wait for job runs completion. (default true)",
+          "description": "",
           "isOptional": true
         }
       ],
@@ -4735,21 +4695,21 @@
           "name": "orchestratorAddress",
           "type": "String",
           "values": [],
-          "description": "Specify the address of the Orchestrator instance onto which the package(s) will be deployed.",
+          "description": "",
           "isOptional": false
         },
         {
           "name": "orchestratorTenant",
           "type": "String",
           "values": [],
-          "description": "Specify the Orchestrator tenant onto which the package(s) will be deployed.",
+          "description": "",
           "isOptional": false
         },
         {
           "name": "folderName",
           "type": "String",
           "values": [],
-          "description": "Specify the folder to deploy to. If the folder is a classic folder and you would like to execute a transient test set, you will also need to set the environment. For modern folders, the environment is not required.",
+          "description": "",
           "isOptional": false
         },
         {
@@ -4768,7 +4728,7 @@
             "Token",
             "UserPass"
           ],
-          "description": "Specify the test execution target, a pre-existing test set on the Orchestrator or the tests in a package at a given path, which will be executed as part of a transient test set.",
+          "description": "",
           "isOptional": false
         },
         {
@@ -4794,14 +4754,14 @@
           "name": "testResultsOutputPath",
           "type": "String",
           "values": [],
-          "description": "Specify the output path of the test results, e.g. Output\\testResults.xml. The results are output in JUnit format. If not specified, the results are output to the workspace as UiPathResults.xml.",
+          "description": "",
           "isOptional": false
         },
         {
           "name": "timeout",
           "type": "int",
           "values": [],
-          "description": "Specify the timeout of a test project to be deployed in Orchestrator and executed as part of a transient test set. The default value is 7200 seconds.",
+          "description": "",
           "isOptional": false
         }
       ],
@@ -5989,6 +5949,13 @@
       "parameters": [
         {
           "name": "artId",
+          "type": "String",
+          "values": [],
+          "description": "",
+          "isOptional": true
+        },
+        {
+          "name": "artType",
           "type": "String",
           "values": [],
           "description": "",
@@ -12710,6 +12677,13 @@
           "isOptional": true
         },
         {
+          "name": "virtualEnvCommand",
+          "type": "String",
+          "values": [],
+          "description": "",
+          "isOptional": true
+        },
+        {
           "name": "workingDirectory",
           "type": "String",
           "values": [],
@@ -16797,7 +16771,7 @@
     {
       "command": "collectBranchesToAlmOctane",
       "title": "collectBranchesToAlmOctane: ALM Octane branch collector",
-      "description": "This step is responsible for collecting branches from the SCM tool and injecting them to ALM Octane.\n \n\n\n \n\n\n \n\n Supported version of ALM Octane: 15.1.74 and later.\n \n\n\n \n\n You can change the behaviour of this step by adding the following parameters to the job:\n \n  \n* **branches_active_branch_days**: Only active branches can be added/update to ALM Octane. Default is 90 days.\n\n  \n\n\n  \n* **branches_max_branches_to_fill**: Relevant for GitHub repository only. Max branches to fetch info. Branch for which info is not fetched, cannot be added to ALM Octane. Default is 1000.\n\n  \n\n\n \n \n\n\n \n\n **Supported SCM Tools: **\n \n\n\n <table width=\"100%\">\n  <thead>\n   <tr>\n <td>SCM Tool</td>\n <td>Supported types of authentication</td>\n <td>How to create PAT (Personal access token)</td>\n   </tr>\n  </thead>\n  <tbody>\n   <tr>\n <td>Bitbucket Server</td>\n <td>User/password and PAT</td>\n <td>Click on your profile icon -&gt; Manage account -&gt; Personal access tokens -&gt; Create a token (Assign Read permissions for both Projects and Repositories)</td>\n   </tr>\n   <tr>\n <td>Github Cloud</td>\n <td>PAT only</td>\n <td rowspan=\"2\">Click on your profile icon -&gt; Settings -&gt; Developer settings -&gt; Personal access tokens -&gt; Generate new token (Uncheck all scopes to grants read-only access)</td>\n   </tr>\n   <tr>\n <td>Github Server</td>\n <td>User/password and PAT</td>\n   </tr>\n  </tbody>\n </table>\n \n\n Note : To create PAT credentials in Jenkins , use \"Secret text\" kind of credentials in \"Add Credentials\" dialog",
+      "description": "This step is responsible for collecting branches from the SCM tool and injecting them to ALM Octane.\n \n\n\n \n\n In addition, this step is used to define the scm repositories templates that are used by ALM Octane to link to your repository viewer. To configure templates in ALM Octane, access Settings &gt; Spaces. Select a workspace and click DevOps &gt; SCM Repositories. Follow the on-screen instructions.\n \n\n\n \n\n\n \n\n Supported version of ALM Octane: 15.1.74 and later.\n \n\n\n \n\n You can change the behaviour of this step by adding the following parameters to the job:\n \n  \n* **branches_active_branch_days**: Only active branches can be added/update to ALM Octane. Default is 90 days.\n\n  \n\n\n  \n* **branches_max_branches_to_fill**: Relevant for GitHub repository only. Max branches to fetch info. Branch for which info is not fetched, cannot be added to ALM Octane. Default is 1000.\n\n  \n\n\n \n \n\n\n \n\n **Supported SCM Tools: **\n \n\n\n <table width=\"100%\">\n  <thead>\n   <tr>\n <td>SCM Tool</td>\n <td>Supported types of authentication</td>\n <td>How to create PAT (Personal access token)</td>\n   </tr>\n  </thead>\n  <tbody>\n   <tr>\n <td>Bitbucket Server</td>\n <td>User/password and PAT</td>\n <td>Click on your profile icon -&gt; Manage account -&gt; Personal access tokens -&gt; Create a token (Assign Read permissions for both Projects and Repositories)</td>\n   </tr>\n   <tr>\n <td>Github Cloud</td>\n <td>PAT only</td>\n <td rowspan=\"2\">Click on your profile icon -&gt; Settings -&gt; Developer settings -&gt; Personal access tokens -&gt; Generate new token (Uncheck all scopes to grants read-only access)</td>\n   </tr>\n   <tr>\n <td>Github Server</td>\n <td>User/password and PAT</td>\n   </tr>\n  </tbody>\n </table>\n \n\n Note : To create PAT credentials in Jenkins , use \"Secret text\" kind of credentials in \"Add Credentials\" dialog",
       "parameters": [
         {
           "name": "configurationId",
@@ -16840,6 +16814,13 @@
           "values": [],
           "description": "",
           "isOptional": false
+        },
+        {
+          "name": "useSSHFormat",
+          "type": "boolean",
+          "values": [],
+          "description": "Select this if all other jobs that use this repository and are connected to ALM Octane pipelines use SSH format. It is important to be consistent with other jobs that use this repository.\n \n\n This will ensure that ALM Octane correctly identifies the SCM repository associated with commits, branches and pull requests.",
+          "isOptional": true
         }
       ],
       "plugin": "hp-application-automation-tools-plugin"
@@ -16891,7 +16872,7 @@
     {
       "command": "collectPullRequestsToAlmOctane",
       "title": "collectPullRequestsToAlmOctane: ALM Octane pull-request collector",
-      "description": "This step is responsible for collecting pull requests from the SCM tool and injecting them to ALM Octane. See help information in [ALM Octane Help Center](https://admhelp.microfocus.com/octane/en/latest/Online/Content/UserGuide/articles-pull-requests.htm).\n \n\n\n \n\n Every time pull requests are sent to ALM Octane the last update time is saved. The next time, only pull requests and commits that were updated after this time will be sent to ALM Octane.\n \n\n\n \n\n Supported version of ALM Octane: 15.0.49 and later.\n \n\n\n \n\n You can change the behaviour of this step by adding the following parameters to the job:\n \n  \n* **pullrequests_min_update_time**: Use this parameter to override the last update time that is updated after each successful injection to ALM Octane.\n\n  \n\n\n  \n* **pullrequests_max_pr_to_collect**: Max number of pull requests to collect. Default is 100.\n\n  \n\n\n  \n* **pullrequests_max_commits_to_collect**: Max number of commits to collect for each pull request. Default is 100.\n\n  \n\n\n \n \n\n\n \n\n **Supported SCM Tools: **\n \n\n\n <table width=\"100%\">\n  <thead>\n   <tr>\n <td>SCM Tool</td>\n <td>Supported types of authentication</td>\n <td>How to create PAT (Personal access token)</td>\n   </tr>\n  </thead>\n  <tbody>\n   <tr>\n <td>Bitbucket Server</td>\n <td>User/password and PAT</td>\n <td>Click on your profile icon -&gt; Manage account -&gt; Personal access tokens -&gt; Create a token (Assign Read permissions for both Projects and Repositories)</td>\n   </tr>\n   <tr>\n <td>Github Cloud</td>\n <td>PAT only</td>\n <td rowspan=\"2\">Click on your profile icon -&gt; Settings -&gt; Developer settings -&gt; Personal access tokens -&gt; Generate new token (Uncheck all scopes to grants read-only access)</td>\n   </tr>\n   <tr>\n <td>Github Server</td>\n <td>User/password and PAT</td>\n   </tr>\n  </tbody>\n </table>\n \n\n Note : To create PAT credentials in Jenkins , use \"Secret text\" kind of credentials in \"Add Credentials\" dialog",
+      "description": "This step is responsible for collecting pull requests from the SCM tool and injecting them to ALM Octane. See help information in [ALM Octane Help Center](https://admhelp.microfocus.com/octane/en/latest/Online/Content/UserGuide/articles-pull-requests.htm).\n \n\n\n \n\n In addition, this step is used to define the scm repositories templates that are used by ALM Octane to link to your repository viewer. To configure templates in ALM Octane, access Settings &gt; Spaces. Select a workspace and click DevOps &gt; SCM Repositories. Follow the on-screen instructions.\n \n\n\n \n\n Every time pull requests are sent to ALM Octane the last update time is saved. The next time, only pull requests and commits that were updated after this time will be sent to ALM Octane.\n \n\n\n \n\n Supported version of ALM Octane: 15.0.49 and later.\n \n\n\n \n\n You can change the behaviour of this step by adding the following parameters to the job:\n \n  \n* **pullrequests_min_update_time**: Use this parameter to override the last update time that is updated after each successful injection to ALM Octane.\n\n  \n\n\n  \n* **pullrequests_max_pr_to_collect**: Max number of pull requests to collect. Default is 100.\n\n  \n\n\n  \n* **pullrequests_max_commits_to_collect**: Max number of commits to collect for each pull request. Default is 100.\n\n  \n\n\n \n \n\n\n \n\n **Supported SCM Tools: **\n \n\n\n <table width=\"100%\">\n  <thead>\n   <tr>\n <td>SCM Tool</td>\n <td>Supported types of authentication</td>\n <td>How to create PAT (Personal access token)</td>\n   </tr>\n  </thead>\n  <tbody>\n   <tr>\n <td>Bitbucket Server</td>\n <td>User/password and PAT</td>\n <td>Click on your profile icon -&gt; Manage account -&gt; Personal access tokens -&gt; Create a token (Assign Read permissions for both Projects and Repositories)</td>\n   </tr>\n   <tr>\n <td>Github Cloud</td>\n <td>PAT only</td>\n <td rowspan=\"2\">Click on your profile icon -&gt; Settings -&gt; Developer settings -&gt; Personal access tokens -&gt; Generate new token (Uncheck all scopes to grants read-only access)</td>\n   </tr>\n   <tr>\n <td>Github Server</td>\n <td>User/password and PAT</td>\n   </tr>\n  </tbody>\n </table>\n \n\n Note : To create PAT credentials in Jenkins , use \"Secret text\" kind of credentials in \"Add Credentials\" dialog",
       "parameters": [
         {
           "name": "configurationId",
@@ -16941,6 +16922,13 @@
           "values": [],
           "description": "",
           "isOptional": false
+        },
+        {
+          "name": "useSSHFormat",
+          "type": "boolean",
+          "values": [],
+          "description": "Select this if all other jobs that use this repository and are connected to ALM Octane pipelines use SSH format. It is important to be consistent with other jobs that use this repository.\n \n\n This will ensure that ALM Octane correctly identifies the SCM repository associated with commits, branches and pull requests.",
+          "isOptional": true
         }
       ],
       "plugin": "hp-application-automation-tools-plugin"
@@ -28039,7 +28027,7 @@
     {
       "command": "ftpPublisher",
       "title": "ftpPublisher: Send build artifacts over FTP",
-      "description": "Send build artifacts over FTP",
+      "description": "Send build artifacts over FTP.",
       "parameters": [
         {
           "name": "publishers",
@@ -28061,28 +28049,28 @@
           "name": "continueOnError",
           "type": "boolean",
           "values": [],
-          "description": "Select to continue publishing to the other FTP servers after a problem with a previous server",
+          "description": "Select to continue publishing to the other FTP servers after a problem with a previous server.",
           "isOptional": false
         },
         {
           "name": "failOnError",
           "type": "boolean",
           "values": [],
-          "description": "Select to mark the build as a failure if there is a problem publishing to a server. The default is to mark the build as unstable",
+          "description": "Select to mark the build as a failure if there is a problem publishing to a server. The default is to mark the build as unstable.",
           "isOptional": false
         },
         {
           "name": "alwaysPublishFromMaster",
           "type": "boolean",
           "values": [],
-          "description": "Select to publish from the Jenkins master.\n\n \nThe default is to publish from the server that holds the files to transfer (workspace on the slave, or artifacts directory on the master)\n\n Enabling this option could help dealing with strict network configurations and firewall rules.\n\n This option will cause the files to be transferred through the master before being sent to the remote server, this may increase network traffic, and could increase the build time.",
+          "description": "Select to publish from the Jenkins master.\n\n \nThe default is to publish from the server that holds the files to transfer (workspace on the agent, or artifacts directory on the master)\n\n Enabling this option could help dealing with strict network configurations and firewall rules.\n\n This option will cause the files to be transferred through the master before being sent to the remote server, this may increase network traffic, and could increase the build time.",
           "isOptional": false
         },
         {
           "name": "masterNodeName",
           "type": "String",
           "values": [],
-          "description": "Set the NODE_NAME for the master Jenkins.\n\n \nSet this option to give a value to the NODE_NAME environment variable when the value is missing (the Jenkins master).\n\n This is useful if you use the $NODE_NAME variable in the remoteDirectory option and the build may occur on the master.",
+          "description": "Set the NODE_NAME for the master Jenkins.\n\n \nSet this option to give a value to the NODE_NAME environment variable when the value is missing (the Jenkins master).\n\n This is useful if you use the NODE_NAME variable in the remoteDirectory option and the build may occur on the master.",
           "isOptional": false
         },
         {
@@ -42224,7 +42212,7 @@
           "name": "credentialsId",
           "type": "String",
           "values": [],
-          "description": "",
+          "description": "LoadRunner Enterprise User / Token's Credentials or parameter pointing to such credentials.",
           "isOptional": false
         },
         {
@@ -42362,6 +42350,13 @@
           "type": "String",
           "values": [],
           "description": "",
+          "isOptional": false
+        },
+        {
+          "name": "authenticateWithToken",
+          "type": "boolean",
+          "values": [],
+          "description": "From LRE 2021 R1, you can use a token associated with your user for authentication.\n \n\n \n\n  If LRE is defined to use SSO, this will be the only way for this plugin to authenticate to LRE.\n \n\n \n\n  To use it, have a token issued to your user in LRE.\n \n\n \n\n  In Jenkins, create new Jenkins credentials based on the LRE token you received: use the ClientIdKey in the Username and the ClientSecretKey key in the password.\n \n\n \n\n  Then use the new Jenkins credentials with this checkbox switched on.",
           "isOptional": false
         }
       ],
@@ -42939,6 +42934,13 @@
         {
           "name": "relativeUnstableThresholdPositive",
           "type": "double",
+          "values": [],
+          "description": "",
+          "isOptional": true
+        },
+        {
+          "name": "showTrendGraphs",
+          "type": "boolean",
           "values": [],
           "description": "",
           "isOptional": true
@@ -44512,6 +44514,34 @@
       "description": "",
       "parameters": [
         {
+          "name": "actions",
+          "type": "Array / List of Nested Object",
+          "values": [
+            "label",
+            "identifier",
+            "description"
+          ],
+          "description": "",
+          "isOptional": true
+        },
+        {
+          "name": "annotations",
+          "type": "Array / List of Nested Object",
+          "values": [
+            "path",
+            "startLine",
+            "endLine",
+            "message",
+            "annotationLevel",
+            "endColumn",
+            "rawDetails",
+            "startColumn",
+            "title"
+          ],
+          "description": "",
+          "isOptional": true
+        },
+        {
           "name": "conclusion",
           "type": "Enum",
           "values": [
@@ -44683,6 +44713,42 @@
         }
       ],
       "plugin": "confluence-publisher"
+    },
+    {
+      "command": "publishCortexMetrics",
+      "title": "publishCortexMetrics: Publish metrics to Cortex",
+      "description": "Publishes current job metrics to Cortex.",
+      "parameters": [
+        {
+          "name": "bearerToken",
+          "type": "String",
+          "values": [],
+          "description": "Overrides the value set on the folder or global configuration. The Cortex API bearer token, in the form \"123:abcd0123...\".",
+          "isOptional": true
+        },
+        {
+          "name": "labels",
+          "type": "java.util.Map<java.lang.String, java.lang.String>",
+          "values": [],
+          "description": "",
+          "isOptional": true
+        },
+        {
+          "name": "namespace",
+          "type": "String",
+          "values": [],
+          "description": "Overrides the value set on the folder or global configuration. The namespace to use for the Cortex metrics, defaults to \"default\". This will be the first element in all metrics, such as \"default_jenkins_job_...\".",
+          "isOptional": true
+        },
+        {
+          "name": "url",
+          "type": "String",
+          "values": [],
+          "description": "Overrides the value set on the folder or global configuration. The Cortex write URL for Prometheus pushes. This is used to send metrics directly to Cortex as if it were Prometheus. Example: https://mycortex.com/api/prom/push",
+          "isOptional": true
+        }
+      ],
+      "plugin": "cortex-metrics"
     },
     {
       "command": "publishCoverage",
@@ -59404,7 +59470,7 @@
     {
       "command": "step([$class: 'BapFtpPromotionPublisherPlugin'])",
       "title": "step([$class: 'BapFtpPromotionPublisherPlugin']): Send build artifacts over FTP",
-      "description": "Send build artifacts over FTP as a build step during a promotion process",
+      "description": "Send build artifacts over FTP as a build step during a promotion process.",
       "parameters": [
         {
           "name": "publishers",
@@ -59868,6 +59934,13 @@
         }
       ],
       "plugin": "brakeman"
+    },
+    {
+      "command": "step([$class: 'BrowserStackCypressReportPublisher'])",
+      "title": "step([$class: 'BrowserStackCypressReportPublisher']): BrowserStack Cypress Test Report",
+      "description": "",
+      "parameters": [],
+      "plugin": "browserstack-integration"
     },
     {
       "command": "step([$class: 'BrowserStackReportPublisher'])",
@@ -86161,6 +86234,48 @@
         }
       ],
       "plugin": "zulip"
+    }
+  ],
+  "environmentVariables": [
+    {
+      "name": "BUILD_ID",
+      "description": "The current build ID, identical to `BUILD_NUMBER` for builds created in Jenkins versions 1.597+"
+    },
+    {
+      "name": "BUILD_NUMBER",
+      "description": "The current build number, such as `153`"
+    },
+    {
+      "name": "BUILD_TAG",
+      "description": "String of `jenkins-${JOB_NAME}-${BUILD_NUMBER}`. Convenient to put into a resource file, a jar file, etc for easier identification"
+    },
+    {
+      "name": "BUILD_URL",
+      "description": "The URL where the results of this build can be found (for example `http://buildserver/jenkins/job/MyJobName/17/` )"
+    },
+    {
+      "name": "EXECUTOR_NUMBER",
+      "description": "The unique number that identifies the current executor (among executors of the same machine) performing this build. This is the number you see in the `build executor status`, except that the number starts from 0, not 1"
+    },
+    {
+      "name": "JAVA_HOME",
+      "description": "If your job is configured to use a specific JDK, this variable is set to the JAVA_HOME of the specified JDK. When this variable is set, PATH is also updated to include the bin subdirectory of JAVA_HOME"
+    },
+    {
+      "name": "JENKINS_URL",
+      "description": "Full URL of Jenkins, such as `https://example.com:port/jenkins/` (NOTE: only available if Jenkins URL set in `System Configuration`)"
+    },
+    {
+      "name": "JOB_NAME",
+      "description": "Name of the project of this build, such as `foo` or `foo/bar`."
+    },
+    {
+      "name": "NODE_NAME",
+      "description": "The name of the node the current build is running on. Set to 'master' for the Jenkins controller."
+    },
+    {
+      "name": "WORKSPACE",
+      "description": "The absolute path of the workspace"
     }
   ]
 }

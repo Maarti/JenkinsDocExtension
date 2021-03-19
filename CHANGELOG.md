@@ -1,5 +1,10 @@
 # Change Log
 
+## [1.2.1](https://github.com/Maarti/JenkinsDocExtension/releases/tag/1.2.1) - 2021-03-18
+
+- Documentation updated
+- Licence added
+
 ## [1.2.0](https://github.com/Maarti/JenkinsDocExtension/releases/tag/1.2.0) - 2021-03-14
 
 - Documentation for Jenkins environment variables
@@ -15,3 +20,5 @@
 ## [1.0.0](https://github.com/Maarti/JenkinsDocExtension/releases/tag/1.0.0) - 2021-03-08
 
 - Initial release
+- "Go To Definition" for files Groovy with the same name as the hovered word
+- Documentation for Jenkins instructions

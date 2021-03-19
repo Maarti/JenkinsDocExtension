@@ -3,19 +3,39 @@
   "displayName": "Jenkins Doc",
   "description": "Provides Jenkins documentation and autocompletion on Jenkinsfile and Groovy files",
   "publisher": "Maarti",
+  "license": "GPL-3.0",
   "icon": "assets/logo_128.png",
   "galleryBanner": {
-    "color": "#ffffff"
+    "color": "#241f20",
+    "theme": "dark"
+  },
+  "author": {
+    "name": "Bryan Martinet",
+    "email": "contact@maarti.net",
+    "url": "https://maarti.net"
+  },
+  "homepage": "https://github.com/Maarti/JenkinsDocExtension/blob/develop/README.md",
+  "bugs": {
+    "url": "https://github.com/Maarti/JenkinsDocExtension/issues"
   },
   "repository": {
     "url": "https://github.com/Maarti/JenkinsDocExtension"
   },
-  "version": "1.2.0",
+  "keywords": [
+    "jenkins",
+    "groovy",
+    "doc",
+    "jenkinsfile",
+    "automation"
+  ],
+  "version": "1.2.1",
   "engines": {
     "vscode": "^1.54.0"
   },
   "categories": [
     "Programming Languages",
+    "Keymaps",
+    "Snippets",
     "Other"
   ],
   "activationEvents": [
@@ -25,6 +45,7 @@
   "contributes": {
     "commands": []
   },
+  "qna": false,
   "scripts": {
     "vscode:prepublish": "npm run compile",
     "compile": "tsc -p ./",
