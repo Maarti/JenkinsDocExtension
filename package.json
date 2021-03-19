@@ -3,6 +3,7 @@
   "displayName": "Jenkins Doc",
   "description": "Provides Jenkins documentation and autocompletion on Jenkinsfile and Groovy files",
   "publisher": "Maarti",
+  "license": "GPL-3.0",
   "icon": "assets/logo_128.png",
   "galleryBanner": {
     "color": "#241f20",
@@ -27,7 +28,7 @@
     "jenkinsfile",
     "automation"
   ],
-  "version": "1.2.0",
+  "version": "1.2.1",
   "engines": {
     "vscode": "^1.54.0"
   },
