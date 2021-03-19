@@ -1,5 +1,5 @@
 {
-  "date": "2021-03-14T21:50:24.959Z",
+  "date": "2021-03-19T00:09:36.515Z",
   "plugins": [
     {
       "name": ".NET SDK Support",
@@ -1320,11 +1320,6 @@
       "name": "IBM Cloud DevOps",
       "url": "https://www.jenkins.io/doc/pipeline/steps/ibm-cloud-devops/",
       "id": "ibm-cloud-devops"
-    },
-    {
-      "name": "IBM Continuous Release",
-      "url": "https://www.jenkins.io/doc/pipeline/steps/ibm-continuous-release/",
-      "id": "ibm-continuous-release"
     },
     {
       "name": "IBM Security AppScan Source Scanner",
@@ -61992,7 +61987,7 @@
     },
     {
       "command": "step([$class: 'ContinuousReleaseProperties'])",
-      "title": "step([$class: 'ContinuousReleaseProperties']): Pass Properties to Continuous Release Version",
+      "title": "step([$class: 'ContinuousReleaseProperties']): Pass Properties to UrbanCode Velocity Version",
       "description": "",
       "parameters": [
         {
@@ -62003,7 +61998,7 @@
           "isOptional": false
         }
       ],
-      "plugin": "ibm-continuous-release"
+      "plugin": "urbancode-velocity"
     },
     {
       "command": "step([$class: 'CordellWalkerRecorder'])",
