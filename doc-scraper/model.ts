@@ -14,7 +14,8 @@ export interface Section extends Instruction {
   isOptional: boolean;
   allowed: string;
   url: string;
-  parameters: Parameter[];
+  /** Instructions names recommended inside this Section */
+  innerInstructions: string[];
 }
 
 export interface Step extends Instruction {
@@ -41,6 +42,7 @@ export interface JenkinsData {
   date: string;
   plugins: Plugin[];
   instructions: Step[];
+  sections: Section[];
   environmentVariables: Variable[];
 }
 

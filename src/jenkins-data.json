@@ -1,5 +1,5 @@
 {
-  "date": "2021-03-20T21:39:24.841Z",
+  "date": "2021-03-20T23:39:03.734Z",
   "plugins": [
     {
       "name": ".NET SDK Support",
@@ -97258,6 +97258,65 @@
         }
       ],
       "plugin": "zulip"
+    }
+  ],
+  "sections": [
+    {
+      "name": "agent",
+      "description": "The `agent` section specifies where the entire Pipeline, or a specific stage, will execute in the Jenkins environment depending on where the `agent` section is placed. The section must be defined at the top-level inside the `pipeline` block, but stage-level usage is optional.",
+      "instructionType": "Section",
+      "url": "https://www.jenkins.io/doc/book/pipeline/syntax/#agent",
+      "isOptional": false,
+      "innerInstructions": [
+        "label",
+        "node",
+        "docker",
+        "dockerfile",
+        "kubernetes"
+      ],
+      "allowed": "In the top-level `pipeline` block and each `stage` block"
+    },
+    {
+      "name": "post",
+      "description": "The `post` section defines one or more additional [steps](https://www.jenkins.io/doc/book/pipeline/syntax/#declarative-steps) that are run upon the completion of a Pipeline’s or stage’s run (depending on the location of the `post` section within the Pipeline). `post` can support any of the following [post-condition](https://www.jenkins.io/doc/book/pipeline/syntax/#post-conditions) blocks: `always`, `changed`, `fixed`, `regression`, `aborted`, `failure`, `success`, `unstable`, `unsuccessful`, and `cleanup`. These condition blocks allow the execution of steps inside each condition depending on the completion status of the Pipeline or stage. The condition blocks are executed in the order shown below.",
+      "instructionType": "Section",
+      "url": "https://www.jenkins.io/doc/book/pipeline/syntax/#post",
+      "isOptional": true,
+      "innerInstructions": [
+        "always",
+        "changed",
+        "fixed",
+        "regression",
+        "aborted",
+        "failure",
+        "success",
+        "unstable",
+        "unsuccessful",
+        "cleanup"
+      ],
+      "allowed": "In the top-level `pipeline` block and each `stage` block"
+    },
+    {
+      "name": "stages",
+      "description": "Containing a sequence of one or more [stage](https://www.jenkins.io/doc/book/pipeline/syntax/#stage) directives, the `stages` section is where the bulk of the \"work\" described by a Pipeline will be located. At a minimum, it is recommended that `stages` contain at least one [stage](https://www.jenkins.io/doc/book/pipeline/syntax/#stage) directive for each discrete part of the continuous delivery process, such as Build, Test, and Deploy.",
+      "instructionType": "Section",
+      "url": "https://www.jenkins.io/doc/book/pipeline/syntax/#stages",
+      "isOptional": false,
+      "innerInstructions": [
+        "stage"
+      ],
+      "allowed": "Only once, inside the `pipeline` block"
+    },
+    {
+      "name": "steps",
+      "description": "The `steps` section defines a series of one or more [steps](https://www.jenkins.io/doc/book/pipeline/syntax/#declarative-steps) to be executed in a given `stage` directive.",
+      "instructionType": "Section",
+      "url": "https://www.jenkins.io/doc/book/pipeline/syntax/#steps",
+      "isOptional": false,
+      "innerInstructions": [
+        "step"
+      ],
+      "allowed": "Inside each `stage` block"
     }
   ],
   "environmentVariables": [

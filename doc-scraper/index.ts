@@ -2,9 +2,20 @@ import axios from 'axios';
 import cheerio from 'cheerio';
 import fs from 'fs';
 import { from, of } from 'rxjs';
-import { map, tap, mergeMap, catchError, finalize, delay, concatMap } from 'rxjs/operators';
+import {
+  map,
+  tap,
+  mergeMap,
+  catchError,
+  finalize,
+  delay,
+  concatMap,
+  take,
+  switchMap,
+} from 'rxjs/operators';
 import environmentVariables from './jenkins-env-vars.json';
 import { JenkinsData, Parameter, ParameterType, Step, Plugin } from './model';
+import { scrapSections } from './section-scraper';
 import { color, Color, toMarkdown } from './utils';
 
 console.log('Scraper starting...');
@@ -22,58 +33,65 @@ function main() {
     date: new Date().toISOString(),
     plugins: [],
     instructions: [],
+    sections: [],
     environmentVariables,
   };
   const axiosInstance = axios.create();
-  from(axiosInstance.get(jenkinsReferenceUrl))
-    .pipe(
-      tap(response => console.log(`Fetching plugins list: ${response.config.url}`)),
-      map(response => cheerio.load(response.data)),
-      map($ => ({ $, pluginElems: $('div.container div.col-lg-9 div > ul > li') })),
-      tap(({ $, pluginElems }) =>
-        pluginElems.each((i, pluginElem) => jenkinsData.plugins.push(parsePlugin($, pluginElem))),
-      ),
-      tap(() => console.log(`${jenkinsData.plugins.length} plugins found`)),
-      // tap(() => (jenkinsData.plugins = pluginStubs)),
-      mergeMap(() => jenkinsData.plugins),
-      concatMap(plugin => of(plugin).pipe(delay(requestsInterval))),
-      mergeMap(plugin =>
-        from(axiosInstance.get(plugin.url)).pipe(
-          tap(response => console.log(`Fetching ${response.config.url}`)),
-          map(response => cheerio.load(response.data)),
-          map($ => ({ docs: $('.sect2'), $ })),
-          tap(({ docs, $ }) => {
-            let counter = 0;
-            docs.each((i, docElem) => {
-              jenkinsData.instructions.push(parseStep($, docElem, plugin));
-              counter++;
-            });
-            const msgColor = counter ? Color.green : Color.red;
-            console.log(`  => ${color(`${counter} instructions found`, msgColor)}`);
-          }),
-          catchError(error => {
-            console.log(
-              color(
-                `Error while fetching plugin ${plugin.name}:\n  ${error}\n  This plugin will be ignored`,
-                Color.red,
-              ),
-            );
+  const sectionsScrapProcess = scrapSections();
+  const mainScrapProcess = from(axiosInstance.get(jenkinsReferenceUrl)).pipe(
+    tap(response => console.log(`Fetching plugins list: ${response.config.url}`)),
+    map(response => cheerio.load(response.data)),
+    map($ => ({ $, pluginElems: $('div.container div.col-lg-9 div > ul > li') })),
+    tap(({ $, pluginElems }) =>
+      pluginElems.each((i, pluginElem) => jenkinsData.plugins.push(parsePlugin($, pluginElem))),
+    ),
+    tap(() => console.log(`${jenkinsData.plugins.length} plugins found`)),
+    // tap(() => (jenkinsData.plugins = pluginStubs)),
+    mergeMap(() => jenkinsData.plugins),
+    concatMap(plugin => of(plugin).pipe(delay(requestsInterval))),
+    mergeMap(plugin =>
+      from(axiosInstance.get(plugin.url)).pipe(
+        tap(response => console.log(`Fetching ${response.config.url}`)),
+        map(response => cheerio.load(response.data)),
+        map($ => ({ docs: $('.sect2'), $ })),
+        tap(({ docs, $ }) => {
+          let counter = 0;
+          docs.each((i, docElem) => {
+            jenkinsData.instructions.push(parseStep($, docElem, plugin));
+            counter++;
+          });
+          const msgColor = counter ? Color.green : Color.red;
+          console.log(`  => ${color(`${counter} instructions found`, msgColor)}`);
+        }),
+        catchError(error => {
+          console.log(
+            color(
+              `Error while fetching plugin ${plugin.name}:\n  ${error}\n  This plugin will be ignored`,
+              Color.red,
+            ),
+          );
 
-            return of(null);
-          }),
-        ),
+          return of(null);
+        }),
       ),
-      finalize(() => {
-        jenkinsData.instructions.sort((a, b) => (a.command < b.command ? -1 : 1));
-        console.log(`Total: ${jenkinsData.instructions.length} instructions found`);
-        const prettyOutput = JSON.stringify(jenkinsData, null, 2);
-        fs.writeFileSync(outputFile, prettyOutput);
-        console.log(`Extracted in: ${outputFile}`);
-      }),
-      catchError(error => {
-        console.error(color(`Error while fetching information:\n  ${error}`, Color.red));
-        return of(null);
-      }),
+    ),
+    finalize(() => {
+      jenkinsData.instructions.sort((a, b) => (a.command < b.command ? -1 : 1));
+      console.log(`Total: ${jenkinsData.instructions.length} instructions found`);
+      const prettyOutput = JSON.stringify(jenkinsData, null, 2);
+      fs.writeFileSync(outputFile, prettyOutput);
+      console.log(`Extracted in: ${outputFile}`);
+    }),
+    catchError(error => {
+      console.error(color(`Error while fetching information:\n  ${error}`, Color.red));
+      return of(null);
+    }),
+  );
+  sectionsScrapProcess
+    .pipe(
+      tap(sections => (jenkinsData.sections = sections)),
+      take(1),
+      switchMap(() => mainScrapProcess),
     )
     .subscribe();
 }
