@@ -43,7 +43,7 @@ function main() {
           tap(({ docs, $ }) => {
             let counter = 0;
             docs.each((i, docElem) => {
-              jenkinsData.instructions.push(parseInstruction($, docElem, plugin));
+              jenkinsData.instructions.push(parseStep($, docElem, plugin));
               counter++;
             });
             const msgColor = counter ? Color.green : Color.red;
@@ -87,7 +87,7 @@ function parsePlugin($: cheerio.Root, pluginElem: cheerio.Element): Plugin {
   };
 }
 
-function parseInstruction($: cheerio.Root, docElem: cheerio.Element, plugin: Plugin): Step {
+function parseStep($: cheerio.Root, docElem: cheerio.Element, plugin: Plugin): Step {
   const command: string = $(docElem).find('> h3 > code').text();
   const name: string = $(docElem).find('> h3').text();
   let description: string = $(docElem).find('> div').html() || '';
@@ -105,6 +105,7 @@ function parseInstruction($: cheerio.Root, docElem: cheerio.Element, plugin: Plu
       name: $(parameterElem).find('> code').text(),
       type,
       values,
+      instructionType: 'Parameter',
       description: toMarkdown($(parameterElem).find('> div').html()),
       isOptional: $(parameterElem)
         .contents()
@@ -117,6 +118,7 @@ function parseInstruction($: cheerio.Root, docElem: cheerio.Element, plugin: Plu
   return {
     command,
     name,
+    instructionType: 'Step',
     description,
     parameters,
     plugin: plugin.id,
@@ -219,7 +221,9 @@ interface Plugin {
 interface Instruction {
   name: string;
   description: string;
+  instructionType: InstructionType;
 }
+
 interface Step extends Instruction {
   command: string;
   plugin: string;
@@ -232,15 +236,12 @@ interface Parameter extends Instruction {
   isOptional: boolean;
 }
 
+interface Variable extends Instruction {}
+
 interface Url {
   label: string;
   url: string;
   html: string;
-}
-
-interface Variable {
-  name: string;
-  description: string;
 }
 
 interface JenkinsData {
@@ -251,6 +252,7 @@ interface JenkinsData {
 }
 
 type ParameterType = 'String' | 'boolean' | 'Enum' | 'Nested' | 'unknown' | string;
+type InstructionType = 'Section' | 'Directive' | 'Step' | 'Parameter' | 'Variable' | string;
 
 type Falsy = false | 0 | '' | null | undefined;
 

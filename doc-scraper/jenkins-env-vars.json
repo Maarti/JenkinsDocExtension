@@ -1,45 +1,61 @@
 [
   {
     "name": "BUILD_ID",
-    "description": "The current build ID, identical to `BUILD_NUMBER` for builds created in Jenkins versions 1.597+"
+    "description": "The current build ID, identical to `BUILD_NUMBER` for builds created in Jenkins versions 1.597+",
+    "instructionType": "Variable"
   },
 
-  { "name": "BUILD_NUMBER", "description": "The current build number, such as `153`" },
+  {
+    "name": "BUILD_NUMBER",
+    "description": "The current build number, such as `153`",
+    "instructionType": "Variable"
+  },
 
   {
     "name": "BUILD_TAG",
-    "description": "String of `jenkins-${JOB_NAME}-${BUILD_NUMBER}`. Convenient to put into a resource file, a jar file, etc for easier identification"
+    "description": "String of `jenkins-${JOB_NAME}-${BUILD_NUMBER}`. Convenient to put into a resource file, a jar file, etc for easier identification",
+    "instructionType": "Variable"
   },
 
   {
     "name": "BUILD_URL",
-    "description": "The URL where the results of this build can be found (for example `http://buildserver/jenkins/job/MyJobName/17/` )"
+    "description": "The URL where the results of this build can be found (for example `http://buildserver/jenkins/job/MyJobName/17/` )",
+    "instructionType": "Variable"
   },
 
   {
     "name": "EXECUTOR_NUMBER",
-    "description": "The unique number that identifies the current executor (among executors of the same machine) performing this build. This is the number you see in the `build executor status`, except that the number starts from 0, not 1"
+    "description": "The unique number that identifies the current executor (among executors of the same machine) performing this build. This is the number you see in the `build executor status`, except that the number starts from 0, not 1",
+    "instructionType": "Variable"
   },
 
   {
     "name": "JAVA_HOME",
-    "description": "If your job is configured to use a specific JDK, this variable is set to the JAVA_HOME of the specified JDK. When this variable is set, PATH is also updated to include the bin subdirectory of JAVA_HOME"
+    "description": "If your job is configured to use a specific JDK, this variable is set to the JAVA_HOME of the specified JDK. When this variable is set, PATH is also updated to include the bin subdirectory of JAVA_HOME",
+    "instructionType": "Variable"
   },
 
   {
     "name": "JENKINS_URL",
-    "description": "Full URL of Jenkins, such as `https://example.com:port/jenkins/` (NOTE: only available if Jenkins URL set in `System Configuration`)"
+    "description": "Full URL of Jenkins, such as `https://example.com:port/jenkins/` (NOTE: only available if Jenkins URL set in `System Configuration`)",
+    "instructionType": "Variable"
   },
 
   {
     "name": "JOB_NAME",
-    "description": "Name of the project of this build, such as `foo` or `foo/bar`."
+    "description": "Name of the project of this build, such as `foo` or `foo/bar`.",
+    "instructionType": "Variable"
   },
 
   {
     "name": "NODE_NAME",
-    "description": "The name of the node the current build is running on. Set to 'master' for the Jenkins controller."
+    "description": "The name of the node the current build is running on. Set to 'master' for the Jenkins controller.",
+    "instructionType": "Variable"
   },
 
-  { "name": "WORKSPACE", "description": "The absolute path of the workspace" }
+  {
+    "name": "WORKSPACE",
+    "description": "The absolute path of the workspace",
+    "instructionType": "Variable"
+  }
 ]
