@@ -37,12 +37,7 @@ What's new?
 - Documentation for Jenkins environment variables
 - Autocompletion for Jenkins environment variables
 
-### [1.1.0](https://github.com/Maarti/JenkinsDocExtension/releases/tag/1.1.0) - 2021-03-10
-
-- Autocompletion for more than 1400 instructions
-- Autocompletion for instructions parameters
-- Autocompletion for boolean and enum parameters
-- Improved documentation for nested objects and enum type parameters
+[[...]](./CHANGELOG.md)
 
 See the [Changelog](./CHANGELOG.md)
 
@@ -55,6 +50,8 @@ See the [Changelog](./CHANGELOG.md)
 - ✅ Documentation for Jenkins env vars
 - ✅ Autocompletion for Jenkins env vars
 - ✅ Support Jenkinsfile in the same way as Groovy files
+- ⬛ Documentation for [Sections](https://www.jenkins.io/doc/book/pipeline/syntax/#declarative-sections)
+- ⬛ Documentation for [Directives](https://www.jenkins.io/doc/book/pipeline/syntax/#declarative-directives)
 - ⬛ "Go To Definition" for functions in the same file
 - ⬛ "Go To Definition" for functions in a different file
 - ⬛ Support [Jenkins parameters](https://www.jenkins.io/doc/book/pipeline/syntax/#parameters) (`booleanParam`, `string`, `extendedChoice`,...)

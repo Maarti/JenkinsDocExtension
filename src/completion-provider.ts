@@ -23,7 +23,7 @@ export class CompletionProvider<T extends vscode.CompletionItem = vscode.Complet
 
     // Parameters autocompletion
     // Check if the user has opened a parenthesis and retrieves the instruction before the parenthesis
-    const instructionMatch = linePrefix.match(/^.*?(\w+)\(/) || [];
+    const instructionMatch = linePrefix.match(/{?\s*(\w+)\s*[( ](?!.*[{(])/) || [];
     if (instructionMatch.length > 1) {
       const command = instructionMatch[1];
       const instruction = jenkinsData.instructions.find(

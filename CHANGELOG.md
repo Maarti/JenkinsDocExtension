@@ -1,5 +1,10 @@
 # Change Log
 
+## Next
+
+- Support for autocompletion of functions parameters without parenthesis
+- Support for autocompletion of functions parameters nested in other function/directive on the same line
+
 ## [1.2.1](https://github.com/Maarti/JenkinsDocExtension/releases/tag/1.2.1) - 2021-03-18
 
 - Documentation updated
