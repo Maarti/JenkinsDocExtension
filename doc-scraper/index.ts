@@ -11,7 +11,7 @@ console.log('Scraper starting...');
 const jenkinsBaseUrl = 'https://www.jenkins.io';
 const jenkinsReferenceUrl = `${jenkinsBaseUrl}/doc/pipeline/steps/`;
 const outputFile = 'src/jenkins-data.json';
-const requestsInterval = 100; // Delay between each http request (in ms), to avoid DDOSing jenkins.io
+const requestsInterval = 0; // Delay between each http request (in ms), to avoid DDOSing jenkins.io
 
 main();
 
@@ -87,9 +87,9 @@ function parsePlugin($: cheerio.Root, pluginElem: cheerio.Element): Plugin {
   };
 }
 
-function parseInstruction($: cheerio.Root, docElem: cheerio.Element, plugin: Plugin): Instruction {
+function parseInstruction($: cheerio.Root, docElem: cheerio.Element, plugin: Plugin): Step {
   const command: string = $(docElem).find('> h3 > code').text();
-  const title: string = $(docElem).find('> h3').text();
+  const name: string = $(docElem).find('> h3').text();
   let description: string = $(docElem).find('> div').html() || '';
   description += $(docElem)
     .contents()
@@ -116,7 +116,7 @@ function parseInstruction($: cheerio.Root, docElem: cheerio.Element, plugin: Plu
   });
   return {
     command,
-    title,
+    name,
     description,
     parameters,
     plugin: plugin.id,
@@ -217,18 +217,18 @@ interface Plugin {
 }
 
 interface Instruction {
-  command: string;
-  title: string;
-  plugin: string;
+  name: string;
   description: string;
+}
+interface Step extends Instruction {
+  command: string;
+  plugin: string;
   parameters: Parameter[];
 }
 
-interface Parameter {
-  name: string;
+interface Parameter extends Instruction {
   type: ParameterType;
   values: string[];
-  description: string;
   isOptional: boolean;
 }
 
@@ -246,7 +246,7 @@ interface Variable {
 interface JenkinsData {
   date: string;
   plugins: Plugin[];
-  instructions: Instruction[];
+  instructions: Step[];
   environmentVariables: Variable[];
 }
 

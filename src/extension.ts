@@ -44,7 +44,7 @@ function initDocMap() {
   jenkinsData.instructions.forEach(instruction => {
     const markdowns: vscode.MarkdownString[] = [];
     markdowns.push(
-      new vscode.MarkdownString(`**${instruction.title}**\n\n${instruction.description}`),
+      new vscode.MarkdownString(`**${instruction.name}**\n\n${instruction.description}`),
     );
     instruction.parameters.forEach(parameter => {
       const markdown = new vscode.MarkdownString();
