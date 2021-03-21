@@ -6,16 +6,18 @@ import jenkinsData from './jenkins-data.json';
 
 /** Map containing all Jenkins documentation data indexed by their instruction name */
 export const docs = new Map<string, vscode.MarkdownString[]>();
-export const completions: vscode.CompletionItem[] = [];
+export const stepCompletions: vscode.CompletionItem[] = [];
 export const envVarCompletions: vscode.CompletionItem[] = [];
-export const sectionDirectiveCompletions: vscode.CompletionItem[] = [];
+export const sectionCompletions: vscode.CompletionItem[] = [];
+export const directiveCompletions: vscode.CompletionItem[] = [];
 
 export function activate(context: vscode.ExtensionContext) {
   console.log('Extension "jenkins-doc" is now active');
   initDocMap();
   initEnvVarCompletionArray();
-  initSectionDirectiveCompletionArray();
-  initCompletionArray();
+  initSectionCompletionArray();
+  initDirectiveCompletionArray();
+  initStepCompletionArray();
 
   const groovyFileSelector: vscode.DocumentSelector = {
     language: 'groovy', // Known language identifiers list: https://code.visualstudio.com/docs/languages/identifiers
@@ -98,7 +100,7 @@ function initDocMap() {
 }
 
 function initEnvVarCompletionArray() {
-  console.log('Env Var Completion array initialization...');
+  console.log('Env Var completion array initialization...');
   envVarCompletions.push(
     ...jenkinsData.environmentVariables.map(envVar => {
       const completion = new vscode.CompletionItem(envVar.name);
@@ -106,6 +108,7 @@ function initEnvVarCompletionArray() {
       completion.detail = 'Jenkins Environment Variable';
       completion.documentation = new vscode.MarkdownString(envVar.description);
       completion.kind = vscode.CompletionItemKind.Variable;
+      completion.sortText = '99';
       return completion;
     }),
   );
@@ -116,28 +119,29 @@ function initEnvVarCompletionArray() {
   };
   envCompletion.insertText = 'env.';
   envCompletion.detail = 'Jenkins Environment Variable';
+  envCompletion.sortText = '99';
   envCompletion.documentation = new vscode.MarkdownString(
     'The full list of environment variables accessible from within Jenkins Pipeline is documented at ${YOUR_JENKINS_URL}/pipeline-syntax/globals#env',
   );
-  completions.push(envCompletion);
-  console.log(`Env Var Completion array initialized with ${envVarCompletions.length} entries`);
+  stepCompletions.push(envCompletion);
+  console.log(`Env Var completion array initialized with ${envVarCompletions.length} entries`);
 }
 
-function initSectionDirectiveCompletionArray() {
-  console.log('Section/Directive Completion array initialization...');
-  sectionDirectiveCompletions.push(
-    ...[...jenkinsData.sections, ...jenkinsData.directives].map(sectionOrDirectiveToCompletion),
-  );
-  console.log(
-    `Section/Directive Completion array initialized with ${sectionDirectiveCompletions.length} entries`,
-  );
+function initSectionCompletionArray() {
+  console.log('Section completion array initialization...');
+  sectionCompletions.push(...jenkinsData.sections.map(sectionOrDirectiveToCompletion));
+  console.log(`Section completion array initialized with ${sectionCompletions.length} entries`);
 }
 
-function initCompletionArray() {
-  console.log('Completion array initialization...');
-  completions.push(
-    ...envVarCompletions,
-    ...sectionDirectiveCompletions,
+function initDirectiveCompletionArray() {
+  console.log('Directive completion array initialization...');
+  directiveCompletions.push(...jenkinsData.directives.map(sectionOrDirectiveToCompletion));
+  console.log(`Directive completion array initialized with ${directiveCompletions.length} entries`);
+}
+
+function initStepCompletionArray() {
+  console.log('Step completion array initialization...');
+  stepCompletions.push(
     ...jenkinsData.instructions.map(instruction => {
       const completion = new vscode.CompletionItem(instruction.command);
       if (instruction.parameters.length) {
@@ -152,10 +156,11 @@ function initCompletionArray() {
       completion.detail = `Jenkins (${instruction.plugin}) Step`;
       completion.documentation = new vscode.MarkdownString(instruction.description);
       completion.kind = vscode.CompletionItemKind.Function;
+      completion.sortText = '99';
       return completion;
     }),
   );
-  console.log(`Completion array initialized with ${completions.length} entries`);
+  console.log(`Step completion array initialized with ${stepCompletions.length} entries`);
 }
 
 function sectionOrDirectiveToCompletion(instruction: typeof jenkinsData.directives[0]) {
@@ -164,6 +169,7 @@ function sectionOrDirectiveToCompletion(instruction: typeof jenkinsData.directiv
     instruction.instructionType === 'Section' ? 'Jenkins Section' : 'Jenkins Directive';
   completion.documentation = new vscode.MarkdownString(instruction.description);
   completion.kind = vscode.CompletionItemKind.Class;
+  completion.sortText = '99';
   if (instruction.innerInstructions.length) {
     const enumValues = instruction.innerInstructions.join(',');
     completion.insertText = new vscode.SnippetString(

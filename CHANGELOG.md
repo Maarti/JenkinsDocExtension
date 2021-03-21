@@ -9,6 +9,8 @@
 - Link to documentation website added in the hovering panel
 - Support for autocompletion of functions parameters without parenthesis
 - Support for autocompletion of functions parameters nested in other function/directive on the same line
+- Global order of autocompletions improved
+- Required function parameters are now proposed before the optional ones in the autocompletion list
 
 ## [1.2.1](https://github.com/Maarti/JenkinsDocExtension/releases/tag/1.2.1) - 2021-03-18
 
