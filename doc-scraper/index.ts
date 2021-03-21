@@ -13,6 +13,7 @@ import {
   take,
   switchMap,
 } from 'rxjs/operators';
+import { scrapDirectives } from './directive-scraper';
 import environmentVariables from './jenkins-env-vars.json';
 import { JenkinsData, Parameter, ParameterType, Step, Plugin } from './model';
 import { scrapSections } from './section-scraper';
@@ -34,10 +35,10 @@ function main() {
     plugins: [],
     instructions: [],
     sections: [],
+    directives: [],
     environmentVariables,
   };
   const axiosInstance = axios.create();
-  const sectionsScrapProcess = scrapSections();
   const mainScrapProcess = from(axiosInstance.get(jenkinsReferenceUrl)).pipe(
     tap(response => console.log(`Fetching plugins list: ${response.config.url}`)),
     map(response => cheerio.load(response.data)),
@@ -87,9 +88,12 @@ function main() {
       return of(null);
     }),
   );
-  sectionsScrapProcess
+  scrapSections()
     .pipe(
       tap(sections => (jenkinsData.sections = sections)),
+      take(1),
+      switchMap(() => scrapDirectives()),
+      tap(directives => (jenkinsData.directives = directives)),
       take(1),
       switchMap(() => mainScrapProcess),
     )

@@ -1,5 +1,5 @@
 {
-  "date": "2021-03-20T23:39:03.734Z",
+  "date": "2021-03-21T04:21:55.786Z",
   "plugins": [
     {
       "name": ".NET SDK Support",
@@ -97317,6 +97317,115 @@
         "step"
       ],
       "allowed": "Inside each `stage` block"
+    }
+  ],
+  "directives": [
+    {
+      "name": "environment",
+      "description": "The `environment` directive specifies a sequence of key-value pairs which will be defined as environment variables for all steps, or stage-specific steps, depending on where the `environment` directive is located within the Pipeline.",
+      "instructionType": "Directive",
+      "url": "https://www.jenkins.io/doc/book/pipeline/syntax/#environment",
+      "isOptional": true,
+      "innerInstructions": [],
+      "allowed": "Inside the `pipeline` block, or within `stage` directives"
+    },
+    {
+      "name": "input",
+      "description": "The `input` directive on a `stage` allows you to prompt for input, using the [`input` step](/doc/pipeline/steps/pipeline-input-step/#input-wait-for-interactive-input). The `stage` will pause after any `options` have been applied, and before entering the `agent` block for that `stage` or evaluating the `when` condition of the `stage`. If the `input` is approved, the `stage` will then continue. Any parameters provided as part of the `input` submission will be available in the environment for the rest of the `stage`.",
+      "instructionType": "Directive",
+      "url": "https://www.jenkins.io/doc/book/pipeline/syntax/#input",
+      "isOptional": true,
+      "innerInstructions": [
+        "message",
+        "id",
+        "ok",
+        "submitter",
+        "submitterParameter",
+        "parameters"
+      ],
+      "allowed": ""
+    },
+    {
+      "name": "options",
+      "description": "The `options` directive allows configuring Pipeline-specific options from within the Pipeline itself. Pipeline provides a number of these options, such as `buildDiscarder`, but they may also be provided by plugins, such as `timestamps`.",
+      "instructionType": "Directive",
+      "url": "https://www.jenkins.io/doc/book/pipeline/syntax/#options",
+      "isOptional": true,
+      "innerInstructions": [],
+      "allowed": "Only once, inside the `pipeline` block"
+    },
+    {
+      "name": "parameters",
+      "description": "The `parameters` directive provides a list of parameters that a user should provide when triggering the Pipeline. The values for these user-specified parameters are made available to Pipeline steps via the `params` object, see the [Parameters, Declarative Pipeline](https://www.jenkins.io/doc/book/pipeline/syntax/#parameters-example) for its specific usage.",
+      "instructionType": "Directive",
+      "url": "https://www.jenkins.io/doc/book/pipeline/syntax/#parameters",
+      "isOptional": true,
+      "innerInstructions": [
+        "string",
+        "text",
+        "booleanParam",
+        "choice",
+        "password"
+      ],
+      "allowed": "Only once, inside the `pipeline` block"
+    },
+    {
+      "name": "stage",
+      "description": "The `stage` directive goes in the `stages` section and should contain a [steps](https://www.jenkins.io/doc/book/pipeline/syntax/#steps) section, an optional `agent` section, or other stage-specific directives. Practically speaking, all of the real work done by a Pipeline will be wrapped in one or more `stage` directives.",
+      "instructionType": "Directive",
+      "url": "https://www.jenkins.io/doc/book/pipeline/syntax/#stage",
+      "isOptional": true,
+      "innerInstructions": [],
+      "allowed": "Inside the `stages` section"
+    },
+    {
+      "name": "tools",
+      "description": "A section defining tools to auto-install and put on the `PATH`. This is ignored if `agent none` is specified.",
+      "instructionType": "Directive",
+      "url": "https://www.jenkins.io/doc/book/pipeline/syntax/#tools",
+      "isOptional": true,
+      "innerInstructions": [
+        "maven",
+        "jdk",
+        "gradle"
+      ],
+      "allowed": "Inside the `pipeline` block or a `stage` block"
+    },
+    {
+      "name": "triggers",
+      "description": "The `triggers` directive defines the automated ways in which the Pipeline should be re-triggered. For Pipelines which are integrated with a source such as GitHub or BitBucket, `triggers` may not be necessary as webhooks-based integration will likely already be present. The triggers currently available are `cron`, `pollSCM` and `upstream`.",
+      "instructionType": "Directive",
+      "url": "https://www.jenkins.io/doc/book/pipeline/syntax/#triggers",
+      "isOptional": true,
+      "innerInstructions": [
+        "cron",
+        "pollSCM",
+        "upstream"
+      ],
+      "allowed": "Only once, inside the `pipeline` block"
+    },
+    {
+      "name": "when",
+      "description": "The `when` directive allows the Pipeline to determine whether the stage should be executed depending on the given condition. The `when` directive must contain at least one condition. If the `when` directive contains more than one condition, all the child conditions must return true for the stage to execute. This is the same as if the child conditions were nested in an `allOf` condition (see the [examples](https://www.jenkins.io/doc/book/pipeline/syntax/#when-example) below). If an `anyOf` condition is used, note that the condition skips remaining tests as soon as the first \"true\" condition is found.",
+      "instructionType": "Directive",
+      "url": "https://www.jenkins.io/doc/book/pipeline/syntax/#when",
+      "isOptional": true,
+      "innerInstructions": [
+        "branch",
+        "buildingTag",
+        "changelog",
+        "changeset",
+        "changeRequest",
+        "environment",
+        "equals",
+        "expression",
+        "tag",
+        "not",
+        "allOf",
+        "anyOf",
+        "triggeredBy"
+      ],
+      "allowed": "Inside a `stage` directive"
     }
   ],
   "environmentVariables": [

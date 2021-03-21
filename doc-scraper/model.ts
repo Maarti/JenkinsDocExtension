@@ -18,6 +18,14 @@ export interface Section extends Instruction {
   innerInstructions: string[];
 }
 
+export interface Directive extends Instruction {
+  isOptional: boolean;
+  allowed: string;
+  url: string;
+  /** Instructions names recommended inside this Section */
+  innerInstructions: string[];
+}
+
 export interface Step extends Instruction {
   command: string;
   plugin: string;
@@ -43,6 +51,7 @@ export interface JenkinsData {
   plugins: Plugin[];
   instructions: Step[];
   sections: Section[];
+  directives: Directive[];
   environmentVariables: Variable[];
 }
 
