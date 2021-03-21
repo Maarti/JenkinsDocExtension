@@ -76,6 +76,20 @@ function initDocMap() {
       docs.set(envVar.name, markdowns);
   });
   console.log(`Hovering Documentation map initialized with ${docs.size} entries`);
+
+  // Jenkins Sections
+  jenkinsData.sections.forEach(section => {
+    const markdowns: vscode.MarkdownString[] = [];
+    const optionalLabel = section.isOptional ? '*(Optional)*' : '';
+    markdowns.push(
+      new vscode.MarkdownString(`**${section.name}** ${optionalLabel}\n\n${section.description}`),
+    );
+    markdowns.push(new vscode.MarkdownString(`**Allowed:** ${section.allowed}`));
+    if (section.url) {
+      markdowns.push(new vscode.MarkdownString(`[Documentation](${section.url})`));
+    }
+    docs.set(section.name, markdowns);
+  });
 }
 
 function initEnvVarCompletionArray() {
