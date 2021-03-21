@@ -10,7 +10,13 @@ export class CompletionProvider<T extends vscode.CompletionItem = vscode.Complet
     token: vscode.CancellationToken,
     context: vscode.CompletionContext,
   ) {
+    let previousLine = '';
+    if (position.line) {
+      const previousLinePosition = new vscode.Position(position.line - 1, position.character);
+      previousLine = document.lineAt(previousLinePosition).text;
+    }
     const linePrefix = document.lineAt(position).text.substr(0, position.character);
+    const linesPrefix = previousLine + '\n' + linePrefix;
 
     // "env." autocompletion
     if (linePrefix.match(/(env)\.\w*$/)) {
@@ -19,6 +25,21 @@ export class CompletionProvider<T extends vscode.CompletionItem = vscode.Complet
         ...completion,
         insertText: completion.label,
       }));
+    }
+
+    // Inside a post{}
+    if (linesPrefix.match(/(post\s*{\s*\w*)$/)) {
+      const postSection = jenkinsData.sections.find(section => section.name === 'post');
+      if (postSection) {
+        return postSection.innerInstructions.map(innerInstruction => {
+          const completion = new vscode.CompletionItem(
+            innerInstruction,
+            vscode.CompletionItemKind.Method,
+          );
+          completion.insertText = new vscode.SnippetString(`${innerInstruction} {\n    $0\n}`);
+          return completion;
+        });
+      }
     }
 
     // Parameters autocompletion

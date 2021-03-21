@@ -2,9 +2,10 @@
 
 ## Next
 
-- Autocompletion of functions parameters without parenthesis
-- Autocompletion of functions parameters nested in other function/directive on the same line
 - Documentation of Sections (`agent`, `post`, `stages`, `steps`) + link to documentation website
+- Autocompletion of Sections (`agent`, `post`, `stages`, `steps`)
+- Support for autocompletion of functions parameters without parenthesis
+- Support for autocompletion of functions parameters nested in other function/directive on the same line
 
 ## [1.2.1](https://github.com/Maarti/JenkinsDocExtension/releases/tag/1.2.1) - 2021-03-18
 

@@ -8,11 +8,13 @@ import jenkinsData from './jenkins-data.json';
 export const docs = new Map<string, vscode.MarkdownString[]>();
 export const completions: vscode.CompletionItem[] = [];
 export const envVarCompletions: vscode.CompletionItem[] = [];
+export const sectionCompletions: vscode.CompletionItem[] = [];
 
 export function activate(context: vscode.ExtensionContext) {
   console.log('Extension "jenkins-doc" is now active');
   initDocMap();
   initEnvVarCompletionArray();
+  initSectionCompletionArray();
   initCompletionArray();
 
   const groovyFileSelector: vscode.DocumentSelector = {
@@ -118,10 +120,31 @@ function initEnvVarCompletionArray() {
   console.log(`Env Var Completion array initialized with ${envVarCompletions.length} entries`);
 }
 
+function initSectionCompletionArray() {
+  console.log('Section Completion array initialization...');
+  sectionCompletions.push(
+    ...jenkinsData.sections.map(section => {
+      const completion = new vscode.CompletionItem(section.name);
+      completion.detail = 'Jenkins Section';
+      completion.documentation = new vscode.MarkdownString(section.description);
+      completion.kind = vscode.CompletionItemKind.Method;
+      if (section.innerInstructions.length) {
+        const enumValues = section.innerInstructions.join(',');
+        completion.insertText = new vscode.SnippetString(
+          `${section.name}{\n    \${1|${enumValues}|}\n}`,
+        );
+      }
+      return completion;
+    }),
+  );
+  console.log(`Section Completion array initialized with ${sectionCompletions.length} entries`);
+}
+
 function initCompletionArray() {
   console.log('Completion array initialization...');
   completions.push(
     ...envVarCompletions,
+    ...sectionCompletions,
     ...jenkinsData.instructions.map(instruction => {
       const completion = new vscode.CompletionItem(instruction.command);
       if (instruction.parameters.length) {
