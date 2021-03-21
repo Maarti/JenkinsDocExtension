@@ -82,8 +82,8 @@ function initDocMap() {
   });
   console.log(`Hovering Documentation map initialized with ${docs.size} entries`);
 
-  // Jenkins Sections
-  jenkinsData.sections.forEach(section => {
+  // Jenkins Sections/Directives
+  [...jenkinsData.sections, ...jenkinsData.directives].forEach(section => {
     const markdowns: vscode.MarkdownString[] = [];
     const optionalLabel = section.isOptional ? '*(Optional)*' : '';
     markdowns.push(
