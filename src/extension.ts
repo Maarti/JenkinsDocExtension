@@ -8,13 +8,13 @@ import jenkinsData from './jenkins-data.json';
 export const docs = new Map<string, vscode.MarkdownString[]>();
 export const completions: vscode.CompletionItem[] = [];
 export const envVarCompletions: vscode.CompletionItem[] = [];
-export const sectionCompletions: vscode.CompletionItem[] = [];
+export const sectionDirectiveCompletions: vscode.CompletionItem[] = [];
 
 export function activate(context: vscode.ExtensionContext) {
   console.log('Extension "jenkins-doc" is now active');
   initDocMap();
   initEnvVarCompletionArray();
-  initSectionCompletionArray();
+  initSectionDirectiveCompletionArray();
   initCompletionArray();
 
   const groovyFileSelector: vscode.DocumentSelector = {
@@ -123,31 +123,21 @@ function initEnvVarCompletionArray() {
   console.log(`Env Var Completion array initialized with ${envVarCompletions.length} entries`);
 }
 
-function initSectionCompletionArray() {
-  console.log('Section Completion array initialization...');
-  sectionCompletions.push(
-    ...jenkinsData.sections.map(section => {
-      const completion = new vscode.CompletionItem(section.name);
-      completion.detail = 'Jenkins Section';
-      completion.documentation = new vscode.MarkdownString(section.description);
-      completion.kind = vscode.CompletionItemKind.Method;
-      if (section.innerInstructions.length) {
-        const enumValues = section.innerInstructions.join(',');
-        completion.insertText = new vscode.SnippetString(
-          `${section.name}{\n    \${1|${enumValues}|}\n}`,
-        );
-      }
-      return completion;
-    }),
+function initSectionDirectiveCompletionArray() {
+  console.log('Section/Directive Completion array initialization...');
+  sectionDirectiveCompletions.push(
+    ...[...jenkinsData.sections, ...jenkinsData.directives].map(sectionOrDirectiveToCompletion),
   );
-  console.log(`Section Completion array initialized with ${sectionCompletions.length} entries`);
+  console.log(
+    `Section/Directive Completion array initialized with ${sectionDirectiveCompletions.length} entries`,
+  );
 }
 
 function initCompletionArray() {
   console.log('Completion array initialization...');
   completions.push(
     ...envVarCompletions,
-    ...sectionCompletions,
+    ...sectionDirectiveCompletions,
     ...jenkinsData.instructions.map(instruction => {
       const completion = new vscode.CompletionItem(instruction.command);
       if (instruction.parameters.length) {
@@ -159,11 +149,26 @@ function initCompletionArray() {
       } else {
         completion.insertText = new vscode.SnippetString(`${instruction.command}()`);
       }
-      completion.detail = `Jenkins (${instruction.plugin}) Instruction`;
+      completion.detail = `Jenkins (${instruction.plugin}) Step`;
       completion.documentation = new vscode.MarkdownString(instruction.description);
       completion.kind = vscode.CompletionItemKind.Function;
       return completion;
     }),
   );
   console.log(`Completion array initialized with ${completions.length} entries`);
+}
+
+function sectionOrDirectiveToCompletion(instruction: typeof jenkinsData.directives[0]) {
+  const completion = new vscode.CompletionItem(instruction.name);
+  completion.detail =
+    instruction.instructionType === 'Section' ? 'Jenkins Section' : 'Jenkins Directive';
+  completion.documentation = new vscode.MarkdownString(instruction.description);
+  completion.kind = vscode.CompletionItemKind.Class;
+  if (instruction.innerInstructions.length) {
+    const enumValues = instruction.innerInstructions.join(',');
+    completion.insertText = new vscode.SnippetString(
+      `${instruction.name}{\n    \${1|${enumValues}|}\n}`,
+    );
+  }
+  return completion;
 }

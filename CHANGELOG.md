@@ -5,6 +5,7 @@
 - Documentation of Sections (`agent`, `post`, `stages`, `steps`)
 - Autocompletion of Sections (`agent`, `post`, `stages`, `steps`)
 - Documentation of Directives (`environment`, `options`, `parameters`, `triggers`, `stage`, `tools`, `input`, `when`)
+- Autocompletion of Directives (`environment`, `options`, `parameters`, `triggers`, `stage`, `tools`, `input`, `when`)
 - Link to documentation website added in the hovering panel
 - Support for autocompletion of functions parameters without parenthesis
 - Support for autocompletion of functions parameters nested in other function/directive on the same line
