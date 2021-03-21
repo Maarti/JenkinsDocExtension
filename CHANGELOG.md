@@ -2,8 +2,9 @@
 
 ## Next
 
-- Documentation of Sections (`agent`, `post`, `stages`, `steps`) + link to documentation website
+- Documentation of Sections (`agent`, `post`, `stages`, `steps`)
 - Autocompletion of Sections (`agent`, `post`, `stages`, `steps`)
+- Link to documentation website added in the hovering panel
 - Support for autocompletion of functions parameters without parenthesis
 - Support for autocompletion of functions parameters nested in other function/directive on the same line
 

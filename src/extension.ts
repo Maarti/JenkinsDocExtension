@@ -57,6 +57,9 @@ function initDocMap() {
       markdown.appendMarkdown(`${parameter.description}`);
       markdowns.push(markdown);
     });
+    if (instruction.url) {
+      markdowns.push(new vscode.MarkdownString(`[See documentation](${instruction.url})`));
+    }
     docs.set(instruction.command, markdowns);
   });
 
@@ -88,7 +91,7 @@ function initDocMap() {
     );
     markdowns.push(new vscode.MarkdownString(`**Allowed:** ${section.allowed}`));
     if (section.url) {
-      markdowns.push(new vscode.MarkdownString(`[Documentation](${section.url})`));
+      markdowns.push(new vscode.MarkdownString(`[See documentation](${section.url})`));
     }
     docs.set(section.name, markdowns);
   });
