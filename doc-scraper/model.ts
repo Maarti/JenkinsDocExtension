@@ -30,6 +30,7 @@ export interface Step extends Instruction {
   command: string;
   plugin: string;
   parameters: Parameter[];
+  url: string;
 }
 
 export interface Parameter extends Instruction {

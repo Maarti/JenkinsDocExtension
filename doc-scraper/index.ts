@@ -114,6 +114,7 @@ function parsePlugin($: cheerio.Root, pluginElem: cheerio.Element): Plugin {
 function parseStep($: cheerio.Root, docElem: cheerio.Element, plugin: Plugin): Step {
   const command: string = $(docElem).find('> h3 > code').text();
   const name: string = $(docElem).find('> h3').text();
+  const url = `${plugin.url}${$(docElem).find('> h3 > a.anchor').attr('href')}` || '';
   let description: string = $(docElem).find('> div').html() || '';
   description += $(docElem)
     .contents()
@@ -146,6 +147,7 @@ function parseStep($: cheerio.Root, docElem: cheerio.Element, plugin: Plugin): S
     description,
     parameters,
     plugin: plugin.id,
+    url,
   };
 }
 
