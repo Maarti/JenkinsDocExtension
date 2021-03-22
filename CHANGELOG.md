@@ -1,6 +1,6 @@
 # Change Log
 
-## Next
+## [1.3.0](https://github.com/Maarti/JenkinsDocExtension/releases/tag/1.3.0) - 2021-03-21
 
 - Documentation of Sections (`agent`, `post`, `stages`, `steps`)
 - Autocompletion of Sections (`agent`, `post`, `stages`, `steps`)
