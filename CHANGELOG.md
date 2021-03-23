@@ -1,5 +1,9 @@
 # Change Log
 
+## [1.4.0](https://github.com/Maarti/JenkinsDocExtension/releases/tag/1.4.0) - 2021-03-22
+
+- "Go To Definition" for functions declared in the same file
+
 ## [1.3.0](https://github.com/Maarti/JenkinsDocExtension/releases/tag/1.3.0) - 2021-03-21
 
 - Documentation of Sections (`agent`, `post`, `stages`, `steps`)
