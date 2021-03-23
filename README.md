@@ -32,17 +32,28 @@ Provides documentation and autocompletion for Jenkins instructions as well as ov
 
 What's new?
 
+### [1.4.0](https://github.com/Maarti/JenkinsDocExtension/releases/tag/1.4.0) - 2021-03-22
+
+- "Go To Definition" for functions declared in the same file
+
+### [1.3.0](https://github.com/Maarti/JenkinsDocExtension/releases/tag/1.3.0) - 2021-03-21
+
+- Documentation of Sections (`agent`, `post`, `stages`, `steps`)
+- Autocompletion of Sections (`agent`, `post`, `stages`, `steps`)
+- Documentation of Directives (`environment`, `options`, `parameters`, `triggers`, `stage`, `tools`, `input`, `when`)
+- Autocompletion of Directives (`environment`, `options`, `parameters`, `triggers`, `stage`, `tools`, `input`, `when`)
+- Link to documentation website added in the hovering panel
+- Support for autocompletion of functions parameters without parenthesis
+- Support for autocompletion of functions parameters nested in other function/directive on the same line
+- Global order of autocompletions improved
+- Required function parameters are now proposed before the optional ones in the autocompletion list
+
 ### [1.2.0](https://github.com/Maarti/JenkinsDocExtension/releases/tag/1.2.0) - 2021-03-14
 
 - Documentation for Jenkins environment variables
 - Autocompletion for Jenkins environment variables
 
-### [1.1.0](https://github.com/Maarti/JenkinsDocExtension/releases/tag/1.1.0) - 2021-03-10
-
-- Autocompletion for more than 1400 instructions
-- Autocompletion for instructions parameters
-- Autocompletion for boolean and enum parameters
-- Improved documentation for nested objects and enum type parameters
+[[...]](./CHANGELOG.md)
 
 See the [Changelog](./CHANGELOG.md)
 
@@ -55,7 +66,9 @@ See the [Changelog](./CHANGELOG.md)
 - ✅ Documentation for Jenkins env vars
 - ✅ Autocompletion for Jenkins env vars
 - ✅ Support Jenkinsfile in the same way as Groovy files
-- ⬛ "Go To Definition" for functions in the same file
+- ⬛ Documentation for [Sections](https://www.jenkins.io/doc/book/pipeline/syntax/#declarative-sections)
+- ⬛ Documentation for [Directives](https://www.jenkins.io/doc/book/pipeline/syntax/#declarative-directives)
+- ✅ "Go To Definition" for functions in the same file
 - ⬛ "Go To Definition" for functions in a different file
 - ⬛ Support [Jenkins parameters](https://www.jenkins.io/doc/book/pipeline/syntax/#parameters) (`booleanParam`, `string`, `extendedChoice`,...)
 - ⬛ Support symbols (breadcrumbs and outline in VSCode)

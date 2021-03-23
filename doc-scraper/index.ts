@@ -2,8 +2,22 @@ import axios from 'axios';
 import cheerio from 'cheerio';
 import fs from 'fs';
 import { from, of } from 'rxjs';
-import { map, tap, mergeMap, catchError, finalize, delay, concatMap } from 'rxjs/operators';
+import {
+  map,
+  tap,
+  mergeMap,
+  catchError,
+  finalize,
+  delay,
+  concatMap,
+  take,
+  switchMap,
+} from 'rxjs/operators';
+import { scrapDirectives } from './directive-scraper';
 import environmentVariables from './jenkins-env-vars.json';
+import { JenkinsData, Parameter, ParameterType, Step, Plugin } from './model';
+import { scrapSections } from './section-scraper';
+import { color, Color, toMarkdown } from './utils';
 
 console.log('Scraper starting...');
 
@@ -11,7 +25,7 @@ console.log('Scraper starting...');
 const jenkinsBaseUrl = 'https://www.jenkins.io';
 const jenkinsReferenceUrl = `${jenkinsBaseUrl}/doc/pipeline/steps/`;
 const outputFile = 'src/jenkins-data.json';
-const requestsInterval = 100; // Delay between each http request (in ms), to avoid DDOSing jenkins.io
+const requestsInterval = 0; // Delay between each http request (in ms), to avoid DDOSing jenkins.io
 
 main();
 
@@ -20,58 +34,68 @@ function main() {
     date: new Date().toISOString(),
     plugins: [],
     instructions: [],
+    sections: [],
+    directives: [],
     environmentVariables,
   };
   const axiosInstance = axios.create();
-  from(axiosInstance.get(jenkinsReferenceUrl))
-    .pipe(
-      tap(response => console.log(`Fetching plugins list: ${response.config.url}`)),
-      map(response => cheerio.load(response.data)),
-      map($ => ({ $, pluginElems: $('div.container div.col-lg-9 div > ul > li') })),
-      tap(({ $, pluginElems }) =>
-        pluginElems.each((i, pluginElem) => jenkinsData.plugins.push(parsePlugin($, pluginElem))),
-      ),
-      tap(() => console.log(`${jenkinsData.plugins.length} plugins found`)),
-      // tap(() => (jenkinsData.plugins = pluginStubs)),
-      mergeMap(() => jenkinsData.plugins),
-      concatMap(plugin => of(plugin).pipe(delay(requestsInterval))),
-      mergeMap(plugin =>
-        from(axiosInstance.get(plugin.url)).pipe(
-          tap(response => console.log(`Fetching ${response.config.url}`)),
-          map(response => cheerio.load(response.data)),
-          map($ => ({ docs: $('.sect2'), $ })),
-          tap(({ docs, $ }) => {
-            let counter = 0;
-            docs.each((i, docElem) => {
-              jenkinsData.instructions.push(parseInstruction($, docElem, plugin));
-              counter++;
-            });
-            const msgColor = counter ? Color.green : Color.red;
-            console.log(`  => ${color(`${counter} instructions found`, msgColor)}`);
-          }),
-          catchError(error => {
-            console.log(
-              color(
-                `Error while fetching plugin ${plugin.name}:\n  ${error}\n  This plugin will be ignored`,
-                Color.red,
-              ),
-            );
+  const mainScrapProcess = from(axiosInstance.get(jenkinsReferenceUrl)).pipe(
+    tap(response => console.log(`Fetching plugins list: ${response.config.url}`)),
+    map(response => cheerio.load(response.data)),
+    map($ => ({ $, pluginElems: $('div.container div.col-lg-9 div > ul > li') })),
+    tap(({ $, pluginElems }) =>
+      pluginElems.each((i, pluginElem) => jenkinsData.plugins.push(parsePlugin($, pluginElem))),
+    ),
+    tap(() => console.log(`${jenkinsData.plugins.length} plugins found`)),
+    // tap(() => (jenkinsData.plugins = pluginStubs)),
+    mergeMap(() => jenkinsData.plugins),
+    concatMap(plugin => of(plugin).pipe(delay(requestsInterval))),
+    mergeMap(plugin =>
+      from(axiosInstance.get(plugin.url)).pipe(
+        tap(response => console.log(`Fetching ${response.config.url}`)),
+        map(response => cheerio.load(response.data)),
+        map($ => ({ docs: $('.sect2'), $ })),
+        tap(({ docs, $ }) => {
+          let counter = 0;
+          docs.each((i, docElem) => {
+            jenkinsData.instructions.push(parseStep($, docElem, plugin));
+            counter++;
+          });
+          const msgColor = counter ? Color.green : Color.red;
+          console.log(`  => ${color(`${counter} instructions found`, msgColor)}`);
+        }),
+        catchError(error => {
+          console.log(
+            color(
+              `Error while fetching plugin ${plugin.name}:\n  ${error}\n  This plugin will be ignored`,
+              Color.red,
+            ),
+          );
 
-            return of(null);
-          }),
-        ),
+          return of(null);
+        }),
       ),
-      finalize(() => {
-        jenkinsData.instructions.sort((a, b) => (a.command < b.command ? -1 : 1));
-        console.log(`Total: ${jenkinsData.instructions.length} instructions found`);
-        const prettyOutput = JSON.stringify(jenkinsData, null, 2);
-        fs.writeFileSync(outputFile, prettyOutput);
-        console.log(`Extracted in: ${outputFile}`);
-      }),
-      catchError(error => {
-        console.error(color(`Error while fetching information:\n  ${error}`, Color.red));
-        return of(null);
-      }),
+    ),
+    finalize(() => {
+      jenkinsData.instructions.sort((a, b) => (a.command < b.command ? -1 : 1));
+      console.log(`Total: ${jenkinsData.instructions.length} instructions found`);
+      const prettyOutput = JSON.stringify(jenkinsData, null, 2);
+      fs.writeFileSync(outputFile, prettyOutput);
+      console.log(`Extracted in: ${outputFile}`);
+    }),
+    catchError(error => {
+      console.error(color(`Error while fetching information:\n  ${error}`, Color.red));
+      return of(null);
+    }),
+  );
+  scrapSections()
+    .pipe(
+      tap(sections => (jenkinsData.sections = sections)),
+      take(1),
+      switchMap(() => scrapDirectives()),
+      tap(directives => (jenkinsData.directives = directives)),
+      take(1),
+      switchMap(() => mainScrapProcess),
     )
     .subscribe();
 }
@@ -87,9 +111,10 @@ function parsePlugin($: cheerio.Root, pluginElem: cheerio.Element): Plugin {
   };
 }
 
-function parseInstruction($: cheerio.Root, docElem: cheerio.Element, plugin: Plugin): Instruction {
+function parseStep($: cheerio.Root, docElem: cheerio.Element, plugin: Plugin): Step {
   const command: string = $(docElem).find('> h3 > code').text();
-  const title: string = $(docElem).find('> h3').text();
+  const name: string = $(docElem).find('> h3').text();
+  const url = `${plugin.url}${$(docElem).find('> h3 > a.anchor').attr('href')}` || '';
   let description: string = $(docElem).find('> div').html() || '';
   description += $(docElem)
     .contents()
@@ -105,6 +130,7 @@ function parseInstruction($: cheerio.Root, docElem: cheerio.Element, plugin: Plu
       name: $(parameterElem).find('> code').text(),
       type,
       values,
+      instructionType: 'Parameter',
       description: toMarkdown($(parameterElem).find('> div').html()),
       isOptional: $(parameterElem)
         .contents()
@@ -116,10 +142,12 @@ function parseInstruction($: cheerio.Root, docElem: cheerio.Element, plugin: Plu
   });
   return {
     command,
-    title,
+    name,
+    instructionType: 'Step',
     description,
     parameters,
     plugin: plugin.id,
+    url,
   };
 }
 
@@ -159,116 +187,6 @@ function parseTypeAndValues(
       console.log('type not found for ', categoryExpected);
   }
   return { type, values };
-}
-
-function toMarkdown(html: string | null): string {
-  if (!html) {
-    return '';
-  }
-  let markdown = html
-    .replace(/`/g, '') // remove all ` that would be present originally
-    .replace(/<pre><code>/gi, '\n```groovy\n')
-    .replace(/<\/code><\/pre>/gi, '\n```\n')
-    .replace(/&amp;/gi, '&') // replace all &amp; by &
-    .replace(/<\/?code>/gi, '`') // replace <code></code> tags by `
-    .replace(/<pre>/gi, '\n```groovy\n') // replace <pre> tag by ```groovy
-    .replace(/<\/pre>/gi, '\n```\n') // replace </pre> tag by ```
-    .replace(/<\/?(strong|b)>/gi, '**') // replace <strong></strong><b></b> tags by **
-    .replace(/<h3>/gi, '\n### ') // replace <h3> tag by \n###
-    .replace(/<\/h3>/gi, '\n') // replace <h3> tag by \n
-    .replace(/<\/?[u,o,d]l>/gi, '') // remove <ul></ul><ol></ol><dl></dl>
-    .replace(/<li>/gi, '\n* ') // replace <li> tag by \n*
-    .replace(/<dt>[\s]*/gi, '\n* **') // replace <dt> and all following line feeds by \n* **
-    .replace(/[\s]*<\/dt>/gi, '**\n') // replace </dt> and all preceding line feeds by **\n
-    .replace(/<\/?dd>/gi, '') // remove <dd></dd>
-    .replace(/<\/li>/gi, '\n') // replace </li> tag by \n
-    .replace(/<\/?p>/gi, '\n') // replace <p></p> tags by \n
-    .replace(/<\/?div>/gi, '\n') // replace <div></div> tags by \n
-    .replace(/<br\/?>/gi, '\n\n') // replace <br> tag by \n\n
-    .replace(/ {4,}(?![\s\S]*`{3})/g, ' ') // replace all "4 spaces in a row or more" by only one, if they are not followed by ``` in the rest of the string
-    .replace(/^(\s)*/g, '') // remove all \n and spaces at the start
-    .replace(/(\s)*$/g, ''); // remove all \n and spaces at the end
-
-  markdown = parseHtmlLinkToMarkdown(markdown);
-  return markdown;
-}
-
-function parseHtmlLinkToMarkdown(text: string): string {
-  const regex = /<a href="(.*?)".*?>(.*?)<\/a>/gi;
-  const urls: Url[] = [];
-  let urlMatch;
-  while ((urlMatch = regex.exec(text))) {
-    urls.push({
-      html: urlMatch[0],
-      url: urlMatch[1],
-      label: urlMatch[2],
-    });
-  }
-  urls.forEach(url => {
-    text = text.replace(url.html, `[${url.label}](${url.url})`);
-  });
-  return text;
-}
-
-interface Plugin {
-  id: string;
-  name: string;
-  url: string;
-}
-
-interface Instruction {
-  command: string;
-  title: string;
-  plugin: string;
-  description: string;
-  parameters: Parameter[];
-}
-
-interface Parameter {
-  name: string;
-  type: ParameterType;
-  values: string[];
-  description: string;
-  isOptional: boolean;
-}
-
-interface Url {
-  label: string;
-  url: string;
-  html: string;
-}
-
-interface Variable {
-  name: string;
-  description: string;
-}
-
-interface JenkinsData {
-  date: string;
-  plugins: Plugin[];
-  instructions: Instruction[];
-  environmentVariables: Variable[];
-}
-
-type ParameterType = 'String' | 'boolean' | 'Enum' | 'Nested' | 'unknown' | string;
-
-type Falsy = false | 0 | '' | null | undefined;
-
-function truthy<T>(input: T | Falsy): input is T {
-  return !!input;
-}
-
-enum Color {
-  red = '\x1b[31m',
-  green = '\x1b[32m',
-  yellow = '\x1b[33m',
-  blue = '\x1b[34m',
-  magenta = '\x1b[35m',
-  cyan = '\x1b[36m',
-}
-
-function color(message: string, color = Color.green): string {
-  return `${color}${message}\x1b[0m`;
 }
 
 const pluginStubs = [

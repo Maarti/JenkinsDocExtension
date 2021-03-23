@@ -1,5 +1,21 @@
 # Change Log
 
+## [1.4.0](https://github.com/Maarti/JenkinsDocExtension/releases/tag/1.4.0) - 2021-03-22
+
+- "Go To Definition" for functions declared in the same file
+
+## [1.3.0](https://github.com/Maarti/JenkinsDocExtension/releases/tag/1.3.0) - 2021-03-21
+
+- Documentation of Sections (`agent`, `post`, `stages`, `steps`)
+- Autocompletion of Sections (`agent`, `post`, `stages`, `steps`)
+- Documentation of Directives (`environment`, `options`, `parameters`, `triggers`, `stage`, `tools`, `input`, `when`)
+- Autocompletion of Directives (`environment`, `options`, `parameters`, `triggers`, `stage`, `tools`, `input`, `when`)
+- Link to documentation website added in the hovering panel
+- Support for autocompletion of functions parameters without parenthesis
+- Support for autocompletion of functions parameters nested in other function/directive on the same line
+- Global order of autocompletions improved
+- Required function parameters are now proposed before the optional ones in the autocompletion list
+
 ## [1.2.1](https://github.com/Maarti/JenkinsDocExtension/releases/tag/1.2.1) - 2021-03-18
 
 - Documentation updated
