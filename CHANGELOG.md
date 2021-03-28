@@ -2,6 +2,7 @@
 
 ## Next
 
+- "Go To Definition" for functions in a different file
 - Documentation updated
 
 ## [1.4.0](https://github.com/Maarti/JenkinsDocExtension/releases/tag/1.4.0) - 2021-03-22

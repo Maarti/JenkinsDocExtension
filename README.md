@@ -69,7 +69,7 @@ See the [Changelog](./CHANGELOG.md)
 - ✅ Documentation for [Sections](https://www.jenkins.io/doc/book/pipeline/syntax/#declarative-sections)
 - ✅ Documentation for [Directives](https://www.jenkins.io/doc/book/pipeline/syntax/#declarative-directives)
 - ✅ "Go To Definition" for functions in the same file
-- ⬛ "Go To Definition" for functions in a different file
+- ✅ "Go To Definition" for functions in a different file
 - ⬛ Support [Jenkins parameters](https://www.jenkins.io/doc/book/pipeline/syntax/#parameters) (`booleanParam`, `string`, `extendedChoice`,...)
 - ⬛ Support symbols (breadcrumbs and outline in VSCode)
 - ❌ Call the [pipeline linter](https://www.jenkins.io/doc/book/pipeline/development/)
