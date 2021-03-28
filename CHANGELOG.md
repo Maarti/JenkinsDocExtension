@@ -1,5 +1,9 @@
 # Change Log
 
+## Next
+
+- Documentation updated
+
 ## [1.4.0](https://github.com/Maarti/JenkinsDocExtension/releases/tag/1.4.0) - 2021-03-22
 
 - "Go To Definition" for functions declared in the same file
