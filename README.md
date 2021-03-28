@@ -32,6 +32,11 @@ Provides documentation and autocompletion for Jenkins instructions as well as ov
 
 What's new?
 
+### [1.5.0](https://github.com/Maarti/JenkinsDocExtension/releases/tag/1.5.0) - 2021-03-28
+
+- "Go To Definition" for functions in a different file
+- Documentation updated
+
 ### [1.4.0](https://github.com/Maarti/JenkinsDocExtension/releases/tag/1.4.0) - 2021-03-22
 
 - "Go To Definition" for functions declared in the same file
@@ -47,11 +52,6 @@ What's new?
 - Support for autocompletion of functions parameters nested in other function/directive on the same line
 - Global order of autocompletions improved
 - Required function parameters are now proposed before the optional ones in the autocompletion list
-
-### [1.2.0](https://github.com/Maarti/JenkinsDocExtension/releases/tag/1.2.0) - 2021-03-14
-
-- Documentation for Jenkins environment variables
-- Autocompletion for Jenkins environment variables
 
 [[...]](./CHANGELOG.md)
 

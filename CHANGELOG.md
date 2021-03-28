@@ -1,6 +1,6 @@
 # Change Log
 
-## Next
+## [1.5.0](https://github.com/Maarti/JenkinsDocExtension/releases/tag/1.5.0) - 2021-03-28
 
 - "Go To Definition" for functions in a different file
 - Documentation updated
