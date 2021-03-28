@@ -32,6 +32,11 @@ Provides documentation and autocompletion for Jenkins instructions as well as ov
 
 What's new?
 
+### [1.5.0](https://github.com/Maarti/JenkinsDocExtension/releases/tag/1.5.0) - 2021-03-28
+
+- "Go To Definition" for functions in a different file
+- Documentation updated
+
 ### [1.4.0](https://github.com/Maarti/JenkinsDocExtension/releases/tag/1.4.0) - 2021-03-22
 
 - "Go To Definition" for functions declared in the same file
@@ -48,11 +53,6 @@ What's new?
 - Global order of autocompletions improved
 - Required function parameters are now proposed before the optional ones in the autocompletion list
 
-### [1.2.0](https://github.com/Maarti/JenkinsDocExtension/releases/tag/1.2.0) - 2021-03-14
-
-- Documentation for Jenkins environment variables
-- Autocompletion for Jenkins environment variables
-
 [[...]](./CHANGELOG.md)
 
 See the [Changelog](./CHANGELOG.md)
@@ -66,10 +66,10 @@ See the [Changelog](./CHANGELOG.md)
 - ✅ Documentation for Jenkins env vars
 - ✅ Autocompletion for Jenkins env vars
 - ✅ Support Jenkinsfile in the same way as Groovy files
-- ⬛ Documentation for [Sections](https://www.jenkins.io/doc/book/pipeline/syntax/#declarative-sections)
-- ⬛ Documentation for [Directives](https://www.jenkins.io/doc/book/pipeline/syntax/#declarative-directives)
+- ✅ Documentation for [Sections](https://www.jenkins.io/doc/book/pipeline/syntax/#declarative-sections)
+- ✅ Documentation for [Directives](https://www.jenkins.io/doc/book/pipeline/syntax/#declarative-directives)
 - ✅ "Go To Definition" for functions in the same file
-- ⬛ "Go To Definition" for functions in a different file
+- ✅ "Go To Definition" for functions in a different file
 - ⬛ Support [Jenkins parameters](https://www.jenkins.io/doc/book/pipeline/syntax/#parameters) (`booleanParam`, `string`, `extendedChoice`,...)
 - ⬛ Support symbols (breadcrumbs and outline in VSCode)
 - ❌ Call the [pipeline linter](https://www.jenkins.io/doc/book/pipeline/development/)

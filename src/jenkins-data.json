@@ -1,5 +1,5 @@
 {
-  "date": "2021-03-21T21:22:41.042Z",
+  "date": "2021-03-28T19:23:02.919Z",
   "plugins": [
     {
       "name": ".NET SDK Support",
@@ -30,6 +30,11 @@
       "name": "AbsInt a³ Jenkins Plugin",
       "url": "https://www.jenkins.io/doc/pipeline/steps/absint-a3/",
       "id": "absint-a3"
+    },
+    {
+      "name": "ACCELQ CI-Connect Plugin",
+      "url": "https://www.jenkins.io/doc/pipeline/steps/accelq-ci-connect/",
+      "id": "accelq-ci-connect"
     },
     {
       "name": "Acunetix",
@@ -1322,6 +1327,11 @@
       "id": "ibm-cloud-devops"
     },
     {
+      "name": "IBM Continuous Release",
+      "url": "https://www.jenkins.io/doc/pipeline/steps/ibm-continuous-release/",
+      "id": "ibm-continuous-release"
+    },
+    {
       "name": "IBM Security AppScan Source Scanner",
       "url": "https://www.jenkins.io/doc/pipeline/steps/ibm-security-appscansource-scanner/",
       "id": "ibm-security-appscansource-scanner"
@@ -1542,9 +1552,19 @@
       "id": "labelled-steps"
     },
     {
+      "name": "LambdaTest Automation Plugin",
+      "url": "https://www.jenkins.io/doc/pipeline/steps/lambdatest-automation/",
+      "id": "lambdatest-automation"
+    },
+    {
       "name": "Last Changes Plugin",
       "url": "https://www.jenkins.io/doc/pipeline/steps/last-changes/",
       "id": "last-changes"
+    },
+    {
+      "name": "LeanIX Microservice Intelligence",
+      "url": "https://www.jenkins.io/doc/pipeline/steps/leanix-microservice-intelligence/",
+      "id": "leanix-microservice-intelligence"
     },
     {
       "name": "LIFX notifier - smart lightbulbs build indicator",
@@ -1942,6 +1962,11 @@
       "id": "phabricator-plugin"
     },
     {
+      "name": "piketec-tpt",
+      "url": "https://www.jenkins.io/doc/pipeline/steps/piketec-tpt/",
+      "id": "piketec-tpt"
+    },
+    {
       "name": "PingCode Plugin",
       "url": "https://www.jenkins.io/doc/pipeline/steps/worktile/",
       "id": "worktile"
@@ -1955,6 +1980,11 @@
       "name": "Pipeline GitHub Notify Step Plugin",
       "url": "https://www.jenkins.io/doc/pipeline/steps/pipeline-githubnotify-step/",
       "id": "pipeline-githubnotify-step"
+    },
+    {
+      "name": "Pipeline Graph View Plugin",
+      "url": "https://www.jenkins.io/doc/pipeline/steps/pipeline-graph-view/",
+      "id": "pipeline-graph-view"
     },
     {
       "name": "Pipeline Keep Running Step",
@@ -3320,6 +3350,14 @@
           "isOptional": true
         },
         {
+          "name": "ncConfirmed",
+          "type": "boolean",
+          "values": [],
+          "instructionType": "Parameter",
+          "description": "",
+          "isOptional": true
+        },
+        {
           "name": "ncServerURL",
           "type": "String",
           "values": [],
@@ -3388,6 +3426,14 @@
         {
           "name": "ncApiToken",
           "type": "Object",
+          "values": [],
+          "instructionType": "Parameter",
+          "description": "",
+          "isOptional": true
+        },
+        {
+          "name": "ncConfirmed",
+          "type": "boolean",
           "values": [],
           "instructionType": "Parameter",
           "description": "",
@@ -7314,7 +7360,7 @@
           "type": "String",
           "values": [],
           "instructionType": "Parameter",
-          "description": "Remote file or directory, must begin with /",
+          "description": "Remote file or directory, must begin with /, one local with multiple remotes distination require,pass \",\" for each remote path",
           "isOptional": false
         },
         {
@@ -21979,7 +22025,7 @@
     },
     {
       "command": "defensics",
-      "name": "defensics: (no description)",
+      "name": "defensics: Defensics fuzz test",
       "instructionType": "Step",
       "description": "",
       "parameters": [
@@ -22017,7 +22063,7 @@
         }
       ],
       "plugin": "defensics",
-      "url": "https://www.jenkins.io/doc/pipeline/steps/defensics/#defensics-no-description"
+      "url": "https://www.jenkins.io/doc/pipeline/steps/defensics/#defensics-defensics-fuzz-test"
     },
     {
       "command": "deleteCloudifyBlueprint",
@@ -32810,7 +32856,7 @@
       "command": "git",
       "name": "git: Git",
       "instructionType": "Step",
-      "description": "Git step. It performs a clone from the specified repository. \n\n \n Use the [Pipeline Snippet Generator](https://jenkins.io/doc/book/pipeline/getting-started/#snippet-generator) to generate a sample pipeline script for the git step. More advanced checkout operations require the `checkout` step rather than the `git` step. Examples of the `git` step include: \n\n \n  \n* <a rel=\"nofollow\">Git step with defaults</a>\n\n  \n* <a rel=\"nofollow\">Git step with https and a specific branch</a>\n\n  \n* <a rel=\"nofollow\">Git step with ssh and a private key credential</a>\n\n  \n* <a rel=\"nofollow\">Git step with https and changelog disabled</a>\n\n  \n* <a rel=\"nofollow\">Git step with git protocol and polling disabled</a>\n\n  See the <a rel=\"nofollow\">argument descriptions</a> for more details.\n \n\n\n \n The `git` step is a simplified shorthand for a subset of the more powerful `checkout` step: \n\n \n```groovy\ncheckout([$class: 'GitSCM', branches: [[name: '*/master']],\n    userRemoteConfigs: [[url: 'http://git-server/user/repository.git']]])\n\n```\n\n \n\n\n \n **NOTE:** The `checkout` step is the **preferred SCM checkout method**. It provides significantly more functionality than the `git` step. \n\n \nUse the [Pipeline Snippet Generator](https://jenkins.io/doc/book/pipeline/getting-started/#snippet-generator) to generate a sample pipeline script for the checkout step. \n\n \n The `checkout` step can be used in many cases where the `git` step cannot be used. Refer to the [git plugin documentation](https://plugins.jenkins.io/git#extensions) for detailed descriptions of options available to the checkout step. For example, the `git` step does **not** support: \n\n \n  \n* SHA-1 checkout\n\n  \n* Tag checkout\n\n  \n* Submodule checkout\n\n  \n* Sparse checkout\n\n  \n* Large file checkout (LFS)\n\n  \n* Reference repositories\n\n  \n* Branch merges\n\n  \n* Repository tagging\n\n  \n* Custom refspecs\n\n  \n* Timeout configuration\n\n  \n* Changelog calculation against a non-default reference\n\n  \n* Stale branch pruning\n\n \n \n\n  **<a rel=\"nofollow\">Example: Git step with defaults</a>**\n \n Checkout from the git plugin source repository using https protocol, no credentials, and the master branch. \n\n \nThe [Pipeline Snippet Generator](https://jenkins.io/doc/book/pipeline/getting-started/#snippet-generator) generates this example: \n\n \n```groovy\ngit 'https://github.com/jenkinsci/git-plugin'\n\n```\n\n \n\n **<a rel=\"nofollow\">Example: Git step with https and a specific branch</a>**\n \n Checkout from the Jenkins source repository using https protocol, no credentials, and a specific branch (stable-2.204). Note that this must be a local branch name like 'master' or 'develop'. \n\n \n **Branch names that are not supported by the `git` step** \n\n \n  \n*  Remote branch names like 'origin/master' and 'origin/develop' are **not supported** as the branch argument\n\n  \n* SHA-1 hashes are **not supported** as the branch argument\n\n  \n* Tag names are **not supported** as the branch argument\n\n \n \n Remote branch names, SHA-1 hashes, and tag names **are supported** by the general purpose `checkout` step. \n\n \nThe [Pipeline Snippet Generator](https://jenkins.io/doc/book/pipeline/getting-started/#snippet-generator) generates this example: \n\n \n```groovy\ngit branch: 'stable-2.204',\n    url: 'https://github.com/jenkinsci/jenkins.git'\n\n```\n\n \n\n **<a rel=\"nofollow\">Example: Git step with ssh and a private key credential</a>**\n \n Checkout from the git client plugin source repository using ssh protocol, private key credentials, and the master branch. The credential must be a private key credential if the remote git repository is accessed with the ssh protocol. The credential must be a username / password credential if the remote git repository is accessed with http or https protocol. \n\n \nThe [Pipeline Snippet Generator](https://jenkins.io/doc/book/pipeline/getting-started/#snippet-generator) generates this example: \n\n \n```groovy\ngit credentialsId: 'my-private-key-credential-id',\n    url: 'git@github.com:jenkinsci/git-client-plugin.git'\n\n```\n\n \n\n **<a rel=\"nofollow\">Example: Git step with https and changelog disabled</a>**\n \n Checkout from the Jenkins source repository using https protocol, no credentials, the master branch, and changelog calculation disabled. If changelog is `false`, then the changelog will not be computed for this job. If changelog is `true` or is not set, then the changelog will be computed. See the [workflow scm step documentation](https://github.com/jenkinsci/workflow-scm-step-plugin/blob/master/README.md#changelogs) for more changelog details. \n\n \nThe [Pipeline Snippet Generator](https://jenkins.io/doc/book/pipeline/getting-started/#snippet-generator) generates this example: \n\n \n```groovy\ngit changelog: false,\n    url: 'https://github.com/jenkinsci/credentials-plugin.git'\n\n```\n\n \n\n **<a rel=\"nofollow\">Example: Git step with git protocol and polling disabled</a>**\n \n Checkout from the Jenkins platform labeler repository using git protocol, no credentials, the master branch, and no polling for changes. If poll is `false`, then the remote repository will not be polled for changes. If poll is `true` or is not set, then the remote repository will be polled for changes. See the [workflow scm step documentation](https://github.com/jenkinsci/workflow-scm-step-plugin/blob/master/README.md#polling) for more polling details. \n\n \nThe [Pipeline Snippet Generator](https://jenkins.io/doc/book/pipeline/getting-started/#snippet-generator) generates this example: \n\n \n```groovy\ngit poll: false,\n    url: 'git://github.com/jenkinsci/platformlabeler-plugin.git'\n\n```\n\n \n\n  **<a rel=\"nofollow\">Argument Descriptions</a>**",
+      "description": "Git step. It performs a clone from the specified repository. \n\n \n Use the [Pipeline Snippet Generator](https://www.jenkins.io/redirect/pipeline-snippet-generator) to generate a sample pipeline script for the git step. More advanced checkout operations require the `checkout` step rather than the `git` step. Examples of the `git` step include: \n\n \n  \n* <a rel=\"nofollow\">Git step with defaults</a>\n\n  \n* <a rel=\"nofollow\">Git step with https and a specific branch</a>\n\n  \n* <a rel=\"nofollow\">Git step with ssh and a private key credential</a>\n\n  \n* <a rel=\"nofollow\">Git step with https and changelog disabled</a>\n\n  \n* <a rel=\"nofollow\">Git step with git protocol and polling disabled</a>\n\n  See the <a rel=\"nofollow\">argument descriptions</a> for more details.\n \n\n\n \n The `git` step is a simplified shorthand for a subset of the more powerful `checkout` step: \n\n \n```groovy\ncheckout([$class: 'GitSCM', branches: [[name: '*/master']],\n    userRemoteConfigs: [[url: 'http://git-server/user/repository.git']]])\n\n```\n\n \n\n\n \n **NOTE:** The `checkout` step is the **preferred SCM checkout method**. It provides significantly more functionality than the `git` step. \n\n \nUse the [Pipeline Snippet Generator](https://www.jenkins.io/redirect/pipeline-snippet-generator) to generate a sample pipeline script for the checkout step. \n\n \n The `checkout` step can be used in many cases where the `git` step cannot be used. Refer to the [git plugin documentation](https://plugins.jenkins.io/git#extensions) for detailed descriptions of options available to the checkout step. For example, the `git` step does **not** support: \n\n \n  \n* SHA-1 checkout\n\n  \n* Tag checkout\n\n  \n* Submodule checkout\n\n  \n* Sparse checkout\n\n  \n* Large file checkout (LFS)\n\n  \n* Reference repositories\n\n  \n* Branch merges\n\n  \n* Repository tagging\n\n  \n* Custom refspecs\n\n  \n* Timeout configuration\n\n  \n* Changelog calculation against a non-default reference\n\n  \n* Stale branch pruning\n\n \n \n\n  **<a rel=\"nofollow\">Example: Git step with defaults</a>**\n \n Checkout from the git plugin source repository using https protocol, no credentials, and the master branch. \n\n \nThe [Pipeline Snippet Generator](https://www.jenkins.io/redirect/pipeline-snippet-generator) generates this example: \n\n \n```groovy\ngit 'https://github.com/jenkinsci/git-plugin'\n\n```\n\n \n\n **<a rel=\"nofollow\">Example: Git step with https and a specific branch</a>**\n \n Checkout from the Jenkins source repository using https protocol, no credentials, and a specific branch (stable-2.204). Note that this must be a local branch name like 'master' or 'develop'. \n\n \n **Branch names that are not supported by the `git` step** \n\n \n  \n*  Remote branch names like 'origin/master' and 'origin/develop' are **not supported** as the branch argument\n\n  \n* SHA-1 hashes are **not supported** as the branch argument\n\n  \n* Tag names are **not supported** as the branch argument\n\n \n \n Remote branch names, SHA-1 hashes, and tag names **are supported** by the general purpose `checkout` step. \n\n \nThe [Pipeline Snippet Generator](https://www.jenkins.io/redirect/pipeline-snippet-generator) generates this example: \n\n \n```groovy\ngit branch: 'stable-2.204',\n    url: 'https://github.com/jenkinsci/jenkins.git'\n\n```\n\n \n\n **<a rel=\"nofollow\">Example: Git step with ssh and a private key credential</a>**\n \n Checkout from the git client plugin source repository using ssh protocol, private key credentials, and the master branch. The credential must be a private key credential if the remote git repository is accessed with the ssh protocol. The credential must be a username / password credential if the remote git repository is accessed with http or https protocol. \n\n \nThe [Pipeline Snippet Generator](https://www.jenkins.io/redirect/pipeline-snippet-generator) generates this example: \n\n \n```groovy\ngit credentialsId: 'my-private-key-credential-id',\n    url: 'git@github.com:jenkinsci/git-client-plugin.git'\n\n```\n\n \n\n **<a rel=\"nofollow\">Example: Git step with https and changelog disabled</a>**\n \n Checkout from the Jenkins source repository using https protocol, no credentials, the master branch, and changelog calculation disabled. If changelog is `false`, then the changelog will not be computed for this job. If changelog is `true` or is not set, then the changelog will be computed. See the [workflow scm step documentation](https://github.com/jenkinsci/workflow-scm-step-plugin/blob/master/README.md#changelogs) for more changelog details. \n\n \nThe [Pipeline Snippet Generator](https://www.jenkins.io/redirect/pipeline-snippet-generator) generates this example: \n\n \n```groovy\ngit changelog: false,\n    url: 'https://github.com/jenkinsci/credentials-plugin.git'\n\n```\n\n \n\n **<a rel=\"nofollow\">Example: Git step with git protocol and polling disabled</a>**\n \n Checkout from the Jenkins platform labeler repository using git protocol, no credentials, the master branch, and no polling for changes. If poll is `false`, then the remote repository will not be polled for changes. If poll is `true` or is not set, then the remote repository will be polled for changes. See the [workflow scm step documentation](https://github.com/jenkinsci/workflow-scm-step-plugin/blob/master/README.md#polling) for more polling details. \n\n \nThe [Pipeline Snippet Generator](https://www.jenkins.io/redirect/pipeline-snippet-generator) generates this example: \n\n \n```groovy\ngit poll: false,\n    url: 'git://github.com/jenkinsci/platformlabeler-plugin.git'\n\n```\n\n \n\n  **<a rel=\"nofollow\">Argument Descriptions</a>**",
       "parameters": [
         {
           "name": "url",
@@ -41272,6 +41318,72 @@
       ],
       "plugin": "last-changes",
       "url": "https://www.jenkins.io/doc/pipeline/steps/last-changes/#lastchanges-publish-last-changes"
+    },
+    {
+      "command": "leanIXMicroserviceIntelligence",
+      "name": "leanIXMicroserviceIntelligence: LeanIX Microservice Intelligence",
+      "instructionType": "Step",
+      "description": "",
+      "parameters": [
+        {
+          "name": "apitoken",
+          "type": "class hudson.util.Secret",
+          "values": [],
+          "instructionType": "Parameter",
+          "description": "",
+          "isOptional": true
+        },
+        {
+          "name": "deploymentstage",
+          "type": "String",
+          "values": [],
+          "instructionType": "Parameter",
+          "description": "",
+          "isOptional": true
+        },
+        {
+          "name": "deploymentversion",
+          "type": "String",
+          "values": [],
+          "instructionType": "Parameter",
+          "description": "",
+          "isOptional": true
+        },
+        {
+          "name": "hostname",
+          "type": "String",
+          "values": [],
+          "instructionType": "Parameter",
+          "description": "",
+          "isOptional": true
+        },
+        {
+          "name": "jobresultchoice",
+          "type": "String",
+          "values": [],
+          "instructionType": "Parameter",
+          "description": "",
+          "isOptional": true
+        },
+        {
+          "name": "lxmanifestpath",
+          "type": "String",
+          "values": [],
+          "instructionType": "Parameter",
+          "description": "",
+          "isOptional": true
+        },
+        {
+          "name": "useleanixconnector",
+          "type": "boolean",
+          "values": [],
+          "instructionType": "Parameter",
+          "description": "",
+          "isOptional": true
+        }
+      ],
+      "plugin": "leanix-microservice-intelligence",
+      "url": "https://www.jenkins.io/doc/pipeline/steps/leanix-microservice-intelligence/#leanixmicroserviceintelligence-leanix-microservice-intelligence"
     },
     {
       "command": "library",
@@ -61590,6 +61702,24 @@
       "url": "https://www.jenkins.io/doc/pipeline/steps/run-selector/#selectrun-select-run"
     },
     {
+      "command": "semaphore",
+      "name": "semaphore: Test step",
+      "instructionType": "Step",
+      "description": "",
+      "parameters": [
+        {
+          "name": "id",
+          "type": "String",
+          "values": [],
+          "instructionType": "Parameter",
+          "description": "",
+          "isOptional": false
+        }
+      ],
+      "plugin": "pipeline-graph-view",
+      "url": "https://www.jenkins.io/doc/pipeline/steps/pipeline-graph-view/#semaphore-test-step"
+    },
+    {
       "command": "sendBuildToDataTheorem",
       "name": "sendBuildToDataTheorem: Upload build to Data Theorem",
       "instructionType": "Step",
@@ -66239,6 +66369,88 @@
       "url": "https://www.jenkins.io/doc/pipeline/steps/azure-acs/#stepclass-acsdeploymentbuilder-deploy-to-azure-container-service-aks"
     },
     {
+      "command": "step([$class: 'AQPluginBuilderAction'])",
+      "name": "step([$class: 'AQPluginBuilderAction']): ACCELQ Connect",
+      "instructionType": "Step",
+      "description": "",
+      "parameters": [
+        {
+          "name": "jobId",
+          "type": "String",
+          "values": [],
+          "instructionType": "Parameter",
+          "description": "This ID should come from the CI job you saved in ACCELQ application",
+          "isOptional": false
+        },
+        {
+          "name": "apiKey",
+          "type": "class hudson.util.Secret",
+          "values": [],
+          "instructionType": "Parameter",
+          "description": "API key available in Profile section of ACCELQ",
+          "isOptional": false
+        },
+        {
+          "name": "appURL",
+          "type": "String",
+          "values": [],
+          "instructionType": "Parameter",
+          "description": "Your ACCELQ Application URL in the exact following format:\n \n\n\n \n```groovy\nhttps://&lt;hostname&gt;:&lt;port_num&gt;\n```",
+          "isOptional": false
+        },
+        {
+          "name": "runParamStr",
+          "type": "String",
+          "values": [],
+          "instructionType": "Parameter",
+          "description": "Run Param should be of the form **Customer Name=Acme & DB Env=UAT32**",
+          "isOptional": false
+        },
+        {
+          "name": "tenantCode",
+          "type": "String",
+          "values": [],
+          "instructionType": "Parameter",
+          "description": "Tenant Code displayed in the Profile section of ACCELQ",
+          "isOptional": false
+        },
+        {
+          "name": "userName",
+          "type": "String",
+          "values": [],
+          "instructionType": "Parameter",
+          "description": "Your ACCELQ User ID",
+          "isOptional": false
+        },
+        {
+          "name": "proxyHost",
+          "type": "String",
+          "values": [],
+          "instructionType": "Parameter",
+          "description": "",
+          "isOptional": false
+        },
+        {
+          "name": "proxyPort",
+          "type": "String",
+          "values": [],
+          "instructionType": "Parameter",
+          "description": "",
+          "isOptional": false
+        },
+        {
+          "name": "disableSSLCheck",
+          "type": "boolean",
+          "values": [],
+          "instructionType": "Parameter",
+          "description": "",
+          "isOptional": false
+        }
+      ],
+      "plugin": "accelq-ci-connect",
+      "url": "https://www.jenkins.io/doc/pipeline/steps/accelq-ci-connect/#stepclass-aqpluginbuilderaction-accelq-connect"
+    },
+    {
       "command": "step([$class: 'AWSCodeDeployPublisher'])",
       "name": "step([$class: 'AWSCodeDeployPublisher']): Deploy an application to AWS CodeDeploy",
       "instructionType": "Step",
@@ -68539,6 +68751,14 @@
           "instructionType": "Parameter",
           "description": "",
           "isOptional": false
+        },
+        {
+          "name": "stopTargetScans",
+          "type": "boolean",
+          "values": [],
+          "instructionType": "Parameter",
+          "description": "This is useful when older versions of the web application are discarded by the CI/CD when an updated version is created.",
+          "isOptional": false
         }
       ],
       "plugin": "acunetix",
@@ -70789,7 +71009,7 @@
     },
     {
       "command": "step([$class: 'ContinuousReleaseProperties'])",
-      "name": "step([$class: 'ContinuousReleaseProperties']): Pass Properties to UrbanCode Velocity Version",
+      "name": "step([$class: 'ContinuousReleaseProperties']): Pass Properties to Continuous Release Version",
       "instructionType": "Step",
       "description": "",
       "parameters": [
@@ -70802,8 +71022,8 @@
           "isOptional": false
         }
       ],
-      "plugin": "urbancode-velocity",
-      "url": "https://www.jenkins.io/doc/pipeline/steps/urbancode-velocity/#stepclass-continuousreleaseproperties-pass-properties-to-urbancode-velocity-version"
+      "plugin": "ibm-continuous-release",
+      "url": "https://www.jenkins.io/doc/pipeline/steps/ibm-continuous-release/#stepclass-continuousreleaseproperties-pass-properties-to-continuous-release-version"
     },
     {
       "command": "step([$class: 'CordellWalkerRecorder'])",
@@ -71102,92 +71322,6 @@
       "url": "https://www.jenkins.io/doc/pipeline/steps/inedo-buildmaster/#stepclass-createbuildbuilder-create-buildmaster-build"
     },
     {
-      "command": "step([$class: 'CreateCustomTask'])",
-      "name": "step([$class: 'CreateCustomTask']): Tekton : Create Task",
-      "instructionType": "Step",
-      "description": "",
-      "parameters": [
-        {
-          "name": "name",
-          "type": "String",
-          "values": [],
-          "instructionType": "Parameter",
-          "description": "",
-          "isOptional": false
-        },
-        {
-          "name": "namespace",
-          "type": "String",
-          "values": [],
-          "instructionType": "Parameter",
-          "description": "",
-          "isOptional": false
-        },
-        {
-          "name": "description",
-          "type": "String",
-          "values": [],
-          "instructionType": "Parameter",
-          "description": "",
-          "isOptional": false
-        },
-        {
-          "name": "params",
-          "type": "Array / List of Nested Object",
-          "values": [
-            "name",
-            "description",
-            "defaultValue"
-          ],
-          "instructionType": "Parameter",
-          "description": "",
-          "isOptional": false
-        },
-        {
-          "name": "workspaces",
-          "type": "Array / List of Nested Object",
-          "values": [
-            "name",
-            "description",
-            "mountPath"
-          ],
-          "instructionType": "Parameter",
-          "description": "",
-          "isOptional": false
-        },
-        {
-          "name": "steps",
-          "type": "Array / List of Nested Object",
-          "values": [
-            "name",
-            "image",
-            "args",
-            "command",
-            "envs",
-            "script",
-            "tty",
-            "workingDir"
-          ],
-          "instructionType": "Parameter",
-          "description": "",
-          "isOptional": false
-        },
-        {
-          "name": "envs",
-          "type": "Array / List of Nested Object",
-          "values": [
-            "name",
-            "value"
-          ],
-          "instructionType": "Parameter",
-          "description": "",
-          "isOptional": false
-        }
-      ],
-      "plugin": "tekton-client",
-      "url": "https://www.jenkins.io/doc/pipeline/steps/tekton-client/#stepclass-createcustomtask-tekton-create-task"
-    },
-    {
       "command": "step([$class: 'CreateCustomTaskrun'])",
       "name": "step([$class: 'CreateCustomTaskrun']): Tekton : Create TaskRun",
       "instructionType": "Step",
@@ -71211,6 +71345,14 @@
         },
         {
           "name": "namespace",
+          "type": "String",
+          "values": [],
+          "instructionType": "Parameter",
+          "description": "",
+          "isOptional": false
+        },
+        {
+          "name": "clusterName",
           "type": "String",
           "values": [],
           "instructionType": "Parameter",
@@ -71268,6 +71410,30 @@
         {
           "name": "inputType",
           "type": "String",
+          "values": [],
+          "instructionType": "Parameter",
+          "description": "",
+          "isOptional": false
+        },
+        {
+          "name": "namespace",
+          "type": "String",
+          "values": [],
+          "instructionType": "Parameter",
+          "description": "",
+          "isOptional": false
+        },
+        {
+          "name": "clusterName",
+          "type": "String",
+          "values": [],
+          "instructionType": "Parameter",
+          "description": "",
+          "isOptional": false
+        },
+        {
+          "name": "enableCatalog",
+          "type": "boolean",
           "values": [],
           "instructionType": "Parameter",
           "description": "",
@@ -71886,6 +72052,14 @@
       "instructionType": "Step",
       "description": "",
       "parameters": [
+        {
+          "name": "clusterName",
+          "type": "String",
+          "values": [],
+          "instructionType": "Parameter",
+          "description": "",
+          "isOptional": false
+        },
         {
           "name": "deleteAllStatus",
           "type": "Nested Object",
@@ -73186,7 +73360,7 @@
     },
     {
       "command": "step([$class: 'FuzzBuildStep'])",
-      "name": "step([$class: 'FuzzBuildStep']): (no description)",
+      "name": "step([$class: 'FuzzBuildStep']): Defensics fuzz test",
       "instructionType": "Step",
       "description": "",
       "parameters": [
@@ -73224,11 +73398,11 @@
         }
       ],
       "plugin": "defensics",
-      "url": "https://www.jenkins.io/doc/pipeline/steps/defensics/#stepclass-fuzzbuildstep-no-description"
+      "url": "https://www.jenkins.io/doc/pipeline/steps/defensics/#stepclass-fuzzbuildstep-defensics-fuzz-test"
     },
     {
       "command": "step([$class: 'FuzzPostBuildStep'])",
-      "name": "step([$class: 'FuzzPostBuildStep']): (no description)",
+      "name": "step([$class: 'FuzzPostBuildStep']): Defensics fuzz test",
       "instructionType": "Step",
       "description": "",
       "parameters": [
@@ -73266,7 +73440,7 @@
         }
       ],
       "plugin": "defensics",
-      "url": "https://www.jenkins.io/doc/pipeline/steps/defensics/#stepclass-fuzzpostbuildstep-no-description"
+      "url": "https://www.jenkins.io/doc/pipeline/steps/defensics/#stepclass-fuzzpostbuildstep-defensics-fuzz-test"
     },
     {
       "command": "step([$class: 'GatlingChecker'])",
@@ -74729,6 +74903,15 @@
       ],
       "plugin": "labeled-test-groups-publisher",
       "url": "https://www.jenkins.io/doc/pipeline/steps/labeled-test-groups-publisher/#stepclass-labeledtestresultgrouppublisher-publish-test-results-in-labeled-groups"
+    },
+    {
+      "command": "step([$class: 'LambdaTestReportPublisher'])",
+      "name": "step([$class: 'LambdaTestReportPublisher']): LambdaTest Report",
+      "instructionType": "Step",
+      "description": "",
+      "parameters": [],
+      "plugin": "lambdatest-automation",
+      "url": "https://www.jenkins.io/doc/pipeline/steps/lambdatest-automation/#stepclass-lambdatestreportpublisher-lambdatest-report"
     },
     {
       "command": "step([$class: 'LedBorgPublisher'])",
@@ -83470,6 +83653,14 @@
           "isOptional": false
         },
         {
+          "name": "testCycleCustomFields",
+          "type": "String",
+          "values": [],
+          "instructionType": "Parameter",
+          "description": "Enter Test Cycle Custom Fields in Json Array Format.\n \n\n For example: **[{\"name\": \"custom field 1\", \"value\": \"high,medium,low\"}, {\"name\": \"custom field 2\", \"value\": \"29/May/2020\"}] **\n \n\n To get more information check under: Qmetry &gt; Configuration &gt; Custom Fields &gt; Test Cycle",
+          "isOptional": false
+        },
+        {
           "name": "testCaseLabels",
           "type": "String",
           "values": [],
@@ -83515,6 +83706,14 @@
           "values": [],
           "instructionType": "Parameter",
           "description": "",
+          "isOptional": false
+        },
+        {
+          "name": "testCaseCustomFields",
+          "type": "String",
+          "values": [],
+          "instructionType": "Parameter",
+          "description": "Enter Test Case Custom Fields in Json Array Format.\n \n\n For example: **[{\"name\": \"custom field 1\", \"value\": \"high,medium,low\"}, {\"name\": \"custom field 2\", \"value\": \"29/May/2020\"}] **\n \n\n To get more information check under: Qmetry &gt; Configuration &gt; Custom Fields &gt; Test Case",
           "isOptional": false
         },
         {
@@ -90396,6 +90595,186 @@
       "url": "https://www.jenkins.io/doc/pipeline/steps/testproject/#tptestpackageupdate-update-testproject-test-package"
     },
     {
+      "command": "tptAgent",
+      "name": "tptAgent: Execute TPT tests as a worker for a TPT master job",
+      "instructionType": "Step",
+      "description": "This build step expects to be executed in a job started by an \"Execute TPT test cases\" build step in master mode. The master job will provide some parameters used by this build step. It will execute excatly one test case and copies the result back to the master node. To execute a single test case the build step uses the TPT RMI API. The Job should be only run once on every Computer. You can achive that e.g. by [Throttle Concurrent Builds Plugin](https://wiki.jenkins-ci.org/display/JENKINS/Throttle+Concurrent+Builds+Plugin)",
+      "parameters": [
+        {
+          "name": "exePaths",
+          "type": "String",
+          "values": [],
+          "instructionType": "Parameter",
+          "description": "",
+          "isOptional": false
+        },
+        {
+          "name": "tptBindingName",
+          "type": "String",
+          "values": [],
+          "instructionType": "Parameter",
+          "description": "",
+          "isOptional": true
+        },
+        {
+          "name": "tptPort",
+          "type": "String",
+          "values": [],
+          "instructionType": "Parameter",
+          "description": "",
+          "isOptional": true
+        },
+        {
+          "name": "tptStartUpWaitTime",
+          "type": "String",
+          "values": [],
+          "instructionType": "Parameter",
+          "description": "",
+          "isOptional": true
+        }
+      ],
+      "plugin": "piketec-tpt",
+      "url": "https://www.jenkins.io/doc/pipeline/steps/piketec-tpt/#tptagent-execute-tpt-tests-as-a-worker-for-a-tpt-master-job"
+    },
+    {
+      "command": "tptExecute",
+      "name": "tptExecute: Execute TPT test cases",
+      "instructionType": "Step",
+      "description": "The \"Execute TPT test cases\" build step can run in two modes.\n \n  \n* Just execute the tests within this Job. The given values will be used to create a command that will be executed. This command could be typed into the command line and would work. \n\n  \n* Use this Job as a Master. In this mode the TPT RMI API is used to read the test cases that must be executed. For every test case a slave job is started and parameters are provided that can be used by the \"Execute TPT tests slave\" build step. The slaves copy their reults back to the master and the master will aggregate the test results. \n\n  The master mode can be activated and configured by clicking on the \"Advanced\" button.",
+      "parameters": [
+        {
+          "name": "exePaths",
+          "type": "String",
+          "values": [],
+          "instructionType": "Parameter",
+          "description": "",
+          "isOptional": false
+        },
+        {
+          "name": "executionConfiguration",
+          "type": "Array / List of Nested Object",
+          "values": [
+            "tptFile",
+            "configuration",
+            "id",
+            "enableTest",
+            "reportDir",
+            "testSet",
+            "testdataDir",
+            "timeout"
+          ],
+          "instructionType": "Parameter",
+          "description": "",
+          "isOptional": false
+        },
+        {
+          "name": "arguments",
+          "type": "String",
+          "values": [],
+          "instructionType": "Parameter",
+          "description": "",
+          "isOptional": true
+        },
+        {
+          "name": "enableJunit",
+          "type": "boolean",
+          "values": [],
+          "instructionType": "Parameter",
+          "description": "",
+          "isOptional": true
+        },
+        {
+          "name": "isTptMaster",
+          "type": "boolean",
+          "values": [],
+          "instructionType": "Parameter",
+          "description": "",
+          "isOptional": true
+        },
+        {
+          "name": "jUnitLogLevel",
+          "type": "Enum",
+          "values": [
+            "NONE",
+            "ERROR",
+            "WARNING",
+            "INFO",
+            "ALL"
+          ],
+          "instructionType": "Parameter",
+          "description": "",
+          "isOptional": true
+        },
+        {
+          "name": "jUnitreport",
+          "type": "String",
+          "values": [],
+          "instructionType": "Parameter",
+          "description": "",
+          "isOptional": true
+        },
+        {
+          "name": "slaveJob",
+          "type": "String",
+          "values": [],
+          "instructionType": "Parameter",
+          "description": "",
+          "isOptional": true
+        },
+        {
+          "name": "slaveJobCount",
+          "type": "String",
+          "values": [],
+          "instructionType": "Parameter",
+          "description": "",
+          "isOptional": true
+        },
+        {
+          "name": "slaveJobTries",
+          "type": "String",
+          "values": [],
+          "instructionType": "Parameter",
+          "description": "",
+          "isOptional": true
+        },
+        {
+          "name": "tptBindingName",
+          "type": "String",
+          "values": [],
+          "instructionType": "Parameter",
+          "description": "",
+          "isOptional": true
+        },
+        {
+          "name": "tptPort",
+          "type": "String",
+          "values": [],
+          "instructionType": "Parameter",
+          "description": "",
+          "isOptional": true
+        },
+        {
+          "name": "tptStartUpWaitTime",
+          "type": "String",
+          "values": [],
+          "instructionType": "Parameter",
+          "description": "",
+          "isOptional": true
+        }
+      ],
+      "plugin": "piketec-tpt",
+      "url": "https://www.jenkins.io/doc/pipeline/steps/piketec-tpt/#tptexecute-execute-tpt-test-cases"
+    },
+    {
+      "command": "tptReport",
+      "name": "tptReport: TPT Report",
+      "instructionType": "Step",
+      "description": "",
+      "parameters": [],
+      "plugin": "piketec-tpt",
+      "url": "https://www.jenkins.io/doc/pipeline/steps/piketec-tpt/#tptreport-tpt-report"
+    },
+    {
       "command": "tricentisCI",
       "name": "tricentisCI: Tricentis Continuous Integration",
       "instructionType": "Step",
@@ -97095,16 +97474,8 @@
       "command": "writeJSON",
       "name": "writeJSON: Write JSON to a file in the workspace.",
       "instructionType": "Step",
-      "description": "Write a [JSON](http://www.json.org/json-it.html) file in the current working directory. That for example was previously read by `readJSON`. \n **Fields:**\n\n \n*  `json`: The object to write. Can either be a [JSON](http://json-lib.sourceforge.net/apidocs/jdk15/net/sf/json/JSON.html) instance or another Map/List implementation. Both are supported. \n\n \n*  `file`: Path to a file in the workspace to write to. \n\n \n*  `pretty` <i>(optional)</i>: Prettify the output with this number of spaces added to each level of indentation. \n\n\n\n **Example:**\n\n ``\n\n\n```groovy\ndef input = readJSON file: 'myfile.json'\n//Do some manipulation\nwriteJSON file: 'output.json', json: input\n// or pretty print it, indented with a configurable number of spaces\nwriteJSON file: 'output.json', json: input, pretty: 4\n\t\n```",
+      "description": "Write [JSON](http://www.json.org/json-it.html) to a file in the current working directory, or to a String. \n **Fields:**\n\n \n*  `json`: The object to write. Can either be a [JSON](http://json-lib.sourceforge.net/apidocs/jdk15/net/sf/json/JSON.html) instance or another Map/List implementation. Both are supported. \n\n \n*  `file` <i>(optional)</i>: Optional path to a file in the workspace to write to. If provided, then `returnText` must be `false` or omitted. It is required that either `file` is provided, or `returnText` is `true`. \n\n \n*  `pretty` <i>(optional)</i>: Prettify the output with this number of spaces added to each level of indentation. \n\n \n*  `returnText` <i>(optional)</i>: Return the JSON as a string instead of writing it to a file. Defaults to `false`. If `true`, then `file` must not be provided. It is required that either `file` is provided, or `returnText` is `true`. \n\n\n\n **Example:**\n\n Writing to a file: ` `\n\n\n```groovy\n        def amap = ['something': 'my datas',\n                    'size': 3,\n                    'isEmpty': false]\n\n        writeJSON file: 'data.json', json: amap\n        def read = readJSON file: 'data.json'\n\n        assert read.something == 'my datas'\n        assert read.size == 3\n        assert read.isEmpty == false\n        \n```\n` ` Writing to a string: ` \n```groovy\n        def amap = ['something': 'my datas',\n                    'size': 3,\n                    'isEmpty': false]\n\n        String json = writeJSON returnText: true, json: amap\n        def read = readJSON text: yml\n\n        assert read.something == 'my datas'\n        assert read.size == 3\n        assert read.isEmpty == false\n        \n```\n `",
       "parameters": [
-        {
-          "name": "file",
-          "type": "String",
-          "values": [],
-          "instructionType": "Parameter",
-          "description": "",
-          "isOptional": false
-        },
         {
           "name": "json",
           "type": "Object",
@@ -97114,8 +97485,24 @@
           "isOptional": false
         },
         {
+          "name": "file",
+          "type": "String",
+          "values": [],
+          "instructionType": "Parameter",
+          "description": "",
+          "isOptional": true
+        },
+        {
           "name": "pretty",
           "type": "int",
+          "values": [],
+          "instructionType": "Parameter",
+          "description": "",
+          "isOptional": true
+        },
+        {
+          "name": "returnText",
+          "type": "boolean",
           "values": [],
           "instructionType": "Parameter",
           "description": "",
@@ -97205,17 +97592,17 @@
     },
     {
       "command": "writeYaml",
-      "name": "writeYaml: Write a yaml from an object.",
+      "name": "writeYaml: Write a yaml from an object or objects.",
       "instructionType": "Step",
-      "description": "Writes a yaml file in the current working directory from an Object or a String. It uses [SnakeYAML](https://bitbucket.org/asomov/snakeyaml) as YAML processor. The call will fail if the file already exists. \n **Fields:**\n\n \n*  `file`: Mandatory path to a file in the workspace to write the YAML datas to. \n\n \n*  `data`: A Mandatory Object containing the data to be serialized. \n\n \n*  `charset` <i>(optional)</i>: Optionally specify the charset to use when writing the file. Defaults to `UTF-8` if nothing else is specified. What charsets that are available depends on your Jenkins master system. The java specification tells us though that at least the following should be available:\n  \n   \n* US-ASCII\n\n   \n* ISO-8859-1\n\n   \n* UTF-8\n\n   \n* UTF-16BE\n\n   \n* UTF-16LE\n\n   \n* UTF-16\n\n   \n\n \n*  `overwrite` <i>(optional)</i>: Allow existing files to be overwritten. Defaults to `false`. \n\n\n\n **Examples:**\n\n ` `\n\n\n```groovy\n        def amap = ['something': 'my datas',\n                    'size': 3,\n                    'isEmpty': false]\n\n        writeYaml file: 'datas.yaml', data: amap\n        def read = readYaml file: 'datas.yaml'\n\n        assert read.something == 'my datas'\n        assert read.size == 3\n        assert read.isEmpty == false\n        \n```\n` `",
+      "description": "Writes yaml to a file in the current working directory or a String from an Object or a String. It uses [SnakeYAML](https://bitbucket.org/asomov/snakeyaml) as YAML processor. The call will fail if the file already exists. \n **Fields:**\n\n \n*  `file` <i>(optional)</i>: Optional path to a file in the workspace to write the YAML datas to. If provided, then `returnText` must be `false` or omitted. It is required that either `file` is provided, or `returnText` is `true`. \n\n \n*  `data` <i>(optional)</i>: An Optional Object containing the data to be serialized. You must specify `data` **or** `datas`, but not both in the same invocation. \n\n \n*  `datas` <i>(optional)</i>: An Optional Collection containing the datas to be serialized as several YAML documents. You must specify `data` **or** `datas`, but not both in the same invocation. \n\n \n*  `charset` <i>(optional)</i>: Optionally specify the charset to use when writing the file. Defaults to `UTF-8` if nothing else is specified. What charsets that are available depends on your Jenkins master system. The java specification tells us though that at least the following should be available:\n  \n   \n* US-ASCII\n\n   \n* ISO-8859-1\n\n   \n* UTF-8\n\n   \n* UTF-16BE\n\n   \n* UTF-16LE\n\n   \n* UTF-16\n\n   \n\n \n*  `overwrite` <i>(optional)</i>: Allow existing files to be overwritten. Defaults to `false`. \n\n \n*  `returnText` <i>(optional)</i>: Return the YAML as a string instead of writing it to a file. Defaults to `false`. If `true`, then `file`, `charset`, and `overwrite` must not be provided. It is required that either `file` is provided, or `returnText` is `true`. \n\n\n\n **Examples:**\n\n Writing to a file: ` `\n\n\n```groovy\n        def amap = ['something': 'my datas',\n                    'size': 3,\n                    'isEmpty': false]\n\n        writeYaml file: 'datas.yaml', data: amap\n        def read = readYaml file: 'datas.yaml'\n\n        assert read.something == 'my datas'\n        assert read.size == 3\n        assert read.isEmpty == false\n        \n```\n` ` Writing to a string: ` \n```groovy\n        def amap = ['something': 'my datas',\n                    'size': 3,\n                    'isEmpty': false]\n\n        String yml = writeYaml returnText: true, data: amap\n        def read = readYaml text: yml\n\n        assert read.something == 'my datas'\n        assert read.size == 3\n        assert read.isEmpty == false\n        \n```\n `",
       "parameters": [
         {
-          "name": "file",
+          "name": "charset",
           "type": "String",
           "values": [],
           "instructionType": "Parameter",
           "description": "",
-          "isOptional": false
+          "isOptional": true
         },
         {
           "name": "data",
@@ -97223,10 +97610,20 @@
           "values": [],
           "instructionType": "Parameter",
           "description": "",
-          "isOptional": false
+          "isOptional": true
         },
         {
-          "name": "charset",
+          "name": "datas",
+          "type": "Nested Choice of Objects",
+          "values": [
+            "$class: 'RegistrationConfigCollection'"
+          ],
+          "instructionType": "Parameter",
+          "description": "",
+          "isOptional": true
+        },
+        {
+          "name": "file",
           "type": "String",
           "values": [],
           "instructionType": "Parameter",
@@ -97240,10 +97637,18 @@
           "instructionType": "Parameter",
           "description": "",
           "isOptional": true
+        },
+        {
+          "name": "returnText",
+          "type": "boolean",
+          "values": [],
+          "instructionType": "Parameter",
+          "description": "",
+          "isOptional": true
         }
       ],
       "plugin": "pipeline-utility-steps",
-      "url": "https://www.jenkins.io/doc/pipeline/steps/pipeline-utility-steps/#writeyaml-write-a-yaml-from-an-object"
+      "url": "https://www.jenkins.io/doc/pipeline/steps/pipeline-utility-steps/#writeyaml-write-a-yaml-from-an-object-or-objects"
     },
     {
       "command": "ws",
@@ -98575,6 +98980,14 @@
           "values": [],
           "instructionType": "Parameter",
           "description": "The path of the base directory to create the zip from. Leave empty to create from the current working directory.",
+          "isOptional": true
+        },
+        {
+          "name": "exclude",
+          "type": "String",
+          "values": [],
+          "instructionType": "Parameter",
+          "description": "[Ant style pattern](https://ant.apache.org/manual/dirtasks.html#patterns) of files to exclude from the zip.",
           "isOptional": true
         },
         {
