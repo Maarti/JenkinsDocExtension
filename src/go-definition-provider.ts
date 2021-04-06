@@ -6,7 +6,7 @@ export class GoDefinitionProvider implements vscode.DefinitionProvider {
     position: vscode.Position,
     token: vscode.CancellationToken,
   ): Promise<vscode.Definition | vscode.DefinitionLink[] | undefined> {
-    const wordRange = document.getWordRangeAtPosition(position, /(?:\w+.)?\w+/g);
+    const wordRange = document.getWordRangeAtPosition(position, /(?:\w+\.)?\w+/g);
     const clickedWords = document.getText(wordRange).split('.');
 
     if (clickedWords.length >= 2) {

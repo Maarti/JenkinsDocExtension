@@ -32,6 +32,10 @@ Provides documentation and autocompletion for Jenkins instructions as well as ov
 
 What's new?
 
+### [1.5.1](https://github.com/Maarti/JenkinsDocExtension/releases/tag/1.5.1) - 2021-04-06
+
+- Bugfix: "Go To Definition" for Groovy files with the same name as the hovered word, followed by a parenthesis or any non-word character
+
 ### [1.5.0](https://github.com/Maarti/JenkinsDocExtension/releases/tag/1.5.0) - 2021-03-28
 
 - "Go To Definition" for functions in a different file
