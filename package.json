@@ -1,6 +1,6 @@
 {
   "name": "jenkins-doc",
-  "version": "1.5.0",
+  "version": "1.5.1",
   "displayName": "Jenkins Doc",
   "description": "Provides Jenkins documentation and autocompletion on Jenkinsfile and Groovy files",
   "publisher": "Maarti",
