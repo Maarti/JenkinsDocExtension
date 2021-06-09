@@ -13,7 +13,7 @@ export class GoDefinitionProvider implements vscode.DefinitionProvider {
       const [fileName, functionName] = clickedWords;
       console.log(`Clicked: ${fileName}.groovy => ${functionName}`);
       // Find files that have the same name of the clicked word
-      const pattern = `**/${fileName}.groovy`;
+      const pattern = `**/*.groovy`;
       const location: Thenable<vscode.Location | undefined> = vscode.workspace
         .findFiles(pattern)
         .then(async uris => {
