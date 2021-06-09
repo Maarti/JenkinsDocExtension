@@ -53,7 +53,8 @@
     "pretest": "npm run compile && npm run lint",
     "lint": "eslint src --ext ts",
     "test": "node ./out/test/runTest.js",
-    "scraper": "nodemon --watch 'doc-scraper/**/*.ts' --exec 'ts-node' doc-scraper/index.ts"
+    "scraper": "nodemon --watch 'doc-scraper/**/*.ts' --exec npm run scraper-exec",
+    "scraper-exec": "npx ts-node doc-scraper/index.ts"
   },
   "devDependencies": {
     "@types/axios": "^0.14.0",
