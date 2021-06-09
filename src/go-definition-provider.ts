@@ -31,22 +31,14 @@ export class GoDefinitionProvider implements vscode.DefinitionProvider {
       return location;
     } else {
       const fileOrfunction = clickedWords[0];
-      console.log(`Clicked: ${fileOrfunction}`);
-      // Check in the current file if a function is declared with this name
+      console.log(`Clicked: ${fileOrfunction}.groovy => ${fileOrfunction}`);
+      // Find files that have the same name of the clicked word
       const functionPosition = findFunctionInDoc(document, fileOrfunction);
       if (functionPosition) {
         return new Promise((resolve, reject) => {
-          resolve(new vscode.Location(document.uri, functionPosition));
+          resolve( new vscode.Location(document.uri, functionPosition));
         });
       }
-
-      // Check if a file has the same name of the clicked word
-      const pattern = `**/${fileOrfunction}.groovy`;
-      return vscode.workspace.findFiles(pattern).then(uris => {
-        return new Promise((resolve, reject) => {
-          resolve(new vscode.Location(uris[0], new vscode.Position(0, 0)));
-        });
-      });
     }
   }
 }
@@ -57,7 +49,7 @@ function findFunctionInDoc(
   functionName: string,
 ): vscode.Position | undefined {
   for (let i = 0; i < document.lineCount; i++) {
-    const functionDeclarationRegex = new RegExp(`\\w+(?: \\w+)? (${functionName}) *\\(.*\\) *{`);
+    const functionDeclarationRegex = new RegExp(`\\w+(?: \\w+)? (${functionName}) *\\(.*`);
     if (document.lineAt(i).text.match(functionDeclarationRegex)) {
       return new vscode.Position(i, 0);
     }
