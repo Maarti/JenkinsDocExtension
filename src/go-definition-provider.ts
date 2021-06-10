@@ -31,14 +31,15 @@ export class GoDefinitionProvider implements vscode.DefinitionProvider {
       return location;
     } else {
       const fileOrfunction = clickedWords[0];
-      console.log(`Clicked: ${fileOrfunction}.groovy`);
-      // Find files that have the same name of the clicked word
+      console.log(`Clicked: ${fileOrfunction}`);
+      // Check in the current file if a function is declared with this name
       const functionPosition = findFunctionInDoc(document, fileOrfunction);
       if (functionPosition) {
         return new Promise((resolve, reject) => {
           resolve(new vscode.Location(document.uri, functionPosition));
         });
       }
+      
       // Check if a file has the same name of the clicked word
       const pattern = `**/${fileOrfunction}.groovy`;
       return vscode.workspace.findFiles(pattern).then(uris => {
