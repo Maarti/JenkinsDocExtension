@@ -1,6 +1,6 @@
 {
   "name": "jenkins-doc",
-  "version": "1.5.1",
+  "version": "1.6.0",
   "displayName": "Jenkins Doc",
   "description": "Provides Jenkins documentation and autocompletion on Jenkinsfile and Groovy files",
   "publisher": "Maarti",
@@ -48,12 +48,15 @@
   "qna": false,
   "scripts": {
     "vscode:prepublish": "npm run compile",
+    "publish": "vsce publish",
+    "package": "vsce package",
     "compile": "tsc -p ./",
     "watch": "tsc -watch -p ./",
     "pretest": "npm run compile && npm run lint",
     "lint": "eslint src --ext ts",
     "test": "node ./out/test/runTest.js",
-    "scraper": "nodemon --watch 'doc-scraper/**/*.ts' --exec 'ts-node' doc-scraper/index.ts"
+    "scraper": "nodemon --watch 'doc-scraper/**/*.ts' --exec npm run scraper-exec",
+    "scraper-exec": "npx ts-node doc-scraper/index.ts"
   },
   "devDependencies": {
     "@types/axios": "^0.14.0",

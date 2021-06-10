@@ -1,5 +1,10 @@
 # Change Log
 
+## [1.6.0](https://github.com/Maarti/JenkinsDocExtension/releases/tag/1.6.0) - 2021-06-09
+
+- "Go To Definition" now works for functions declared on multiple lines
+- Documentation updated
+
 ## [1.5.1](https://github.com/Maarti/JenkinsDocExtension/releases/tag/1.5.1) - 2021-04-06
 
 - Bugfix: "Go To Definition" for Groovy files with the same name as the hovered word, followed by a parenthesis or any non-word character
