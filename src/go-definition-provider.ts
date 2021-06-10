@@ -39,6 +39,13 @@ export class GoDefinitionProvider implements vscode.DefinitionProvider {
           resolve(new vscode.Location(document.uri, functionPosition));
         });
       }
+      // Check if a file has the same name of the clicked word
+      const pattern = `**/${fileOrfunction}.groovy`;
+      return vscode.workspace.findFiles(pattern).then(uris => {
+        return new Promise((resolve, reject) => {
+          resolve(new vscode.Location(uris[0], new vscode.Position(0, 0)));
+        });
+      });
     }
   }
 }
