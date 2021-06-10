@@ -31,12 +31,12 @@ export class GoDefinitionProvider implements vscode.DefinitionProvider {
       return location;
     } else {
       const fileOrfunction = clickedWords[0];
-      console.log(`Clicked: ${fileOrfunction}.groovy => ${fileOrfunction}`);
+      console.log(`Clicked: ${fileOrfunction}.groovy`);
       // Find files that have the same name of the clicked word
       const functionPosition = findFunctionInDoc(document, fileOrfunction);
       if (functionPosition) {
         return new Promise((resolve, reject) => {
-          resolve( new vscode.Location(document.uri, functionPosition));
+          resolve(new vscode.Location(document.uri, functionPosition));
         });
       }
     }
