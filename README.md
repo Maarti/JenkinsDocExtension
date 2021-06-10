@@ -32,6 +32,11 @@ Provides documentation and autocompletion for Jenkins instructions as well as ov
 
 What's new?
 
+### [1.6.0](https://github.com/Maarti/JenkinsDocExtension/releases/tag/1.6.0) - 2021-06-09
+
+- "Go To Definition" now works for functions declared on multiple lines
+- Documentation updated
+
 ### [1.5.1](https://github.com/Maarti/JenkinsDocExtension/releases/tag/1.5.1) - 2021-04-06
 
 - Bugfix: "Go To Definition" for Groovy files with the same name as the hovered word, followed by a parenthesis or any non-word character
@@ -74,6 +79,7 @@ See the [Changelog](./CHANGELOG.md)
 - ✅ Documentation for [Directives](https://www.jenkins.io/doc/book/pipeline/syntax/#declarative-directives)
 - ✅ "Go To Definition" for functions in the same file
 - ✅ "Go To Definition" for functions in a different file
+- ✅ "Go To Definition" for functions declared on multiple lines
 - ⬛ Support [Jenkins parameters](https://www.jenkins.io/doc/book/pipeline/syntax/#parameters) (`booleanParam`, `string`, `extendedChoice`,...)
 - ⬛ Support symbols (breadcrumbs and outline in VSCode)
 - ❌ Call the [pipeline linter](https://www.jenkins.io/doc/book/pipeline/development/)

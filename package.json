@@ -1,6 +1,6 @@
 {
   "name": "jenkins-doc",
-  "version": "1.5.1",
+  "version": "1.6.0",
   "displayName": "Jenkins Doc",
   "description": "Provides Jenkins documentation and autocompletion on Jenkinsfile and Groovy files",
   "publisher": "Maarti",
@@ -48,6 +48,8 @@
   "qna": false,
   "scripts": {
     "vscode:prepublish": "npm run compile",
+    "publish": "vsce publish",
+    "package": "vsce package",
     "compile": "tsc -p ./",
     "watch": "tsc -watch -p ./",
     "pretest": "npm run compile && npm run lint",
