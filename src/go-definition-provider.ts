@@ -19,7 +19,7 @@ export class GoDefinitionProvider implements vscode.DefinitionProvider {
         .then(async uris => {
           for (const uri of uris) {
             const functionPosition = await vscode.workspace.openTextDocument(uri).then(doc => {
-              return findFunctionInDoc(doc, functionName);
+              return findFunctionInWholeDoc(doc, functionName);
             });
             if (functionPosition) {
               return new Promise((resolve, reject) => {
@@ -33,7 +33,7 @@ export class GoDefinitionProvider implements vscode.DefinitionProvider {
       const fileOrfunction = clickedWords[0];
       console.log(`Clicked: ${fileOrfunction}`);
       // Check in the current file if a function is declared with this name
-      const functionPosition = findFunctionInDoc(document, fileOrfunction);
+      const functionPosition = findFunctionInWholeDoc(document, fileOrfunction);
       if (functionPosition) {
         return new Promise((resolve, reject) => {
           resolve(new vscode.Location(document.uri, functionPosition));
@@ -52,7 +52,7 @@ export class GoDefinitionProvider implements vscode.DefinitionProvider {
 }
 
 // Check in a file if a function with the given name is declared
-function findFunctionInDoc(
+function findFunctionInDocLineByLine(
   document: vscode.TextDocument,
   functionName: string,
 ): vscode.Position | undefined {
@@ -61,6 +61,26 @@ function findFunctionInDoc(
     if (document.lineAt(i).text.match(functionDeclarationRegex)) {
       return new vscode.Position(i, 0);
     }
+  }
+  return undefined;
+}
+
+function findFunctionInWholeDoc(
+  document: vscode.TextDocument,
+  functionName: string,
+): vscode.Position | undefined {
+  const firstLine = document.lineAt(0);
+  const lastLine = document.lineAt(document.lineCount - 1);
+  const textRange = new vscode.Range(firstLine.range.start, lastLine.range.end);
+  const content = document.getText(textRange);
+  const functionDeclarationRegex = new RegExp(
+    `\\w+(?: *\\w+)? +${functionName} *\\([^{}]*?\\)\\s*?{`,
+    's',
+  );
+  const match = content.match(functionDeclarationRegex);
+  if (match) {
+    const line = content.substr(0, match.index).split(/\r?\n/).length - 1;
+    return new vscode.Position(line, 0);
   }
   return undefined;
 }
