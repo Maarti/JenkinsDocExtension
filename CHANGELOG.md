@@ -1,5 +1,9 @@
 # Change Log
 
+## [1.7.0](https://github.com/Maarti/JenkinsDocExtension/releases/tag/1.6.0) - 2021-06-12
+
+- "Go To Definition" for objects methods
+
 ## [1.6.0](https://github.com/Maarti/JenkinsDocExtension/releases/tag/1.6.0) - 2021-06-09
 
 - "Go To Definition" now works for functions declared on multiple lines
