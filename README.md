@@ -32,7 +32,7 @@ Provides documentation and autocompletion for Jenkins instructions as well as ov
 
 What's new?
 
-### [1.7.0](https://github.com/Maarti/JenkinsDocExtension/releases/tag/1.6.0) - 2021-06-12
+### [1.7.0](https://github.com/Maarti/JenkinsDocExtension/releases/tag/1.7.0) - 2021-06-12
 
 - "Go To Definition" for objects methods
 
