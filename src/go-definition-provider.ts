@@ -12,24 +12,8 @@ export class GoDefinitionProvider implements vscode.DefinitionProvider {
     if (clickedWords.length >= 2) {
       const [fileName, functionName] = clickedWords;
       console.log(`Clicked: ${fileName}.groovy => ${functionName}`);
-      // Find files that have the same name of the clicked word
-      // const pattern = `**/${fileName}.groovy`;
-      const pattern = `**/*.groovy`;
-      const location: Thenable<vscode.Location | undefined> = vscode.workspace
-        .findFiles(pattern)
-        .then(async uris => {
-          for (const uri of uris) {
-            const functionPosition = await vscode.workspace.openTextDocument(uri).then(doc => {
-              return findFunctionInWholeDoc(doc, functionName);
-            });
-            if (functionPosition) {
-              return new Promise((resolve, reject) => {
-                resolve(new vscode.Location(uri, functionPosition));
-              });
-            }
-          }
-        });
-      return location;
+      const patterns = [`**/${fileName}.groovy`, `**/*.groovy`]; // file patterns to search in order
+      return await findInGroovyFiles(patterns, functionName);
     } else {
       const fileOrfunction = clickedWords[0];
       console.log(`Clicked: ${fileOrfunction}`);
@@ -82,6 +66,23 @@ function findFunctionInWholeDoc(
   if (match) {
     const line = content.substr(0, match.index).split(/\r?\n/).length - 1;
     return new vscode.Position(line, 0);
+  }
+  return undefined;
+}
+
+async function findInGroovyFiles(
+  filePatterns: string[],
+  functionName: string,
+): Promise<vscode.Location | undefined> {
+  for (const pattern of filePatterns) {
+    const uris = await vscode.workspace.findFiles(pattern);
+    for (const uri of uris) {
+      const doc = await vscode.workspace.openTextDocument(uri);
+      const functionPosition = findFunctionInWholeDoc(doc, functionName);
+      if (functionPosition) {
+        return new vscode.Location(uri, functionPosition);
+      }
+    }
   }
   return undefined;
 }
