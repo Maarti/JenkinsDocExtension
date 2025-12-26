@@ -1,6 +1,10 @@
 # Change Log
 
-## [1.7.0](https://github.com/Maarti/JenkinsDocExtension/releases/tag/1.6.0) - 2021-06-12
+## [1.8.0](https://github.com/Maarti/JenkinsDocExtension/releases/tag/1.8.0) - 2025-12-26
+
+- "Go To Definition" now prioritizes specific Groovy filenames
+
+## [1.7.0](https://github.com/Maarti/JenkinsDocExtension/releases/tag/1.7.0) - 2021-06-12
 
 - "Go To Definition" for objects methods
 
