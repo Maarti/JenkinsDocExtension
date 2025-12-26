@@ -12,24 +12,29 @@ export class GoDefinitionProvider implements vscode.DefinitionProvider {
     if (clickedWords.length >= 2) {
       const [fileName, functionName] = clickedWords;
       console.log(`Clicked: ${fileName}.groovy => ${functionName}`);
-      // Find files that have the same name of the clicked word
-      // const pattern = `**/${fileName}.groovy`;
-      const pattern = `**/*.groovy`;
-      const location: Thenable<vscode.Location | undefined> = vscode.workspace
-        .findFiles(pattern)
-        .then(async uris => {
-          for (const uri of uris) {
-            const functionPosition = await vscode.workspace.openTextDocument(uri).then(doc => {
-              return findFunctionInWholeDoc(doc, functionName);
-            });
-            if (functionPosition) {
-              return new Promise((resolve, reject) => {
-                resolve(new vscode.Location(uri, functionPosition));
-              });
-            }
+      // First, try to find files with the specific name
+      const pattern = `**/${fileName}.groovy`;
+      let uris = await vscode.workspace.findFiles(pattern);
+      if (uris.length > 0) {
+        for (const uri of uris) {
+          const doc = await vscode.workspace.openTextDocument(uri);
+          const functionPosition = findFunctionInWholeDoc(doc, functionName);
+          if (functionPosition) {
+            return new vscode.Location(uri, functionPosition);
           }
-        });
-      return location;
+        }
+      }
+      // If not found in specific files, search all groovy files
+      const allPattern = `**/*.groovy`;
+      uris = await vscode.workspace.findFiles(allPattern);
+      for (const uri of uris) {
+        const doc = await vscode.workspace.openTextDocument(uri);
+        const functionPosition = findFunctionInWholeDoc(doc, functionName);
+        if (functionPosition) {
+          return new vscode.Location(uri, functionPosition);
+        }
+      }
+      return undefined;
     } else {
       const fileOrfunction = clickedWords[0];
       console.log(`Clicked: ${fileOrfunction}`);
