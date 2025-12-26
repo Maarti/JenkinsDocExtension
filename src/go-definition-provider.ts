@@ -12,29 +12,8 @@ export class GoDefinitionProvider implements vscode.DefinitionProvider {
     if (clickedWords.length >= 2) {
       const [fileName, functionName] = clickedWords;
       console.log(`Clicked: ${fileName}.groovy => ${functionName}`);
-      // First, try to find files with the specific name
-      const pattern = `**/${fileName}.groovy`;
-      let uris = await vscode.workspace.findFiles(pattern);
-      if (uris.length > 0) {
-        for (const uri of uris) {
-          const doc = await vscode.workspace.openTextDocument(uri);
-          const functionPosition = findFunctionInWholeDoc(doc, functionName);
-          if (functionPosition) {
-            return new vscode.Location(uri, functionPosition);
-          }
-        }
-      }
-      // If not found in specific files, search all groovy files
-      const allPattern = `**/*.groovy`;
-      uris = await vscode.workspace.findFiles(allPattern);
-      for (const uri of uris) {
-        const doc = await vscode.workspace.openTextDocument(uri);
-        const functionPosition = findFunctionInWholeDoc(doc, functionName);
-        if (functionPosition) {
-          return new vscode.Location(uri, functionPosition);
-        }
-      }
-      return undefined;
+      const patterns = [`**/${fileName}.groovy`, `**/*.groovy`]; // file patterns to search in order
+      return await findInGroovyFiles(patterns, functionName);
     } else {
       const fileOrfunction = clickedWords[0];
       console.log(`Clicked: ${fileOrfunction}`);
@@ -87,6 +66,23 @@ function findFunctionInWholeDoc(
   if (match) {
     const line = content.substr(0, match.index).split(/\r?\n/).length - 1;
     return new vscode.Position(line, 0);
+  }
+  return undefined;
+}
+
+async function findInGroovyFiles(
+  filePatterns: string[],
+  functionName: string,
+): Promise<vscode.Location | undefined> {
+  for (const pattern of filePatterns) {
+    const uris = await vscode.workspace.findFiles(pattern);
+    for (const uri of uris) {
+      const doc = await vscode.workspace.openTextDocument(uri);
+      const functionPosition = findFunctionInWholeDoc(doc, functionName);
+      if (functionPosition) {
+        return new vscode.Location(uri, functionPosition);
+      }
+    }
   }
   return undefined;
 }
